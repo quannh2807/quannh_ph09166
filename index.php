@@ -1,65 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-    
-<!-- Mirrored from premiumlayers.net/demo/html/hotelbooking/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Mar 2020 11:51:23 GMT -->
+<html lang="vi">
 <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Hotel Booking</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hotel Booking Home</title>
 
         <link rel="icon" href="img/favicon.ico" sizes="16x16">
-		
         <!-- fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Karla:700,400' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
 
         <!-- fontawesome -->
-		<link rel="stylesheet" href="css/font-awesome.css" />
+		<link rel="stylesheet" href="./public/css/font-awesome.css" />
 
         <!-- bootstrap -->
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./public/css/bootstrap.min.css" />
 
         <!-- uikit -->
-        <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="./public/css/uikit.min.css" />
 
         <!-- animate -->
-        <link rel="stylesheet" href="css/animate.css" />
-        <link rel="stylesheet" href="css/datepicker.css" />
+        <link rel="stylesheet" href="./public/css/animate.css" />
+        <link rel="stylesheet" href="./public/css/datepicker.css" />
         <!-- Owl carousel 2 css -->
-        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="./public/css/owl.carousel.css">
         <!-- rev slider -->
-        <link rel="stylesheet" href="css/rev-slider/settings.css" />
+        <link rel="stylesheet" href="./public/css/rev-slider/settings.css" />
         <!-- lightslider -->
-        <link rel="stylesheet" href="css/lightslider.css">
+        <link rel="stylesheet" href="./public/css/lightslider.css">
         <!-- Theme -->
-        <link rel="stylesheet" href="css/reset.css">
-        
-        <!-- custom css -->
-		<link rel="stylesheet" href="style.css" />
-        <!-- responsive -->
-		<link rel="stylesheet" href="css/responsive.css" />
+        <link rel="stylesheet" href="./public/css/reset.css">
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!-- This Template Is Fully Coded By Aftab Zaman from swiftconcept.com -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- custom css -->
+		<link rel="stylesheet" href="./public/css/main.css" />
+        <!-- responsive -->
+		<link rel="stylesheet" href="./public/css/responsive.css" />
 
     </head>
     <body id="home_one">
-        
-        <!-- start preloader -->
-        <div id="loader-wrapper">
-            <div class="logo"><a href="#"><span>Hotel</span>-Booking</a></div>
-            <div id="loader">
-            </div>
-        </div>
-        <!-- end preloader -->
-        
         <!-- start header -->
         <header class="header_area">
 
@@ -79,7 +59,7 @@
                                     <span class="icon-bar"></span>
                                   </button>
                                   <div class="site_logo fix">
-                                      <a id="brand" class="clearfix navbar-brand border-right-whitesmoke" href="index-2.html"><img src="img/site-logo.png" alt="Trips"></a>
+                                      <a id="brand" class="clearfix navbar-brand border-right-whitesmoke" href="index-2.html"><img src="./public/img/site-logo.png" alt="Trips"></a>
                                       <div class="header_login floatleft">
                                           <ul>
                                               <li><a href="#">Login</a></li>
@@ -93,13 +73,8 @@
                                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                                   <ul class="nav navbar-nav">
                                     <li role="presentation" class="dropdown">
-                                        <a id="drop-one" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                                          Home
-                                        </a>
-                                        <ul id="menu1" class="dropdown-menu" role="menu">
-                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="index-two.html">Home Page two</a></li>
-                                        </ul>
-                                    </li>        
+                                        <a href="./index.html">Home</a>
+                                    </li>
                                     <li><a href="accomodation.html">Accomodation</a></li>
                                     <li><a href="gallery.html">Gallery</a></li>
                                     <li role="presentation" class="dropdown">
@@ -118,7 +93,7 @@
                                     <li><a href="contact-us.html">Contacts</a></li>
                                   </ul>
                                   <div class="emergency_number">
-                                      <a href="tel:1234567890"><img src="img/call-icon.png" alt="">123 456 7890</a>
+                                      <a href="tel:1234567890"><img src="./public/img/call-icon.png" alt="">123 456 7890</a>
                                   </div>
                                 </div><!-- /.navbar-collapse -->
                             </nav>
@@ -198,7 +173,7 @@
                             </form>
                             <!-- special offer start -->
                             <div class="special_offer_main">
-                                <img src="img/special-offer-main.png" alt="">
+                                <img src="./public/img/special-offer-main.png" alt="">
                             </div>
                             <!-- end offer start -->
                         </div>
@@ -210,7 +185,7 @@
                         <ul>
                             
                             <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
-                                <img src="img/rev-slider/slider-one.jpg" alt="slide" >
+                                <img src="./public/img/rev-slider/slider-one.jpg" alt="slide" >
                                 <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack"
                                     style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
                                     A brand New Hotel
@@ -226,7 +201,7 @@
                             </li>
 
                             <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
-                                <img src="img/rev-slider/slider-one.jpg" alt="slide" >
+                                <img src="./public/img/rev-slider/slider-one.jpg" alt="slide" >
                                 <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack"
                                     style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
                                     Book Your Summer Holidays
@@ -239,7 +214,7 @@
                                     style="background: #f7c411; padding: 10px; cursor: pointer;">
                                     <a href="#" class="" style="background: #f7c411; border-radius: 0; color: #313a45; display: inline-block;  font-size: 18px; padding: 8px 34px; text-transform: uppercase; border: 1px solid #9e811a;">Explore IT</a>
                                 </div>
-                            </li>							                           
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -248,7 +223,7 @@
         <!-- end main slider -->
         
         <!-- start welcome section -->
-        <section class="welcome_area">  
+        <section class="welcome_area">
             <div class="container">
                     <div class="welcome">
                         <div class="section_title nice_title content-center">
@@ -262,7 +237,7 @@
                                 <div class="single_room_wrapper clearfix">
                                     <figure class="uk-overlay uk-overlay-hover">
                                         <div class="room_media">
-                                            <a href="#"><img src="img/room-image-five.png" alt=""></a>
+                                            <a href="#"><img src="./public/img/room-image-five.png" alt=""></a>
                                         </div>
                                         <div class="room_title border-bottom-whitesmoke clearfix">
                                                 <div class="left_room_title floatleft">
@@ -299,7 +274,7 @@
                                 <div class="single_room_wrapper clearfix">
                                     <figure class="uk-overlay uk-overlay-hover">
                                         <div class="room_media">
-                                            <a href="#"><img src="img/room-image-nine.png" alt=""></a>
+                                            <a href="#"><img src="./public/img/room-image-nine.png" alt=""></a>
                                         </div>
                                         <div class="room_title border-bottom-whitesmoke clearfix">
                                                 <div class="left_room_title floatleft">
@@ -336,7 +311,7 @@
                                 <div class="single_room_wrapper clearfix">
                                     <figure class="uk-overlay uk-overlay-hover">
                                         <div class="room_media">
-                                            <a href="#"><img src="img/room-image-thirteen.jpg" alt=""></a>
+                                            <a href="#"><img src="./public/img/room-image-thirteen.jpg" alt=""></a>
                                         </div>
                                         <div class="room_title border-bottom-whitesmoke clearfix">
                                                 <div class="left_room_title floatleft">
@@ -373,7 +348,7 @@
                                 <div class="single_room_wrapper clearfix">
                                     <figure class="uk-overlay uk-overlay-hover">
                                         <div class="room_media">
-                                            <a href="#"><img src="img/room-image-eight.png" alt=""></a>
+                                            <a href="#"><img src="./public/img/room-image-eight.png" alt=""></a>
                                         </div>
                                         <div class="room_title border-bottom-whitesmoke clearfix">
                                                 <div class="left_room_title floatleft">
@@ -425,19 +400,19 @@
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active">
-                                    <a href="#restaurant" aria-controls="restaurant" role="tab" data-toggle="tab"><img src="img/home-facilities-icon-eleven.png" alt="restaurant"><span>restaurant</span></a>
+                                    <a href="#restaurant" aria-controls="restaurant" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-eleven.png" alt="restaurant"><span>restaurant</span></a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#sports-club" aria-controls="sports-club" role="tab" data-toggle="tab"><img src="img/home-facilities-icon-seven.png" alt="sports-club"><span>sports-club</span></a>
+                                    <a href="#sports-club" aria-controls="sports-club" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-seven.png" alt="sports-club"><span>sports-club</span></a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#pick-up" aria-controls="pick-up" role="tab" data-toggle="tab"><img src="img/home-facilities-icon-eight.png" alt="pick-up"><span>pick-up</span></a>
+                                    <a href="#pick-up" aria-controls="pick-up" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-eight.png" alt="pick-up"><span>pick-up</span></a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#bar" aria-controls="bar" role="tab" data-toggle="tab"><img src="img/home-facilities-icon-nine.png" alt="bar"><span>bar</span></a>
+                                    <a href="#bar" aria-controls="bar" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-nine.png" alt="bar"><span>bar</span></a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#gym" aria-controls="gym" role="tab" data-toggle="tab"><img src="img/home-facilities-icon-ten.png" alt="gym"><span>gym</span></a>
+                                    <a href="#gym" aria-controls="gym" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-ten.png" alt="gym"><span>gym</span></a>
                                 </li>
                             </ul>                           
 
@@ -449,7 +424,7 @@
                                         <div class="row">
                                             <div class="co-lg-5 col-md-5 col-sm-6">
                                                 <div class="single-tab-image">
-                                                    <a href="#"><img src="img/hotel-facility-one.jpg" alt=""></a>
+                                                    <a href="#"><img src="./public/img/hotel-facility-one.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="co-lg-7 col-md-7 col-sm-6">
@@ -476,7 +451,7 @@
                                         <div class="row">
                                             <div class="co-lg-5 col-md-5">
                                                 <div class="single-tab-image">
-                                                    <a href="#"><img src="img/hotel-facility-three.jpg" alt=""></a>
+                                                    <a href="#"><img src="./public/img/hotel-facility-three.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="co-lg-7 col-md-7">
@@ -503,7 +478,7 @@
                                         <div class="row">
                                             <div class="co-lg-5 col-md-5">
                                                 <div class="single-tab-image">
-                                                    <a href="#"><img src="img/hotel-facility-one.jpg" alt=""></a>
+                                                    <a href="#"><img src="./public/img/hotel-facility-one.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="co-lg-7 col-md-7">
@@ -530,7 +505,7 @@
                                         <div class="row">
                                             <div class="co-lg-5 col-md-5">
                                                 <div class="single-tab-image">
-                                                    <a href="#"><img src="img/hotel-facility-three.jpg" alt=""></a>
+                                                    <a href="#"><img src="./public/img/hotel-facility-three.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="co-lg-7 col-md-7">
@@ -557,7 +532,7 @@
                                         <div class="row">
                                             <div class="co-lg-5 col-md-5">
                                                 <div class="single-tab-image">
-                                                    <a href="#"><img src="img/hotel-facility-one.jpg" alt=""></a>
+                                                    <a href="#"><img src="./public/img/hotel-facility-one.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="co-lg-7 col-md-7">
@@ -604,7 +579,7 @@
                                         <div class="single_content clearfix border-bottom-whitesmoke">
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 padding-left-0">
                                                 <div class="post_media">
-                                                    <a href="#"><img src="img/news-one.jpg" alt=""></a>
+                                                    <a href="#"><img src="./public/img/news-one.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 padding-left-0">
@@ -619,7 +594,7 @@
                                         <div class="single_content clearfix margin-top-35 border-bottom-whitesmoke">
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 padding-left-0">
                                                 <div class="post_media">
-                                                    <a href="#"><img src="img/news-two.jpg" alt=""></a>
+                                                    <a href="#"><img src="./public/img/news-two.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 padding-left-0">
@@ -634,7 +609,7 @@
                                         <div class="single_content clearfix margin-bottom-35 margin-top-35">
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 padding-left-0">
                                                 <div class="post_media">
-                                                    <a href="#"><img src="img/news-three.jpg" alt=""></a>
+                                                    <a href="#"><img src="./public/img/news-three.jpg" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 padding-left-0">
@@ -659,29 +634,29 @@
                             <div class="section_description">
                                 <div class="clearfix demo" style="">
                                     <ul id="vertical" class="gallery list-unstyled">
-                                        <li data-thumb="img/lightslider-img/cS-18.jpg">
-                                            <img alt="slider" src="img/lightslider-img/cS-18.jpg" />
+                                        <li data-thumb="./public/img/lightslider-img/cS-18.jpg">
+                                            <img alt="slider" src="./public/img/lightslider-img/cS-18.jpg" />
                                         </li>
-                                        <li data-thumb="img/lightslider-img/cS-21.jpg"> 
-                                            <img alt="slider" src="img/lightslider-img/cS-21.jpg" />
+                                        <li data-thumb="./public/img/lightslider-img/cS-21.jpg">
+                                            <img alt="slider" src="./public/img/lightslider-img/cS-21.jpg" />
                                         </li>
-                                        <li data-thumb="img/lightslider-img/cS-22.jpg"> 
-                                            <img alt="slider" src="img/lightslider-img/cS-22.jpg" />
+                                        <li data-thumb="./public/img/lightslider-img/cS-22.jpg">
+                                            <img alt="slider" src="./public/img/lightslider-img/cS-22.jpg" />
                                         </li>
-                                        <li data-thumb="img/lightslider-img/cS-23.jpg"> 
-                                            <img alt="slider" src="img/lightslider-img/cS-23.jpg" />
+                                        <li data-thumb="./public/img/lightslider-img/cS-23.jpg">
+                                            <img alt="slider" src="./public/img/lightslider-img/cS-23.jpg" />
                                         </li>
-                                        <li data-thumb="img/lightslider-img/cS-24.jpg"> 
-                                            <img alt="slider" src="img/lightslider-img/cS-24.jpg" />
+                                        <li data-thumb="./public/img/lightslider-img/cS-24.jpg">
+                                            <img alt="slider" src="./public/img/lightslider-img/cS-24.jpg" />
                                         </li>
-                                        <li data-thumb="img/lightslider-img/cS-25.jpg"> 
-                                            <img alt="slider" src="img/lightslider-img/cS-25.jpg" />
+                                        <li data-thumb="./public/img/lightslider-img/cS-25.jpg">
+                                            <img alt="slider" src="./public/img/lightslider-img/cS-25.jpg" />
                                         </li>
-                                        <li data-thumb="img/lightslider-img/cS-26.jpg"> 
-                                            <img alt="slider" src="img/lightslider-img/cS-26.jpg" />
+                                        <li data-thumb="./public/img/lightslider-img/cS-26.jpg">
+                                            <img alt="slider" src="./public/img/lightslider-img/cS-26.jpg" />
                                         </li>
-                                        <li data-thumb="img/lightslider-img/cS-27.jpg"> 
-                                            <img alt="slider" src="img/lightslider-img/cS-27.jpg" />
+                                        <li data-thumb="./public/img/lightslider-img/cS-27.jpg">
+                                            <img alt="slider" src="./public/img/lightslider-img/cS-27.jpg" />
                                         </li>
                                     </ul>
                                 </div>
@@ -709,7 +684,7 @@
                                                 </div>
                                                 <div class="customer_detail clearfix">
                                                     <div class="customer_pic alignleft-20">
-                                                        <a href="#"><img src="img/customer-says-one.png" alt=""></a>
+                                                        <a href="#"><img src="./public/img/customer-says-one.png" alt=""></a>
                                                     </div>
                                                     <div class="customer_identity floatleft">
                                                         <h6>John Doe</h6>
@@ -730,7 +705,7 @@
                                                 </div>
                                                 <div class="customer_detail clearfix">
                                                     <div class="customer_pic alignleft-20">
-                                                        <a href="#"><img src="img/customer-says-one.png" alt=""></a>
+                                                        <a href="#"><img src="./public/img/customer-says-one.png" alt=""></a>
                                                     </div>
                                                     <div class="customer_identity floatleft">
                                                         <h6>John Doe</h6>
@@ -803,7 +778,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <div class="footer_widget">
                                 <div class="footer_logo">
-                                    <a href="#"><img src="img/footer-logo-one.png" alt=""></a>
+                                    <a href="#"><img src="./public/img/footer-logo-one.png" alt=""></a>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, conser adipiscing elit. In consectetur tincidunt dolor.</p>
                                 <ul>
@@ -840,7 +815,7 @@
                             <div class="footer_widget">
                                 <h5>We Are Global</h5>
                                 <div class="footer_map">
-                                    <a href="#"><img src="img/footer-map-two.jpg" alt=""></a>
+                                    <a href="#"><img src="./public/img/footer-map-two.jpg" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -856,51 +831,36 @@
             </div>
         </footer>
         <!-- end footer -->
-		
-		
-		
+
         <!-- jquery library -->
-        <script src="js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="./public/js/vendor/jquery-1.11.2.min.js"></script>
         <!-- bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="./public/js/bootstrap.min.js"></script>
 		<!-- rev slider -->
-        <script src="js/rev-slider/rs-plugin/jquery.themepunch.plugins.min.js"></script>
-        <script src="js/rev-slider/rs-plugin/jquery.themepunch.revolution.js"></script>
-        <script src="js/rev-slider/rs.home.js"></script>
+        <script src="./public/js/rev-slider/rs-plugin/jquery.themepunch.plugins.min.js"></script>
+        <script src="./public/js/rev-slider/rs-plugin/jquery.themepunch.revolution.js"></script>
+        <script src="./public/js/rev-slider/rs.home.js"></script>
         <!-- uikit -->
-        <script src="js/uikit.min.js"></script>
+        <script src="./public/js/uikit.min.js"></script>
         <!-- easing -->
-		<script src="js/jquery.easing.1.3.min.js"></script>
-        <script src="js/datepicker.js"></script>
+		<script src="./public/js/jquery.easing.1.3.min.js"></script>
+        <script src="./public/js/datepicker.js"></script>
         <!-- scroll up -->
-        <script src="js/jquery.scrollUp.min.js"></script>
+        <script src="./public/js/jquery.scrollUp.min.js"></script>
         <!-- owlcarousel -->
-        <script src="js/owl.carousel.min.js"></script>
+        <script src="./public/js/owl.carousel.min.js"></script>
         <!-- lightslider -->
-        <script src="js/lightslider.js"></script>
-        
+        <script src="./public/js/lightslider.js"></script>
+
         <!-- wow Animation -->
-        <script src="js/wow.min.js"></script>
+        <script src="./public/js/wow.min.js"></script>
         <!--Activating WOW Animation only for modern browser-->
         <!--[if !IE]><!-->
         <script type="text/javascript">new WOW().init();</script>
         <!--<![endif]-->
-
-        <!--Oh Yes, IE 9+ Supports animation, lets activate for IE 9+-->
-        <!--[if gte IE 9]>
-            <script type="text/javascript">new WOW().init();</script>
-        <![endif]-->         
-
-        <!--Opacity & Other IE fix for older browser-->
-        <!--[if lte IE 8]>
-            <script type="text/javascript" src="js/ie-opacity-polyfill.js"></script>
-        <![endif]-->
-
-
-
         <!-- my js -->
-        <script src="js/main.js"></script>
-		
+        <script src="./public/js/main.js"></script>
+
     </body>
 
 <!-- Mirrored from premiumlayers.net/demo/html/hotelbooking/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Mar 2020 11:51:41 GMT -->
