@@ -18,7 +18,7 @@ function getdbConn()
         $dbusername = "root";
         $dbpass = "password";
 
-        $connect = new PDO("mysql:host=$host;dbname:$dbname;charset=utf8", $dbusername, $dbpass);
+        $connect = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbusername, $dbpass);
         return $connect;
     } catch (Exception $ex) {
         var_dump($ex->getMessage());
@@ -31,9 +31,7 @@ function getdbConn()
 # @ts2: $fetchAll - (true/false)
 # true: lấy hết tất cả các kết quả trả về của câu sql
 # false: trả về kết quả đầu tiên tìm đc của câu sql
-function queryExecute($sql, $fetchAll = false)
-{
-
+function queryExecute($sql, $fetchAll = false) {
     $conn = getdbConn();
     $stmt = $conn->prepare($sql);
     $stmt->execute();
@@ -46,8 +44,7 @@ function queryExecute($sql, $fetchAll = false)
 }
 
 # kiểm tra xem user đã đăng nhập hay chưa
-function checkAdminLoggedIn()
-{
+function checkAdminLoggedIn() {
     // kiểm tra đăng nhập
     // 1 - đăng nhập thành công - ktra bằng session AUTH
     if (!isset($_SESSION[AUTH]) || $_SESSION[AUTH] == null || count($_SESSION[AUTH]) == 0) {
@@ -61,8 +58,7 @@ function checkAdminLoggedIn()
     }
 }
 
-function dd($data)
-{
+function dd($data) {
     echo "<pre>";
     var_dump($data);
     die;

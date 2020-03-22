@@ -1,5 +1,7 @@
 <?php
-require_once('./config/utils.php');
+session_start();
+require_once './config/utils.php';
+$loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -15,7 +17,7 @@ require_once('./config/utils.php');
 
 <body id="home_one">
     <!-- start header -->
-    <?php $result = include_once('./public/_share/header.php'); ?>
+    <?php include_once './public/_share/header.php'; ?>
     <!-- end header -->
 
     <!-- start main slider -->

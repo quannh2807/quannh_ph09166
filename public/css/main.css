@@ -47,6 +47,10 @@ __________________________________________________________________________
 /* --------------------------------------------------------
 1. 					Start Header CSS
 -----------------------------------------------------------*/
+* {
+	font-family: 'Roboto', sans-serif;
+}
+
 
 a{
 	color: #000;
@@ -114,7 +118,6 @@ body#home_one .emergency_number, body#home_one .emergency_number::after{
 	font-size: 14px;
 	font-weight: 400;
 	padding: 14px 21px 14px 30px;
-	font-family: 'Lora', serif;
 }
 .mainmenu .nav.navbar-nav li.dropdown > a{
 	background: url(img/dropdown_bg.png) no-repeat scroll 100% 50%;
@@ -138,7 +141,6 @@ body#home_one .emergency_number, body#home_one .emergency_number::after{
 	color: #7a7e84;
 	font-size: 14px;
 	text-transform: uppercase;
-	font-family: "Karla",sans-serif;
 }
 .header_top .left_header_top a > img{
 	margin-right: 12px;
@@ -185,7 +187,6 @@ body#home_one .emergency_number, body#home_one .emergency_number::after{
 2. 					Start slider CSS
 -----------------------------------------------------------*/
 .main_slider_area{
-	font-family: "Playfair Display",serif;
 	padding-bottom: 90px;
 	position: relative;
 }
@@ -216,7 +217,6 @@ body#home_two .hotel_booking_area{
 
 .hotel_booking{
 	background: #313a45 none repeat scroll 0 0;
-	font-family: "Karla",sans-serif;
 	min-height: 94px;
 	padding: 26px 10px;
 	position: relative;
@@ -229,7 +229,6 @@ body#home_two .hotel_booking_area{
 	color: #fff;
 	font-size: 15px;
 	font-weight: 600;
-	font-family: "Karla",sans-serif;
 }
 .room_book p{
 	color: #fff;
@@ -237,7 +236,6 @@ body#home_two .hotel_booking_area{
 	font-weight: 700;
 	line-height: 25px;
 	margin: 0;
-	font-family: "Karla",sans-serif;
 }
 form#form1 .form-group {
   margin: 0;
@@ -281,7 +279,6 @@ form#form1 .form-group {
 	border: medium none;
 	color: #aab8ca;
 	outline: medium none;
-	font-family: "Karla",sans-serif;
 	padding-left: 8px;
 }
 .hotel_booking_area select > option{
@@ -292,7 +289,6 @@ form#form1 .form-group {
 .icon_arrow:after{
 	content: '\f107';
 	color: #aab8ca;
-	font-family: "FontAwesome";
 	font-size: 14px;
 	line-height: 42px;
 	position: absolute;
@@ -340,7 +336,6 @@ body#home_one .welcome .section_description {
 }
 body#home_one .welcome .section_description p{
 	font-size: 16px;
-	font-family: 'Karla', sans-serif;
 }
 body#home_one .welcome .room_media, .accomodation_single_room .room_media, body#room_detail_page .welcome .room_media {
   margin-bottom: 28px;
@@ -384,7 +379,6 @@ body#home_one .single_wrapper_details .single_wrapper_details_pad, body#accomoda
 body#home_one .single_wrapper_details h5, body#accomodation_page .single_wrapper_details h5 {
   color: #000;
   font-size: 18px;
-  font-family: "Lora",serif;
   text-transform: none;
 }
 body#home_one .single_wrapper_details p, body#accomodation_page .single_wrapper_details p{
@@ -398,7 +392,6 @@ body#home_one .single_wrapper_details .single_room_cost p, body#accomodation_pag
 	font-size: 18px;
 	margin-bottom: 0;
 	margin-top: 18px;
-	font-family: "Lora",serif;
 }
 body#home_one .single_wrapper_details .single_room_cost p span, body#accomodation_page .single_wrapper_details .single_room_cost p span{
 	font-size: 11px;
@@ -420,12 +413,10 @@ body#home_one .welcome .room_media a, .accomodation_single_room .room_media a {
   display: block;
 }
 body#home_one .welcome .left_room_title > h6, .accomodation_single_room .left_room_title > h6 {
-  font-family: "Lora",serif;
   font-size: 18px;
   text-transform: none;
 }
 body#home_one .welcome .left_room_title > p, .accomodation_single_room .left_room_title > p {
-	font-family: "Lora",serif;
   	font-size: 18px;
 }
 body#home_one .welcome .left_room_title > p > span, .accomodation_single_room .left_room_title > p > span {
@@ -505,7 +496,6 @@ body#home_two .select_room .room_quality, body#accomodation_page .select_room .r
 }
 body#home_two .select_room .room_quality > h5, body#accomodation_page .select_room .room_quality > h5 {
   font-size: 21px;
-  font-family: "Lora",serif;
   color: #444444;
 }
 body#home_two .select_room .small_room_thumb .room_quality > h5, body#accomodation_page .select_room .small_room_thumb .room_quality > h5 {
@@ -513,7 +503,6 @@ body#home_two .select_room .small_room_thumb .room_quality > h5, body#accomodati
 }
 body#home_two .select_room .room_rent > p, body#accomodation_page .select_room .room_rent > p{
 	font-size: 18px;
-	font-family: "Lora",serif;
 	color: #131e2a;
 	margin: 0;
 	padding-left: 18px;
@@ -569,7 +558,6 @@ body#home_two .select_room .room_rent > p > span, body#accomodation_page .select
 .hotel_facilities_content .nav.nav-tabs > li > a > img {
 	display: block;
 	margin: 12px auto 10px;
-	
 }
 body#home_one .nav-tabs > li.active > a, body#home_one .nav-tabs > li.active > a:focus, body#home_one .nav-tabs > li.active > a:hover, body#home_one  .nav-tabs > li.active > a > img{
 	color: #58bee8;
@@ -584,7 +572,6 @@ body#home_one .nav-tabs > li.active > a, body#home_one .nav-tabs > li.active > a
 
 }
 .hotel_facilities_content .single-tab-details > h6 {
-	font-family: "Karla",sans-serif;
 	margin-bottom: 14px;
 	margin-top: 14px;
 }
@@ -663,7 +650,6 @@ body#home_two .hotel_showcase .owl-carousel .owl-item a:hover i{
 
 .about_us .news .post_title > h6 {
   color: #131e2a;
-  font-family: "Karla",sans-serif;
   font-size: 16px;
 }
 .about_us .news .post_content > p {
@@ -746,15 +732,12 @@ div#customer_says_slider .slider_says i {
 .contact_us a:hover{
 	color: #313a45;
 }
-.contact_us h6{
-	font-family: 'Karla', sans-serif;
-}
+
 .contact_us p{
 	font-size: 20px;
 	margin: 0;
 	margin-top: 5px;
 	line-height: 22px;
-	font-family: "Lora",serif;
 }
 .contact_us .news_letter > input {
 	background: #3ac4fa none repeat scroll 0 0;
@@ -765,7 +748,6 @@ div#customer_says_slider .slider_says i {
 	position: relative;
 	line-height: 20px;
 	outline: none;
-	font-family: 'Karla', sans-serif;
 	text-transform: uppercase;
 	font-size: 14px;
 }
@@ -1002,7 +984,6 @@ body#accomodation_page .range_slider .range input{
 	text-transform: uppercase;
 	font-size: 16px;
 	color: #000;
-	font-family: 'Karla', sans-serif;
 	font-weight: 700;
 }
 .accomodation_single_room ul.pagination li.active a{
@@ -1130,12 +1111,10 @@ body#room_detail_page .deluxe_room_detail .section_title h5 > span{
 body#room_detail_page .deluxe_room_detail .section_title h5 > span.price{
 	font-size: 25px;
 	color: #131e2a;
-	font-family: "Lora",serif;
 }
 body#room_detail_page .deluxe_room_detail .section_title h5 > span.day{
 	font-size: 15px;
 	color: #8b8d90;
-	font-family: 'Karla', sans-serif;
 	margin-top: 7px;
 }
 body#room_detail_page .hotel_booking_area {
@@ -1270,7 +1249,6 @@ body#booking_page .facilities_name .section_title {
 }
 body#booking_page .booking_info_area .facilities_name .section_title h5{
 	color: #444444;
-	font-family: "Lora",serif;
 	font-size: 18px;
 	text-transform: none;
 }
@@ -1295,7 +1273,6 @@ body#booking_page .booking ul.nav-tabs > li > a{
 	text-transform: uppercase;
 	color: #515151;
 	font-size: 18px;
-	font-family: 'Playfair Display', serif;
 }
 body#booking_page .booking ul.nav-tabs > li > a > span {
 	display: block;
@@ -1519,7 +1496,6 @@ body#single_blog_page .breadcrumb_main_area{
 .sing_blog_heading h2, .related_post > h2{
     color: #444444;
     font-size: 20px;
-    font-family: 'karla';
     font-weight: 700;
     text-transform: inherit;
 }
@@ -1574,7 +1550,6 @@ body#single_blog_page .breadcrumb_main_area{
 }
 .sing_related_post h3 {
     font-size: 16px;
-    font-family: 'karla';
     font-weight: 700;
     text-transform: inherit;
 }
@@ -1611,7 +1586,6 @@ body#single_blog_page .breadcrumb_main_area{
     text-align: center;
 }
 .author_details h2 {
-  font-family: lato;
   font-size: 16px;
   font-weight: 800;
   text-transform: inherit;
@@ -1619,7 +1593,6 @@ body#single_blog_page .breadcrumb_main_area{
 }
 .author_details h3 {
   font-size: 13px;
-    font-family: karla;
   color: #6ebe3b;
     text-transform: inherit;
 }
@@ -1655,7 +1628,6 @@ body#single_blog_page .breadcrumb_main_area{
     font-size: 20px;
     font-weight: 700;
     color: #444;
-    font-family: 'karla';
     text-transform: inherit;
 }
 ul.coments {
@@ -1679,13 +1651,11 @@ ul.coments li ul li {
 }
 .comment_details h3{
     font-size: 16px;
-    font-family: 'karla';
     color:#444;
     font-weight: 700;
 }
 .comment_details h3 span.comm_time{
     font-size: 13px;
-    font-family: 'karla';
     color:#fe5d5d;
     font-weight: 400;
     margin-left: 5px;
@@ -1762,7 +1732,6 @@ body#single_blog_page .input_search > input {
   padding: 30px;
 }
 .right_sidebar_area .blog_category ul li a{
-	font-family: "Lora",serif;
 }
 .right_sidebar_area .blog_category ul li a:hover{
 	color: #fe5d5d;
@@ -1780,7 +1749,6 @@ body#single_blog_page .single_recent_post{
 	margin-bottom: 20px;
 }
 body#single_blog_page .recent_post_details > h6, body#single_blog_page .recent_post_tags > h6{
-	font-family: 'Karla', sans-serif;
 	font-size: 16px;
 	font-weight: 700;
 	text-transform: none;
