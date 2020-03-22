@@ -1,13 +1,12 @@
 <?php
 # define contants
-define('BASE_URL', 'http://localhost/ban-ve-xe-khach-pt15111/');
+define('BASE_URL', 'http://localhost/booking-hotel/');
 define('ADMIN_URL', BASE_URL . 'admin/');
-define('SEARCH_URL', BASE_URL . '');
 define('PUBLIC_URL', BASE_URL . 'public/');
 define('ADMIN_ASSET_URL', PUBLIC_URL . 'admin/');
 define('DEFAULT_IMAGE', PUBLIC_URL . 'img/default-image.jpg');
 define('AUTH', 'AUTH_SESSION');
-//
+
 define("ACTIVE", 1);
 define("INACTIVE", -1);
 
@@ -68,3 +67,4 @@ function dd($data)
     var_dump($data);
     die;
 }
+?>
