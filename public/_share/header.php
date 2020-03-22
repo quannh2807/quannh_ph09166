@@ -19,7 +19,7 @@
                                     <a id="brand" class="clearfix navbar-brand border-right-whitesmoke" href="index-2.html"><img src="./public/img/site-logo.png" alt="Trips"></a>
                                     <div class="header_login floatleft">
                                         <ul>
-                                            <li><a href="#">Login</a></li>
+                                            <li><a href="./login.php">Login</a></li>
                                             <li><a href="booking.html">Register</a></li>
                                         </ul>
                                     </div>

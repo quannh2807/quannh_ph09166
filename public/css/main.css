@@ -1,16 +1,15 @@
 /*-----------------------------------------------------------------------------------
 
     Template Name: Hotel Booking html Template
-    Author: 
-    Author URI: 
+    Author:
+    Author URI:
     Version: 1.0
     Description: This theme made for any kind of Hotel Booking site.
 
 -----------------------------------------------------------------------------------
-    
     CSS INDEX
     ===================
-	
+
 	Base orReset or common css are in reset.css file
 
     1. Header CSS
@@ -35,12 +34,7 @@
 	20. blog page CSS
 	21. single blog page CSS
 	22. Preloader css
-
-
-    
-
-
-___________________________________________________________________________
+__________________________________________________________________________
 	 This Template Is Fully Coded By Aftab Zaman from swiftconcept.com
 ---------------------------------------------------------------------------
 
@@ -81,7 +75,7 @@ a:hover{
 	margin: 0;
 	padding: 0 0 0 14px;
 }
-.header_login > ul > li > a{	
+.header_login > ul > li > a{
 	font-size: 14px;
 	text-transform: uppercase;
 }
@@ -1920,4 +1914,15 @@ body#single_blog_page .recent_post_details > p {
 
 /* --------------------------------------------------------
 					End Preloader CSS
+-----------------------------------------------------------*/
+
+/* --------------------------------------------------------
+2. 					Start login CSS
+-----------------------------------------------------------*/
+.img-logo {
+	width: 200px;
+}
+
+/* --------------------------------------------------------
+ 					end login CSS
 -----------------------------------------------------------*/
