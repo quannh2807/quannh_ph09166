@@ -8,6 +8,7 @@ $password = trim($_POST['password']);
 $cfpassword = trim($_POST['cfpassword']);
 $phone_number = trim($_POST['phone_number']);
 $role_id = trim($_POST['role_id']);
+$avatar = $_FILES['avatar'];
 // validate bằng php
 $nameerr = "";
 $emailerr = "";
@@ -46,12 +47,19 @@ if ($nameerr . $emailerr . $passworderr != "") {
 // mã hóa mật khẩu
 $password = password_hash($password, PASSWORD_DEFAULT);
 // upload file ảnh
+$filename = "";
+if($avatar['size'] > 0){
+    $filename = uniqid() . '-' . $avatar['name'];
+    move_uploaded_file($avatar['tmp_name'], "../../public/img/" . $filename);
+    $filename = "public/img/" . $filename;
+}
+// upload file ảnh
 $insertUserQuery = "insert into users
-                          (name, password, email, role_id, phone_number)
+                          (name, password, email, role_id, phone_number, avatar)
                     values
-                          ('$name', '$password', '$email', '$role_id', '$phone_number')";
+                          ('$name', '$password', '$email', '$role_id', '$phone_number', '$filename')";
 
-dd($insertUserQuery);
+// dd($insertUserQuery);
 queryExecute($insertUserQuery, false);
 header("location: " . ADMIN_URL . "users");
 die;

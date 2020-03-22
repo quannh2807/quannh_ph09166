@@ -85,6 +85,10 @@ $roles = queryExecute($getRoleQuery, true);
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Ảnh đại diện<span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control" name="avatar" onchange="encodeImageFileAsURL(this)">
+                                </div>
+                                <div class="form-group">
                                     <label for="">Số điện thoại</label>
                                     <input type="text" class="form-control" name="phone_number">
                                 </div>

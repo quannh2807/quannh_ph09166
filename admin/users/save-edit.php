@@ -9,7 +9,6 @@ $email = trim($_POST['email']);
 $password = trim($_POST['password']);
 $cfpassword = trim($_POST['cfpassword']);
 $phone_number = trim($_POST['phone_number']);
-$house_no = trim($_POST['house_no']);
 $role_id = trim($_POST['role_id']);
 $avatar = $_FILES['avatar'];
 
@@ -57,16 +56,15 @@ if($nameerr . $emailerr != "" ){
 $filename = $user['avatar'];
 if($avatar['size'] > 0){
     $filename = uniqid() . '-' . $avatar['name'];
-    move_uploaded_file($avatar['tmp_name'], "../../public/images/" . $filename);
-    $filename = "public/images/" . $filename;
+    move_uploaded_file($avatar['tmp_name'], "../../public/img/" . $filename);
+    $filename = "public/img/" . $filename;
 }
 
-$updateUserQuery = "update users 
+$updateUserQuery = "update users
                     set
                           name = '$name', 
                           email = '$email', 
                           role_id = $role_id, 
-                          house_no = '$house_no', 
                           phone_number = '$phone_number', 
                           avatar = '$filename'
                     where id = $id";

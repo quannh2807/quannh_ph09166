@@ -83,7 +83,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                                             <option value="<?= $ro['id'] ?>" <?php if ($ro['id'] == $user['role_id']) : ?> selected <?php endif ?>>
                                                 <?= $ro['name'] ?>
                                             </option>
-                                        <?php endforeach ?>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -94,13 +94,18 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6 offset-md-3">
-                                        <img src="<?= PUBLIC_URL . 'images/default-image.jpg' ?>" id="preview-img" class="img-fluid">
+                                        <img src="<?= BASE_URL . $user['avatar'] ?>" id="preview-img" class="img-fluid">
                                     </div>
                                 </div>
-                                <div class="col d-flex justify-content-center p-4">
-                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                                <div class="form-group">
+                                    <label for="">Ảnh đại diện</label>
+                                    <input type="file" class="form-control" name="avatar" onchange="encodeImageFileAsURL(this)">
                                 </div>
+
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
                             </div>
                         </div>
                     </form>

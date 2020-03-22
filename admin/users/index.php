@@ -123,11 +123,11 @@ $users = queryExecute($getUsersQuery, true);
                                             <?php echo $us['role_name'] ?>
                                         </td>
                                         <td>
-                                            <img class="img-fluid" src="<?php echo PUBLIC_URL . 'img/' . $us['avatar']?>" alt="">
+                                            <img class="img-fluid" src="<?= BASE_URL . $us['avatar']?>" alt="">
                                         </td>
                                         <td><?php echo $us['phone_number'] ?></td>
                                         <td>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id'] || $us['id'] === $_SESSION[AUTH]['id']) : ?>
+                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id'] ): ?>
                                                 <a href="<?php echo ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
