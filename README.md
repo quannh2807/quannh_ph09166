@@ -1,3 +1,3 @@
-# Du an 1: Ban ve xe khach
+# Project 1: Booking Hotel in FPT Polytechnic hotel.
 # Nguyen Hong Quan
-# PHP, JS, MySql, phpmyadmin, Chrome
+# PHP, JS, MySql, phpmyadmin, Chrome, Git, VS Code.
