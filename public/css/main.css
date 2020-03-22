@@ -51,7 +51,6 @@ __________________________________________________________________________
 	font-family: 'Roboto', sans-serif;
 }
 
-
 a{
 	color: #000;
 }
@@ -287,7 +286,7 @@ form#form1 .form-group {
 	padding: 5px 5px 5px 15px;
 }
 .icon_arrow:after{
-	content: '\f107';
+	content: '\0227B';
 	color: #aab8ca;
 	font-size: 14px;
 	line-height: 42px;

@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="./public/css/lightslider.css">
     <!-- Theme -->
     <link rel="stylesheet" href="./public/css/reset.css">
-
     <!-- custom css -->
     <link rel="stylesheet" href="./public/css/main.css" />
     <!-- responsive -->
