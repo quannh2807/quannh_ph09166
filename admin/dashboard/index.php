@@ -65,28 +65,28 @@ $users = queryExecute($getAllMemberSql, true);
                         </div>
                         <div class="col-lg-3 col-4">
                             <!-- small box -->
-                            <div class="small-box bg-info">
+                            <div class="small-box bg-primary">
                                 <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
+                                    <h3><?= count($web_setting); ?></h3>
+                                    <p>Web settings</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-users"></i>
+                                    <i class="fa fa-cogs"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'web-settings' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-4">
                             <!-- small box -->
-                            <div class="small-box bg-info">
+                            <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
+                                    <h3><?= count($news); ?></h3>
+                                    <p>Tin tức</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-users"></i>
+                                    <i class="far fa-newspaper"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-4">
