@@ -5,8 +5,8 @@ $email = isset($_POST['email']) == true ? trim($_POST['email']) : "";
 $password = isset($_POST['password']) == true ? trim($_POST['password']) : "";
 $sql = "select * from users where email = '$email'";
 $loggedInUser = queryExecute($sql, false);
-// if(password_verify($password, $loggedInUser['password'])){
-if($loggedInUser['password'] === $password) {
+if(password_verify($password, $loggedInUser['password'])){
+// if($loggedInUser['password'] === $password) {
     $_SESSION[AUTH] = $loggedInUser;
     header('location: index.php');
     die;

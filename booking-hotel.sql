@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 22, 2020 at 03:33 PM
+-- Generation Time: Mar 23, 2020 at 10:00 AM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.3
 
@@ -232,7 +232,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `role_id`, `phone_number`, `avatar`) VALUES
-(1, 'QuAn Nguyen', '123456', 'helgrindxxx@gmail.com', 3, '914946200', 'avartar.png');
+(1, 'QuAn Nguyen', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'helgrindxxx@gmail.com', 3, '914946200', 'public/img/5e773a07d6076-avartar.png'),
+(2, 'Harry', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'harry@gmail.com', 2, '0987654321', 'public/img/5e773982aa40f-about-us-staff-six.jpg'),
+(3, 'Maria', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'maria@gmail.com', 1, '0123456789', 'public/img/5e773f1b825d1-about-us-staff-eight.jpg');
 
 -- --------------------------------------------------------
 
@@ -417,7 +419,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `web_setting`
 --
