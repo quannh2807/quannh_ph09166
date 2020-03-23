@@ -7,6 +7,10 @@ checkAdminLoggedIn();
 $getAllMemberSql = "select * from users where role_id = 1";
 $users = queryExecute($getAllMemberSql, true);
 
+# Lấy ra tất cả bản ghi trong bảng contacts
+$getAllContactsSql = "select * from contacts";
+$contacts = queryExecute($getAllContactsSql, true);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,6 +69,19 @@ $users = queryExecute($getAllMemberSql, true);
                         </div>
                         <div class="col-lg-3 col-4">
                             <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3><?= count($contacts); ?></h3>
+                                    <p>Contacts</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-user-circle"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'contacts' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-4">
+                            <!-- small box -->
                             <div class="small-box bg-primary">
                                 <div class="inner">
                                     <h3><?= count($web_setting); ?></h3>
@@ -87,19 +104,6 @@ $users = queryExecute($getAllMemberSql, true);
                                     <i class="far fa-newspaper"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

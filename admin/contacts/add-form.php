@@ -2,9 +2,12 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-// get Roles of users
 $getRoleQuery = "select * from roles where status = 1";
 $roles = queryExecute($getRoleQuery, true);
+
+# get contacts table
+$getContactsQuery = "select * from contacts";
+$contacts = queryExecute($getContactsQuery, true);
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +34,7 @@ $roles = queryExecute($getRoleQuery, true);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Thêm tin tức</h1>
+                            <h1 class="m-0 text-dark">Thêm contacts</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -42,11 +45,11 @@ $roles = queryExecute($getRoleQuery, true);
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-add.php' ?>" method="post" enctype="multipart/form-data">
+                    <form id="add-user-form" action="<?= ADMIN_URL . 'contacts/save-add.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Tên người dùng<span class="text-danger">*</span></label>
+                                    <label for="">Người phản hồi<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="name">
                                     <?php if (isset($_GET['nameerr'])) : ?>
                                         <label class="error"><?= $_GET['nameerr'] ?></label>
@@ -60,42 +63,39 @@ $roles = queryExecute($getRoleQuery, true);
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Mật khẩu<span class="text-danger">*</span></label>
-                                    <input type="password" id="main-password" class="form-control" name="password">
-                                    <?php if (isset($_GET['passworderr'])) : ?>
-                                        <label class="error"><?= $_GET['passworderr'] ?></label>
+                                    <label for="">Phone number<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="phone_number">
+                                    <?php if (isset($_GET['phone_numbererr'])) : ?>
+                                        <label class="error"><?= $_GET['phone_numbererr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Nhập lại mật khẩu<span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="cfpassword">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Quyền</label>
-                                    <select name="role_id" class="form-control">
-                                        <?php foreach ($roles as $ro) : ?>
-                                            <option value="<?= $ro['id'] ?>"><?= $ro['name'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
+                                    <label for="">Subject<span class="text-danger">*</span></label>
+                                    <input type="text" id="main-password" class="form-control" name="subject">
+                                    <?php if (isset($_GET['subjecterr'])) : ?>
+                                        <label class="error"><?= $_GET['subjecterr'] ?></label>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="">Messages<span class="text-danger">*</span></label>
+                                    <!-- <input type="text" id="main-password" class="form-control" name="message"> -->
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="message" aria-valuetext="abc"></textarea>
+                                    <?php if (isset($_GET['messageerr'])) : ?>
+                                        <label class="error"><?= $_GET['messageerr'] ?></label>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Ảnh đại diện<span class="text-danger">*</span></label>
-                                    <input type="file" class="form-control" name="avatar" onchange="encodeImageFileAsURL(this)">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Số điện thoại</label>
-                                    <input type="text" class="form-control" name="phone_number">
+                                    <label for="">Trạng thái</label>
+                                    <select name="status" class="form-control">
+                                        <option value="1">Đã trả lời</option>
+                                        <option value="0">Chưa trả lời</option>
+                                    </select>
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'news' ?>" class="btn btn-danger">Hủy</a>
+                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@ $roles = queryExecute($getRoleQuery, true);
     </div>
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
-    <script>
+    <!-- <script>
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if (file === undefined) {
@@ -197,7 +197,7 @@ $roles = queryExecute($getRoleQuery, true);
                 }
             }
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

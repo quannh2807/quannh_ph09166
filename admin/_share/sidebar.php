@@ -100,6 +100,29 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-user-circle nav-icon"></i>
+                        <p>
+                            Quản lý liên hệ
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'contacts' ?>" class="nav-link">
+                                <i class="fa fa-list-ol nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'contacts/add-form.php' ?>" class="nav-link">
+                                <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
+                                <p>Thêm liên hệ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
                     <a href="<?= BASE_URL . 'logout.php' ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
