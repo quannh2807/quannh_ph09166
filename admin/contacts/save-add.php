@@ -50,7 +50,7 @@ if ($nameerr . $emailerr. $phone_numbererr . $subjecterr . $messageerr != "") {
 
 // query upload to DB
 $insertContactQuery = "insert into contacts
-                          (name, phone, email, subject, messages)
+                          (name, phone_number, email, subject, messages)
                     values
                           ('$name', '$phone_number', '$email', '$subject', '$message')";
 // dd($insertContactQuery);

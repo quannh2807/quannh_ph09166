@@ -115,6 +115,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'contacts/reply.php' ?>" class="nav-link">
+                                <i class="fas fa-reply nav-icon"></i>
+                                <p>Phản hồi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?= ADMIN_URL . 'contacts/add-form.php' ?>" class="nav-link">
                                 <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
                                 <p>Thêm liên hệ</p>
