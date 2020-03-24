@@ -16,7 +16,7 @@ function getdbConn()
         $host = "127.0.0.1";
         $dbname = "booking-hotel";
         $dbusername = "root";
-        $dbpass = "password";
+        $dbpass = "";
 
         $connect = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbusername, $dbpass);
         return $connect;
