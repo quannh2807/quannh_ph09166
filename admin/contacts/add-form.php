@@ -86,13 +86,13 @@ $contacts = queryExecute($getContactsQuery, true);
                                         <label class="error"><?= $_GET['messageerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="">Trạng thái</label>
                                     <select name="status" class="form-control">
                                         <option value="1">Đã trả lời</option>
                                         <option value="0">Chưa trả lời</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
                                     <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>

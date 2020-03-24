@@ -11,6 +11,14 @@ $users = queryExecute($getAllMemberSql, true);
 $getAllContactsSql = "select * from contacts";
 $contacts = queryExecute($getAllContactsSql, true);
 
+# Lấy ra tất cả bản ghi trong bảng new_categories
+$getAllNewCategoriesSql = "select * from new_categories";
+$new_categories = queryExecute($getAllNewCategoriesSql, true);
+
+# Lấy ra tất cả bản ghi trong bảng news
+$getAllNewsSql = "select * from news";
+$news = queryExecute($getAllNewsSql, true);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,15 +90,15 @@ $contacts = queryExecute($getAllContactsSql, true);
                         </div>
                         <div class="col-lg-3 col-4">
                             <!-- small box -->
-                            <div class="small-box bg-primary">
+                            <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3><?= count($web_setting); ?></h3>
-                                    <p>Web settings</p>
+                                    <h3><?= count($new_categories); ?></h3>
+                                    <p>Danh mục tin tức</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-cogs"></i>
+                                    <i class="far fa-list-alt"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'web-settings' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-4">
@@ -107,122 +115,14 @@ $contacts = queryExecute($getAllContactsSql, true);
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3><?= count($users); ?></h3>
-                                    <p>Người dùng</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-        <?php include_once '../_share/footer.php'; ?>
-        <!-- /.control-sidebar -->
+                </div>
+        </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <?php include_once '../_share/footer.php'; ?>
+    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
