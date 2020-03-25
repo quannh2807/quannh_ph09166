@@ -2,8 +2,11 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
+
+// lấy thông tin của customer ra ngoài thông id trên đường dẫn
+$id = isset($_GET['id']) ? $_GET['id'] : -1;
 # get contacts table
-$getContactsQuery = "select * from contacts";
+$getContactsQuery = "select * from contacts where id = '$id'";
 $contacts = queryExecute($getContactsQuery, true);
 
 ?>
@@ -42,12 +45,16 @@ $contacts = queryExecute($getContactsQuery, true);
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="add-user-form" action="<?= ADMIN_URL . 'contacts/save-add.php' ?>" method="post" enctype="multipart/form-data">
+                    <form id="add-user-form" action="<?= ADMIN_URL . 'contacts/save-reply.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Nhân viên phản hồi<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="reply_by" value="<?php echo $_SESSION[AUTH]['name'] ?>" disabled>
+                                    <select class="form-control" name="reply_by">
+                                            <option value="<?= $_SESSION[AUTH]['id'] ?>">
+                                                <?= $_SESSION[AUTH]['name'] ?>
+                                            </option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Trả lời cho khách hàng<span class="text-danger">*</span></label>
@@ -64,7 +71,7 @@ $contacts = queryExecute($getContactsQuery, true);
                                 </div>
                                 <div class="form-group">
                                     <label for="">Subject<span class="text-danger">*</span></label>
-                                    <input type="text" id="main-password" class="form-control" name="subject">
+                                    <input type="text" id="main-password" class="form-control" name="subject" value="Phản hồi khách hàng">
                                     <?php if (isset($_GET['subjecterr'])) : ?>
                                         <label class="error"><?= $_GET['subjecterr'] ?></label>
                                     <?php endif; ?>
@@ -74,7 +81,7 @@ $contacts = queryExecute($getContactsQuery, true);
                                 <div class="form-group">
                                     <label for="">Messages<span class="text-danger">*</span></label>
                                     <!-- <input type="text" id="main-password" class="form-control" name="message"> -->
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
+                                    <textarea class="form-control" rows="3" name="reply_messages"></textarea>
                                     <?php if (isset($_GET['messageerr'])) : ?>
                                         <label class="error"><?= $_GET['messageerr'] ?></label>
                                     <?php endif; ?>
@@ -90,7 +97,7 @@ $contacts = queryExecute($getContactsQuery, true);
                                     <label for="">Thời gian phản hồi<span class="text-danger">*</span></label>
                                     <div class="form-group">
                                         <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="start_time" />
+                                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="created_at" />
                                             <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fas fa-calendar-check"></i></div>
                                             </div>

@@ -7,7 +7,9 @@ $email = trim($_POST['email']);
 $phone_number = trim($_POST['phone_number']);
 $subject = trim($_POST['subject']);
 $message = trim($_POST['message']);
-// $status = trim($_POST['status']);
+if ($name && $email && $phone_number && $subject && $message) {
+    $status = INACTIVE;
+}
 // validate bằng php
 $nameerr = "";
 $emailerr = "";
@@ -50,10 +52,10 @@ if ($nameerr . $emailerr. $phone_numbererr . $subjecterr . $messageerr != "") {
 
 // query upload to DB
 $insertContactQuery = "insert into contacts
-                          (name, phone_number, email, subject, messages)
+                          (name, phone_number, email, subject, messages, status)
                     values
-                          ('$name', '$phone_number', '$email', '$subject', '$message')";
-// dd($insertContactQuery);
+                          ('$name', '$phone_number', '$email', '$subject', '$message', '$status')";
+dd($insertContactQuery);
 queryExecute($insertContactQuery, false);
 header("location: " . ADMIN_URL . "contacts");
 die;

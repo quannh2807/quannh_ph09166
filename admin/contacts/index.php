@@ -14,7 +14,8 @@ if ($keyword !== "") {
                             or c.phone_number like '%$keyword%'
                             or c.email like '%$keyword%'
                             or c.subject like '%$keyword%'
-                            or c.messages like '%$keyword%')";
+                            or c.messages like '%$keyword%'
+                            or c.status like '%$keyword%')";
 }
 // dd($getContactsQuery);
 $contacts = queryExecute($getContactsQuery, true);
@@ -90,10 +91,11 @@ $contacts = queryExecute($getContactsQuery, true);
                             <thead>
                                 <th>ID</th>
                                 <th>Tên</th>
+                                <th>SDT</th>
                                 <th>Email</th>
-                                <th>Phone number</th>
                                 <th>Chủ đề</th>
-                                <th width=30%>Nội dung lời nhắn</th>
+                                <th width=25%>Nội dung lời nhắn</th>
+                                <th>Trạng thái</th>
                                 <th>
                                     <a href="<?php echo ADMIN_URL . 'contacts/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                 </th>
@@ -109,6 +111,13 @@ $contacts = queryExecute($getContactsQuery, true);
                                         </td>
                                         <td><?php echo $contact['subject'] ?></td>
                                         <td><?php echo $contact['messages'] ?></td>
+                                        <td>
+                                            <?php if ($contact['status'] == 0) { ?>
+                                                Chưa trả lời
+                                            <?php } else if ($contact['status'] == 1) { ?>
+                                                Đã trả lời
+                                            <?php } ?>
+                                        </td>
                                         <td>
                                             <?php if ($_SESSION[AUTH]['role_id'] > 1) : ?>
                                                 <a href="<?php echo ADMIN_URL . 'contacts/edit-form.php?id=' . $contact['id'] ?>" class="btn btn-sm btn-info">
