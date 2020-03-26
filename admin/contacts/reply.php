@@ -50,7 +50,7 @@ $contacts = queryExecute($getContactsQuery, true);
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Nhân viên phản hồi<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="reply_by">
+                                    <select class="form-control" name="reply_by" disabled>
                                             <option value="<?= $_SESSION[AUTH]['id'] ?>">
                                                 <?= $_SESSION[AUTH]['name'] ?>
                                             </option>

@@ -24,7 +24,7 @@ require_once "./config/utils.php";
 					<img src="<?php echo PUBLIC_URL . 'img/site-logo.png' ?>" alt="" class="img-logo">
 				</a>
 			</div>
-			<form action="post-login.php" method="post">
+			<form action="post-login.php" method="post" autocomplete="on">
 				<div class="d-flex justify-content-center">
 					<?php if (isset($_GET['msg'])) : ?>
 						<span class="text-danger"><?php echo $_GET['msg'] ?></span>
@@ -32,11 +32,11 @@ require_once "./config/utils.php";
 				</div>
 				<div class="form-group">
 					<label for="email">Email address</label>
-					<input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email">
+					<input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email" autofocus>
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input type="password" class="form-control" id="password" name="password">
+					<input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
 				</div>
 				<div class="d-flex justify-content-center">
 					<button type="submit" class="btn btn-primary">Đăng nhập</button>&nbsp;

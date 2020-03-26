@@ -539,7 +539,7 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                             <h5>Hotel Showcase</h5>
                         </div>
                         <div class="section_description">
-                            <div class="clearfix demo" style="">
+                            <div class="clearfix demo">
                                 <ul id="vertical" class="gallery list-unstyled">
                                     <li data-thumb="./public/img/lightslider-img/cS-18.jpg">
                                         <img alt="slider" src="./public/img/lightslider-img/cS-18.jpg" />
