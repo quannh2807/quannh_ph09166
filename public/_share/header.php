@@ -16,7 +16,7 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <div class="site_logo fix">
-                                <a id="brand" class="clearfix navbar-brand border-right-whitesmoke" href="index-2.html"><img src="./public/img/site-logo.png" alt="Trips"></a>
+                                <a id="brand" class="clearfix navbar-brand border-right-whitesmoke" href="index.php"><img src="./public/img/site-logo.png" alt="Trips"></a>
                                 <div class="header_login floatleft">
                                     <ul>
                                         <!-- <li><a href="booking.html">Register</a></li> -->
@@ -37,20 +37,20 @@
                         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li role="presentation" class="dropdown">
-                                    <a href="./index.html">Home</a>
+                                    <a href="./index.php">Home</a>
                                 </li>
-                                <li><a href="accomodation.html">Accomodation</a></li>
-                                <li><a href="gallery.html">Gallery</a></li>
+                                <li><a href="accomodation.php">Accomodation</a></li>
+                                <li><a href="gallery.php">Gallery</a></li>
                                 <li role="presentation" class="dropdown">
                                     <a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                                         Features
                                     </a>
                                     <ul id="menu2" class="dropdown-menu" role="menu">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="about-us.html">About US</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="booking.html">Booking</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="room-details.html">Room Details</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="staff.html">Our Staff</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="404.html">404 Page</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="about-us.php">About US</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="booking.php">Booking</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="room-details.php">Room Details</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="staff.php">Our Staff</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="404.php">404 Page</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="blog.html">News</a></li>
