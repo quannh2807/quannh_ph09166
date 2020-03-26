@@ -69,13 +69,6 @@ $contacts = queryExecute($getContactsQuery, true);
                                         <label class="error"><?= $_GET['reply_forerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
-                                <div class="form-group">
-                                    <label for="">Subject<span class="text-danger">*</span></label>
-                                    <input type="text" id="main-password" class="form-control" name="subject" value="Phản hồi khách hàng">
-                                    <?php if (isset($_GET['subjecterr'])) : ?>
-                                        <label class="error"><?= $_GET['subjecterr'] ?></label>
-                                    <?php endif; ?>
-                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -86,13 +79,6 @@ $contacts = queryExecute($getContactsQuery, true);
                                         <label class="error"><?= $_GET['messageerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label for="">Trạng thái</label>
-                                    <select name="status" class="form-control">
-                                        <option value="1">Đã trả lời</option>
-                                        <option value="0">Chưa trả lời</option>
-                                    </select>
-                                </div> -->
                                 <div class="form-group">
                                     <label for="">Thời gian phản hồi<span class="text-danger">*</span></label>
                                     <div class="form-group">
@@ -111,7 +97,7 @@ $contacts = queryExecute($getContactsQuery, true);
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                                    <a href="<?= ADMIN_URL . 'contacts' ?>" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
                         </div>

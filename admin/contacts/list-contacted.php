@@ -6,7 +6,8 @@ checkAdminLoggedIn();
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 
 // lấy danh sách contacts
-$getContactsQuery = "select c.* from contacts c";
+$getContactsQuery = "select c.*, u.name as staffName from contacts c join users u
+                                on c.reply_by = u.id";
 
 // tìm kiếm
 if ($keyword !== "") {
@@ -15,11 +16,14 @@ if ($keyword !== "") {
                             or c.email like '%$keyword%'
                             or c.subject like '%$keyword%'
                             or c.messages like '%$keyword%'
-                            or c.status like '%$keyword%')";
+                            or c.status like '%$keyword%'
+                            or c.reply_by like '%$keyword%'
+                            or c.reply_for like '%$keyword%'
+                            or c.created_at like '%$keyword%'
+                            or c.reply_messages like '%$keyword%')";
 }
 // dd($getContactsQuery);
 $contacts = queryExecute($getContactsQuery, true);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -86,24 +90,21 @@ $contacts = queryExecute($getContactsQuery, true);
                                 </div>
                             </form>
                         </div>
-                        <!-- Danh sách contacts  -->
+                        <!-- Danh sách users  -->
                         <table class="table table-hover">
                             <thead>
-                                <th>ID</th>
                                 <th>Tên</th>
                                 <th>SDT</th>
                                 <th>Email</th>
                                 <th>Chủ đề</th>
-                                <th width=25%>Nội dung lời nhắn</th>
+                                <th>Nội dung lời nhắn</th>
+                                <th>NV trả lời</th>
+                                <th>Nội dung trả lời</th>
                                 <th>Trạng thái</th>
-                                <!-- <th>
-                                    <a href="<?php echo ADMIN_URL . 'contacts/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
-                                </th> -->
                             </thead>
                             <tbody>
                                 <?php foreach ($contacts as $contact) : ?>
                                     <tr>
-                                        <td><?php echo $contact['id'] ?></td>
                                         <td><?php echo $contact['name'] ?></td>
                                         <td><?php echo $contact['phone_number'] ?></td>
                                         <td>
@@ -111,6 +112,8 @@ $contacts = queryExecute($getContactsQuery, true);
                                         </td>
                                         <td><?php echo $contact['subject'] ?></td>
                                         <td><?php echo $contact['messages'] ?></td>
+                                        <td><?php echo $contact['staffName'] ?></td>
+                                        <td><?php echo $contact['reply_messages'] ?></td>
                                         <?php if ($contact['status'] == 0) { ?>
                                             <td class="text-danger">Chưa trả lời</td>
                                         <?php } else if ($contact['status'] == 1) { ?>

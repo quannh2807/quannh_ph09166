@@ -55,7 +55,7 @@ $insertContactQuery = "insert into contacts
                           (name, phone_number, email, subject, messages, status)
                     values
                           ('$name', '$phone_number', '$email', '$subject', '$message', '$status')";
-dd($insertContactQuery);
+// dd($insertContactQuery);
 queryExecute($insertContactQuery, false);
 header("location: " . ADMIN_URL . "contacts");
 die;

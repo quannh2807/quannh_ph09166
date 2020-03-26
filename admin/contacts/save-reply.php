@@ -34,7 +34,7 @@ $insertContactQuery = "update contacts
                           created_at = '$created_at',
                           reply_messages = '$reply_messages'
                     where id = '$reply_for'";
-dd($insertContactQuery);
+// dd($insertContactQuery);
 queryExecute($insertContactQuery, false);
 header("location: " . ADMIN_URL . "contacts");
 die;
