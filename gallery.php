@@ -77,19 +77,19 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="row">
                                                     <div class="col-lg-8 col-md-8 col-sm-12 margin-bottom-30">
-                                                        <div class="clearfix demo" style="">
+                                                        <div class="clearfix demo">
                                                             <div class="slider">
                                                                 <div id="gallery_main_slider" class="carousel slide" data-ride="carousel">
 
                                                                     <!-- Wrapper for slides -->
                                                                     <div class="carousel-inner" role="listbox">
                                                                         <div class="item active">
-                                                                            <div class="single_item" style="">
+                                                                            <div class="single_item">
                                                                                 <img src="<?php echo PUBLIC_URL.'img/lightslider-img/cS-16.jpg'?>" alt="">
                                                                             </div>
                                                                         </div>
                                                                         <div class="item">
-                                                                            <div class="single_item" style="">
+                                                                            <div class="single_item">
                                                                                 <img src="<?= PUBLIC_URL.'img/lightslider-img/cS-53.jpg'?>" alt="">
                                                                             </div>
                                                                         </div>
@@ -290,19 +290,19 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12">
                                                     <div class="col-lg-8 col-md-8 col-sm-12 margin-bottom-30">
-                                                        <div class="clearfix demo" style="">
+                                                        <div class="clearfix demo">
                                                             <div class="slider">
                                                                 <div id="deluxe_gallery" class="carousel slide" data-ride="carousel">
 
                                                                     <!-- Wrapper for slides -->
                                                                     <div class="carousel-inner" role="listbox">
                                                                         <div class="item active">
-                                                                            <div class="single_item" style="">
+                                                                            <div class="single_item">
                                                                                 <img src="<?= PUBLIC_URL.'img/lightslider-img/cS-54.jpg'?>" alt="">
                                                                             </div>
                                                                         </div>
                                                                         <div class="item">
-                                                                            <div class="single_item" style="">
+                                                                            <div class="single_item">
                                                                                 <img src="<?= PUBLIC_URL.'img/lightslider-img/cS-55.jpg'?>" alt="">
                                                                             </div>
                                                                         </div>
