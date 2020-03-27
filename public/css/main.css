@@ -134,7 +134,9 @@ body#home_one .emergency_number, body#home_one .emergency_number::after{
 	background: none;
 }
 
-
+.login-color {
+	color: rgba(0, 162, 255, 0.8) !important;
+}
 /* --------------------------------------------------------
  					end Header CSS
 -----------------------------------------------------------*/
