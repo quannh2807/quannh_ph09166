@@ -44,8 +44,7 @@ if (strlen($message) < 2) {
     $messageerr = "Yêu cầu nhập nội dung phản hồi, không được để trống";
 }
 
-
-if ($nameerr . $emailerr. $phone_numbererr . $subjecterr . $messageerr != "") {
+if ($nameerr . $emailerr . $phone_numbererr . $subjecterr . $messageerr != "") {
     header('location: ' . ADMIN_URL . "contacts/add-form.php?nameerr=$nameerr&emailerr=$emailerr&phone_number=$phone_numbererr&subject=$subjecterr&message=$messageerr");
     die;
 }
@@ -56,6 +55,9 @@ $insertContactQuery = "insert into contacts
                     values
                           ('$name', '$phone_number', '$email', '$subject', '$message', '$status')";
 // dd($insertContactQuery);
+$reply_now = 'Xin cảm ơn bạn đã phản hồi tới chúng tôi, bạn sẽ nhận được phản hồi của chúng tôi sớm nhất. Trân trọng cảm ơn';
 queryExecute($insertContactQuery, false);
-header("location: " . ADMIN_URL . "contacts");
+
+// header("location: " . BASE_URL . "contact-us.php?reply_now=$reply_now");
+header("location: " . BASE_URL . "contact-us.php");
 die;

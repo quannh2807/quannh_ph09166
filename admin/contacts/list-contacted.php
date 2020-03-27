@@ -93,14 +93,15 @@ $contacts = queryExecute($getContactsQuery, true);
                         <!-- Danh sách users  -->
                         <table class="table table-hover">
                             <thead>
-                                <th>Tên</th>
+                                <th>Khách hàng</th>
                                 <th>SDT</th>
                                 <th>Email</th>
                                 <th>Chủ đề</th>
                                 <th>Nội dung lời nhắn</th>
-                                <th>NV trả lời</th>
+                                <th>Nhân viên trả lời</th>
                                 <th>Nội dung trả lời</th>
                                 <th>Trạng thái</th>
+                                <th width=10%>Thao tác</th>
                             </thead>
                             <tbody>
                                 <?php foreach ($contacts as $contact) : ?>

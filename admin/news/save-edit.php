@@ -8,6 +8,7 @@ $content = trim($_POST['content']);
 $author_id = trim($_POST['author_id']);
 $created_at = trim($_POST['created_at']);
 $feature_image = $_FILES['feature_image'];
+dd($feature_image);
 // validate bằng php
 $titleerr = "";
 $contenterr = "";

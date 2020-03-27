@@ -40,8 +40,8 @@
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="404.php">404 Page</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="blog.html">News</a></li>
-                                <li><a href="contact-us.html">Contacts</a></li>
+                                <li><a href="blog.php">News</a></li>
+                                <li><a href="contact-us.php">Contacts</a></li>
 
                                 <?php if ($loggedInUser) : ?>
                                     <li role="presentation" class="dropdown">
@@ -65,7 +65,7 @@
                                     </li>
                                 <?php else : ?>
                                     <li><a href="./login.php" class="nav-link text-primary login-color">Login</a></li>
-                                    <!-- <li><a href="booking.html">Register</a></li> -->
+                                    <!-- <li><a href="booking.php">Register</a></li> -->
                                 <?php endif ?>
                             </ul>
                         </div><!-- /.navbar-collapse -->

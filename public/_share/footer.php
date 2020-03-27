@@ -2,22 +2,22 @@
 <section class="contact_us_area content-left">
     <div class="container">
         <div class="contact_us clearfix">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="call clearfix">
-                    <h6>Call Us</h6>
-                    <p>123 456 7890</p>
+                    <h6>Gọi Cho Chúng Tôi</h6>
+                    <p>0914 946 200</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="email_us clearfix">
-                    <h6>Email us</h6>
-                    <p>info@hotelbooking.com</p>
+                    <h6>Email khách sạn</h6>
+                    <p>contact@hotelbooking.com</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="news_letter clearfix">
-                    <input type="text" placeholder="Enter ID  for News Letter">
-                    <a href="#" class="btn btn-blue">go</a>
+                    <input type="text" placeholder="Nhập email nhận thêm thông tin">
+                    <a href="#" class="btn btn-blue">Go</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">

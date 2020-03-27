@@ -10,9 +10,8 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hotel Booking</title>
+    <title>Hotel Booking - Accomodation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="./public/img/favicon.ico" type="image/x-icon">
     <?php include_once './public/_share/link.php'; ?>
 </head>
 
@@ -522,46 +521,6 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
         </div>
     </section>
     <!-- end other detect room section -->
-
-
-    <!-- start contact us area -->
-    <section class="contact_us_area content-left">
-        <div class="container">
-            <div class="contact_us clearfix">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="call clearfix">
-                        <h6>Call Us</h6>
-                        <p>123 456 7890</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="email_us clearfix">
-                        <h6>Email us</h6>
-                        <p>info@hotelbooking.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="news_letter clearfix">
-                        <input type="text" placeholder="Enter ID  for News Letter">
-                        <a href="#" class="btn btn-blue">go</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="social_icons clearfix">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end contact us area -->
-
-
 
     <!-- start footer -->
     <?php include_once './public/_share/footer.php'; ?>

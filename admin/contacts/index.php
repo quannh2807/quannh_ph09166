@@ -92,13 +92,13 @@ $contacts = queryExecute($getContactsQuery, true);
                                 <th>ID</th>
                                 <th>Tên</th>
                                 <th>SDT</th>
-                                <th>Email</th>
+                                <th>Email khách hàng</th>
                                 <th>Chủ đề</th>
                                 <th width=25%>Nội dung lời nhắn</th>
                                 <th>Trạng thái</th>
-                                <!-- <th>
-                                    <a href="<?php echo ADMIN_URL . 'contacts/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
-                                </th> -->
+                                <th width=10%>
+                                    Thao tác
+                                </th>
                             </thead>
                             <tbody>
                                 <?php foreach ($contacts as $contact) : ?>
