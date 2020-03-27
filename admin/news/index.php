@@ -93,10 +93,10 @@ $news = queryExecute($getNewsQuery, true);
                                 <th>ID</th>
                                 <th>Tiêu đề</th>
                                 <th width="100">Ảnh tiêu đề</th>
-                                <th>Nội dùng</th>
+                                <th>Nội dung</th>
                                 <th>Tác giả</th>
                                 <th>Thời gian tạo</th>
-                                <th>
+                                <th width=10%>
                                     <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                 </th>
                             </thead>

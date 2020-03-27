@@ -16,7 +16,7 @@ if (strlen($title) < 10 || strlen($title) > 100) {
     $titleerr = "Yêu cầu nhập tiêu đề nằm trong khoảng 10-100 ký tự";
 }
 // check content
-if (strlen($content) < 40 || strlen($content) > 2000) {
+if (strlen($content) < 40 ) {
     $contenterr = "Yêu cầu nhập nội dung nằm trong khoảng 40-2000 ký tự";
 }
 

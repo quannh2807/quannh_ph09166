@@ -29,6 +29,7 @@ if ($titleerr . $contenterr!= "") {
 $filename = "";
 if($feature_image['size'] > 0){
     $filename = uniqid() . '-' . $feature_image['name'];
+    dd($filename);
     move_uploaded_file($feature_image['tmp_name'], "../../public/img/" . $filename);
     $filename = "public/img/" . $filename;
 }
