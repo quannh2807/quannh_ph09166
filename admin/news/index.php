@@ -116,16 +116,12 @@ $news = queryExecute($getNewsQuery, true);
                                         <td><?php echo $new['authorName'] ?></td>
                                         <td><?php echo $new['created_at'] ?></td>
                                         <td>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
+                                                <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $new['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
-                                            <?php endif; ?>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'users/remove.php?id=' . $us['id'] ?>" class="btn-remove btn btn-sm btn-danger">
+                                                <a href="<?php echo ADMIN_URL . 'news/remove.php?id=' . $new['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
-                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

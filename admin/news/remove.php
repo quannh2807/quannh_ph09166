@@ -11,19 +11,14 @@ include_once "../../config/utils.php";
 checkAdminLoggedIn();
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
 
-$getRemoveUserQuery = "select * from users where id = $id";
-$removeUser = queryExecute($getRemoveUserQuery, false);
-if(!$removeUser){
-    header("location: " . ADMIN_URL . "users?msg=Tài khoản không tồn tại");
+$getRemovenNewsQuery = "select * from news where id = $id";
+$removeNews = queryExecute($getRemovenNewsQuery, false);
+if(!$removeNews){
+    header("location: " . ADMIN_URL . "news?msg=Tài khoản không tồn tại");
     die;
 }
 
-if($removeUser['role_id'] >= $_SESSION[AUTH]['role_id']){
-    header("location: " . ADMIN_URL . "users?msg=Không đủ quyền hạn thực hiện hành động này");
-    die;
-}
-
-$removeUserQuery = "delete from users where id = $id";
-queryExecute($removeUserQuery, false);
-header("location: " . ADMIN_URL . "users?msg=Xóa tài khoản thành công");
+$removeNewsQuery = "delete from news where id = $id";
+queryExecute($removeNewsQuery, false);
+header("location: " . ADMIN_URL . "news?msg=Xóa tài khoản thành công");
 die;

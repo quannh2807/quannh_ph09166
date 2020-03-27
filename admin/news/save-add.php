@@ -38,7 +38,7 @@ $insertNewsQuery = "insert into news
                     values
                           ('$title', '$filename', '$content', '$view', '$author_id', '$created_at')";
 
-dd($insertNewsQuery);
+// dd($insertNewsQuery);
 queryExecute($insertNewsQuery, false);
 header("location: " . ADMIN_URL . "news");
 die;
