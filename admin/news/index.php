@@ -94,7 +94,6 @@ $news = queryExecute($getNewsQuery, true);
                                 <th>Tiêu đề</th>
                                 <th width="100">Ảnh tiêu đề</th>
                                 <th>Nội dùng</th>
-                                <th>Lượt xem</th>
                                 <th>Tác giả</th>
                                 <th>Thời gian tạo</th>
                                 <th>
@@ -110,9 +109,6 @@ $news = queryExecute($getNewsQuery, true);
                                             <img class="img-fluid" src="<?= BASE_URL . $new['feature_image'] ?>" alt="">
                                         </td>
                                         <td><?php echo $new['content'] ?></td>
-                                        <td>
-                                            <?php echo $new['views'] ?>
-                                        </td>
                                         <td><?php echo $new['authorName'] ?></td>
                                         <td><?php echo $new['created_at'] ?></td>
                                         <td>

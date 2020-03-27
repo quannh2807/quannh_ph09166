@@ -61,13 +61,6 @@ $news = queryExecute($getNewsQuery, true);
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label for="">View<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="view">
-                                        <?php if (isset($_GET['viewerr'])) : ?>
-                                            <label class="error"><?= $_GET['viewerr'] ?></label>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="form-group col-6">
                                         <label for="">Người viết bài<span class="text-danger">*</span></label>
                                         <select class="form-control" name="author_id">
                                             <option value="<?= $_SESSION[AUTH]['id'] ?>">
