@@ -81,7 +81,7 @@ $contacts = queryExecute($getContactsQuery, true);
                                 <div class="form-group">
                                     <label for="">Messages<span class="text-danger">*</span></label>
                                     <!-- <input type="text" id="main-password" class="form-control" name="message"> -->
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="message" aria-valuetext="abc"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="message"></textarea>
                                     <?php if (isset($_GET['messageerr'])) : ?>
                                         <label class="error"><?= $_GET['messageerr'] ?></label>
                                     <?php endif; ?>

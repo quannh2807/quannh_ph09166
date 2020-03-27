@@ -90,19 +90,6 @@ $news = queryExecute($getAllNewsSql, true);
                         </div>
                         <div class="col-lg-3 col-4">
                             <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3><?= count($new_categories); ?></h3>
-                                    <p>Danh mục tin tức</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="far fa-list-alt"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3><?= count($news); ?></h3>
@@ -110,6 +97,19 @@ $news = queryExecute($getAllNewsSql, true);
                                 </div>
                                 <div class="icon">
                                     <i class="far fa-newspaper"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-4">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3><?= count($news); ?></h3>
+                                    <p>Danh mục tin tức</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-list-alt"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>

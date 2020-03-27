@@ -2,9 +2,9 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-// get Roles of users
-$getRoleQuery = "select * from roles where status = 1";
-$roles = queryExecute($getRoleQuery, true);
+// get news
+$getNewsQuery = "select * from news";
+$news = queryExecute($getNewsQuery, true);
 
 ?>
 <!DOCTYPE html>
@@ -46,37 +46,57 @@ $roles = queryExecute($getRoleQuery, true);
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Tên người dùng<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name">
-                                    <?php if (isset($_GET['nameerr'])) : ?>
-                                        <label class="error"><?= $_GET['nameerr'] ?></label>
+                                    <label for="">Tiêu đề<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="title">
+                                    <?php if (isset($_GET['titleerr'])) : ?>
+                                        <label class="error"><?= $_GET['titleerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Email<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="email">
-                                    <?php if (isset($_GET['emailerr'])) : ?>
-                                        <label class="error"><?= $_GET['emailerr'] ?></label>
+                                    <label for="">Nội dung bài viết<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="content"></textarea>
+                                    <?php if (isset($_GET['contenterr'])) : ?>
+                                        <label class="error"><?= $_GET['contenterr'] ?></label>
                                     <?php endif; ?>
                                 </div>
-                                <div class="form-group">
-                                    <label for="">Mật khẩu<span class="text-danger">*</span></label>
-                                    <input type="password" id="main-password" class="form-control" name="password">
-                                    <?php if (isset($_GET['passworderr'])) : ?>
-                                        <label class="error"><?= $_GET['passworderr'] ?></label>
-                                    <?php endif; ?>
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <label for="">View<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="view">
+                                        <?php if (isset($_GET['viewerr'])) : ?>
+                                            <label class="error"><?= $_GET['viewerr'] ?></label>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="">Người viết bài<span class="text-danger">*</span></label>
+                                        <select class="form-control" name="author_id">
+                                            <option value="<?= $_SESSION[AUTH]['id'] ?>">
+                                                <?= $_SESSION[AUTH]['name'] ?>
+                                            </option>
+                                        </select>
+                                        <?php if (isset($_GET['author_iderr'])) : ?>
+                                            <label class="error"><?= $_GET['author_iderr'] ?></label>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Nhập lại mật khẩu<span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="cfpassword">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Quyền</label>
-                                    <select name="role_id" class="form-control">
-                                        <?php foreach ($roles as $ro) : ?>
-                                            <option value="<?= $ro['id'] ?>"><?= $ro['name'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
+                                    <label for="">Thời gian viết bài</label>
+                                    <div class="form-group">
+                                        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" name="created_at" />
+                                            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $('#datetimepicker2').datetimepicker({
+                                                locale: 'ru',
+                                                Default: false
+                                            });
+                                        });
+                                    </script>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -87,11 +107,7 @@ $roles = queryExecute($getRoleQuery, true);
                                 </div>
                                 <div class="form-group">
                                     <label for="">Ảnh đại diện<span class="text-danger">*</span></label>
-                                    <input type="file" class="form-control" name="avatar" onchange="encodeImageFileAsURL(this)">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Số điện thoại</label>
-                                    <input type="text" class="form-control" name="phone_number">
+                                    <input type="file" class="form-control" name="feature_image" onchange="encodeImageFileAsURL(this)">
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
