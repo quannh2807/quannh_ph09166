@@ -40,7 +40,7 @@ require_once "./config/utils.php";
                 <div class="form-group">
                     <label for="password">Nhập lại mật khẩu</label>
                     <input type="password" class="form-control" name="cfpassword" autocomplete="off" required placeholder="Nhập lại mật khẩu">
-                    <label id="cfpassword-error" class="error" for="cfpassword">Cần khớp với mật khẩu</label>
+                    <label id="cfpassword-error" class="error" for="cfpassword" style="display:none;">Cần khớp với mật khẩu</label>
                 </div>
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary">Xác nhận đăng ký</button>&nbsp;

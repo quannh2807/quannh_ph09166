@@ -57,7 +57,6 @@ $insertContactQuery = "insert into contacts
 // dd($insertContactQuery);
 $reply_now = 'Xin cảm ơn bạn đã phản hồi tới chúng tôi, bạn sẽ nhận được phản hồi của chúng tôi sớm nhất. Trân trọng cảm ơn';
 queryExecute($insertContactQuery, false);
-
 // header("location: " . BASE_URL . "contact-us.php?reply_now=$reply_now");
 header("location: " . BASE_URL . "contact-us.php");
 die;

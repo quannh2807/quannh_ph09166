@@ -28,3 +28,5 @@
 <!--<![endif]-->
 <!-- my js -->
 <script src="./public/js/main.js"></script>
+<!-- JavaScript alert -->
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>

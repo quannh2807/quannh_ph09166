@@ -152,7 +152,8 @@ $contacts = queryExecute($getContactsQuery, true);
     <!-- Google maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBg0VrLjLvDLSQdS7hw6OfZJmvHhtEV_sE"></script>
     <script>
-        var myCenter = new google.maps.LatLng(20.147269,106.222167);
+
+        var myCenter = new google.maps.LatLng(20.147269, 106.222167);
 
         function initialize() {
             var mapProp = {
