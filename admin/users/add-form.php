@@ -58,6 +58,7 @@ $roles = queryExecute($getRoleQuery, true);
                                         <label class="error"><?= $_GET['emailerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="">Mật khẩu<span class="text-danger">*</span></label>
                                     <input type="password" id="main-password" class="form-control" name="password">
@@ -69,6 +70,7 @@ $roles = queryExecute($getRoleQuery, true);
                                     <label for="">Nhập lại mật khẩu<span class="text-danger">*</span></label>
                                     <input type="password" class="form-control" name="cfpassword">
                                 </div>
+
                                 <div class="form-group">
                                     <label for="">Quyền</label>
                                     <select name="role_id" class="form-control">

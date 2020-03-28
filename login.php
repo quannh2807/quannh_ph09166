@@ -39,7 +39,7 @@ require_once "./config/utils.php";
 					<input type="password" class="form-control" id="password" name="password" autocomplete="off" required placeholder="Nhập mật khẩu">
 				</div>
 				<div class="form-group">
-				<a href="<?php echo BASE_URL.'resignter.php' ?>" class="text-danger"><ins>Chưa có tài khoản, đi tới đăng ký</ins></a>&nbsp;
+				<a href="<?php echo BASE_URL.'register.php' ?>" class="text-danger"><ins>Chưa có tài khoản, đi tới đăng ký</ins></a>&nbsp;
 				</div>
 				<div class="d-flex justify-content-center">
 					<button type="submit" class="btn btn-primary">Đăng nhập</button>&nbsp;

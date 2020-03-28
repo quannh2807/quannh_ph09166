@@ -11,7 +11,6 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hotel Booking Home</title>
-    <link rel="shortcut icon" href="./public/img/favicon.ico" type="image/x-icon">
     <?php include_once './public/_share/link.php'; ?>
 </head>
 
