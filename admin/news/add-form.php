@@ -59,43 +59,11 @@ $news = queryExecute($getNewsQuery, true);
                                         <label class="error"><?= $_GET['contenterr'] ?></label>
                                     <?php endif; ?>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-6">
-                                        <label for="">Người viết bài<span class="text-danger">*</span></label>
-                                        <select class="form-control" name="author_id">
-                                            <option value="<?= $_SESSION[AUTH]['id'] ?>">
-                                                <?= $_SESSION[AUTH]['name'] ?>
-                                            </option>
-                                        </select>
-                                        <?php if (isset($_GET['author_iderr'])) : ?>
-                                            <label class="error"><?= $_GET['author_iderr'] ?></label>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Thời gian viết bài</label>
-                                    <div class="form-group">
-                                        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" name="created_at" />
-                                            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $('#datetimepicker2').datetimepicker({
-                                                locale: 'ru',
-                                                Default: false
-                                            });
-                                        });
-                                    </script>
-                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6 offset-md-3">
-                                        <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
+                                        <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid" multiple>
                                     </div>
                                 </div>
                                 <div class="form-group">

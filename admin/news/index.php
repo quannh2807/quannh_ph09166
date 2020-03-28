@@ -93,9 +93,7 @@ $news = queryExecute($getNewsQuery, true);
                                 <th>ID</th>
                                 <th>Tiêu đề</th>
                                 <th width="100">Ảnh tiêu đề</th>
-                                <th>Nội dung</th>
                                 <th>Tác giả</th>
-                                <th>Thời gian tạo</th>
                                 <th width=10%>
                                     <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                 </th>
@@ -108,9 +106,7 @@ $news = queryExecute($getNewsQuery, true);
                                         <td>
                                             <img class="img-fluid" src="<?= BASE_URL . $new['feature_image'] ?>" alt="">
                                         </td>
-                                        <td><?php echo $new['content'] ?></td>
                                         <td><?php echo $new['authorName'] ?></td>
-                                        <td><?php echo $new['created_at'] ?></td>
                                         <td>
                                                 <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $new['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>

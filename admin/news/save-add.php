@@ -5,8 +5,7 @@ checkAdminLoggedIn();
 $title = trim($_POST['title']);
 $content = trim($_POST['content']);
 // $view = trim($_POST['view']);
-$author_id = trim($_POST['author_id']);
-$created_at = trim($_POST['created_at']);
+$author_id = trim($_SESSION[AUTH]['id']);
 $feature_image = $_FILES['feature_image'];
 // validate bằng php
 $titleerr = "";
@@ -29,17 +28,16 @@ if ($titleerr . $contenterr!= "") {
 $filename = "";
 if($feature_image['size'] > 0){
     $filename = uniqid() . '-' . $feature_image['name'];
-    dd($filename);
     move_uploaded_file($feature_image['tmp_name'], "../../public/img/" . $filename);
     $filename = "public/img/" . $filename;
 }
 
 $insertNewsQuery = "insert into news
-                          (title, feature_image, content, views, author_id, created_at)
+                          (title, feature_image, content, author_id)
                     values
-                          ('$title', '$filename', '$content', '$author_id', '$created_at')";
+                          ('$title', '$filename', '$content', '$author_id')";
 
-// dd($insertNewsQuery);
+//dd($insertNewsQuery);
 queryExecute($insertNewsQuery, false);
 header("location: " . ADMIN_URL . "news");
 die;
