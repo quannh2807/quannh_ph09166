@@ -2,27 +2,11 @@
 session_start();
 include_once "../../config/utils.php";
 checkAdminLoggedIn();
-$title = trim($_POST['title']);
-$content = trim($_POST['content']);
-// $view = trim($_POST['view']);
+
+$news_content = trim($_POST['news_content']);
+
 $author_id = trim($_SESSION[AUTH]['id']);
 $feature_image = $_FILES['feature_image'];
-// validate bằng php
-$titleerr = "";
-$contenterr = "";
-// check title
-if (strlen($title) < 10 || strlen($title) > 100) {
-    $titleerr = "Yêu cầu nhập tiêu đề nằm trong khoảng 10-100 ký tự";
-}
-// check content
-if (strlen($content) < 40 || strlen($content) > 2000) {
-    $contenterr = "Yêu cầu nhập nội dung nằm trong khoảng 40-2000 ký tự";
-}
-
-if ($titleerr . $contenterr!= "") {
-    header('location: ' . ADMIN_URL . "news/add-form.php?titleerr=$titleerr&contenterr=$contenterr");
-    die;
-}
 
 // upload file ảnh
 $filename = "";
@@ -33,11 +17,11 @@ if($feature_image['size'] > 0){
 }
 
 $insertNewsQuery = "insert into news
-                          (title, feature_image, content, author_id)
+                          (feature_image, news_content, author_id)
                     values
-                          ('$title', '$filename', '$content', '$author_id')";
+                          ('$filename', '$news_content', '$author_id')";
 
-//dd($insertNewsQuery);
+// dd($insertNewsQuery);
 queryExecute($insertNewsQuery, false);
 header("location: " . ADMIN_URL . "news");
 die;

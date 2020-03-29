@@ -91,9 +91,9 @@ $news = queryExecute($getNewsQuery, true);
                         <table class="table table-stripped">
                             <thead>
                                 <th>ID</th>
-                                <th>Tiêu đề</th>
                                 <th width="100">Ảnh tiêu đề</th>
                                 <th>Tác giả</th>
+                                <th>Nội dung</th>
                                 <th width=10%>
                                     <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                 </th>
@@ -102,7 +102,6 @@ $news = queryExecute($getNewsQuery, true);
                                 <?php foreach ($news as $new) : ?>
                                     <tr>
                                         <td><?php echo $new['id'] ?></td>
-                                        <td><?php echo $new['title'] ?></td>
                                         <td>
                                             <img class="img-fluid" src="<?= BASE_URL . $new['feature_image'] ?>" alt="">
                                         </td>
