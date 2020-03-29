@@ -1,0 +1,369 @@
+[
+{
+	"name": "booking",
+	"fields": [
+		"id",
+		"customer_name",
+		"phone_number",
+		"email",
+		"chekin_date",
+		"checkout_date",
+		"adults",
+		"children",
+		"room_types",
+		"messages",
+		"status",
+		"created_date",
+		"checkd_in",
+		"checkd_in_date",
+		"reply_by",
+		"reply_messages"
+	],
+	"records": [
+	]
+}
+	,
+{
+	"name": "contacts",
+	"fields": [
+		"id",
+		"name",
+		"phone_number",
+		"email",
+		"subject",
+		"messages",
+		"status",
+		"reply_by",
+		"reply_for",
+		"created_at",
+		"reply_messages"
+	],
+	"records": [
+		{
+			"id": 1,
+			"name": "customer1",
+			"phone_number": "0868456456",
+			"email": "customer1@gmail.com",
+			"subject": "Phản hồi vu vơ 1",
+			"messages": "Nội dung 1",
+			"status": 1,
+			"reply_by": 1,
+			"reply_for": 1,
+			"created_at": "2020-03-26 21:02:23",
+			"reply_messages": "Nội dung phản hồi customer 1"
+		},
+		{
+			"id": 2,
+			"name": "customer2",
+			"phone_number": "0123456789",
+			"email": "customer2@gmail.com",
+			"subject": "Phản hồi vu vơ 2",
+			"messages": "Nội dung phản hồi vu vơ 2",
+			"status": 1,
+			"reply_by": 1,
+			"reply_for": 2,
+			"created_at": "2020-03-26 21:02:16",
+			"reply_messages": "Nội dung phản hồi khách hàng 2"
+		},
+		{
+			"id": 3,
+			"name": "customer 3",
+			"phone_number": "0987654311",
+			"email": "customer3@gmail.com",
+			"subject": "Phản ánh vu vơ",
+			"messages": "Nội dung phản ảnh vu vơ",
+			"status": 0,
+			"reply_by": null,
+			"reply_for": null,
+			"created_at": "2020-03-26 08:58:18",
+			"reply_messages": null
+		},
+		{
+			"id": 4,
+			"name": "customer 4",
+			"phone_number": "0123456789",
+			"email": "customer4@gmail.com",
+			"subject": "Phản hồi vu vơ 2",
+			"messages": "Nội dung demo",
+			"status": 0,
+			"reply_by": null,
+			"reply_for": null,
+			"created_at": "2020-03-26 12:30:19",
+			"reply_messages": null
+		},
+		{
+			"id": 5,
+			"name": "customer 5",
+			"phone_number": "0934934892",
+			"email": "customer5@gmail.com",
+			"subject": "Phan Hoi Vu vo 5",
+			"messages": "Noi DUng Phan Hoi Vu vo 5",
+			"status": 0,
+			"reply_by": null,
+			"reply_for": null,
+			"created_at": "2020-03-25 11:04:02",
+			"reply_messages": null
+		}
+	]
+}
+	,
+{
+	"name": "customer_feedbacks",
+	"fields": [
+		"id",
+		"name",
+		"address",
+		"avatar",
+		"content",
+		"status"
+	],
+	"records": [
+	]
+}
+	,
+{
+	"name": "galleries",
+	"fields": [
+		"id",
+		"name",
+		"setting_id",
+		"status",
+		"img_path"
+	],
+	"records": [
+	]
+}
+	,
+{
+	"name": "news",
+	"fields": [
+		"id",
+		"title",
+		"feature_image",
+		"content",
+		"views",
+		"author_id",
+		"created_at"
+	],
+	"records": [
+		{
+			"id": 1,
+			"title": "Bài hát Love The Way You Lie - Skylar G được phát trên youtube",
+			"feature_image": "public\/img\/5e7ed12a3182b-df91f064e30c428fa67f3528e5600c35.1000x1000x1.jpg",
+			"content": "Bài hát Love The Way You Lie - Skylar G được phát trên youtube\r\nBài hát Love The Way You Lie - Skylar G được phát trên youtube\r\nBài hát Love The Way You Lie - Skylar G được phát trên youtube\r\nBài hát Love The Way You Lie - Skylar G được phát trên youtube\r\nBài hát Love The Way You Lie - Skylar G được phát trên youtube\r\nBài hát Love The Way You Lie - Skylar G được phát trên youtube\r\nBài hát Love The Way You Lie - Skylar G được phát trên youtube\r\nBài hát Love The Way You Lie - Skylar G được phát trên youtube\r\nBài hát Love The Way You Lie - Skylar G được phát trên youtube",
+			"views": "1",
+			"author_id": 1,
+			"created_at": "2003-07-20 10:16:00"
+		},
+		{
+			"id": 2,
+			"title": "Bài hát Love The Way You Lie - Skylar G được phát trên youtube",
+			"feature_image": "public\/img\/5e7edbf035ba0-df91f064e30c428fa67f3528e5600c35.1000x1000x1.jpg",
+			"content": "Bài hát Love The Way You Lie - Skylar G được phát trên youtube",
+			"views": "0",
+			"author_id": 1,
+			"created_at": "2020-03-28 12:10:54"
+		},
+		{
+			"id": 3,
+			"title": "Bài hát Love The Way You Lie - Skylar G được phát trên youtube",
+			"feature_image": "public\/img\/5e7edc76104b1-df91f064e30c428fa67f3528e5600c35.1000x1000x1.jpg",
+			"content": "Bài hát Love The Way You Lie - Skylar G được phát trên youtube",
+			"views": "0",
+			"author_id": 1,
+			"created_at": "2020-03-28 12:11:18"
+		}
+	]
+}
+	,
+{
+	"name": "roles",
+	"fields": [
+		"id",
+		"name",
+		"status"
+	],
+	"records": [
+		{
+			"id": 1,
+			"name": "Customer - User",
+			"status": 1
+		},
+		{
+			"id": 2,
+			"name": "Staff - Admin",
+			"status": 1
+		},
+		{
+			"id": 3,
+			"name": "Manager - Super Admin",
+			"status": 2
+		}
+	]
+}
+	,
+{
+	"name": "room_galleries",
+	"fields": [
+		"id",
+		"room_id",
+		"img_url"
+	],
+	"records": [
+	]
+}
+	,
+{
+	"name": "room_service_xref",
+	"fields": [
+		"id",
+		"room_id",
+		"services_id"
+	],
+	"records": [
+	]
+}
+	,
+{
+	"name": "room_services",
+	"fields": [
+		"id",
+		"name",
+		"status"
+	],
+	"records": [
+	]
+}
+	,
+{
+	"name": "room_types",
+	"fields": [
+		"id",
+		"name",
+		"status",
+		"price",
+		"about",
+		"quantity",
+		"feature_img",
+		"short_desc"
+	],
+	"records": [
+	]
+}
+	,
+{
+	"name": "services",
+	"fields": [
+		"id",
+		"name",
+		"feature_img",
+		"introduce",
+		"status"
+	],
+	"records": [
+	]
+}
+	,
+{
+	"name": "users",
+	"fields": [
+		"id",
+		"name",
+		"password",
+		"email",
+		"role_id",
+		"phone_number",
+		"avatar"
+	],
+	"records": [
+		{
+			"id": 1,
+			"name": "QuAn Nguyen",
+			"password": "$2y$10$kCP.861\/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6",
+			"email": "helgrindxxx@gmail.com",
+			"role_id": 3,
+			"phone_number": "914946200",
+			"avatar": "public\/img\/5e773a07d6076-avartar.png"
+		},
+		{
+			"id": 2,
+			"name": "Harry",
+			"password": "$2y$10$kCP.861\/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6",
+			"email": "harry@gmail.com",
+			"role_id": 2,
+			"phone_number": "0987654321",
+			"avatar": "public\/img\/5e773982aa40f-about-us-staff-six.jpg"
+		},
+		{
+			"id": 3,
+			"name": "Maria",
+			"password": "$2y$10$kCP.861\/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6",
+			"email": "maria@gmail.com",
+			"role_id": 1,
+			"phone_number": "0123456789",
+			"avatar": "public\/img\/5e7ed0ca73014-about-us-staff-seven.jpg"
+		},
+		{
+			"id": 4,
+			"name": "Khách Hàng 1",
+			"password": "$2y$10$bUauX78vPaPIXNCeosVy1.oKLg7gOiZe9bccEcvFv\/v6Armygztr6",
+			"email": "khachhang1@gmail.com",
+			"role_id": 1,
+			"phone_number": "",
+			"avatar": "public\/img\/default-image.jpg"
+		},
+		{
+			"id": 5,
+			"name": "Khách Hàng 2",
+			"password": "$2y$10$A.G.dDw8JLSwfiKd7r4WGeyORA22wGJ4Y5jM7pWjNPCyq3SWaz88a",
+			"email": "khachhang2@gmail.com",
+			"role_id": 1,
+			"phone_number": "",
+			"avatar": "public\/img\/default-image.jpg"
+		},
+		{
+			"id": 7,
+			"name": "Khách Hàng 3",
+			"password": "$2y$10$SKyi7QiAeGaUeMVpb.l0kOckTAF8SGNVBZ\/lqSlfbyWCRfBXWd56.",
+			"email": "khachhang3@gmail.com",
+			"role_id": 1,
+			"phone_number": "",
+			"avatar": "public\/img\/default-image.jpg"
+		},
+		{
+			"id": 8,
+			"name": "NGuyen tu Bien",
+			"password": "$2y$10$\/HYvfMuOIpD2MIvFyZ\/Fnul8cvPWonxdrj2RwU9bAZL1sufuqo3Dy",
+			"email": "bien@gmail.com",
+			"role_id": 1,
+			"phone_number": "",
+			"avatar": "public\/img\/default-image.jpg"
+		}
+	]
+}
+	,
+{
+	"name": "web_setting",
+	"fields": [
+		"id",
+		"name",
+		"status",
+		"logo",
+		"phone_number",
+		"address",
+		"email",
+		"map_url",
+		"youtube_url",
+		"facebook_url",
+		"background_img",
+		"overview_img",
+		"introduce_content",
+		"intro_welcome",
+		"intro_service",
+		"intro_client_feedback",
+		"news_id"
+	],
+	"records": [
+	]
+}
+]
