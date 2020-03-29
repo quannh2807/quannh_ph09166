@@ -1,15 +1,12 @@
 <?php
 session_start();
-include_once "../../config/utils.php";
-checkAdminLoggedIn();
+include_once "./config/utils.php";
+
 $name = trim($_POST['name']);
 $email = trim($_POST['email']);
 $password = trim($_POST['password']);
 $cfpassword = trim($_POST['cfpassword']);
-$phone_number = trim($_POST['phone_number']);
-$role_id = trim($_POST['role_id']);
-$avatar = $_FILES['avatar'];
-// dd($avatar);
+
 // validate bằng php
 $nameerr = "";
 $emailerr = "";
@@ -38,23 +35,20 @@ if (strlen($password) < 6) {
 }
 
 if ($passworderr == "" && $password != $cfpassword) {
-    $passworderr = "Mật khẩu và nhập lại mật khẩu không khớp nhau";
+    $passworderr = "Mật khẩu và nhập lại mật khẩu";
 }
 
 if ($nameerr . $emailerr . $passworderr != "") {
-    header('location: ' . ADMIN_URL . "users/add-form.php?nameerr=$nameerr&emailerr=$emailerr&passworderr=$passworderr");
+    header('location: ' . BASE_URL . "register.php?nameerr=$nameerr&emailerr=$emailerr&passworderr=$passworderr");
     die;
 }
 // mã hóa mật khẩu
 $password = password_hash($password, PASSWORD_DEFAULT);
-// upload file ảnh
-$filename = "";
-if($avatar['size'] > 0){
-    $filename = uniqid() . '-' . $avatar['name'];
-    move_uploaded_file($avatar['tmp_name'], "http://localhost/booking-hotel/public/img/" . $filename);
-    $filename = "public/img/" . $filename;
-}
-// upload file ảnh
+
+$role_id = 1;
+$filename = "public/img/default-image.jpg";
+$messages = "Từ giờ bạn có thể đăng nhập được rồi";
+// insert query
 $insertUserQuery = "insert into users
                           (name, password, email, role_id, phone_number, avatar)
                     values
@@ -62,5 +56,5 @@ $insertUserQuery = "insert into users
 
 // dd($insertUserQuery);
 queryExecute($insertUserQuery, false);
-header("location: " . ADMIN_URL . "users");
+header("location: " . BASE_URL . "login.php?messages=$messages&style=none");
 die;

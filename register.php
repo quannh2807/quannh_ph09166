@@ -24,33 +24,46 @@ require_once "./config/utils.php";
 
 <body>
     <div class="container">
-        <div class="col-4 offset-4">
+        <div class="col-8 offset-2">
             <div class="login-logo d-flex justify-content-center m-5">
                 <a href="<?php echo BASE_URL ?>">
                     <img src="<?php echo PUBLIC_URL . 'img/site-logo.png' ?>" alt="" class="img-logo">
                 </a>
             </div>
-            <form id="validation" role="form" action="post-login.php" method="post" autocomplete="on">
+            <form id="validation" role="form" action="<?php echo BASE_URL . 'save-register.php'; ?>" method="post" enctype="multipart/form-data" autocomplete="on">
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="email">Địa chỉ email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email" autofocus>
+                        <?php if (isset($_GET['emailerr'])) : ?>
+                            <label class="error"><?= $_GET['emailerr'] ?></label>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nhập họ và tên">
+                        <?php if (isset($_GET['nameerr'])) : ?>
+                            <label class="error"><?= $_GET['nameerr'] ?></label>
+                        <?php endif; ?>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" class="form-control" id="main-password" name="password" autocomplete="off" placeholder="Nhập mật khẩu">
+                        <?php if (isset($_GET['passworderr'])) : ?>
+                            <label class="error"><?= $_GET['passworderr'] ?></label>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="cfpassword">Nhập lại mật khẩu</label>
+                        <input type="password" class="form-control" name="cfpassword" autocomplete="off" placeholder="Nhập lại mật khẩu">
+                    </div>
+                </div>
                 <div class="d-flex justify-content-center">
-                    <?php if (isset($_GET['msg'])) : ?>
-                        <span class="text-danger"><?php echo $_GET['msg'] ?></span>
-                    <?php endif; ?>
-                </div>
-                <div class="form-group">
-                    <label for="email">Địa chỉ email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email" autofocus>
-                </div>
-                <div class="form-group">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" class="form-control" id="main-password" name="password" autocomplete="off" required placeholder="Nhập mật khẩu">
-                </div>
-                <div class="form-group">
-                    <label for="password">Nhập lại mật khẩu</label>
-                    <input type="password" class="form-control" name="cfpassword" autocomplete="off" required placeholder="Nhập lại mật khẩu">
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Xác nhận đăng ký</button>&nbsp;
-                    <a href="<?php echo BASE_URL ?>" class="btn btn-secondary">Hủy</a>
+                    <button type="submit" class="btn btn-warning">Xác nhận đăng ký</button>&nbsp;
+                    <a href="<?php echo BASE_URL ?>" class="btn btn-danger">Hủy</a>
                 </div>
             </form>
         </div>
