@@ -2,7 +2,6 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
 // lấy thông tin của customer ra ngoài thông id trên đường dẫn
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
 # get contacts table
@@ -78,22 +77,6 @@ $contacts = queryExecute($getContactsQuery, true);
                                     <?php if (isset($_GET['messageerr'])) : ?>
                                         <label class="error"><?= $_GET['messageerr'] ?></label>
                                     <?php endif; ?>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Thời gian phản hồi<span class="text-danger">*</span></label>
-                                    <div class="form-group">
-                                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" name="created_at" />
-                                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fas fa-calendar-check"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $('#datetimepicker1').datetimepicker();
-                                        });
-                                    </script>
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;

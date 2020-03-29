@@ -3,21 +3,12 @@ session_start();
 include_once "../../config/utils.php";
 checkAdminLoggedIn();
 // lấy thông tin từ form gửi lên
-$reply_by = trim($_POST['reply_by']);
+$reply_by = trim($_SESSION[AUTH]['id']);
 $reply_for = trim($_POST['reply_for']);
-$created_at = trim($_POST['created_at']);
 $reply_messages = trim($_POST['reply_messages']);
-if ($reply_by && $reply_for && $created_at && $reply_messages) {
+if ($reply_by && $reply_for && $reply_messages) {
     $status = ACTIVE;
 }
-// // kiểm tra tài khoản có tồn tại hay không
-// $getContactsByIdQuery = "select * from contacts where id = '$reply_for'";
-// $contact = queryExecute($getContactsByIdQuery, false);
-
-// if (!$user) {
-//     header("location: " . ADMIN_URL . 'users?msg=Tài khoản không tồn tại');
-//     die;
-// }
 
 // validate bằng php
 $reply_messageserr = "";
@@ -31,7 +22,6 @@ $insertContactQuery = "update contacts
                           status = '$status',
                           reply_by = '$reply_by',
                           reply_for = '$reply_for',
-                          created_at = '$created_at',
                           reply_messages = '$reply_messages'
                     where id = '$reply_for'";
 // dd($insertContactQuery);

@@ -118,7 +118,7 @@ $contacts = queryExecute($getContactsQuery, true);
                                         <?php } ?>
                                         <td>
                                             <?php if ($_SESSION[AUTH]['role_id'] > 1) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'contacts/reply.php?id=' . $contact['id'] ?>" class="btn btn-sm btn-success">
+                                                <a href="<?php echo ADMIN_URL . 'contacts/content-email.php?id=' . $contact['id'] ?>" class="btn btn-sm btn-success">
                                                     <i class="far fa-comment-dots"></i>
                                                 </a>
                                             <?php endif; ?>

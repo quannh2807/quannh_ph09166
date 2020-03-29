@@ -88,36 +88,37 @@ $news = queryExecute($getNewsQuery, true);
                             </form>
                         </div>
                         <!-- Danh sách users  -->
-                        <table class="table table-stripped">
-                            <thead>
-                                <th>ID</th>
-                                <th width="100">Ảnh tiêu đề</th>
-                                <th>Tác giả</th>
-                                <th>Nội dung</th>
-                                <th width=10%>
-                                    <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
-                                </th>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($news as $new) : ?>
-                                    <tr>
-                                        <td><?php echo $new['id'] ?></td>
-                                        <td>
-                                            <img class="img-fluid" src="<?= BASE_URL . $new['feature_image'] ?>" alt="">
-                                        </td>
-                                        <td><?php echo $new['authorName'] ?></td>
-                                        <td>
+                        <div class="table-responsive">
+                            <table class="table table-stripped">
+                                <thead class="">
+                                    <th>ID</th>
+                                    <th width="200">Ảnh tiêu đề</th>
+                                    <th>Tác giả</th>
+                                    <th width=10%>
+                                        <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($news as $new) : ?>
+                                        <tr>
+                                            <td><?php echo $new['id'] ?></td>
+                                            <td>
+                                                <img class="img-fluid" src="<?= BASE_URL . $new['feature_image'] ?>" alt="">
+                                            </td>
+                                            <td><?php echo $new['authorName'] ?></td>
+                                            <td>
                                                 <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $new['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
                                                 <a href="<?php echo ADMIN_URL . 'news/remove.php?id=' . $new['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.row -->
 
