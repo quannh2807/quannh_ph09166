@@ -45,6 +45,14 @@ $contacts = queryExecute($getContactsQuery, true);
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <form id="send-email-form" action="<?= ADMIN_URL . 'contacts/send-email.php' ?>" method="POST">
+                        <div class="form-group" hidden>
+                            <?php foreach ($contacts as $contact) : ?>
+                                <input type="text" name="id" id="id" class="form-control" value="<?= $contact['id'] ?>">
+                            <?php endforeach ?>
+                        </div>
+                        <div class="form-group" hidden>
+                            <input type="text" name="reply_by" class="form-control" value="<?= $_SESSION[AUTH]['id'] ?>">
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

@@ -1,13 +1,20 @@
 <?php
+session_start();
+require '../../config/utils.php';
+checkAdminLoggedIn();
+// Require libraries PHP Mailer
 require '../_share/lib/PHPMailer/src/Exception.php';
 require '../_share/lib/PHPMailer/src/PHPMailer.php';
 require '../_share/lib/PHPMailer/src/SMTP.php';
+// Get infomation
 $recceiver = $_POST['recceiver'];
 $subject = $_POST['subject'];
 $content = $_POST['content'];
+$id = $_POST['id'];
+$reply_by = $_POST['reply_by'];
 
 $listRecceiver = explode(",", $recceiver);
-// var_dump($recceiver, $subject, $content);die;
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -29,7 +36,7 @@ try {
 
     //Recipients
     $mail->setFrom('helgrindxxx@gmail.com', 'Quan Nguyen');
-    foreach($listRecceiver as $recceiverEmail){
+    foreach ($listRecceiver as $recceiverEmail) {
         $mail->addAddress($recceiverEmail);
     }
     $mail->addReplyTo('quannh2807@gmail.com', 'Quan Nguyen');
@@ -45,11 +52,17 @@ try {
     // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Message has been sent';
+
+    # Update database
+    $updateContactQuery = "update contacts set
+                                status = '1',
+                                reply_by = '$reply_by',
+                                reply_for = '$id',
+                                reply_messages = '$content'
+                            where id = '$id'";
+    queryExecute($updateContactQuery, false);
+    header("location: " . ADMIN_URL . "contacts");
+    die;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-
-
-
-?>
