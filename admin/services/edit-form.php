@@ -2,26 +2,18 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-$getRoleQuery = "select * from roles where status = 1";
-$roles = queryExecute($getRoleQuery, true);
 
-// lấy thông tin của người dùng ra ngoài thông id trên đường dẫn
+// lấy id ra ngoài bang thông id trên đường dẫn
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
-// kiểm tra tài khoản có tồn tại hay không
-$getUserByIdQuery = "select * from users where id = $id";
-$user = queryExecute($getUserByIdQuery, false);
-if (!$user) {
-    header("location: " . ADMIN_URL . 'users?msg=Tài khoản không tồn tại');
-    die;
-}
+// get services query
+$getServicesQuery = "select * from services where id = '$id'";
+$services = queryExecute($getServicesQuery, false);
 
 // kiểm tra xem có quyền để thực hiện edit hay không
-if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH]['role_id']) {
-    header("location: " . ADMIN_URL . 'users?msg=Bạn không có quyền sửa thông tin tài khoản này');
+if ($_SESSION[AUTH]['role_id'] < 1) {
+    header("location: " . ADMIN_URL . 'news?msg=Bạn không có quyền sửa thông tin bài viết này');
     die;
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,7 +39,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Cập nhật thông tin tài khoản</h1>
+                            <h1 class="m-0 text-dark">Cập nhật thông tin Dịch vụ</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -58,58 +50,61 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="edit-user-form" action="<?= ADMIN_URL . 'users/save-edit.php' ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                    <form id="add-user-form" action="<?= ADMIN_URL . 'services/save-edit.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
+                                <input type="text" class="form-control" name="id" value="<?= $services['id'] ?>" hidden>
                                 <div class="form-group">
-                                    <label for="">Tên người dùng<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name" value="<?= $user['name'] ?>">
+                                    <label for="">Tên dịch vụ<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="name" value="<?= $services['name'] ?>">
                                     <?php if (isset($_GET['nameerr'])) : ?>
                                         <label class="error"><?= $_GET['nameerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Email<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="email" value="<?= $user['email'] ?>">
-                                    <?php if (isset($_GET['emailerr'])) : ?>
-                                        <label class="error"><?= $_GET['emailerr'] ?></label>
+                                    <label for="">Introduce<span class="text-danger">*</span></label>
+                                    <textarea name="introduce" class="form-control" id="" cols="30" rows="10"><?= $services['introduce'] ?></textarea>
+                                    <?php if (isset($_GET['introduceerr'])) : ?>
+                                        <label class=" error"><?= $_GET['introduceerr'] ?></label>
                                     <?php endif; ?>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Quyền</label>
-                                    <select name="role_id" class="form-control">
-                                        <?php foreach ($roles as $ro) : ?>
-                                            <option value="<?= $ro['id'] ?>" <?php if ($ro['id'] == $user['role_id']) : ?> selected <?php endif ?>>
-                                                <?= $ro['name'] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Số điện thoại</label>
-                                    <input type="text" class="form-control" name="phone_number" value="<?= $user['phone_number'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6 offset-md-3">
-                                        <img src="<?= BASE_URL . $user['avatar'] ?>" id="preview-img" class="img-fluid">
+                                        <img src="<?= BASE_URL . $services['feature_img'] ?>" id="preview-img" class="img-fluid" alt="Ảnh đại diện dịch vụ">
+                                    </div>
+                                </div>
+                                <div class="input-group mt-3 mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Ảnh đại diện<span class="text-danger">*</span></span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="feature_img" onchange="encodeImageFileAsURL(this)">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Ảnh đại diện</label>
-                                    <input type="file" class="form-control" name="avatar" onchange="encodeImageFileAsURL(this)">
+                                    <label for="mySelect1">Trạng thái<span class="text-danger">*</span></label>
+                                    <select id="mySelect1" class="form-control" name="status" value="<?= $services['status'] ?>">
+                                        <option>Chọn trạng thái</option>
+                                        <?php
+                                        if ($services['status'] == 1) { ?>
+                                            <option value="1" selected>Active</option>
+                                            <option value="0">Inactive</option>
+                                        <?php    } else if ($services['status'] == 0) { ?>
+                                            <option value="1">Active</option>
+                                            <option value="0" selected>Inactive</option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
-
-                            </div>
-                            <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                                <div class="col d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                                </div>
                             </div>
                         </div>
                     </form>
-
                     <!-- /.row -->
 
                 </div><!-- /.container-fluid -->
@@ -126,7 +121,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if (file === undefined) {
-                $('#preview-img').attr('src', "<?= BASE_URL . $user['avatar'] ?>");
+                $('#preview-img').attr('src', "<?= DEFAULT_IMAGE ?>");
                 return false;
             }
             var reader = new FileReader();
@@ -135,34 +130,17 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
             }
             reader.readAsDataURL(file);
         }
-        $('#edit-user-form').validate({
+        $('#add-user-form').validate({
             rules: {
                 name: {
                     required: true,
                     maxlength: 191
                 },
-                email: {
+                introduce: {
+                    require: true
+                },
+                feature_img: {
                     required: true,
-                    maxlength: 191,
-                    email: true,
-                    remote: {
-                        url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
-                        type: "post",
-                        data: {
-                            email: function() {
-                                return $("input[name='email']").val();
-                            },
-                            id: <?= $user['id']; ?>
-                        }
-                    }
-                },
-                phone_number: {
-                    number: true
-                },
-                house_no: {
-                    maxlength: 191
-                },
-                avatar: {
                     extension: "png|jpg|jpeg|gif"
                 }
             },
@@ -171,21 +149,11 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                     required: "Hãy nhập tên người dùng",
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
                 },
-                email: {
-                    required: "Hãy nhập email",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                    email: "Không đúng định dạng email",
-                    remote: "Email đã tồn tại, vui lòng sử dụng email khác"
+                introduce: {
+                    require: "Hãy nhập lời giới thiệu"
                 },
-                phone_number: {
-                    min: "Bắt buộc là số có 10 chữ số",
-                    max: "Bắt buộc là số có 10 chữ số",
-                    number: "Nhập định dạng số"
-                },
-                house_no: {
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                avatar: {
+                feature_img: {
+                    required: "Hãy nhập ảnh đại diện",
                     extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
                 }
             }
