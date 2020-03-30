@@ -2,28 +2,38 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-// dd($_SESSION[AUTH]['name']);
+
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
+$roleId = isset($_GET['role']) == true ? $_GET['role'] : false;
 
-// lấy danh sách contacts
-$getContactsQuery = "select c.*, u.name as staffName from contacts c join users u
-                                on c.reply_by = u.id";
+// Lấy danh sách roles
+// $getRolesQuery = "select * from roles where status = 1";
+$getRolesQuery = "select * from roles";
+$roles = queryExecute($getRolesQuery, true);
 
+// danh sách users
+$getUsersQuery = "select
+                    u.*,
+                    r.name as role_name
+                    from users u
+                    join roles r
+                    on u.role_id = r.id";
 // tìm kiếm
 if ($keyword !== "") {
-    $getContactsQuery .= " where (c.name like '%$keyword%'
-                            or c.phone_number like '%$keyword%'
-                            or c.email like '%$keyword%'
-                            or c.subject like '%$keyword%'
-                            or c.messages like '%$keyword%'
-                            or c.status like '%$keyword%'
-                            or c.reply_by like '%$keyword%'
-                            or c.reply_for like '%$keyword%'
-                            or c.created_at like '%$keyword%'
-                            or c.reply_messages like '%$keyword%')";
+    $getUsersQuery .= " where (u.email like '%$keyword%'
+                            or u.phone_number like '%$keyword%'
+                            or u.name like '%$keyword%')
+                      ";
+    if ($roleId !== false && $roleId !== "") {
+        $getUsersQuery .= " and u.role_id = $roleId";
+    }
+} else {
+    if ($roleId !== false && $roleId !== "") {
+        $getUsersQuery .= " where u.role_id = $roleId";
+    }
 }
-// dd($getContactsQuery);
-$contacts = queryExecute($getContactsQuery, true);
+$users = queryExecute($getUsersQuery, true);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,12 +59,12 @@ $contacts = queryExecute($getContactsQuery, true);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Quản trị contacts</h1>
+                            <h1 class="m-0 text-dark">Quản trị users</h1>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard' ?>">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard'?>">Dashboard</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -72,9 +82,9 @@ $contacts = queryExecute($getContactsQuery, true);
                             <form action="" method="get">
                                 <div class="form-row">
                                     <div class="form-group col-6">
-                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, email, số điện thoại, chủ đề,...">
+                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, email, căn hộ, số điện thoại,...">
                                     </div>
-                                    <!-- <div class="form-group col-4">
+                                    <div class="form-group col-4">
                                         <select name="role" class="form-control">
                                             <option selected value="">Tất cả</option>
                                             <?php foreach ($roles as $ro) : ?>
@@ -83,7 +93,7 @@ $contacts = queryExecute($getContactsQuery, true);
                                                         } ?> value="<?php echo $ro['id'] ?>"><?php echo $ro['name'] ?></option>
                                             <?php endforeach; ?>
                                         </select>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group col-2">
                                         <button type="submit" class="btn btn-success">Tìm kiếm</button>
                                     </div>
@@ -91,31 +101,39 @@ $contacts = queryExecute($getContactsQuery, true);
                             </form>
                         </div>
                         <!-- Danh sách users  -->
-                        <table class="table table-hover">
+                        <table class="table table-stripped">
                             <thead>
                                 <th>ID</th>
-                                <th>Khách hàng</th>
-                                <th>Nội dung lời nhắn</th>
-                                <th>Nhân viên trả lời</th>
-                                <th>Nội dung trả lời</th>
-                                <th width=10%>Thao tác</th>
+                                <th>Tên</th>
+                                <th>Email</th>
+                                <th>Loại tài khoản</th>
+                                <th width="100">Ảnh</th>
+                                <th>Số ĐT</th>
+                                <th>
+                                    <a href="<?php echo ADMIN_URL . 'users/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
+                                </th>
                             </thead>
                             <tbody>
-                                <?php foreach ($contacts as $contact) : ?>
+                                <?php foreach ($users as $us) : ?>
                                     <tr>
-                                        <td><?php echo $contact['id'] ?></td>
-                                        <td><?php echo $contact['name'] ?></td>
-                                        <td><?php echo $contact['messages'] ?></td>
-                                        <td><?php echo $contact['staffName'] ?></td>
-                                        <td><?php echo $contact['reply_messages'] ?></td>
+                                        <td><?php echo $us['id'] ?></td>
+                                        <td><?php echo $us['name'] ?></td>
+                                        <td><?php echo $us['email'] ?></td>
                                         <td>
-                                            <?php if ($_SESSION[AUTH]['role_id'] > 1) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'contacts/reply.php?id=' . $contact['id'] ?>" class="btn btn-sm btn-success">
-                                                    <i class="far fa-comment-dots"></i>
+                                            <?php echo $us['role_name'] ?>
+                                        </td>
+                                        <td>
+                                            <img class="img-fluid" src="<?= BASE_URL . $us['avatar']?>" alt="">
+                                        </td>
+                                        <td><?php echo $us['phone_number'] ?></td>
+                                        <td>
+                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id'] ): ?>
+                                                <a href="<?php echo ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
+                                                    <i class="fa fa-pencil-alt"></i>
                                                 </a>
                                             <?php endif; ?>
-                                            <?php if ($_SESSION[AUTH]['role_id'] > 1) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'contacts/remove.php?id=' . $contact['id'] ?>" class="btn-remove btn btn-sm btn-danger">
+                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
+                                                <a href="<?php echo ADMIN_URL . 'users/remove.php?id=' . $us['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             <?php endif; ?>

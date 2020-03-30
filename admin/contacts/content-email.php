@@ -14,6 +14,12 @@ $contacts = queryExecute($getContactsQuery, true);
 
 <head>
     <?php include_once '../_share/style.php'; ?>
+    <style>
+        label.error {
+            display: inline-block;
+            color: #ff0000;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -94,74 +100,22 @@ $contacts = queryExecute($getContactsQuery, true);
         $(document).ready(function() {
             $('#send-email-form').validate({
                 rules: {
-                    name: {
+                    subject: {
                         required: true,
-                        maxlength: 191
+                        maxlength: 100
                     },
-                    email: {
-                        required: true,
-                        maxlength: 191,
-                        email: true,
-                        remote: {
-                            url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
-                            type: "post",
-                            data: {
-                                email: function() {
-                                    return $("input[name='email']").val();
-                                }
-                            }
-                        }
+                    content: {
+                        required: true
                     },
-                    password: {
-                        required: true,
-                        maxlength: 191
-                    },
-                    cfpassword: {
-                        required: true,
-                        equalTo: "#main-password"
-                    },
-                    phone_number: {
-                        number: true
-                    },
-                    house_no: {
-                        maxlength: 191
-                    },
-                    avatar: {
-                        required: true,
-                        extension: "png|jpg|jpeg|gif"
-                    }
                 },
                 messages: {
-                    name: {
-                        required: "Hãy nhập tên người dùng",
-                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                    subject: {
+                        required: "Nhập chủ đề email phản hồi",
+                        maxlength: "Số lượng ký tự tối đa bằng 100 ký tự"
                     },
-                    email: {
-                        required: "Hãy nhập email",
-                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                        email: "Không đúng định dạng email",
-                        remote: "Email đã tồn tại, vui lòng sử dụng email khác"
+                    content: {
+                        required: "Nhập nội dung phản hồi khách hàng"
                     },
-                    password: {
-                        required: "Hãy nhập mật khẩu",
-                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                    },
-                    cfpassword: {
-                        required: "Nhập lại mật khẩu",
-                        equalTo: "Cần khớp với mật khẩu"
-                    },
-                    phone_number: {
-                        min: "Bắt buộc là số có 10 chữ số",
-                        max: "Bắt buộc là số có 10 chữ số",
-                        number: "Nhập định dạng số"
-                    },
-                    house_no: {
-                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                    },
-                    avatar: {
-                        required: "Hãy nhập ảnh đại diện",
-                        extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
-                    }
                 }
             });
         });
