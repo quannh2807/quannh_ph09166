@@ -2,32 +2,24 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-$getRoleQuery = "select * from roles where status = 1";
-$roles = queryExecute($getRoleQuery, true);
 
 // lấy thông tin của người dùng ra ngoài thông id trên đường dẫn
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
-// kiểm tra tài khoản có tồn tại hay không
-$getUserByIdQuery = "select * from users where id = $id";
-$user = queryExecute($getUserByIdQuery, false);
-if (!$user) {
-    header("location: " . ADMIN_URL . 'users?msg=Tài khoản không tồn tại');
-    die;
-}
-
-// kiểm tra xem có quyền để thực hiện edit hay không
-if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH]['role_id']) {
-    header("location: " . ADMIN_URL . 'users?msg=Bạn không có quyền sửa thông tin tài khoản này');
-    die;
-}
-
-
+/// get customer feedbacks query
+$getFeedbacksQuery = "select * from customer_feedbacks where id = '$id'";
+$feedbacks = queryExecute($getFeedbacksQuery, false);
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <?php include_once '../_share/style.php'; ?>
+    <style>
+        label.error {
+            display: inline;
+            color: #ff0000;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -47,7 +39,7 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Cập nhật thông tin tài khoản</h1>
+                            <h1 class="m-0 text-dark">Cập nhật phản hồi của khách hàng</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -58,58 +50,69 @@ if ($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH][
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="edit-user-form" action="<?= ADMIN_URL . 'users/save-edit.php' ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                    <form id="add-feedbacks-form" action="<?= ADMIN_URL . 'customer_feedbacks/save-edit.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
+                                <input type="text" name="id" value="<?= $feedbacks['id'] ?>" hidden>
                                 <div class="form-group">
                                     <label for="">Tên người dùng<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name" value="<?= $user['name'] ?>">
+                                    <input type="text" class="form-control" name="name" value="<?= $feedbacks['name'] ?>">
                                     <?php if (isset($_GET['nameerr'])) : ?>
                                         <label class="error"><?= $_GET['nameerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Email<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="email" value="<?= $user['email'] ?>">
-                                    <?php if (isset($_GET['emailerr'])) : ?>
-                                        <label class="error"><?= $_GET['emailerr'] ?></label>
+                                    <label for="">Địa chỉ<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="address" value="<?= $feedbacks['address'] ?>">
+                                    <?php if (isset($_GET['addresserr'])) : ?>
+                                        <label class="error"><?= $_GET['addresserr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Quyền</label>
-                                    <select name="role_id" class="form-control">
-                                        <?php foreach ($roles as $ro) : ?>
-                                            <option value="<?= $ro['id'] ?>" <?php if ($ro['id'] == $user['role_id']) : ?> selected <?php endif ?>>
-                                                <?= $ro['name'] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Số điện thoại</label>
-                                    <input type="text" class="form-control" name="phone_number" value="<?= $user['phone_number'] ?>">
+                                    <label for="">Nội dung<span class="text-danger">*</span></label>
+                                    <textarea name="content" class="form-control" id="content-feedback">value="<?= $feedbacks['content'] ?>"</textarea>
+                                    <?php if (isset($_GET['contenterr'])) : ?>
+                                        <label class="error"><?= $_GET['contenterr'] ?></label>
+                                    <?php endif; ?>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6 offset-md-3">
-                                        <img src="<?= BASE_URL . $user['avatar'] ?>" id="preview-img" class="img-fluid">
+                                        <img src="<?= BASE_URL . $feedbacks['avatar'] ?>" id="preview-img" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="input-group mt-3 mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Ảnh đại diện<span class="text-danger">*</span></span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="avatar" onchange="encodeImageFileAsURL(this)">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Ảnh đại diện</label>
-                                    <input type="file" class="form-control" name="avatar" onchange="encodeImageFileAsURL(this)">
+                                    <label for="mySelect1">Trạng thái<span class="text-danger">*</span></label>
+                                    <select id="mySelect1" class="form-control" name="status">
+                                        <?php
+                                        if ($feedbacks['status'] == 1) { ?>
+                                            <option value="1" selected>Active</option>
+                                            <option value="0">Inactive</option>
+                                        <?php    } else if ($feedbacks['status'] == 0) { ?>
+                                            <option value="1">Active</option>
+                                            <option value="0" selected>Inactive</option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
+                                <div class="col d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                    <a href="<?= ADMIN_URL . 'customer_feedbacks' ?>" class="btn btn-danger">Hủy</a>
+                                </div>
+                            </div>
 
-                            </div>
-                            <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
-                            </div>
                         </div>
                     </form>
-
                     <!-- /.row -->
 
                 </div><!-- /.container-fluid -->

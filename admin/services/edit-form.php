@@ -87,7 +87,6 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                                 <div class="form-group">
                                     <label for="mySelect1">Trạng thái<span class="text-danger">*</span></label>
                                     <select id="mySelect1" class="form-control" name="status" value="<?= $services['status'] ?>">
-                                        <option>Chọn trạng thái</option>
                                         <?php
                                         if ($services['status'] == 1) { ?>
                                             <option value="1" selected>Active</option>

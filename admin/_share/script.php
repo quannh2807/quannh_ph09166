@@ -39,6 +39,7 @@
 <!-- overlayScrollbars -->
 <script src="<?= ADMIN_ASSET_URL ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- Jquery validation -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
 

@@ -14,8 +14,16 @@ if (strlen($name) < 2 || strlen($name) > 191) {
     $nameerr = "Yêu cầu nhập tên dịch vụ nằm trong khoảng 2-191 ký tự";
 }
 
+// kiểm tra services có tồn tại hay không
+$getServicesQuery = "select * from services where id = $id";
+$services = queryExecute($getServicesQuery, false);
+
+if(!$services){
+    header("location: " . ADMIN_URL . 'services?msg=Services không tồn tại');die;
+}
+
 // upload file ảnh
-$filename = "";
+$filename = $services['feature_img'];
 if($feature_img['size'] > 0){
     $filename = uniqid() . '-' . $feature_img['name'];
     move_uploaded_file($feature_img['tmp_name'], "../../public/img/" . $filename);

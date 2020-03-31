@@ -23,6 +23,10 @@ $news = queryExecute($getAllNewsSql, true);
 $getAllServicesSql = "select * from services";
 $services = queryExecute($getAllServicesSql, true);
 
+# Lấy ra tất cả bản ghi trong bảng customer feedbacks
+$getAllFeedbacksSql = "select * from customer_feedbacks";
+$feedbacks = queryExecute($getAllFeedbacksSql, true);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -138,13 +142,13 @@ $services = queryExecute($getAllServicesSql, true);
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3><?= count($contacts); ?></h3>
-                                    <p>Contacts</p>
+                                    <h3><?= count($feedbacks); ?></h3>
+                                    <p>Phản hồi khách hàng</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="far fa-user-circle"></i>
+                                    <i class="fas fa-comments"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'contacts' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'customer_feedbacks' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-4">

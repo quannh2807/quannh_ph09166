@@ -51,7 +51,7 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 $filename = "";
 if($avatar['size'] > 0){
     $filename = uniqid() . '-' . $avatar['name'];
-    move_uploaded_file($avatar['tmp_name'], "http://localhost/booking-hotel/public/img/" . $filename);
+    move_uploaded_file($avatar['tmp_name'], "../../public/img/" . $filename);
     $filename = "public/img/" . $filename;
 }
 // upload file ảnh

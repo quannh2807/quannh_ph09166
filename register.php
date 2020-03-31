@@ -15,7 +15,7 @@ require_once "./config/utils.php";
     <link rel="stylesheet" href="<?php echo PUBLIC_URL . 'css/main.css' ?>">
     <style>
         label.error {
-            display: inline-block;
+            display: inline;
             color: #ff0000;
             width: 200px;
         }
@@ -71,7 +71,7 @@ require_once "./config/utils.php";
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- Jquery Validation -->
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
     <script>
         $(document).ready(function() {
             $("#validation").validate({
@@ -95,6 +95,7 @@ require_once "./config/utils.php";
                     email: "Vui lòng nhập email",
                     password: {
                         required: "Hãy nhập mật khẩu",
+                        minlength: "Số lượng ký tự tối thiểu là 6 ký tự",
                         maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
                     },
                     cfpassword: {

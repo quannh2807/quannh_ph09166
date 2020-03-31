@@ -75,11 +75,11 @@ $services = queryExecute($getServicesQuery, true);
                         <!-- Danh sách users  -->
                         <table class="table table-stripped">
                             <thead>
-                                <th>ID</th>
-                                <th>Tên</th>
+                                <th width=10%>ID</th>
+                                <th width=15%>Tên</th>
                                 <th>Introduce</th>
                                 <th width="150">Ảnh</th>
-                                <th>Trạng thái</th>
+                                <th width=10%>Trạng thái</th>
                                 <th width=10%>
                                     <a href="<?php echo ADMIN_URL . 'services/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                 </th>
@@ -99,9 +99,9 @@ $services = queryExecute($getServicesQuery, true);
                                         </td>
                                         <td>
                                             <?php if ($service['status'] == 1) { ?>
-                                                Active
+                                                <span class="">Active</span>
                                             <?php } else if ($service['status'] == 0) { ?>
-                                                Inactive
+                                                <span class="text-danger">Inactive</span>
                                             <?php } ?>
                                         </td>
                                         <td>

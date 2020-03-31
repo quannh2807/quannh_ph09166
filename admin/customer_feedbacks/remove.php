@@ -11,19 +11,19 @@ include_once "../../config/utils.php";
 checkAdminLoggedIn();
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
 
-$getRemoveUserQuery = "select * from users where id = $id";
-$removeUser = queryExecute($getRemoveUserQuery, false);
-if(!$removeUser){
-    header("location: " . ADMIN_URL . "users?msg=Tài khoản không tồn tại");
+$getFeedbacksQuery = "select * from customer_feedbacks where id = $id";
+$feedbacks = queryExecute($getFeedbacksQuery, false);
+if(!$feedbacks){
+    header("location: " . ADMIN_URL . "customer_feedbacks?msg=Feedbacks này không tồn tại");
     die;
 }
 
-if($removeUser['role_id'] >= $_SESSION[AUTH]['role_id']){
-    header("location: " . ADMIN_URL . "users?msg=Không đủ quyền hạn thực hiện hành động này");
+if($_SESSION[AUTH]['role_id'] < 2){
+    header("location: " . ADMIN_URL . "customer_feedbacks?msg=Không đủ quyền hạn thực hiện hành động này");
     die;
 }
 
-$removeUserQuery = "delete from users where id = $id";
-queryExecute($removeUserQuery, false);
-header("location: " . ADMIN_URL . "users?msg=Xóa tài khoản thành công");
+$removeFeedbacksQuery = "delete from customer_feedbacks where id = $id";
+queryExecute($removeFeedbacksQuery, false);
+header("location: " . ADMIN_URL . "customer_feedbacks?msg=Xóa phản hồi thành công");
 die;

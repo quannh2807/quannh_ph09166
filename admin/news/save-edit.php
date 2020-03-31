@@ -8,10 +8,19 @@ $content = trim($_POST['content']);
 $author_id = trim($_POST['author_id']);
 $created_at = trim($_POST['created_at']);
 $feature_image = $_FILES['feature_image'];
-// dd($feature_image);
+
 // validate bằng php
 $titleerr = "";
 $contenterr = "";
+
+// kiểm tra tin tức có tồn tại hay không
+$getNewsQuery = "select * from news where id = $id";
+$news = queryExecute($getNewsQuery, false);
+
+if(!$news){
+    header("location: " . ADMIN_URL . 'news?msg=News không tồn tại');die;
+}
+
 // check title
 if (strlen($title) < 10 || strlen($title) > 100) {
     $titleerr = "Yêu cầu nhập tiêu đề nằm trong khoảng 10-100 ký tự";
@@ -27,7 +36,7 @@ if ($titleerr . $contenterr!= "") {
 }
 
 // upload file ảnh
-$filename = "";
+$filename = $news['feature_image'];
 if($feature_image['size'] > 0){
     $filename = uniqid() . '-' . $feature_image['name'];
     move_uploaded_file($feature_image['tmp_name'], "../../public/img/" . $filename);
