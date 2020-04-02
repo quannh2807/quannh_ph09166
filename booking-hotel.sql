@@ -70,7 +70,7 @@ CREATE TABLE `customer_feedbacks`(
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 3;
 -- -------------------------------------------------------------
 
 
@@ -161,11 +161,25 @@ AUTO_INCREMENT = 1;
 
 -- CREATE TABLE "services" -------------------------------------
 CREATE TABLE `services`( 
-	`id` Int AUTO_INCREMENT NOT NULL,
-	`name` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`feature_img` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`feature_img` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`introduce` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`status` Int NOT NULL,
+	`status` Int( 1 ) NOT NULL,
+	PRIMARY KEY ( `id` ) )
+CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci
+ENGINE = InnoDB
+AUTO_INCREMENT = 3;
+-- -------------------------------------------------------------
+
+
+-- CREATE TABLE "showcases" ------------------------------------
+CREATE TABLE `showcases`( 
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`status` Int( 1 ) NOT NULL,
+	`img_path` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
@@ -191,40 +205,26 @@ AUTO_INCREMENT = 9;
 -- -------------------------------------------------------------
 
 
--- CREATE TABLE "showcases" ------------------------------------
-CREATE TABLE `showcases`( 
-	`id` Int AUTO_INCREMENT NOT NULL,
-	`name` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`status` Int NOT NULL,
-	`img_path` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = utf8
-COLLATE = utf8_unicode_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- -------------------------------------------------------------
-
-
 -- CREATE TABLE "web_settings" ---------------------------------
 CREATE TABLE `web_settings`( 
-	`id` Int AUTO_INCREMENT NOT NULL,
-	`name` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`status` Int NOT NULL,
-	`logo` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`phone_number` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`address` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`email` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`status` Int( 1 ) NOT NULL,
+	`logo` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`phone_number` VarChar( 10 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`address` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`map_url` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`youtube_url` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`facebook_url` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`background_img` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`overview_img` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`background_img` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`overview_img` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`introduce_content` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`news_id` Int NOT NULL,
 	`introduce_welcome` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`introduce_services` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`customer_feedbacks` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`showcase_id` VarChar CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`news_id` Int( 11 ) NOT NULL,
+	`showcase_id` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
@@ -248,6 +248,17 @@ INSERT INTO `contacts`(`id`,`name`,`phone_number`,`email`,`subject`,`messages`,`
 
 
 -- Dump data of "customer_feedbacks" -----------------------
+INSERT INTO `customer_feedbacks`(`id`,`name`,`address`,`avatar`,`content`,`status`) VALUES 
+( '1', 'John Doe', 'www.john.com', 'public/img/5e82b243da55b-customer-says-one.png', '
+Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan urna vitae molestie interdum.
+
+
+Nam sed placerat libero, non eleifend dolor.
+
+', '1' ),
+( '2', 'John Doe', 'www.john.com', 'public/img/5e82c551b1e17-5e773a07d6076-avartar.png', 'Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan urna vitae molestie interdum.
+
+Nam sed placerat libero, non eleifend dolor.""', '0' );
 -- ---------------------------------------------------------
 
 
@@ -300,6 +311,13 @@ INSERT INTO `roles`(`id`,`name`,`status`) VALUES
 
 
 -- Dump data of "services" ---------------------------------
+INSERT INTO `services`(`id`,`name`,`feature_img`,`introduce`,`status`) VALUES 
+( '1', 'Restaurant', 'public/img/5e81aacfbc911-hotel-facility-one.jpg', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor.  Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.', '0' ),
+( '2', 'SPORTS CLUB', 'public/img/5e829ec3e5ffa-hotel-facility-three.jpg', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor.  Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.', '1' );
+-- ---------------------------------------------------------
+
+
+-- Dump data of "showcases" --------------------------------
 -- ---------------------------------------------------------
 
 
@@ -308,14 +326,10 @@ INSERT INTO `users`(`id`,`name`,`password`,`email`,`role_id`,`phone_number`,`ava
 ( '1', 'QuAn Nguyen', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'helgrindxxx@gmail.com', '3', '914946200', 'public/img/5e773a07d6076-avartar.png' ),
 ( '2', 'Harry', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'harry@gmail.com', '2', '0987654321', 'public/img/5e773982aa40f-about-us-staff-six.jpg' ),
 ( '3', 'Maria', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'maria@gmail.com', '1', '0123456789', 'public/img/5e7ed0ca73014-about-us-staff-seven.jpg' ),
-( '4', 'Khách Hàng 1', '$2y$10$bUauX78vPaPIXNCeosVy1.oKLg7gOiZe9bccEcvFv/v6Armygztr6', 'khachhang1@gmail.com', '1', '', 'public/img/default-image.jpg' ),
+( '4', 'Khách Hàng 1', '$2y$10$bUauX78vPaPIXNCeosVy1.oKLg7gOiZe9bccEcvFv/v6Armygztr6', 'khachhang1@gmail.com', '1', '0868456456', 'public/img/5e8195c49fcb8-comment_photo_2.jpg' ),
 ( '5', 'Khách Hàng 2', '$2y$10$A.G.dDw8JLSwfiKd7r4WGeyORA22wGJ4Y5jM7pWjNPCyq3SWaz88a', 'khachhang2@gmail.com', '1', '', 'public/img/default-image.jpg' ),
 ( '7', 'Khách Hàng 3', '$2y$10$SKyi7QiAeGaUeMVpb.l0kOckTAF8SGNVBZ/lqSlfbyWCRfBXWd56.', 'khachhang3@gmail.com', '1', '', 'public/img/default-image.jpg' ),
 ( '8', 'NGuyen tu Bien', '$2y$10$/HYvfMuOIpD2MIvFyZ/Fnul8cvPWonxdrj2RwU9bAZL1sufuqo3Dy', 'bien@gmail.com', '1', '', 'public/img/default-image.jpg' );
--- ---------------------------------------------------------
-
-
--- Dump data of "showcases" --------------------------------
 -- ---------------------------------------------------------
 
 
