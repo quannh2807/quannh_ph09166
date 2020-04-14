@@ -1,6 +1,6 @@
 <?php
 # define contants
-define('BASE_URL', 'http://localhost/booking-hotel/');
+define('BASE_URL', 'http://bookhotel.hq/');
 define('ADMIN_URL', BASE_URL . 'admin/');
 define('PUBLIC_URL', BASE_URL . 'public/');
 define('ADMIN_ASSET_URL', PUBLIC_URL . 'admin/');
@@ -16,7 +16,7 @@ function getdbConn()
         $host = "127.0.0.1";
         $dbname = "booking-hotel";
         $dbusername = "root";
-        $dbpass = "";
+        $dbpass = "123456789";
 
         $connect = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $dbusername, $dbpass);
         return $connect;
@@ -63,4 +63,3 @@ function dd($data) {
     var_dump($data);
     die;
 }
-?>
