@@ -11,32 +11,6 @@
 -- ---------------------------------------------------------
 
 
--- CREATE TABLE "booking" --------------------------------------
-CREATE TABLE `booking`( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`customer_name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`phone_number` VarChar( 10 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`chekin_date` Timestamp NOT NULL DEFAULT 'CURRENT_TIMESTAMP(6)',
-	`checkout_date` Timestamp NOT NULL DEFAULT 'CURRENT_TIMESTAMP(6)',
-	`adults` Int( 10 ) NOT NULL,
-	`children` Int( 10 ) NOT NULL,
-	`room_types` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`messages` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`status` Int( 1 ) NOT NULL,
-	`created_date` Timestamp NOT NULL DEFAULT 'CURRENT_TIMESTAMP(6)',
-	`checkd_in` Timestamp NOT NULL DEFAULT 'CURRENT_TIMESTAMP(6)',
-	`checkd_in_date` Timestamp NOT NULL DEFAULT 'CURRENT_TIMESTAMP(6)',
-	`reply_by` Int( 11 ) NOT NULL,
-	`reply_messages` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = utf8
-COLLATE = utf8_unicode_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- -------------------------------------------------------------
-
-
 -- CREATE TABLE "contacts" -------------------------------------
 CREATE TABLE `contacts`( 
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
@@ -233,10 +207,6 @@ AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
 
 
--- Dump data of "booking" ----------------------------------
--- ---------------------------------------------------------
-
-
 -- Dump data of "contacts" ---------------------------------
 INSERT INTO `contacts`(`id`,`name`,`phone_number`,`email`,`subject`,`messages`,`status`,`reply_by`,`reply_for`,`created_at`,`reply_messages`) VALUES 
 ( '1', 'customer1', '0868456456', 'customer1@gmail.com', 'Phản hồi vu vơ 1', 'Nội dung 1', '1', '1', '1', '2020-03-26 21:02:23', 'Nội dung phản hồi customer 1' ),
@@ -346,8 +316,8 @@ CREATE INDEX `role_id` USING BTREE ON `users`( `role_id` );
 ALTER TABLE `users`
 	ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY ( `role_id` )
 	REFERENCES `roles`( `id` )
-	ON DELETE Restrict
-	ON UPDATE Restrict;
+	ON DELETE No Action
+	ON UPDATE No Action;
 -- -------------------------------------------------------------
 
 
