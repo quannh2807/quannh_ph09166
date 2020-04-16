@@ -644,7 +644,11 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
     <!-- start script link -->
     <?php include_once './public/_share/script.php'; ?>
     <!-- end script link -->
-
+    <script>
+        setTimeout(() => {
+            sessionStorage.clear();
+        }, 2500);
+    </script>
 </body>
 
 <!-- Mirrored from premiumlayers.net/demo/html/hotelbooking/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Mar 2020 11:51:41 GMT -->
