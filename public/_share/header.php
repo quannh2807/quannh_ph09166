@@ -26,42 +26,39 @@
                                 <li role="presentation">
                                     <a href="<?=BASE_URL?>">Home</a>
                                 </li>
-                                <li><a href="accomodation.php">Accomodation</a></li>
-                                <li><a href="gallery.php">Gallery</a></li>
+                                <li><a href="<?= BASE_URL . 'accomodation.php'?>">Accomodation</a></li>
+                                <li><a href="<?= BASE_URL . 'gallery.php'?>">Gallery</a></li>
                                 <li role="presentation" class="dropdown">
                                     <a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                                         Features
                                     </a>
                                     <ul id="menu2" class="dropdown-menu" role="menu">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="about-us.php">About US</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="booking.php">Booking</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="room-details.php">Room Details</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="staff.php">Our Staff</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="404.php">404 Page</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL .'about-us.php'?>">About US</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL . 'booking.php'?>">Booking</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL . 'room-details.php'?>">Room Details</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=BASE_URL . 'staff.php'?>">Our Staff</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL . '404.php'?>">404 Page</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="blog.php">News</a></li>
-                                <li><a href="contact-us.php">Contacts</a></li>
+                                <li><a href="<?= BASE_URL . 'blog.php'?>">News</a></li>
+                                <li><a href="<?= BASE_URL . 'contact-us.php'?>">Contacts</a></li>
 
                                 <?php if ($loggedInUser) : ?>
                                     <li role="presentation" class="dropdown">
                                         <a id="drop2" href="#" class="dropdown-toggle text-primary" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
                                             Hi, <?= $loggedInUser['name']; ?>
                                         </a>
-                                        <!-- <a class="nav-link text-primary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, <?= $loggedInUser['name']; ?></a> -->
                                         <ul id="menu2" class="dropdown-menu" role="menu">
                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thông tin cá nhân</a></li>
                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Đổi mật khẩu</a></li>
                                             <?php if ($loggedInUser !== null && $loggedInUser['role_id'] > 1):?>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" class="login-color" href="http://localhost/booking-hotel/admin/dashboard">Quản trị</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" class="login-color" href="<?=ADMIN_URL. 'dashboard'?>">Quản trị</a></li>
                                             <?php endif;?>
                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=LOGIN_URL.'logout.php'?>">Logout</a></li>
-                                            <!-- <li><a class="nav-link text-primary font-weight-italic" href="./logout.php">Logout</a></li> -->
                                         </ul>
                                     </li>
                                 <?php else : ?>
                                     <li><a href="<?=LOGIN_URL.'login.php'?>" class="nav-link text-primary login-color">Login</a></li>
-                                    <!-- <li><a href="booking.php">Register</a></li> -->
                                 <?php endif ?>
                             </ul>
                         </div><!-- /.navbar-collapse -->
