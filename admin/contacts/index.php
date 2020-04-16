@@ -88,7 +88,7 @@ $contacts = queryExecute($getContactsQuery, true);
                         </div>
                         <!-- Danh sách contacts  -->
                         <table class="table table-hover">
-                            <thead>
+                            <thead class="table-secondary">
                                 <th>ID</th>
                                 <th>Tên</th>
                                 <th>SDT</th>

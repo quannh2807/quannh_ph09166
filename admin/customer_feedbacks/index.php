@@ -74,7 +74,7 @@ $feedbacks = queryExecute($getFeedbacksQuery, true);
                         </div>
                         <!-- Danh sách users  -->
                         <table class="table table-stripped">
-                            <thead>
+                            <thead class="table-secondary">
                                 <th>ID</th>
                                 <th width=15%>Tên</th>
                                 <th width=15%>Địa chỉ</th>

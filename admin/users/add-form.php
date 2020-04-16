@@ -11,6 +11,12 @@ $roles = queryExecute($getRoleQuery, true);
 
 <head>
     <?php include_once '../_share/style.php'; ?>
+    <style>
+        .error {
+            color: #ff0000;
+            display: inline;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -46,14 +52,14 @@ $roles = queryExecute($getRoleQuery, true);
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Tên người dùng<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" name="name" id="name">
                                     <?php if (isset($_GET['nameerr'])) : ?>
                                         <label class="error"><?= $_GET['nameerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Email<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="email">
+                                    <input type="text" class="form-control" name="email" id="email">
                                     <?php if (isset($_GET['emailerr'])) : ?>
                                         <label class="error"><?= $_GET['emailerr'] ?></label>
                                     <?php endif; ?>
@@ -86,17 +92,22 @@ $roles = queryExecute($getRoleQuery, true);
                                         <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="">Ảnh đại diện<span class="text-danger">*</span></label>
-                                    <input type="file" class="form-control" name="avatar" onchange="encodeImageFileAsURL(this)">
+                                <div class="input-group mt-3 mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Ảnh đại diện<span class="text-danger">*</span></span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="avatar" onchange="encodeImageFileAsURL(this)">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Số điện thoại</label>
-                                    <input type="text" class="form-control" name="phone_number">
+                                    <input type="text" class="form-control" name="phone_number" id="phone_number">
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                                    <a href="<?= ADMIN_URL . 'users' ?>" id="btnRemove" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
                         </div>
@@ -126,73 +137,98 @@ $roles = queryExecute($getRoleQuery, true);
             }
             reader.readAsDataURL(file);
         }
-        $('#add-user-form').validate({
-            rules: {
-                name: {
-                    required: true,
-                    maxlength: 191
-                },
-                email: {
-                    required: true,
-                    maxlength: 191,
-                    email: true,
-                    remote: {
-                        url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
-                        type: "post",
-                        data: {
-                            email: function() {
-                                // đoán là không lấy được email ở đoạn này
-                                return $("input[name='email']").val();
+        $().ready(() => {
+            var name = document.getElementById('name');
+            name.value = sessionStorage.getItem('name');
+
+            var email = document.getElementById('email');
+            email.value = sessionStorage.getItem('email');
+
+            var phone_number = document.getElementById('phone_number');
+            phone_number.value = sessionStorage.getItem('phone_number');
+
+            name.addEventListener('change', function() {
+                sessionStorage.setItem('name', name.value);
+            });
+            email.addEventListener('change', function() {
+                sessionStorage.setItem('email', email.value);
+            });
+            phone_number.addEventListener('change', function() {
+                sessionStorage.setItem('phone_number', phone_number.value);
+            });
+
+            var btnRemove = document.getElementById('btnRemove');
+            btnRemove.addEventListener('click', function() {
+                sessionStorage.clear();
+            });
+
+            $('#add-user-form').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        maxlength: 191
+                    },
+                    email: {
+                        required: true,
+                        maxlength: 191,
+                        email: true,
+                        remote: {
+                            url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
+                            type: "post",
+                            data: {
+                                email: function() {
+                                    return $("input[name='email']").val();
+                                }
                             }
                         }
+                    },
+                    password: {
+                        required: true,
+                        maxlength: 191
+                    },
+                    cfpassword: {
+                        required: true,
+                        equalTo: "#main-password"
+                    },
+                    phone_number: {
+                        number: true
+                    },
+                    avatar: {
+                        required: true,
+                        extension: "png|jpg|jpeg|gif"
                     }
                 },
-                password: {
-                    required: true,
-                    maxlength: 191
-                },
-                cfpassword: {
-                    required: true,
-                    equalTo: "#main-password"
-                },
-                phone_number: {
-                    number: true
-                },
-                avatar: {
-                    required: true,
-                    extension: "png|jpg|jpeg|gif"
+                messages: {
+                    name: {
+                        required: "Hãy nhập tên người dùng",
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                    },
+                    email: {
+                        required: "Hãy nhập email",
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
+                        email: "Không đúng định dạng email",
+                        remote: "Email đã tồn tại, vui lòng sử dụng email khác"
+                    },
+                    password: {
+                        required: "Hãy nhập mật khẩu",
+                        maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                    },
+                    cfpassword: {
+                        required: "Nhập lại mật khẩu",
+                        equalTo: "Cần khớp với mật khẩu"
+                    },
+                    phone_number: {
+                        min: "Bắt buộc là số có 10 chữ số",
+                        max: "Bắt buộc là số có 10 chữ số",
+                        number: "Nhập định dạng số"
+                    },
+                    avatar: {
+                        required: "Hãy nhập ảnh đại diện",
+                        extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
+                    }
                 }
-            },
-            messages: {
-                name: {
-                    required: "Hãy nhập tên người dùng",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                email: {
-                    required: "Hãy nhập email",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                    email: "Không đúng định dạng email",
-                    remote: "Email đã tồn tại, vui lòng sử dụng email khác"
-                },
-                password: {
-                    required: "Hãy nhập mật khẩu",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                cfpassword: {
-                    required: "Nhập lại mật khẩu",
-                    equalTo: "Cần khớp với mật khẩu"
-                },
-                phone_number: {
-                    min: "Bắt buộc là số có 10 chữ số",
-                    max: "Bắt buộc là số có 10 chữ số",
-                    number: "Nhập định dạng số"
-                },
-                avatar: {
-                    required: "Hãy nhập ảnh đại diện",
-                    extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
-                }
-            }
-        });
+            });
+        })
     </script>
 </body>
 
