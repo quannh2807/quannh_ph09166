@@ -23,12 +23,14 @@ if (strlen($email) == 0) {
 if ($emailerr == "" && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $emailerr = "Không đúng định dạng email";
 }
+
 // check email đã tồn tại hay chưa
 $checkEmailQuery = "select * from users where email = '$email'";
 $users = queryExecute($checkEmailQuery, true);
 if ($emailerr == "" && count($users) > 0) {
     $emailerr = "Email đã tồn tại, vui lòng sử dụng email khác";
 }
+
 // check password
 if (strlen($password) < 6) {
     $passworderr = "Mật khẩu cần >= 6 ký tự";
@@ -42,6 +44,7 @@ if ($nameerr . $emailerr . $passworderr != "") {
     header('location: ' . LOGIN_URL . "register.php?nameerr=$nameerr&emailerr=$emailerr&passworderr=$passworderr");
     die;
 }
+
 // mã hóa mật khẩu
 $password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -53,8 +56,8 @@ $insertUserQuery = "insert into users
                           (name, password, email, role_id, phone_number, avatar)
                     values
                           ('$name', '$password', '$email', '$role_id', '$phone_number', '$filename')";
-
 // dd($insertUserQuery);
 queryExecute($insertUserQuery, false);
 header("location: " . LOGIN_URL . "login.php?messages=$messages&style=none");
 die;
+?>
