@@ -74,7 +74,7 @@ $services = queryExecute($getServicesQuery, true);
                         </div>
                         <!-- Danh sách users  -->
                         <table class="table table-stripped">
-                            <thead>
+                            <thead class="table-secondary">
                                 <th width=10%>ID</th>
                                 <th width=15%>Tên</th>
                                 <th>Introduce</th>

@@ -102,7 +102,7 @@ $users = queryExecute($getUsersQuery, true);
                         </div>
                         <!-- Danh sách users  -->
                         <table class="table table-stripped">
-                            <thead>
+                            <thead class="table-secondary">
                                 <th>ID</th>
                                 <th>Tên</th>
                                 <th>Email</th>

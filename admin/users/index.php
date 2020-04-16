@@ -7,7 +7,6 @@ $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 $roleId = isset($_GET['role']) == true ? $_GET['role'] : false;
 
 // Lấy danh sách roles
-// $getRolesQuery = "select * from roles where status = 1";
 $getRolesQuery = "select * from roles";
 $roles = queryExecute($getRolesQuery, true);
 
@@ -33,7 +32,6 @@ if ($keyword !== "") {
     }
 }
 $users = queryExecute($getUsersQuery, true);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,12 +43,13 @@ $users = queryExecute($getUsersQuery, true);
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
-        <!-- Navbar -->
+        <!-- Header -->
         <?php include_once '../_share/header.php'; ?>
-        <!-- /.navbar -->
+        <!-- Header -->
 
         <!-- Main Sidebar Container -->
         <?php include_once '../_share/sidebar.php'; ?>
+        <!-- Main Sidebar Container -->
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -64,7 +63,7 @@ $users = queryExecute($getUsersQuery, true);
                         <!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard'?>">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard' ?>">Dashboard</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -102,7 +101,7 @@ $users = queryExecute($getUsersQuery, true);
                         </div>
                         <!-- Danh sách users  -->
                         <table class="table table-stripped">
-                            <thead>
+                            <thead class="table-secondary">
                                 <th>ID</th>
                                 <th>Tên</th>
                                 <th>Email</th>
@@ -110,7 +109,7 @@ $users = queryExecute($getUsersQuery, true);
                                 <th width="100">Ảnh</th>
                                 <th>Số ĐT</th>
                                 <th>
-                                    <a href="<?php echo ADMIN_URL . 'users/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
+                                    <a href="<?= ADMIN_URL . 'users/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                 </th>
                             </thead>
                             <tbody>
@@ -123,17 +122,17 @@ $users = queryExecute($getUsersQuery, true);
                                             <?php echo $us['role_name'] ?>
                                         </td>
                                         <td>
-                                            <img class="img-fluid" src="<?= BASE_URL . $us['avatar']?>" alt="">
+                                            <img class="img-fluid" src="<?= BASE_URL . $us['avatar'] ?>" alt="">
                                         </td>
                                         <td><?php echo $us['phone_number'] ?></td>
                                         <td>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id'] ): ?>
-                                                <a href="<?php echo ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
+                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
+                                                <a href="<?= ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
                                             <?php endif; ?>
                                             <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'users/remove.php?id=' . $us['id'] ?>" class="btn-remove btn btn-sm btn-danger">
+                                                <a href="<?= ADMIN_URL . 'users/remove.php?id=' . $us['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             <?php endif; ?>
@@ -157,6 +156,10 @@ $users = queryExecute($getUsersQuery, true);
     <?php include_once '../_share/script.php'; ?>
     <script>
         $(document).ready(function() {
+            setTimeout(() => {
+                sessionStorage.clear();
+            }, 2500);
+
             $('.btn-remove').on('click', function() {
                 var redirectUrl = $(this).attr('href');
                 Swal.fire({
@@ -177,7 +180,7 @@ $users = queryExecute($getUsersQuery, true);
             <?php if (isset($_GET['msg'])) : ?>
                 Swal.fire({
                     position: 'bottom-end',
-                    icon: 'warning',
+                    icon: 'success',
                     title: "<?= $_GET['msg']; ?>",
                     showConfirmButton: false,
                     timer: 1500

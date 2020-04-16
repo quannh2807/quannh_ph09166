@@ -96,7 +96,7 @@ $roles = queryExecute($getRoleQuery, true);
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                                    <a href="<?= ADMIN_URL . 'users' ?>" id="btnRemove" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
                         </div>
@@ -114,6 +114,30 @@ $roles = queryExecute($getRoleQuery, true);
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
+        var name = document.getElementById('name');
+        name.value = sessionStorage.getItem('name');
+
+        var email = document.getElementById('email');
+        email.value = sessionStorage.getItem('email');
+
+        var phone_number = document.getElementById('phone_number');
+        phone_number.value = sessionStorage.getItem('phone_number');
+
+        name.addEventListener('change', function() {
+            sessionStorage.setItem('name', name.value);
+        });
+        email.addEventListener('change', function() {
+            sessionStorage.setItem('email', email.value);
+        });
+        phone_number.addEventListener('change', function() {
+            sessionStorage.setItem('phone_number', phone_number.value);
+        });
+
+        var btnRemove = document.getElementById('btnRemove');
+        btnRemove.addEventListener('click', function() {
+            sessionStorage.clear();
+        });
+
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if (file === undefined) {
@@ -141,7 +165,6 @@ $roles = queryExecute($getRoleQuery, true);
                         type: "post",
                         data: {
                             email: function() {
-                                // đoán là không lấy được email ở đoạn này
                                 return $("input[name='email']").val();
                             }
                         }

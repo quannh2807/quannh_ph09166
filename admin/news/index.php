@@ -90,7 +90,7 @@ $news = queryExecute($getNewsQuery, true);
                         <!-- Danh sách users  -->
                         <div class="table-responsive">
                             <table class="table table-stripped">
-                                <thead class="">
+                                <thead class="table-secondary">
                                     <th>ID</th>
                                     <th width="200">Ảnh tiêu đề</th>
                                     <th>Tác giả</th>
