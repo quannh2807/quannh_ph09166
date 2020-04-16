@@ -2,6 +2,7 @@
 # define contants
 define('BASE_URL', 'http://booking-hotel.helgrind/');
 define('ADMIN_URL', BASE_URL . 'admin/');
+define('LOGIN_URL', BASE_URL . 'login/');
 define('PUBLIC_URL', BASE_URL . 'public/');
 define('ADMIN_ASSET_URL', PUBLIC_URL . 'admin/');
 define('DEFAULT_IMAGE', PUBLIC_URL . 'img/default-image.jpg');

@@ -17,7 +17,6 @@
 <script src="./public/js/owl.carousel.min.js"></script>
 <!-- lightslider -->
 <script src="./public/js/lightslider.js"></script>
-
 <!-- wow Animation -->
 <script src="./public/js/wow.min.js"></script>
 <!--Activating WOW Animation only for modern browser-->

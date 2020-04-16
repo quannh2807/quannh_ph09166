@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "./config/utils.php";
+include_once "../config/utils.php";
 
 $name = trim($_POST['name']);
 $email = trim($_POST['email']);
@@ -39,7 +39,7 @@ if ($passworderr == "" && $password != $cfpassword) {
 }
 
 if ($nameerr . $emailerr . $passworderr != "") {
-    header('location: ' . BASE_URL . "register.php?nameerr=$nameerr&emailerr=$emailerr&passworderr=$passworderr");
+    header('location: ' . LOGIN_URL . "register.php?nameerr=$nameerr&emailerr=$emailerr&passworderr=$passworderr");
     die;
 }
 // mã hóa mật khẩu
@@ -56,5 +56,5 @@ $insertUserQuery = "insert into users
 
 // dd($insertUserQuery);
 queryExecute($insertUserQuery, false);
-header("location: " . BASE_URL . "login.php?messages=$messages&style=none");
+header("location: " . LOGIN_URL . "login.php?messages=$messages&style=none");
 die;
