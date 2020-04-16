@@ -24,7 +24,7 @@
                         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li role="presentation">
-                                    <a href="./index.php">Home</a>
+                                    <a href="<?=BASE_URL?>">Home</a>
                                 </li>
                                 <li><a href="accomodation.php">Accomodation</a></li>
                                 <li><a href="gallery.php">Gallery</a></li>
@@ -52,19 +52,15 @@
                                         <ul id="menu2" class="dropdown-menu" role="menu">
                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thông tin cá nhân</a></li>
                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Đổi mật khẩu</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1" class="login-color" href="http://localhost/booking-hotel/admin/dashboard"
-                                            style="<?php if ($loggedInUser !== null && $loggedInUser['role_id'] > 1) {
-                                                    echo 'display:inline-block';
-                                                } else {
-                                                    echo 'display:none';
-                                                } ?>"
-                                            >Quản trị</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="./logout.php">Logout</a></li>
+                                            <?php if ($loggedInUser !== null && $loggedInUser['role_id'] > 1):?>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" class="login-color" href="http://localhost/booking-hotel/admin/dashboard">Quản trị</a></li>
+                                            <?php endif;?>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=LOGIN_URL.'logout.php'?>">Logout</a></li>
                                             <!-- <li><a class="nav-link text-primary font-weight-italic" href="./logout.php">Logout</a></li> -->
                                         </ul>
                                     </li>
                                 <?php else : ?>
-                                    <li><a href="./login.php" class="nav-link text-primary login-color">Login</a></li>
+                                    <li><a href="<?=LOGIN_URL.'login.php'?>" class="nav-link text-primary login-color">Login</a></li>
                                     <!-- <li><a href="booking.php">Register</a></li> -->
                                 <?php endif ?>
                             </ul>

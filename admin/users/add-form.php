@@ -141,6 +141,7 @@ $roles = queryExecute($getRoleQuery, true);
                         type: "post",
                         data: {
                             email: function() {
+                                // đoán là không lấy được email ở đoạn này
                                 return $("input[name='email']").val();
                             }
                         }
@@ -156,9 +157,6 @@ $roles = queryExecute($getRoleQuery, true);
                 },
                 phone_number: {
                     number: true
-                },
-                house_no: {
-                    maxlength: 191
                 },
                 avatar: {
                     required: true,
@@ -188,9 +186,6 @@ $roles = queryExecute($getRoleQuery, true);
                     min: "Bắt buộc là số có 10 chữ số",
                     max: "Bắt buộc là số có 10 chữ số",
                     number: "Nhập định dạng số"
-                },
-                house_no: {
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
                 },
                 avatar: {
                     required: "Hãy nhập ảnh đại diện",
