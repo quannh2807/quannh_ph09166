@@ -34,7 +34,7 @@ if ($nameerr . $addresserr . $contenterr != "") {
 // upload file ảnh
 $filename = "";
 if($avatar['size'] > 0){
-    $filename = uniqid() . 'feedback -' . $avatar['name'];
+    $filename = uniqid() . 'feedback-' . $avatar['name'];
     move_uploaded_file($avatar['tmp_name'], "../../public/img/" . $filename);
     $filename = "public/img/" . $filename;
 }

@@ -55,7 +55,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="far fa-newspaper nav-icon"></i>
+                        <i class="nav-icon fad fa-newspaper"></i>
                         <p>
                             Quản lý tin tức
                             <i class="fas fa-angle-left right"></i>
@@ -78,7 +78,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="far fa-user-circle nav-icon"></i>
+                        <i class="fal fa-address-card nav-icon"></i>
                         <p>
                             Quản lý liên hệ
                             <i class="fas fa-angle-left right"></i>
@@ -101,9 +101,9 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-cogs"></i>
+                        <i class="nav-icon far fa-cogs"></i>
                         <p>
-                            Quản lý Web setting
+                            Quản lý web-setting
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -124,32 +124,9 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-concierge-bell"></i>
+                        <i class="nav-icon far fa-comment-alt-dots"></i>
                         <p>
-                            Quản lý Services
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= ADMIN_URL . 'services' ?>" class="nav-link">
-                                <i class="fa fa-list-ol nav-icon"></i>
-                                <p>Danh sách</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= ADMIN_URL . 'services/add-form.php' ?>" class="nav-link">
-                                <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
-                                <p>Thêm dịch vụ</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-comment-alt"></i>
-                        <p>
-                            Customer Feedbacks
+                            Quản lý Feedbacks
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -168,6 +145,30 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fal fa-concierge-bell"></i>
+                        <p>
+                            Quản lý dịch vụ
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'services' ?>" class="nav-link">
+                                <i class="fa fa-list-ol nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'services/add-form.php' ?>" class="nav-link">
+                                <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
+                                <p>Thêm dịch vụ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Logout -->
                 <li class="nav-item has-treeview">
                     <a href="<?= BASE_URL . 'logout.php' ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>

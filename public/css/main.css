@@ -289,8 +289,6 @@ form#form1 .form-group {
     width: 100%;
 }
 
-.hotel_booking_area select#room {}
-
 .form-control:focus {
     box-shadow: none;
 }
@@ -391,7 +389,7 @@ body#accomodation_page .single_wrapper_details {
     -webkit-transition: 0.7s;
     -o-transition: 0.7s;
     transition: 0.7s;
-    -webkit-display: block;
+    display: block;
     padding: 13px;
 }
 
@@ -672,8 +670,6 @@ body#home_one .nav-tabs>li.active>a>img {
     background: #fff none repeat scroll 0 0;
     padding: 55px;
 }
-
-.hotel_facilities_content .single-tab-details {}
 
 .hotel_facilities_content .single-tab-details>h6 {
     margin-bottom: 14px;
@@ -1059,8 +1055,6 @@ body#staff_page .breadcrumb_main_area {
     position: relative;
 }
 
-body#room_detail_page .deluxe_room_detail .single_facilities_name {}
-
 body#about_us_page .facilities_main_part .facilities_name,
 body#room_detail_page .deluxe_room_detail .facilities_name {
     padding: 0 4px;
@@ -1228,7 +1222,7 @@ body#accomodation_page .range_slider .range input {
 .send_mail textarea {
     border: 1px solid #e0e1e5;
     color: #666666;
-    display: inline;
+    display: inline-block;
     font-size: 14px;
     line-height: 20px;
     padding: 20px;
@@ -1523,8 +1517,6 @@ body#booking_page .booking_info_area .facilities_name .section_title h5 {
     font-size: 18px;
     text-transform: none;
 }
-
-body#booking_page .booking_info_area .facilities_name .section_title h5 p.price {}
 
 body#booking_page .booking_info_area .facilities_name .section_title h5 sup.day {
     font-size: 11px;
@@ -2091,7 +2083,6 @@ ul.coments li ul li {
 body#single_blog_page .right_sidebar_area .input_search {
     background: #f0f0f0 none repeat scroll 0 0;
     padding: 30px;
-    width: ;
 }
 
 body#single_blog_page .input_search>input {
@@ -2104,8 +2095,6 @@ body#single_blog_page .input_search>input {
     background: #f0f0f0 none repeat scroll 0 0;
     padding: 30px;
 }
-
-.right_sidebar_area .blog_category ul li a {}
 
 .right_sidebar_area .blog_category ul li a:hover {
     color: #fe5d5d;
@@ -2297,6 +2286,11 @@ body#single_blog_page .recent_post_details>p {
 
 .img-logo {
     width: 200px;
+}
+
+.error {
+    color: #ff0000;
+    font-weight: 400!important;
 }
 
 
