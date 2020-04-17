@@ -85,7 +85,7 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                         </form>
                         <!-- special offer start -->
                         <div class="special_offer_main">
-                            <img src="./public/img/special-offer-main.png" alt="">
+                            <img src="<?= PUBLIC_URL . 'img/special-offer-main.png'?>" alt="">
                         </div>
                         <!-- end offer start -->
                     </div>
@@ -97,7 +97,7 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                     <ul>
 
                         <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
-                            <img src="./public/img/rev-slider/slider-one.jpg" alt="slide">
+                            <img src="<?= PUBLIC_URL . '/img/rev-slider/slider-one.jpg'?>" alt="slide">
                             <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
                                 A brand New Hotel
                             </div>
@@ -110,11 +110,11 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                         </li>
 
                         <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
-                            <img src="./public/img/rev-slider/slider-one.jpg" alt="slide">
-                            <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
+                            <img src="<?= PUBLIC_URL . '/img/rev-slider/slider-two.jpg'?>" alt="slide">
+                            <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #fff; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
                                 Book Your Summer Holidays
                             </div>
-                            <div class="tp-caption large_black sfr" data-x="105" data-y="255" data-speed="1500" data-start="1400" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
+                            <div class="tp-caption large_black sfr" data-x="105" data-y="255" data-speed="1500" data-start="1400" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #fff; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
                                 With HOTEL BOOKING Template
                             </div>
                             <div class="tp-caption lfb carousel-caption-inner" data-x="105" data-y="313" data-speed="1300" data-start="1700" data-easing="easeInOutBack" style="background: #f7c411; padding: 10px; cursor: pointer;">
@@ -298,7 +298,7 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
         <div class="container">
             <div class="hotel_facilities">
                 <div class="section_title nice_title content-center">
-                    <h3>Hotel facilties</h3>
+                    <h3>Hotel services</h3>
                 </div>
                 <div class="hotel_facilities_content">
                     <div role="tabpanel">

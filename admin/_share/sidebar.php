@@ -109,13 +109,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= ADMIN_URL . 'web-settings' ?>" class="nav-link">
+                            <a href="<?= ADMIN_URL . 'web_settings' ?>" class="nav-link">
                                 <i class="fa fa-list-ol nav-icon"></i>
                                 <p>Danh sách</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= ADMIN_URL . 'web-settings/add-form.php' ?>" class="nav-link">
+                            <a href="<?= ADMIN_URL . 'web_settings/add-form.php' ?>" class="nav-link">
                                 <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
                                 <p>Thêm web-settings</p>
                             </a>
