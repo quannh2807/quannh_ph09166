@@ -91,7 +91,7 @@ $feedbacks = queryExecute($getAllFeedbacksSql, true);
                                     <p>Contacts</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="far fa-user-circle"></i>
+                                    <i class="fal fa-address-card"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'contacts' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -104,7 +104,7 @@ $feedbacks = queryExecute($getAllFeedbacksSql, true);
                                     <p>Tin tức</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="far fa-newspaper"></i>
+                                    <i class="fad fa-newspaper"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -114,10 +114,10 @@ $feedbacks = queryExecute($getAllFeedbacksSql, true);
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <h3><?= count($feedbacks); ?></h3>
-                                    <p>Customer Feedbacks</p>
+                                    <p>Feedbacks</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="far fa-list-alt"></i>
+                                    <i class="far fa-comment-alt-dots"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'customer_feedbacks' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -127,56 +127,18 @@ $feedbacks = queryExecute($getAllFeedbacksSql, true);
                     <div class="row">
                         <div class="col-lg-3 col-4">
                             <!-- small box -->
-                            <div class="small-box bg-info">
+                            <div class="small-box bg-success">
                                 <div class="inner">
                                     <h3><?= count($services); ?></h3>
                                     <p>Dịch vụ</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-concierge-bell"></i>
+                                    <i class="fal fa-concierge-bell"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'services' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3><?= count($feedbacks); ?></h3>
-                                    <p>Customer Feedbacks</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="far fa-comment-alt"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'customer_feedbacks' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3><?= count($news); ?></h3>
-                                    <p>Tin tức</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="far fa-newspaper"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-4">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3><?= count($news); ?></h3>
-                                    <p>Danh mục tin tức</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="far fa-list-alt"></i>
-                                </div>
-                                <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
         </div><!-- /.container-fluid -->

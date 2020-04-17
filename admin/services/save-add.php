@@ -16,7 +16,7 @@ if (strlen($name) < 2 || strlen($name) > 191) {
 // upload file ảnh
 $filename = "";
 if($feature_img['size'] > 0){
-    $filename = uniqid() . '-' . $feature_img['name'];
+    $filename = uniqid() . 'service-' . $feature_img['name'];
     move_uploaded_file($feature_img['tmp_name'], "../../public/img/" . $filename);
     $filename = "public/img/" . $filename;
 }

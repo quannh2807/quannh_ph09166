@@ -3,13 +3,13 @@ session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
-// lấy id ra ngoài bang thông id trên đường dẫn
+// get id from url
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
 // get services query
 $getServicesQuery = "select * from services where id = '$id'";
 $services = queryExecute($getServicesQuery, false);
 
-// kiểm tra xem có quyền để thực hiện edit hay không
+// kiểm tra xem quyền để thực hiện edit
 if ($_SESSION[AUTH]['role_id'] < 1) {
     header("location: " . ADMIN_URL . 'news?msg=Bạn không có quyền sửa thông tin bài viết này');
     die;
@@ -20,6 +20,8 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
 
 <head>
     <?php include_once '../_share/style.php'; ?>
+    <!-- Script single-use only -->
+    <script src="https://cdn.tiny.cloud/1/09n2cu8687a01c6pb501sbldantk25a45y32kbe1uneb85j4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -39,7 +41,7 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Cập nhật thông tin Dịch vụ</h1>
+                            <h1 class="m-0 text-dark">Cập nhật thông tin dịch vụ</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -50,19 +52,19 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="add-user-form" action="<?= ADMIN_URL . 'services/save-edit.php' ?>" method="post" enctype="multipart/form-data">
+                    <form id="edit-service-form" action="<?= ADMIN_URL . 'services/save-edit.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="id" value="<?= $services['id'] ?>" hidden>
                                 <div class="form-group">
                                     <label for="">Tên dịch vụ<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name" value="<?= $services['name'] ?>">
+                                    <input type="text" class="form-control" id="nameService" name="name" value="<?= $services['name'] ?>">
                                     <?php if (isset($_GET['nameerr'])) : ?>
                                         <label class="error"><?= $_GET['nameerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Introduce<span class="text-danger">*</span></label>
+                                    <label for="">Giới thiệu<span class="text-danger">*</span></label>
                                     <textarea name="introduce" class="form-control" id="" cols="30" rows="10"><?= $services['introduce'] ?></textarea>
                                     <?php if (isset($_GET['introduceerr'])) : ?>
                                         <label class=" error"><?= $_GET['introduceerr'] ?></label>
@@ -75,31 +77,20 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                                         <img src="<?= BASE_URL . $services['feature_img'] ?>" id="preview-img" class="img-fluid" alt="Ảnh đại diện dịch vụ">
                                     </div>
                                 </div>
-                                <div class="input-group mt-3 mb-4">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Ảnh đại diện<span class="text-danger">*</span></span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="feature_img" onchange="encodeImageFileAsURL(this)">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
+                                <div class="form-group mt-3 mb-4">
+                                    <label for="">Ảnh đại diện<span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_img" onchange="encodeImageFileAsURL(this)">
                                 </div>
                                 <div class="form-group">
-                                    <label for="mySelect1">Trạng thái<span class="text-danger">*</span></label>
-                                    <select id="mySelect1" class="form-control" name="status" value="<?= $services['status'] ?>">
-                                        <?php
-                                        if ($services['status'] == 1) { ?>
-                                            <option value="1" selected>Active</option>
-                                            <option value="0">Inactive</option>
-                                        <?php    } else if ($services['status'] == 0) { ?>
-                                            <option value="1">Active</option>
-                                            <option value="0" selected>Inactive</option>
-                                        <?php } ?>
+                                    <label for="statusService">Trạng thái<span class="text-danger">*</span></label>
+                                    <select id="statusService" class="form-control" name="status">
+                                        <option value="<?= ACTIVE ?>">Kích hoạt</option>
+                                        <option value="<?= INACTIVE ?>">Không kích hoạt</option>
                                     </select>
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                                    <a href="<?= ADMIN_URL . 'services' ?>" id="btnCancel" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
                         </div>
@@ -117,6 +108,44 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
+        // Tinymce
+        tinymce.init({
+            selector: '#introduce',
+            height: 350,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_css: '//www.tiny.cloud/css/codepen.min.css'
+        });
+
+        var nameService = document.getElementById('nameService');
+        var statusService = document.getElementById('statusService');
+        var btnCancel = document.getElementById('btnCancel');
+
+        nameService.onchange = () => {
+            sessionStorage.setItem('nameService', nameService.value);
+        };
+        statusService.onchange = () => {
+            sessionStorage.setItem('statusService', statusService.value);
+        }
+        btnCancel.onclick = () => {
+            sessionStorage.clear();
+        }
+
+        nameService.value = sessionStorage.getItem('nameService');
+        if ("statusService" in sessionStorage) {
+            statusService.value = sessionStorage.getItem('statusService')
+        } else {
+            statusService.value = <?= $services['status']?>
+        }
+
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if (file === undefined) {
@@ -129,14 +158,19 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
             }
             reader.readAsDataURL(file);
         }
-        $('#add-user-form').validate({
+
+        $('#edit-service-form').validate({
             rules: {
                 name: {
                     required: true,
+                    minlength: 2,
                     maxlength: 191
                 },
                 introduce: {
                     require: true
+                },
+                status: {
+                    required: true
                 },
                 feature_img: {
                     required: true,
@@ -145,11 +179,15 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
             },
             messages: {
                 name: {
-                    required: "Hãy nhập tên người dùng",
+                    required: "Hãy nhập tên dịch vụ",
+                    minlength: "Số lượng ký tự tối thiểu bằng 2 ký tự",
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
                 },
                 introduce: {
                     require: "Hãy nhập lời giới thiệu"
+                },
+                status: {
+                    required: "Chọn trạng thái"
                 },
                 feature_img: {
                     required: "Hãy nhập ảnh đại diện",
