@@ -113,13 +113,13 @@ $feedbacks = queryExecute($getAllFeedbacksSql, true);
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3><?= count($news); ?></h3>
-                                    <p>Danh mục tin tức</p>
+                                    <h3><?= count($feedbacks); ?></h3>
+                                    <p>Customer Feedbacks</p>
                                 </div>
                                 <div class="icon">
                                     <i class="far fa-list-alt"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'news' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'customer_feedbacks' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -143,10 +143,10 @@ $feedbacks = queryExecute($getAllFeedbacksSql, true);
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3><?= count($feedbacks); ?></h3>
-                                    <p>Phản hồi khách hàng</p>
+                                    <p>Customer Feedbacks</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-comments"></i>
+                                    <i class="far fa-comment-alt"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'customer_feedbacks' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>

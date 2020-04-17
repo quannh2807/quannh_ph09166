@@ -12,6 +12,7 @@ checkAdminLoggedIn();
         label.error {
             display: inline;
             color: #ff0000;
+            font-weight: 400 !important;
         }
     </style>
 </head>
@@ -48,22 +49,22 @@ checkAdminLoggedIn();
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Tên người dùng<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name">
+                                    <label for="">Tên người phản hồi<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="name" id="nameFb">
                                     <?php if (isset($_GET['nameerr'])) : ?>
                                         <label class="error"><?= $_GET['nameerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Địa chỉ<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="address">
+                                    <input type="text" class="form-control" name="address" id="addressFb">
                                     <?php if (isset($_GET['addresserr'])) : ?>
                                         <label class="error"><?= $_GET['addresserr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Nội dung<span class="text-danger">*</span></label>
-                                    <textarea name="content" class="form-control" id="content-feedback"></textarea>
+                                    <label for="">Nội dung phản hồi<span class="text-danger">*</span></label>
+                                    <textarea name="content" class="form-control" rows="5" id="contentFb"></textarea>
                                     <?php if (isset($_GET['contenterr'])) : ?>
                                         <label class="error"><?= $_GET['contenterr'] ?></label>
                                     <?php endif; ?>
@@ -71,31 +72,26 @@ checkAdminLoggedIn();
                             </div>
 
                             <div class="col-md-6">
-                                <div class="row">
+                                <div class="form-group">
                                     <div class="col-md-6 offset-md-3">
                                         <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
                                     </div>
                                 </div>
-                                <div class="input-group mt-3 mb-4">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Ảnh đại diện<span class="text-danger">*</span></span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="avatar" onchange="encodeImageFileAsURL(this)">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="">Ảnh đại diện<span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control-file" name="avatar" onchange="encodeImageFileAsURL(this)">
                                 </div>
                                 <div class="form-group">
-                                    <label for="mySelect1">Trạng thái<span class="text-danger">*</span></label>
+                                    <label for="mySelect1">Trạng thái phản hồi<span class="text-danger">*</span></label>
                                     <select id="mySelect1" class="form-control" name="status">
-                                        <option value="" selected>Chọn trạng thái</option>
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
+                                        <option value="">Chọn trạng thái</option>
+                                        <option value="<?= ACTIVE ?>">Họat động</option>
+                                        <option value="<?= INACTIVE ?>">Ngừng hoạt động</option>
                                     </select>
                                 </div>
                                 <div class="col d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'customer_feedbacks' ?>" class="btn btn-danger">Hủy</a>
+                                    <a href="<?= ADMIN_URL . 'customer_feedbacks' ?>" id="btnCancel" class="btn btn-danger">Hủy</a>
                                 </div>
                             </div>
 
@@ -114,6 +110,28 @@ checkAdminLoggedIn();
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
+        var nameFb = document.getElementById('nameFb');
+        var addressFb = document.getElementById('addressFb');
+        var contentFb = document.getElementById('contentFb');
+        var btnCancel = document.getElementById('btnCancel');
+
+        nameFb.addEventListener('change', () => {
+            sessionStorage.setItem('nameFb', nameFb.value);
+        });
+        addressFb.addEventListener('change', () => {
+            sessionStorage.setItem('addressFb', addressFb.value);
+        });
+        contentFb.addEventListener('change', () => {
+            sessionStorage.setItem('contentFb', contentFb.value);
+        });
+        btnCancel.addEventListener('click', () => {
+            sessionStorage.clear();
+        });
+
+        nameFb.value = sessionStorage.getItem('nameFb');
+        addressFb.value = sessionStorage.getItem('addressFb');
+        contentFb.value = sessionStorage.getItem('contentFb');
+
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if (file === undefined) {
@@ -126,44 +144,49 @@ checkAdminLoggedIn();
             }
             reader.readAsDataURL(file);
         }
-
-        $(document).ready(function() {
-            $('#add-feedbacks-form').validate({
-                    rules: {
-                        name: {
-                            required: true,
-                            minleangth: 2,
-                            maxlength: 191
-                        },
-                        address: {
-                            require: true
-                        },
-                        content: {
-                            require: true
-                        },
-                        avatar: {
-                            required: true,
-                            extension: "png|jpg|jpeg|gif"
-                        }
-                    },
-                    messages: {
-                        name: {
-                            required: "Hãy nhập tên người dùng",
-                            minlength: "Số lượng ký tự tối thiểu bằng 2",
-                            maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                        },
-                        address: {
-                            require: "Hãy nhập địa chỉ người dùng"
-                        },
-                        content: {
-                            require: "Hãy nhập nội dùng feedback"
-                        },
-                        avatar: {
-                            required: "Hãy nhập ảnh đại diện",
-                            extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
-                        }
-                    }
-                });
+        $('#add-feedbacks-form').validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 191
+                },
+                address: {
+                    required: true
+                },
+                content: {
+                    required: true,
+                    minlength: 2
+                },
+                avatar: {
+                    required: true,
+                    extension: "png|jpg|jpeg|gif"
+                },
+                status: {
+                    required: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Hãy nhập tên người dùng",
+                    minlength: "Số lượng ký tự tối thiểu bằng 2",
+                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                },
+                address: {
+                    required: "Hãy nhập địa chỉ người dùng"
+                },
+                content: {
+                    required: "Hãy nhập nội dùng phản hồi",
+                    minlength: "Không thể nhập nội dung dưới 2 ký tự"
+                },
+                avatar: {
+                    required: "Hãy nhập ảnh đại diện",
+                    extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
+                },
+                status: {
+                    required: "Chọn trạng thái hoạt động"
+                }
+            }
         });
     </script>
 </body>

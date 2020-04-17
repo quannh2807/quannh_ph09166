@@ -129,11 +129,15 @@ $feedbacks = queryExecute($getFeedbacksQuery, true);
     <?php include_once '../_share/script.php'; ?>
     <script>
         $(document).ready(function() {
+            setTimeout(() => {
+                sessionStorage.clear();
+            }, 2000);
+
             $('.btn-remove').on('click', function() {
                 var redirectUrl = $(this).attr('href');
                 Swal.fire({
                     title: 'Thông báo!',
-                    text: "Bạn có chắc chắn muốn xóa tài khoản này?",
+                    text: "Bạn có chắc chắn muốn feedback khoản này?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -149,7 +153,7 @@ $feedbacks = queryExecute($getFeedbacksQuery, true);
             <?php if (isset($_GET['msg'])) : ?>
                 Swal.fire({
                     position: 'bottom-end',
-                    icon: 'warning',
+                    icon: 'success',
                     title: "<?= $_GET['msg']; ?>",
                     showConfirmButton: false,
                     timer: 1500
