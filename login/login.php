@@ -28,7 +28,7 @@ require_once "../config/utils.php";
 					<img src="<?php echo PUBLIC_URL . 'img/site-logo.png' ?>" alt="" class="img-logo">
 				</a>
 			</div>
-			<form action="<?= LOGIN_URL . 'post-login.php'?>" method="post" autocomplete="on">
+			<form action="<?= LOGIN_URL . 'post-login.php' ?>" method="post" autocomplete="on">
 				<div class="d-flex justify-content-center">
 					<?php if (isset($_GET['msg'])) : ?>
 						<span class="text-danger"><?php echo $_GET['msg'] ?></span>
@@ -52,7 +52,7 @@ require_once "../config/utils.php";
 				</div>
 				<div class="d-flex justify-content-center">
 					<button type="submit" class="btn btn-primary">Đăng nhập</button>&nbsp;
-					<a href="<?php echo BASE_URL ?>" class="btn btn-danger">Hủy</a>
+					<a href="<?php echo BASE_URL ?>" id="btnCancel" class="btn btn-danger">Hủy</a>
 				</div>
 			</form>
 		</div>
@@ -60,10 +60,19 @@ require_once "../config/utils.php";
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script>
-        setTimeout(() => {
-            sessionStorage.clear();
-        }, 2500);
-    </script>
+		var emailLogin = document.getElementById('email');
+		var btnCancel = document.getElementById('btnCancel');
+
+		emailLogin.addEventListener('change', () => {
+			sessionStorage.setItem('emailLogin', emailLogin.value);
+		});
+
+		btnCancel.addEventListener('click', () => {
+			sessionStorage.clear('emailLogin');
+		});
+
+		emailLogin.value = sessionStorage.getItem('emailLogin');
+	</script>
 </body>
 
 </html>

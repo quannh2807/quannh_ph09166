@@ -12,6 +12,7 @@ $news = queryExecute($getNewsQuery, true);
 
 <head>
     <?php include_once '../_share/style.php'; ?>
+    <!-- Script single-use only -->
     <script src="https://cdn.tiny.cloud/1/09n2cu8687a01c6pb501sbldantk25a45y32kbe1uneb85j4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
@@ -44,10 +45,11 @@ $news = queryExecute($getNewsQuery, true);
                 <div class="container">
                     <!-- Small boxes (Stat box) -->
                     <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-add.php' ?>" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="author_id" value="<?= $_SESSION[AUTH]['id']?>">
                         <div class="row p-4">
                             <div class="form-group col-md-6 col-12">
                                 <div class="col-md-6 offset-md-3">
-                                    <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid" multiple>
+                                    <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
                                 </div>
                             </div>
                             <div class="custom-file col-md-6 col-12">
@@ -56,14 +58,12 @@ $news = queryExecute($getNewsQuery, true);
                             </div>
                         </div>
                         <textarea class="news_content" id="" cols="30" rows="10" name="news_content"></textarea>
-                        <div class="col d-flex justify-content-end">
+                        <div class="col d-flex justify-content-end mt-3">
                             <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
                             <a href="<?= ADMIN_URL . 'news' ?>" class="btn btn-danger">Hủy</a>
                         </div>
                     </form>
-                    <!-- /.row -->
-
-                </div><!-- /.container-fluid -->
+                </div>
             </section>
             <!-- /.content -->
         </div>
@@ -74,9 +74,10 @@ $news = queryExecute($getNewsQuery, true);
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
+        // Tinymce
         tinymce.init({
             selector: '.news_content',
-            height: 500,
+            height: 400,
             menubar: false,
             plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
@@ -90,7 +91,6 @@ $news = queryExecute($getNewsQuery, true);
             content_css: '//www.tiny.cloud/css/codepen.min.css'
         });
 
-        /** =================== Before =================== */
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if (file === undefined) {
@@ -103,78 +103,26 @@ $news = queryExecute($getNewsQuery, true);
             }
             reader.readAsDataURL(file);
         }
-        // $('#add-user-form').validate({
-        //     rules: {
-        //         name: {
-        //             required: true,
-        //             maxlength: 191
-        //         },
-        //         email: {
-        //             required: true,
-        //             maxlength: 191,
-        //             email: true,
-        //             remote: {
-        //                 url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
-        //                 type: "post",
-        //                 data: {
-        //                     email: function() {
-        //                         return $("input[name='email']").val();
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         password: {
-        //             required: true,
-        //             maxlength: 191
-        //         },
-        //         cfpassword: {
-        //             required: true,
-        //             equalTo: "#main-password"
-        //         },
-        //         phone_number: {
-        //             number: true
-        //         },
-        //         house_no: {
-        //             maxlength: 191
-        //         },
-        //         avatar: {
-        //             required: true,
-        //             extension: "png|jpg|jpeg|gif"
-        //         }
-        //     },
-        //     messages: {
-        //         name: {
-        //             required: "Hãy nhập tên người dùng",
-        //             maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-        //         },
-        //         email: {
-        //             required: "Hãy nhập email",
-        //             maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-        //             email: "Không đúng định dạng email",
-        //             remote: "Email đã tồn tại, vui lòng sử dụng email khác"
-        //         },
-        //         password: {
-        //             required: "Hãy nhập mật khẩu",
-        //             maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-        //         },
-        //         cfpassword: {
-        //             required: "Nhập lại mật khẩu",
-        //             equalTo: "Cần khớp với mật khẩu"
-        //         },
-        //         phone_number: {
-        //             min: "Bắt buộc là số có 10 chữ số",
-        //             max: "Bắt buộc là số có 10 chữ số",
-        //             number: "Nhập định dạng số"
-        //         },
-        //         house_no: {
-        //             maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-        //         },
-        //         avatar: {
-        //             required: "Hãy nhập ảnh đại diện",
-        //             extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
-        //         }
-        //     }
-        // });
+        $('#add-user-form').validate({
+            rules: {
+                news_content: {
+                    required: true
+                },
+                feature_image: {
+                    required: true,
+                    extension: "png|jpg|jpeg|gif"
+                }
+            },
+            messages: {
+                news_content: {
+                    required: "Hãy nhập nội dung bài viết"
+                },
+                feature_image: {
+                    required: "Hãy nhập ảnh đại diện",
+                    extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
+                }
+            }
+        });
     </script>
 </body>
 
