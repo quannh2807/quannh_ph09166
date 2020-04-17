@@ -92,9 +92,10 @@ $news = queryExecute($getNewsQuery, true);
                             <table class="table table-stripped">
                                 <thead class="table-secondary">
                                     <th>ID</th>
-                                    <th width="200">Ảnh tiêu đề</th>
+                                    <th>Ảnh tiêu đề</th>
                                     <th>Tác giả</th>
-                                    <th width=10%>
+                                    <th>Link bài viết</th>
+                                    <th>
                                         <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                     </th>
                                 </thead>
@@ -103,9 +104,12 @@ $news = queryExecute($getNewsQuery, true);
                                         <tr>
                                             <td><?php echo $new['id'] ?></td>
                                             <td>
-                                                <img class="img-fluid" src="<?= BASE_URL . $new['feature_image'] ?>" alt="">
+                                                <img width="150" class="img-fluid" src="<?= BASE_URL . $new['feature_image'] ?>" alt="">
                                             </td>
                                             <td><?php echo $new['authorName'] ?></td>
+                                            <th>
+                                                <a href="#" class="btn btn-primary">Link bài</a>
+                                            </th>
                                             <td>
                                                 <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $new['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>
@@ -138,7 +142,7 @@ $news = queryExecute($getNewsQuery, true);
                 var redirectUrl = $(this).attr('href');
                 Swal.fire({
                     title: 'Thông báo!',
-                    text: "Bạn có chắc chắn muốn xóa tài khoản này?",
+                    text: "Bạn có chắc chắn muốn xóa tin tức này?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

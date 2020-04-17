@@ -2,10 +2,11 @@
 session_start();
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
 // lấy thông tin của người dùng ra ngoài thông id trên đường dẫn
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
-// kiểm tra tài khoản có tồn tại hay không
+
+$getUserQuery = "select * from users where id = '$id'";
+$user = queryExecute($getNewsByIdQuery, false);
 $getNewsByIdQuery = "select n.*, u.name as authorName
                     from news n join users u
                     on n.author_id = u.id
@@ -21,14 +22,14 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
     header("location: " . ADMIN_URL . 'news?msg=Bạn không có quyền sửa thông tin bài viết này');
     die;
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <?php include_once '../_share/style.php'; ?>
+    <!-- Script single-use only -->
+    <script src="https://cdn.tiny.cloud/1/09n2cu8687a01c6pb501sbldantk25a45y32kbe1uneb85j4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -45,7 +46,7 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <div class="content-header">
-                <div class="container-fluid">
+                <div class="container-fluid border-bottom">
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1 class="m-0 text-dark">Cập nhật bài viết</h1>
@@ -61,74 +62,24 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                     <!-- Small boxes (Stat box) -->
                     <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-edit.php' ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $news['id'] ?>">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Tiêu đề<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="title" value="<?= $news['title'] ?>">
-                                    <?php if (isset($_GET['titleerr'])) : ?>
-                                        <label class="error"><?= $_GET['titleerr'] ?></label>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Nội dung bài viết<span class="text-danger">*</span></label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="content"><?= $news['content'] ?></textarea>
-                                    <?php if (isset($_GET['contenterr'])) : ?>
-                                        <label class="error"><?= $_GET['contenterr'] ?></label>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-6">
-                                        <label for="">Người viết bài<span class="text-danger">*</span></label>
-                                        <select class="form-control" name="author_id" value="<?= $news['authorName'] ?>">
-                                            <option value="<?= $_SESSION[AUTH]['id'] ?>">
-                                                <?= $_SESSION[AUTH]['name'] ?>
-                                            </option>
-                                        </select>
-                                        <?php if (isset($_GET['author_iderr'])) : ?>
-                                            <label class="error"><?= $_GET['author_iderr'] ?></label>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Thời gian viết bài</label>
-                                    <div class="form-group">
-                                        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" name="created_at" value="<?= $news['created_at'] ?>" />
-                                            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <script type="text/javascript">
-                                        $(function() {
-                                            $('#datetimepicker2').datetimepicker({
-                                                locale: 'ru',
-                                                Default: false
-                                            });
-                                        });
-                                    </script>
+                        <div class="row p-4">
+                            <div class="form-group col-md-6 col-12">
+                                <div class="col-md-6 offset-md-3">
+                                    <img src="<?= BASE_URL . $news['feature_image'] ?>" id="preview-img" class="img-fluid">
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <img src="<?= BASE_URL . $news['feature_image'] ?>" id="preview-img" class="img-fluid">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Ảnh đại diện<span class="text-danger">*</span></label>
-                                    <input type="file" class="form-control" name="feature_image" onchange="encodeImageFileAsURL(this)">
-                                </div>
-                                <div class="col d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'news' ?>" class="btn btn-danger">Hủy</a>
-                                </div>
+                            <div class="custom-file col-md-6 col-12">
+                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="feature_image" onchange="encodeImageFileAsURL(this)">
+                                <label class="custom-file-label" for="inputGroupFile02"><span class="text-danger">*</span>Ảnh đại diện bài viết</label>
                             </div>
+                        </div>
+                        <textarea class="news_content" id="" cols="30" rows="10" name="news_content"></textarea>
+                        <div class="col d-flex justify-content-end mt-3">
+                            <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                            <a href="<?= ADMIN_URL . 'news' ?>" class="btn btn-danger">Hủy</a>
                         </div>
                     </form>
                     <!-- /.row -->
-
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
@@ -140,6 +91,23 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
+        // Tinymce
+        tinymce.init({
+            selector: '.news_content',
+            height: 400,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_css: '//www.tiny.cloud/css/codepen.min.css'
+        });
+
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if (file === undefined) {
@@ -154,55 +122,20 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
         }
         $('#edit-user-form').validate({
             rules: {
-                name: {
+                news_content: {
+                    required: true
+                },
+                feature_image: {
                     required: true,
-                    maxlength: 191
-                },
-                email: {
-                    required: true,
-                    maxlength: 191,
-                    email: true,
-                    remote: {
-                        url: "<?= ADMIN_URL . 'users/verify-email-existed.php' ?>",
-                        type: "post",
-                        data: {
-                            email: function() {
-                                return $("input[name='email']").val();
-                            },
-                            id: <?= $user['id']; ?>
-                        }
-                    }
-                },
-                phone_number: {
-                    number: true
-                },
-                house_no: {
-                    maxlength: 191
-                },
-                avatar: {
                     extension: "png|jpg|jpeg|gif"
                 }
             },
             messages: {
-                name: {
-                    required: "Hãy nhập tên người dùng",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
+                news_content: {
+                    required: "Hãy nhập nội dung bài viết"
                 },
-                email: {
-                    required: "Hãy nhập email",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự",
-                    email: "Không đúng định dạng email",
-                    remote: "Email đã tồn tại, vui lòng sử dụng email khác"
-                },
-                phone_number: {
-                    min: "Bắt buộc là số có 10 chữ số",
-                    max: "Bắt buộc là số có 10 chữ số",
-                    number: "Nhập định dạng số"
-                },
-                house_no: {
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                avatar: {
+                feature_image: {
+                    required: "Hãy nhập ảnh đại diện",
                     extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
                 }
             }

@@ -4,8 +4,7 @@ include_once "../../config/utils.php";
 checkAdminLoggedIn();
 
 $news_content = trim($_POST['news_content']);
-
-$author_id = trim($_SESSION[AUTH]['id']);
+$author_id = trim($_POST['author_id']);
 $feature_image = $_FILES['feature_image'];
 
 // upload file ảnh
@@ -20,7 +19,6 @@ $insertNewsQuery = "insert into news
                           (feature_image, news_content, author_id)
                     values
                           ('$filename', '$news_content', '$author_id')";
-
 // dd($insertNewsQuery);
 queryExecute($insertNewsQuery, false);
 header("location: " . ADMIN_URL . "news");

@@ -2,16 +2,14 @@
 session_start();
 include_once "../../config/utils.php";
 checkAdminLoggedIn();
-$id = trim($_POST['id']);
-$title = trim($_POST['title']);
-$content = trim($_POST['content']);
-$author_id = trim($_POST['author_id']);
-$created_at = trim($_POST['created_at']);
-$feature_image = $_FILES['feature_image'];
 
-// validate bằng php
-$titleerr = "";
-$contenterr = "";
+$id = trim($_POST['id']);
+$author_id = trim($_POST['author_id']);
+$feature_image = $_FILES['feature_image'];
+$content = $news['news_content'];
+if(strlen($_POST['news_content']) > 0) {
+    $content = trim($_POST['news_content']);
+}
 
 // kiểm tra tin tức có tồn tại hay không
 $getNewsQuery = "select * from news where id = $id";
@@ -19,20 +17,6 @@ $news = queryExecute($getNewsQuery, false);
 
 if(!$news){
     header("location: " . ADMIN_URL . 'news?msg=News không tồn tại');die;
-}
-
-// check title
-if (strlen($title) < 10 || strlen($title) > 100) {
-    $titleerr = "Yêu cầu nhập tiêu đề nằm trong khoảng 10-100 ký tự";
-}
-// check content
-if (strlen($content) < 40 ) {
-    $contenterr = "Yêu cầu nhập nội dung nằm trong khoảng 40-2000 ký tự";
-}
-
-if ($titleerr . $contenterr!= "") {
-    header('location: ' . ADMIN_URL . "news/add-form.php?titleerr=$titleerr&contenterr=$contenterr");
-    die;
 }
 
 // upload file ảnh
@@ -43,15 +27,11 @@ if($feature_image['size'] > 0){
     $filename = "public/img/" . $filename;
 }
 
-$updateNewsQuery = "update news
-                    set title = '$title',
-                    feature_image = '$filename',
-                    content = '$content',
-                    author_id = '$author_id',
-                    created_at = '$created_at'
+$updateNewsQuery = "update news set
+                        author_id = '$author_id',
+                        feature_image = '$filename',
+                        news_content = '$content'
                     where id = '$id'";
-
-// dd($updateNewsQuery);
 queryExecute($updateNewsQuery, false);
 header("location: " . ADMIN_URL . "news");
 die;
