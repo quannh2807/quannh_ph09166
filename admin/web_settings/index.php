@@ -51,26 +51,13 @@ $webSettings = queryExecute($getDataWebsettingsQuery, true);
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <div class="col-md-10 col-offset-1">
-                            <!-- Filter  -->
-                            <form action="" method="get">
-                                <div class="form-row">
-                                    <div class="form-group col-6">
-                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, email, căn hộ, số điện thoại,...">
-                                    </div>
-                                    <div class="form-group col-2">
-                                        <button type="submit" class="btn btn-success">Tìm kiếm</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
                         <!-- Danh sách websettings  -->
                         <table class="table table-stripped">
-                            <thead>
+                            <thead class="table-secondary">
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Trạng thái</th>
-                                <th>Thao tác</th>
+                                <th>Chỉnh sửa</th>
                             </thead>
                             <tbody>
                                 <?php foreach ($webSettings as $setting) : ?>
@@ -78,9 +65,9 @@ $webSettings = queryExecute($getDataWebsettingsQuery, true);
                                         <td><?php echo $setting['id'] ?></td>
                                         <td><?php echo $setting['name'] ?></td>
                                         <td>
-                                            <?php if ( $setting['status'] == 1) { ?>
+                                            <?php if ( $setting['status'] == ACTIVE) { ?>
                                                 <span class="">Kích hoạt</span>
-                                            <?php } else if ( $setting['status'] == 0) { ?>
+                                            <?php } else if ( $setting['status'] == INACTIVE) { ?>
                                                 <span class="text-danger">Không kích hoạt</span>
                                             <?php } ?>
                                         </td>
@@ -108,23 +95,6 @@ $webSettings = queryExecute($getDataWebsettingsQuery, true);
     <?php include_once '../_share/script.php'; ?>
     <script>
         $(document).ready(function() {
-            $('.btn-remove').on('click', function() {
-                var redirectUrl = $(this).attr('href');
-                Swal.fire({
-                    title: 'Thông báo!',
-                    text: "Bạn có chắc chắn muốn xóa tài khoản này?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Đồng ý'
-                }).then((result) => { // arrow function es6 (es2015)
-                    if (result.value) {
-                        window.location.href = redirectUrl;
-                    }
-                });
-                return false;
-            });
             <?php if (isset($_GET['msg'])) : ?>
                 Swal.fire({
                     position: 'bottom-end',

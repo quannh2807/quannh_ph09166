@@ -14,7 +14,7 @@ if (!$webSettings) {
 
 // kiểm tra xem có quyền để thực hiện edit hay không
 if ($_SESSION[AUTH]['role_id'] < 2) {
-    header("location: " . ADMIN_URL . 'users?msg=Bạn không có quyền sửa setting này');
+    header("location: " . ADMIN_URL . 'web_settings?msg=Bạn không có quyền sửa setting này');
     die;
 }
 ?>
@@ -80,7 +80,7 @@ if ($_SESSION[AUTH]['role_id'] < 2) {
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="edit-user-form" action="<?= ADMIN_URL . 'users/save-edit.php' ?>" method="post" enctype="multipart/form-data">
+                    <form id="edit-web-setting-form" action="<?= ADMIN_URL . 'web_settings/save-edit.php' ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $webSettings['id'] ?>">
                         <div class="row">
                             <!-- First column -->
@@ -146,10 +146,10 @@ if ($_SESSION[AUTH]['role_id'] < 2) {
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Địa chỉ zalo<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="zalo_url" id="" value="<?= $webSettings['zalo_url'] ?>">
-                                    <?php if (isset($_GET['zalo_urlerr'])) : ?>
-                                        <label class="error"><?= $_GET['zalo_urlerr'] ?></label>
+                                    <label for="">Địa chỉ instagram<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="instagram_url" id="" value="<?= $webSettings['instagram_url'] ?>">
+                                    <?php if (isset($_GET['instagram_urlerr'])) : ?>
+                                        <label class="error"><?= $_GET['instagram_urlerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
@@ -166,13 +166,13 @@ if ($_SESSION[AUTH]['role_id'] < 2) {
                                     <div class="col-6 form-group border-right">
                                         <label for="">Logo<span class="text-danger">*</span></label><br>
                                         <div class="d-flex justify-content-center">
-                                            <img src="<?= BASE_URL . $webSettings['logo_url'] ?>" width="100" id="logo">
+                                            <img src="<?= BASE_URL . $webSettings['logo'] ?>" width="100" id="logo">
                                         </div>
                                     </div>
                                     <div class="col-6 form-group">
                                         <label for="">Special offer<span class="text-danger">*</span></label><br>
                                         <div class="d-flex justify-content-center">
-                                            <img src="<?= BASE_URL . $webSettings['special_offer'] ?>" width="100" id="offer">
+                                            <img src="<?= BASE_URL . $webSettings['offer'] ?>" width="100" id="offer">
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +194,7 @@ if ($_SESSION[AUTH]['role_id'] < 2) {
                         </div>
                         <div class="col-12 d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                            <a href="<?= ADMIN_URL . 'users' ?>" class="btn btn-danger">Hủy</a>
+                            <a href="<?= ADMIN_URL . 'web_settings' ?>" class="btn btn-danger">Hủy</a>
                         </div>
                     </form>
 
@@ -215,7 +215,7 @@ if ($_SESSION[AUTH]['role_id'] < 2) {
             var statusSetting = document.getElementById('statusSetting');
             statusSetting.value = <?= $webSettings['status'] ?>;
 
-            $('#edit-user-form').validate({
+            $('#edit-web-setting-form').validate({
                 rules: {
                     name: {
                         required: true,
@@ -249,7 +249,7 @@ if ($_SESSION[AUTH]['role_id'] < 2) {
                         required: true,
                         maxlength: 191
                     },
-                    zalo_url: {
+                    instagram_url: {
                         required: true,
                         maxlength: 191
                     },
@@ -300,7 +300,7 @@ if ($_SESSION[AUTH]['role_id'] < 2) {
                         required: "Nhập đường dẫn facebook",
                         maxlength: "Độ dài tối đa là 191 ký tự"
                     },
-                    zalo_url: {
+                    instagram_url: {
                         required: "Nhập đường dẫn github",
                         maxlength: "Độ dài tối đa là 191 ký tự"
                     },
