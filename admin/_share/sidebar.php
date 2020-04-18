@@ -101,29 +101,6 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-cogs"></i>
-                        <p>
-                            Quản lý web-setting
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= ADMIN_URL . 'web_settings' ?>" class="nav-link">
-                                <i class="fa fa-list-ol nav-icon"></i>
-                                <p>Danh sách</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= ADMIN_URL . 'web_settings/add-form.php' ?>" class="nav-link">
-                                <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
-                                <p>Thêm web-settings</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
                         <i class="nav-icon far fa-comment-alt-dots"></i>
                         <p>
                             Quản lý Feedbacks
@@ -166,6 +143,29 @@
                                 <p>Thêm dịch vụ</p>
                             </a>
                         </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon far fa-cogs"></i>
+                        <p>
+                            Quản lý web-setting
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'web_settings' ?>" class="nav-link">
+                                <i class="fa fa-list-ol nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'web_settings/edit-form.php' ?>" class="nav-link">
+                                <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
+                                <p>Sửa web-settings</p>
+                            </a>
+                        </li> -->
                     </ul>
                 </li>
                 <!-- Logout -->

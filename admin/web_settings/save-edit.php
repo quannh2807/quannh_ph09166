@@ -5,29 +5,29 @@ checkAdminLoggedIn();
 // lấy thông tin từ form gửi lên
 $id = trim($_POST['id']);
 $name = trim($_POST['name']);
+$status = trim($_POST['status']);
 $email = trim($_POST['email']);
-$password = trim($_POST['password']);
-$cfpassword = trim($_POST['cfpassword']);
 $phone_number = trim($_POST['phone_number']);
-$role_id = trim($_POST['role_id']);
-$avatar = $_FILES['avatar'];
-
-// kiểm tra tài khoản có tồn tại hay không
-$getUserByIdQuery = "select * from users where id = $id";
-$user = queryExecute($getUserByIdQuery, false);
-
-if(!$user){
-    header("location: " . ADMIN_URL . 'users?msg=Tài khoản không tồn tại');die;
-}
-
-// kiểm tra xem có quyền để thực hiện edit hay không
-if($user['id'] != $_SESSION[AUTH]['id'] && $user['role_id'] >= $_SESSION[AUTH]['role_id'] ){
-    header("location: " . ADMIN_URL . 'users?msg=Bạn không có quyền sửa thông tin tài khoản này');die;
-}
+$address = trim($_POST['address']);
+$map_url = trim($_POST['map_url']);
+$youtube_url = trim($_POST['youtube_url']);
+$zalo_url = trim($_POST['zalo_url']);
+$explore_url = trim($_POST['explore_url']);
+$introduce_welcome = trim($_POST['introduce_welcome']);
+$logo = $_FILES['logo'];
+$offer = $_FILES['offer'];
 
 // validate bằng php
 $nameerr = "";
+$phone_numbererr= "";
 $emailerr = "";
+$addresserr = "";
+$map_urlerr = "";
+$youtube_urlerr = "";
+$zalo_urlerr = "";
+$map_urlerr = "";
+$map_urlerr = "";
+
 // check name
 if(strlen($name) < 2 || strlen($name) > 191){
     $nameerr = "Yêu cầu nhập tên tài khoản nằm trong khoảng 2-191 ký tự";

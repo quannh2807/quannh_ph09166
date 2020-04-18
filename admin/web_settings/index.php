@@ -4,36 +4,10 @@ require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
-$roleId = isset($_GET['role']) == true ? $_GET['role'] : false;
 
-// Lấy danh sách roles
-// $getRolesQuery = "select * from roles where status = 1";
-$getRolesQuery = "select * from roles";
-$roles = queryExecute($getRolesQuery, true);
-
-// danh sách users
-$getUsersQuery = "select
-                    u.*,
-                    r.name as role_name
-                    from users u
-                    join roles r
-                    on u.role_id = r.id";
-// tìm kiếm
-if ($keyword !== "") {
-    $getUsersQuery .= " where (u.email like '%$keyword%'
-                            or u.phone_number like '%$keyword%'
-                            or u.name like '%$keyword%')
-                      ";
-    if ($roleId !== false && $roleId !== "") {
-        $getUsersQuery .= " and u.role_id = $roleId";
-    }
-} else {
-    if ($roleId !== false && $roleId !== "") {
-        $getUsersQuery .= " where u.role_id = $roleId";
-    }
-}
-$users = queryExecute($getUsersQuery, true);
-
+// get data from web_settings table
+$getDataWebsettingsQuery = "select * from web_settings";
+$webSettings = queryExecute($getDataWebsettingsQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,7 +38,7 @@ $users = queryExecute($getUsersQuery, true);
                         <!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard'?>">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="<?= ADMIN_URL . 'dashboard' ?>">Dashboard</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -84,59 +58,36 @@ $users = queryExecute($getUsersQuery, true);
                                     <div class="form-group col-6">
                                         <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, email, căn hộ, số điện thoại,...">
                                     </div>
-                                    <div class="form-group col-4">
-                                        <select name="role" class="form-control">
-                                            <option selected value="">Tất cả</option>
-                                            <?php foreach ($roles as $ro) : ?>
-                                                <option <?php if ($roleId === $ro['id']) {
-                                                            echo "selected";
-                                                        } ?> value="<?php echo $ro['id'] ?>"><?php echo $ro['name'] ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
                                     <div class="form-group col-2">
                                         <button type="submit" class="btn btn-success">Tìm kiếm</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <!-- Danh sách users  -->
+                        <!-- Danh sách websettings  -->
                         <table class="table table-stripped">
                             <thead>
                                 <th>ID</th>
-                                <th>Tên</th>
-                                <th>Email</th>
-                                <th>Loại tài khoản</th>
-                                <th width="100">Ảnh</th>
-                                <th>Số ĐT</th>
-                                <th>
-                                    <a href="<?php echo ADMIN_URL . 'users/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
-                                </th>
+                                <th>Name</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
                             </thead>
                             <tbody>
-                                <?php foreach ($users as $us) : ?>
+                                <?php foreach ($webSettings as $setting) : ?>
                                     <tr>
-                                        <td><?php echo $us['id'] ?></td>
-                                        <td><?php echo $us['name'] ?></td>
-                                        <td><?php echo $us['email'] ?></td>
+                                        <td><?php echo $setting['id'] ?></td>
+                                        <td><?php echo $setting['name'] ?></td>
                                         <td>
-                                            <?php echo $us['role_name'] ?>
+                                            <?php if ( $setting['status'] == 1) { ?>
+                                                <span class="">Kích hoạt</span>
+                                            <?php } else if ( $setting['status'] == 0) { ?>
+                                                <span class="text-danger">Không kích hoạt</span>
+                                            <?php } ?>
                                         </td>
                                         <td>
-                                            <img class="img-fluid" src="<?= BASE_URL . $us['avatar']?>" alt="">
-                                        </td>
-                                        <td><?php echo $us['phone_number'] ?></td>
-                                        <td>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id'] ): ?>
-                                                <a href="<?php echo ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                            <?php endif; ?>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'users/remove.php?id=' . $us['id'] ?>" class="btn-remove btn btn-sm btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            <?php endif; ?>
+                                            <a href="<?php echo ADMIN_URL . 'web_settings/edit-form.php?id=' . $setting['id'] ?>" class="btn btn-sm btn-info">
+                                                <i class="fa fa-pencil-alt"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
