@@ -19,7 +19,7 @@ $insertNewsQuery = "insert into news
                           (feature_image, news_content, author_id)
                     values
                           ('$filename', '$news_content', '$author_id')";
-// dd($insertNewsQuery);
+dd($insertNewsQuery);
 queryExecute($insertNewsQuery, false);
 header("location: " . ADMIN_URL . "news");
 die;

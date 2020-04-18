@@ -27,6 +27,10 @@ $services = queryExecute($getAllServicesSql, true);
 $getAllFeedbacksSql = "select * from customer_feedbacks";
 $feedbacks = queryExecute($getAllFeedbacksSql, true);
 
+# Lấy ra tất cả bản ghi trong bảng web setting
+$getAllWebSettingSql = "select * from web_settings";
+$webSetting = queryExecute($getAllWebSettingSql, true);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -138,7 +142,19 @@ $feedbacks = queryExecute($getAllFeedbacksSql, true);
                                 <a href="<?= ADMIN_URL . 'services' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-
+                        <div class="col-lg-3 col-4">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3><?= count($webSetting); ?></h3>
+                                    <p>Web setting</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-cogs"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'web_settings' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
         </div><!-- /.container-fluid -->

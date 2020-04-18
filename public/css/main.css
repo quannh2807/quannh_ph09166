@@ -847,7 +847,7 @@ div#customer_says_slider .slider_says i {
 -----------------------------------------------------------*/
 
 .contact_us {
-    background: #3ac4fa;
+    background: #0088bd;
     padding: 25px 35px;
 }
 
@@ -869,7 +869,9 @@ div#customer_says_slider .slider_says i {
 }
 
 .contact_us .news_letter>input {
-    background: #3ac4fa none repeat scroll 0 0;
+    color: #fff;
+    font-weight: 600;
+    background: #0088bd none repeat scroll 0 0;
     border: 0;
     padding: 11px 3px;
     border-bottom: 1px solid #fff;
@@ -879,6 +881,10 @@ div#customer_says_slider .slider_says i {
     outline: none;
     text-transform: uppercase;
     font-size: 14px;
+}
+
+.contact_us .news_letter>input::placeholder {
+    color: rgba(255, 255, 255, 0.623);
 }
 
 .contact_us .news_letter>a.btn-blue {
