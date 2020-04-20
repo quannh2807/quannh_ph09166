@@ -4,32 +4,36 @@ require_once '../../config/utils.php';
 checkAdminLoggedIn();
 
 # Lấy ra tất cả bản ghi trong bảng users
-$getAllMemberSql = "select * from users where role_id = 1";
-$users = queryExecute($getAllMemberSql, true);
+$getMemberSql = "select * from users where role_id = 1";
+$users = queryExecute($getMemberSql, true);
 
 # Lấy ra tất cả bản ghi trong bảng contacts
-$getAllContactsSql = "select * from contacts";
-$contacts = queryExecute($getAllContactsSql, true);
+$getContactsSql = "select * from contacts";
+$contacts = queryExecute($getContactsSql, true);
 
 # Lấy ra tất cả bản ghi trong bảng new_categories
-$getAllNewCategoriesSql = "select * from new_categories";
-$new_categories = queryExecute($getAllNewCategoriesSql, true);
+$getNewCategoriesSql = "select * from new_categories";
+$new_categories = queryExecute($getNewCategoriesSql, true);
 
 # Lấy ra tất cả bản ghi trong bảng news
-$getAllNewsSql = "select * from news";
-$news = queryExecute($getAllNewsSql, true);
+$getNewsSql = "select * from news";
+$news = queryExecute($getNewsSql, true);
 
 # Lấy ra tất cả bản ghi trong bảng services
-$getAllServicesSql = "select * from services";
-$services = queryExecute($getAllServicesSql, true);
+$getServicesSql = "select * from services";
+$services = queryExecute($getServicesSql, true);
 
 # Lấy ra tất cả bản ghi trong bảng customer feedbacks
-$getAllFeedbacksSql = "select * from customer_feedbacks";
-$feedbacks = queryExecute($getAllFeedbacksSql, true);
+$getFeedbacksSql = "select * from customer_feedbacks";
+$feedbacks = queryExecute($getFeedbacksSql, true);
 
 # Lấy ra tất cả bản ghi trong bảng web setting
-$getAllWebSettingSql = "select * from web_settings";
-$webSetting = queryExecute($getAllWebSettingSql, true);
+$getWebSettingSql = "select * from web_settings";
+$webSetting = queryExecute($getWebSettingSql, true);
+
+# Lấy ra tất cả bản ghi trong bảng room services
+$getRoomServicesQuery = "select * from room_services";
+$roomServices = queryExecute($getRoomServicesQuery, true);
 
 ?>
 <!DOCTYPE html>
@@ -153,6 +157,19 @@ $webSetting = queryExecute($getAllWebSettingSql, true);
                                     <i class="far fa-cogs"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'web_settings' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-4">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3><?= count($roomServices); ?></h3>
+                                    <p>Room services</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fal fa-hotel"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'room_services' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

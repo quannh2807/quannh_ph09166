@@ -168,6 +168,29 @@
                         </li> -->
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fal fa-hotel"></i>
+                        <p>
+                            Dịch vụ phòng
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'room_services' ?>" class="nav-link">
+                                <i class="fa fa-list-ol nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'room_services/add-form.php' ?>" class="nav-link">
+                                <i class="fa fa-plus nav-icon" aria-hidden="true"></i>
+                                <p>Thêm dịch vụ</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <!-- Logout -->
                 <li class="nav-item has-treeview">
                     <a href="<?= BASE_URL . 'logout.php' ?>" class="nav-link">
