@@ -143,7 +143,7 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
         if ("statusService" in sessionStorage) {
             statusService.value = sessionStorage.getItem('statusService')
         } else {
-            statusService.value = <?= $services['status']?>
+            statusService.value = <?= $services['status']?>;
         }
 
         function encodeImageFileAsURL(element) {

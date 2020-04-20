@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <!-- Mirrored from premiumlayers.net/demo/html/hotelbooking/room-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Mar 2020 11:52:19 GMT -->
 <head>
         <meta charset="utf-8">
@@ -35,7 +34,7 @@
         <link rel="stylesheet" href="css/lightslider.css">
         <!-- Theme -->
         <link rel="stylesheet" href="css/reset.css">
-        
+
         <!-- custom css -->
 		<link rel="stylesheet" href="style.css" />
         <!-- responsive -->
@@ -52,7 +51,7 @@
     </head>
     <body id="room_detail_page">
 
-        
+
         <!-- start header -->
         <header class="header_area">
 
@@ -115,7 +114,7 @@
                                               <li><a href="#">Login</a></li>
                                               <li><a href="#">Register</a></li>
                                           </ul>
-                                      </div>   -->         
+                                      </div>   -->
                                   </div>
                                 </div>
 
@@ -129,7 +128,7 @@
                                         <ul id="menu1" class="dropdown-menu" role="menu">
                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="index-two.html">Home Page two</a></li>
                                         </ul>
-                                    </li>        
+                                    </li>
                                     <li><a href="accomodation.html">Accomodation</a></li>
                                     <li><a href="gallery.html">Gallery</a></li>
                                     <li role="presentation" class="dropdown">
@@ -175,14 +174,14 @@
                                     <img src="img/special-offer-yellow-main.png" alt="imf">
                                 </div>
                             </div>
-                        </div>         
+                        </div>
                         <!-- end offer start -->
                     </div>
                 </div>
-            </div>            
+            </div>
         </section>
         <!-- end breadcrunb -->
-        
+
         <div class="room_detail_main margin-bottom-55">
             <div class="container">
                 <div class="row">
@@ -206,22 +205,22 @@
                                                         <li data-thumb="img/lightslider-img/cS-51.jpg">
                                                             <img alt="slider" src="img/lightslider-img/cS-51.jpg" />
                                                         </li>
-                                                        <li data-thumb="img/lightslider-img/cS-50.jpg"> 
+                                                        <li data-thumb="img/lightslider-img/cS-50.jpg">
                                                             <img alt="slider" src="img/lightslider-img/cS-50.jpg" />
                                                         </li>
-                                                        <li data-thumb="img/lightslider-img/cS-49.jpg"> 
+                                                        <li data-thumb="img/lightslider-img/cS-49.jpg">
                                                             <img alt="slider" src="img/lightslider-img/cS-49.jpg" />
                                                         </li>
-                                                        <li data-thumb="img/lightslider-img/cS-48.jpg"> 
+                                                        <li data-thumb="img/lightslider-img/cS-48.jpg">
                                                             <img alt="slider" src="img/lightslider-img/cS-48.jpg" />
                                                         </li>
-                                                        <li data-thumb="img/lightslider-img/cS-47.jpg"> 
+                                                        <li data-thumb="img/lightslider-img/cS-47.jpg">
                                                             <img alt="slider" src="img/lightslider-img/cS-47.jpg" />
                                                         </li>
-                                                        <li data-thumb="img/lightslider-img/cS-46.jpg"> 
+                                                        <li data-thumb="img/lightslider-img/cS-46.jpg">
                                                             <img alt="slider" src="img/lightslider-img/cS-46.jpg" />
                                                         </li>
-                                                        <li data-thumb="img/lightslider-img/cS-45.jpg"> 
+                                                        <li data-thumb="img/lightslider-img/cS-45.jpg">
                                                             <img alt="slider" src="img/lightslider-img/cS-45.jpg" />
                                                         </li>
                                                     </ul>
@@ -386,13 +385,13 @@
                                         <div class="form-group col-lg-12 col-md-12">
                                             <div class="input-group border-bottom-dark-2">
                                                 <input class="date-picker" id="datepicker" placeholder="Arrival" type="text"/>
-                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>               
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-12 col-md-12">
                                             <div class="input-group border-bottom-dark-2">
                                                 <input class="date-picker" id="datepicker1" placeholder="Departure" type="text"/>
-                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>                
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12">
@@ -404,7 +403,7 @@
                                                           <option value="Single">1 Room</option>
                                                           <option value="Double">2 Room</option>
                                                           <option value="Deluxe">3 Room</option>
-                                                        </select>               
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-lg-6 col-md-6 icon_arrow">
@@ -414,7 +413,7 @@
                                                           <option value="Single">1 Bed</option>
                                                           <option value="Double">2 Bed</option>
                                                           <option value="Deluxe">3 Bed</option>
-                                                        </select>               
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-lg-6 col-md-6 icon_arrow">
@@ -424,7 +423,7 @@
                                                           <option value="Single">1 Adult</option>
                                                           <option value="Double">2 Adult</option>
                                                           <option value="Deluxe">3 Adult</option>
-                                                        </select>               
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-lg-6 col-md-6 icon_arrow">
@@ -434,7 +433,7 @@
                                                           <option value="Single">1 Child</option>
                                                           <option value="Double">2 Child</option>
                                                           <option value="Deluxe">3 Child</option>
-                                                        </select>               
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -518,7 +517,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- start contact us area -->
         <section class="contact_us_area content-left">
             <div class="container">
@@ -584,7 +583,7 @@
                                             <li><a href="#">Food & Drinks</a></li>
                                             <li><a href="#">Beach Venues</a></li>
                                             <li><a href="#">Amenities</a></li>
-                                        </ul>  
+                                        </ul>
                                     </div>
                                     <div class="col-lg-6 col-md-6 sol-sm-6">
                                         <ul>
@@ -617,14 +616,14 @@
             </div>
         </footer>
         <!-- end footer -->
-		
-		
-		
+
+
+
         <!-- jquery library -->
         <script src="js/vendor/jquery-1.11.2.min.js"></script>
         <!-- bootstrap -->
         <script src="js/bootstrap.min.js"></script>
-		
+
         <!-- uikit -->
         <script src="js/uikit.min.js"></script>
         <!-- easing -->
@@ -646,7 +645,7 @@
         <!--Oh Yes, IE 9+ Supports animation, lets activate for IE 9+-->
         <!--[if gte IE 9]>
             <script type="text/javascript">new WOW().init();</script>
-        <![endif]-->         
+        <![endif]-->
 
         <!--Opacity & Other IE fix for older browser-->
         <!--[if lte IE 8]>
@@ -657,7 +656,7 @@
 
         <!-- my js -->
         <script src="js/main.js"></script>
-		
+
     </body>
 
 <!-- Mirrored from premiumlayers.net/demo/html/hotelbooking/room-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Mar 2020 11:52:22 GMT -->
