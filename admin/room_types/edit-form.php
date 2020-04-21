@@ -101,7 +101,7 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                             <div class="col-md-6">
                                 <div class="row m-2">
                                     <div class="col-6 col-md-5">
-                                        <img src="<?= PUBLIC_URL .  $roomTypes['feature_image'] ?>" id="preview-img" class="img-fluid">
+                                        <img src="<?= BASE_URL .  $roomTypes['feature_image'] ?>" id="preview-img" class="img-fluid">
                                     </div>
                                     <div class="col-6 form-group mt-3 mb-4">
                                         <label for="">Ảnh loại phòng<span class="text-danger">*</span></label>
