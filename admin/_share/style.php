@@ -7,7 +7,6 @@
 <link rel="shortcut icon" type="image/png" href="<?= PUBLIC_URL . 'img/favicon.ico' ?>" />
 <!-- Font Awesome -->
 <link rel="stylesheet" href="<?= PUBLIC_URL . 'fontawesome/css/all.min.css'?>">
-<!-- <link rel="stylesheet" href="<?= ADMIN_ASSET_URL ?>plugins/fontawesome-free/css/all.min.css"> -->
 <!-- Ionicons -->
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- Tempusdominus Bbootstrap 4 -->
@@ -32,4 +31,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap&subset=vietnamese" rel="stylesheet">
+<!-- My custom style -->
 <link rel="stylesheet" href="<?= PUBLIC_URL . 'css/main.css'?>">

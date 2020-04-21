@@ -21,6 +21,12 @@ if(!$services){
     header("location: " . ADMIN_URL . 'room_services?msg=Dịch vụ phòng không tồn tại');die;
 }
 
+
+if ($nameerr != "") {
+    header('location: ' . ADMIN_URL . "room_services/add-form.php?nameerr=$nameerr");
+    die;
+}
+
 // upload file ảnh
 $filename = $services['icon'];
 if($icon['size'] > 0){

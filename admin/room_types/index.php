@@ -6,21 +6,23 @@ checkAdminLoggedIn();
 // get keywords
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 $statusSearch = isset($_GET['statusSearch']) == true ? $_GET['statusSearch'] : "";
-// danh sách services
-$getServicesQuery = "select * from services";
+// danh sách roomTypes
+$getRoomTypesQuery = "select * from room_types";
 // tìm kiếm
 if ($keyword !== "" || strlen($keyword) > 0) {
-    $getServicesQuery .= " where (name like '%$keyword%'
-                            or introduce like '%$keyword%')";
+    $getRoomTypesQuery .= " where (name like '%$keyword%'
+                            or price like '%$keyword%'
+                            or quantity like '%$keyword%'
+                            or short_descript like '%$keyword%')";
     if (strlen($statusSearch) > 0) {
-        $getServicesQuery .= " and status = $statusSearch%";
+        $getRoomTypesQuery .= " and status = $statusSearch%";
     }
 } else {
     if (strlen($statusSearch) > 0) {
-        $getServicesQuery .= " where status = $statusSearch";
+        $getRoomTypesQuery .= " where status = $statusSearch";
     }
 }
-$services = queryExecute($getServicesQuery, true);
+$roomTypes = queryExecute($getRoomTypesQuery, true);
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +49,7 @@ $services = queryExecute($getServicesQuery, true);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Quản trị services</h1>
+                            <h1 class="m-0 text-dark">Quản trị loại phòng</h1>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6">
@@ -73,8 +75,8 @@ $services = queryExecute($getServicesQuery, true);
                                         <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, nội dung dịch vụ...">
                                     </div>
                                     <div class="form-group col-4">
-                                        <select name="statusSearch" class="form-control">
-                                            <option selected value="">Tất cả</option>
+                                        <select name="statusSearch" id="statusSearch" class="form-control">
+                                            <option value="">Tất cả</option>
                                             <option value="<?= ACTIVE ?>">Kích hoạt</option>
                                             <option value="<?= INACTIVE ?>">Không kích hoạt</option>
                                         </select>
@@ -91,38 +93,32 @@ $services = queryExecute($getServicesQuery, true);
                                 <thead class="table-secondary">
                                     <th>ID</th>
                                     <th>Tên</th>
-                                    <th>Giới thiệu</th>
-                                    <th>Ảnh</th>
+                                    <th>Giá tiền</th>
+                                    <th>Số lượng phòng</th>
                                     <th>Trạng thái</th>
                                     <th>
                                         <a href="<?php echo ADMIN_URL . 'services/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($services as $service) : ?>
+                                    <?php foreach ($roomTypes as $roomType) : ?>
                                         <tr>
-                                            <td><?php echo $service['id'] ?></td>
-                                            <td><?php echo $service['name'] ?></td>
-                                            <td><?php echo substr($service['introduce'], 0, 60) . '<span class="text-danger">...</span>' ?></td>
+                                            <td><?php echo $roomType['id'] ?></td>
+                                            <td><?php echo $roomType['name'] ?></td>
+                                            <td><?php echo $roomType['price'] ?></td>
+                                            <td><?php echo $roomType['quantity'] ?></td>
                                             <td>
-                                                <?php if ($service['feature_img']) { ?>
-                                                    <img class="img-fluid" src="<?= BASE_URL . $service['feature_img'] ?>" alt="">
-                                                <?php } else { ?>
-                                                    <img class="img-fluid" src="<?= PUBLIC_URL . 'img/default-image.jpg' ?>" alt="">
-                                                <?php } ?>
-                                            </td>
-                                            <td>
-                                                <?php if ($service['status'] == 1) { ?>
+                                                <?php if ($roomType['status'] == 1) { ?>
                                                     <span class="">Kích hoạt</span>
-                                                <?php } else if ($service['status'] == 0) { ?>
+                                                <?php } else if ($roomType['status'] == 0) { ?>
                                                     <span class="text-danger">Không kích hoạt</span>
                                                 <?php } ?>
                                             </td>
                                             <td>
-                                                <a href="<?php echo ADMIN_URL . 'services/edit-form.php?id=' . $service['id'] ?>" class="btn btn-sm btn-info">
+                                                <a href="<?php echo ADMIN_URL . 'room_types/edit-form.php?id=' . $roomType['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
-                                                <a href="<?php echo ADMIN_URL . 'services/remove.php?id=' . $service['id'] ?>" class="btn-remove btn btn-sm btn-danger">
+                                                <a href="<?php echo ADMIN_URL . 'room_types/remove.php?id=' . $roomType['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>

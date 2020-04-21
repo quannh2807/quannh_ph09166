@@ -3,16 +3,15 @@ session_start();
 define('TITLE', 'Room Types');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-
 // get id from url
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
-// get services query
-$getServicesQuery = "select * from services where id = '$id'";
-$services = queryExecute($getServicesQuery, false);
+// danh sách roomTypes
+$getRoomTypesQuery = "select * from room_types where id = '$id'";
+$roomTypes = queryExecute($getRoomTypesQuery, false);
 
 // kiểm tra xem quyền để thực hiện edit
 if ($_SESSION[AUTH]['role_id'] < 1) {
-    header("location: " . ADMIN_URL . 'news?msg=Bạn không có quyền sửa thông tin bài viết này');
+    header("location: " . ADMIN_URL . 'room_types?msg=Bạn không có quyền sửa thông tin bài viết này');
     die;
 }
 ?>
@@ -21,8 +20,20 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
 
 <head>
     <?php include_once '../_share/style.php'; ?>
-    <!-- Script single-use only -->
-    <script src="https://cdn.tiny.cloud/1/09n2cu8687a01c6pb501sbldantk25a45y32kbe1uneb85j4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        function encodeImageFileAsURL(element) {
+            var file = element.files[0];
+            if (file === undefined) {
+                $('#preview-img').attr('src', "<?= DEFAULT_IMAGE ?>");
+                return false;
+            }
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                $('#preview-img').attr('src', reader.result)
+            }
+            reader.readAsDataURL(file);
+        }
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -42,7 +53,7 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Cập nhật thông tin dịch vụ</h1>
+                            <h1 class="m-0 text-dark">Cập nhật thông tin loại phòng</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -53,46 +64,61 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="edit-service-form" action="<?= ADMIN_URL . 'services/save-edit.php' ?>" method="post" enctype="multipart/form-data">
+                    <form id="edit-room-types-form" action="<?= ADMIN_URL . 'room_types/save-edit.php' ?>" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="<?= $roomTypes['id'] ?>">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="id" value="<?= $services['id'] ?>" hidden>
                                 <div class="form-group">
-                                    <label for="">Tên dịch vụ<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="nameService" name="name" value="<?= $services['name'] ?>">
+                                    <label for="">Tên loại phòng<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="name" id="nameRTypes" value="<?= $roomTypes['name'] ?>">
                                     <?php if (isset($_GET['nameerr'])) : ?>
                                         <label class="error"><?= $_GET['nameerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Giới thiệu<span class="text-danger">*</span></label>
-                                    <textarea name="introduce" class="form-control" id="" cols="30" rows="10"><?= $services['introduce'] ?></textarea>
-                                    <?php if (isset($_GET['introduceerr'])) : ?>
-                                        <label class=" error"><?= $_GET['introduceerr'] ?></label>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <img src="<?= BASE_URL . $services['feature_img'] ?>" id="preview-img" class="img-fluid" alt="Ảnh đại diện dịch vụ">
-                                    </div>
-                                </div>
-                                <div class="form-group mt-3 mb-4">
-                                    <label for="">Ảnh đại diện<span class="text-danger">*</span></label>
-                                    <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_img" onchange="encodeImageFileAsURL(this)">
-                                </div>
-                                <div class="form-group">
-                                    <label for="statusService">Trạng thái<span class="text-danger">*</span></label>
-                                    <select id="statusService" class="form-control" name="status">
+                                    <label for="statusRTypes">Trạng thái<span class="text-danger">*</span></label>
+                                    <select id="statusRTypes" class="form-control" name="status">
+                                        <option value="">Chọn trạng thái</option>
                                         <option value="<?= ACTIVE ?>">Kích hoạt</option>
                                         <option value="<?= INACTIVE ?>">Không kích hoạt</option>
                                     </select>
                                 </div>
-                                <div class="col d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'services' ?>" id="btnCancel" class="btn btn-danger">Hủy</a>
+                                <div class="form-group">
+                                    <label for="">Giá loại phòng<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="price" id="priceRTypes" value="<?= $roomTypes['price'] ?>">
+                                    <?php if (isset($_GET['priceerr'])) : ?>
+                                        <label class="error"><?= $_GET['priceerr'] ?></label>
+                                    <?php endif; ?>
                                 </div>
+                                <div class="form-group">
+                                    <label for="">Số lượng phòng<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="quantity" id="quantityRTypes" value="<?= $roomTypes['quantity'] ?>">
+                                    <?php if (isset($_GET['quantityerr'])) : ?>
+                                        <label class="error"><?= $_GET['quantityerr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row m-2">
+                                    <div class="col-6 col-md-5">
+                                        <img src="<?= PUBLIC_URL .  $roomTypes['feature_image'] ?>" id="preview-img" class="img-fluid">
+                                    </div>
+                                    <div class="col-6 form-group mt-3 mb-4">
+                                        <label for="">Ảnh loại phòng<span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_img" onchange="encodeImageFileAsURL(this)">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Mô tả ngắn<span class="text-danger">*</span></label>
+                                    <textarea name="short_descript" id="short_descript" class="form-control" rows="5"><?= $roomTypes['short_descript']?></textarea>
+                                    <?php if (isset($_GET['short_descripterr'])) : ?>
+                                        <label class="error"><?= $_GET['short_descripterr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="col d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                <a href="<?= ADMIN_URL . 'services' ?>" id="btnCancel" class="btn btn-danger">Hủy</a>
                             </div>
                         </div>
                     </form>
@@ -109,73 +135,35 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-        // Tinymce
-        tinymce.init({
-            selector: '#introduce',
-            height: 350,
-            menubar: false,
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount'
-            ],
-            toolbar: 'undo redo | formatselect | ' +
-                'bold italic backcolor | alignleft aligncenter ' +
-                'alignright alignjustify | bullist numlist outdent indent | ' +
-                'removeformat | help',
-            content_css: '//www.tiny.cloud/css/codepen.min.css'
-        });
+        statusRTypes.value = <?=$roomTypes['status']?>;
 
-        var nameService = document.getElementById('nameService');
-        var statusService = document.getElementById('statusService');
-        var btnCancel = document.getElementById('btnCancel');
-
-        nameService.onchange = () => {
-            sessionStorage.setItem('nameService', nameService.value);
-        };
-        statusService.onchange = () => {
-            sessionStorage.setItem('statusService', statusService.value);
-        }
-        btnCancel.onclick = () => {
-            sessionStorage.clear();
-        }
-
-        nameService.value = sessionStorage.getItem('nameService');
-        if ("statusService" in sessionStorage) {
-            statusService.value = sessionStorage.getItem('statusService')
-        } else {
-            statusService.value = <?= $services['status']?>
-        }
-
-        function encodeImageFileAsURL(element) {
-            var file = element.files[0];
-            if (file === undefined) {
-                $('#preview-img').attr('src', "<?= DEFAULT_IMAGE ?>");
-                return false;
-            }
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                $('#preview-img').attr('src', reader.result)
-            }
-            reader.readAsDataURL(file);
-        }
-
-        $('#edit-service-form').validate({
+        $('#edit-room-types-form').validate({
             rules: {
                 name: {
                     required: true,
                     minlength: 2,
                     maxlength: 191
                 },
-                introduce: {
-                    require: true
-                },
                 status: {
                     required: true
+                },
+                quantity: {
+                    required: true,
+                    number: true,
+                    min: 1,
+                    max: 50
+                },
+                price: {
+                    required: true,
+                    number: true,
+                    min: 0,
                 },
                 feature_img: {
                     required: true,
                     extension: "png|jpg|jpeg|gif"
+                },
+                short_descript: {
+                    required: true
                 }
             },
             messages: {
@@ -184,15 +172,26 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                     minlength: "Số lượng ký tự tối thiểu bằng 2 ký tự",
                     maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
                 },
-                introduce: {
-                    require: "Hãy nhập lời giới thiệu"
-                },
                 status: {
                     required: "Chọn trạng thái"
                 },
                 feature_img: {
                     required: "Hãy nhập ảnh đại diện",
                     extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
+                },
+                quantity: {
+                    required: "Nhập số lượng phòng",
+                    number: "Số lượng phòng phải nhập bằng số",
+                    min: "Không thể nhập số phòng nhỏ hơn 1",
+                    max: "Không thể nhập số phòng lớn hơn 50"
+                },
+                price: {
+                    required: "Nhập vào giá phòng",
+                    number: "Giá phòng phải nhập bằng số",
+                    min: "Không thể nhập giá phòng nhỏ hơn 0",
+                },
+                short_descript: {
+                    required: "Nhập mô tả loại phòng"
                 }
             }
         });

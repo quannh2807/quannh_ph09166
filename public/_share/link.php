@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="<?= PUBLIC_URL ?>/css/lightslider.css">
 <!-- Theme -->
 <link rel="stylesheet" href="<?= PUBLIC_URL ?>/css/reset.css">
-<!-- custom css -->
+<!-- my custom css -->
 <link rel="stylesheet" href="<?= PUBLIC_URL ?>/css/main.css" />
 <!-- responsive -->
 <link rel="stylesheet" href="<?= PUBLIC_URL ?>/css/responsive.css" />
