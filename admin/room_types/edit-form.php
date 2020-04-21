@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('TITLE', 'Room Types');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 

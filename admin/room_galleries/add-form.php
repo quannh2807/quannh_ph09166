@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('TITLE', 'Room Galleries');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 $getServicesQuery = "select * from services";
