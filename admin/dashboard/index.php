@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('TITLE', 'Dashboard');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 

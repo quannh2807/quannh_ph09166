@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('TITLE', 'Services');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 

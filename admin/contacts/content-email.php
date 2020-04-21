@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('TITLE', 'Customer Feedbacks');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 // lấy thông tin của customer ra ngoài thông id trên đường dẫn

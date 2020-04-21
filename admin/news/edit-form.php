@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('TITLE', 'News');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 // lấy thông tin của người dùng ra ngoài thông id trên đường dẫn

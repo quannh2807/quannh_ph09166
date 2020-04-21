@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('TITLE', 'Galleries');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
 $getRoleQuery = "select * from roles where status = 1";
