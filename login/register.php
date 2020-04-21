@@ -1,6 +1,7 @@
 <?php
 // bắt đầu sử dụng session
 session_start();
+define('TITLE', 'Resigter');
 require_once "../config/utils.php";
 ?>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@ require_once "../config/utils.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="<?= PUBLIC_URL . 'img/favicon.ico' ?>" type="image/x-icon">
-    <title>Resigter</title>
+    <title><?=$title?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo PUBLIC_URL . 'css/main.css' ?>">
     <style>

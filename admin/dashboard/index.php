@@ -36,6 +36,9 @@ $webSetting = queryExecute($getWebSettingSql, true);
 $getRoomServicesQuery = "select * from room_services";
 $roomServices = queryExecute($getRoomServicesQuery, true);
 
+# Lấy ra tất cả bản ghi trong bảng room types
+$getRoomTypesQuery = "select * from room_types";
+$roomTypes = queryExecute($getRoomTypesQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -169,6 +172,19 @@ $roomServices = queryExecute($getRoomServicesQuery, true);
                                 </div>
                                 <div class="icon">
                                     <i class="fal fa-hotel"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'room_services' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-4">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3><?= count($roomTypes); ?></h3>
+                                    <p>Loại phòng</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fal fa-house"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'room_services' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
