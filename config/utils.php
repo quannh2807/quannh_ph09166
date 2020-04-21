@@ -10,7 +10,7 @@ define('DEFAULT_IMAGE', PUBLIC_URL . 'img/default-image.jpg');
 define('AUTH', 'AUTH_SESSION');
 define("ACTIVE", 1);
 define("INACTIVE", 0);
-define("TITLE", $title . ' | Hotel Booking');
+$title = defined('TITLE') ? TITLE . ' | Hotel Booking' : 'Hotel Booking';
 
 function getdbConn()
 {

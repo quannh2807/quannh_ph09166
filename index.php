@@ -1,6 +1,6 @@
 <?php
 session_start();
-$title = "Home";
+define('TITLE', 'Home');
 require_once './config/utils.php';
 $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 ?>
