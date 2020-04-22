@@ -5,15 +5,19 @@ require_once '../../config/utils.php';
 checkAdminLoggedIn();
 // get id from url
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
-// danh sách roomTypes
+// get data from roomTypes
 $getRoomTypesQuery = "select * from room_types where id = '$id'";
 $roomTypes = queryExecute($getRoomTypesQuery, false);
+// get data from room_services and room_service_xref
+$getServiceQuery = "select s.id, s.name
+                        from room_service_xref sxr join room_services s
+                        on sxr.services_id = s.id
+                    where sxr.room_id = " . $roomTypes['id'];
+$services = queryExecute($getServiceQuery, true);
+$roomTypes['room_sv'] = $services;
 
-// kiểm tra xem quyền để thực hiện edit
-if ($_SESSION[AUTH]['role_id'] < 1) {
-    header("location: " . ADMIN_URL . 'room_types?msg=Bạn không có quyền sửa thông tin bài viết này');
-    die;
-}
+$getServices = "select * from room_services where status = 1";
+$allServices = queryExecute($getServices, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -97,6 +101,17 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                                         <label class="error"><?= $_GET['quantityerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
+                                <div class="form-group">
+                                    <label for="">Dịch vụ phòng</label>
+                                    <select name="service[]" class="form-control select2" multiple="multiple" data-placeholder="Chọn dịch vụ phòng">
+                                        <?php foreach ($room['room_sv'] as $ser) : ?>
+                                            <option value="<?= $ser['id'] ?>" selected><?= $ser['name'] ?></option>
+                                        <?php endforeach ?>
+                                        <?php foreach ($allServices as $sers) : ?>
+                                            <option value="<?= $sers['id'] ?>"><?= $sers['name'] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="row m-2">
@@ -110,7 +125,7 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                                 </div>
                                 <div class="form-group">
                                     <label for="">Mô tả ngắn<span class="text-danger">*</span></label>
-                                    <textarea name="short_descript" id="short_descript" class="form-control" rows="5"><?= $roomTypes['short_descript']?></textarea>
+                                    <textarea name="short_descript" id="short_descript" class="form-control" rows="5"><?= $roomTypes['short_descript'] ?></textarea>
                                     <?php if (isset($_GET['short_descripterr'])) : ?>
                                         <label class="error"><?= $_GET['short_descripterr'] ?></label>
                                     <?php endif; ?>
@@ -135,7 +150,10 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-        statusRTypes.value = <?=$roomTypes['status']?>;
+        //Initialize Select2 Elements
+        $('.select2').select2();
+
+        statusRTypes.value = <?= $roomTypes['status'] ?>;
 
         $('#edit-room-types-form').validate({
             rules: {

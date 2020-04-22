@@ -3,6 +3,8 @@ session_start();
 define('TITLE', 'Room Types');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
+$getRoomSerives = "select * from room_services";
+$roomSerives = queryExecute($getRoomSerives, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,16 +73,22 @@ checkAdminLoggedIn();
                                         <label class="error"><?= $_GET['quantityerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
+                                <div class="form-group">
+                                    <label for="">Dịch vụ phòng</label>
+                                    <select name="service[]" class="form-control select2" multiple="multiple" data-placeholder="Chọn dịch vụ phòng" >
+                                        <?php foreach ($roomSerives as $ser) : ?>
+                                            <option value="<?= $ser['id'] ?>"><?= $ser['name'] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="row m-2">
-                                    <div class="col-6 col-md-5">
-                                        <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
-                                    </div>
-                                    <div class="col-6 form-group mt-3 mb-4">
-                                        <label for="">Ảnh loại phòng<span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_img" onchange="encodeImageFileAsURL(this)">
-                                    </div>
+                                <div class="col-md-5 offset-3">
+                                    <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
+                                </div>
+                                <div class="form-group mt-3 mb-4">
+                                    <label for="">Ảnh loại phòng<span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_img" onchange="encodeImageFileAsURL(this)">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Mô tả ngắn<span class="text-danger">*</span></label>
@@ -90,11 +98,12 @@ checkAdminLoggedIn();
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            <div class="col d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                <a href="<?= ADMIN_URL . 'services' ?>" id="btnCancel" class="btn btn-danger">Hủy</a>
+                            <div class="col-12">
+                                <div class="col d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                    <a href="<?= ADMIN_URL . 'services' ?>" id="btnCancel" class="btn btn-danger">Hủy</a>
+                                </div>
                             </div>
-                        </div>
                     </form>
                     <!-- /.row -->
 
@@ -109,6 +118,9 @@ checkAdminLoggedIn();
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
+        //Initialize Select2 Elements
+        $('.select2').select2();
+
         var nameRTypes = document.getElementById('nameRTypes');
         var statusRTypes = document.getElementById('statusRTypes');
         var quantityRTypes = document.getElementById('quantityRTypes');

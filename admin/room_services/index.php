@@ -144,7 +144,7 @@ $services = queryExecute($getRoomServicesQuery, true);
         $(document).ready(function() {
             setTimeout(() => {
                 sessionStorage.clear();
-            }, 2000);
+            }, 0);
 
             $('.btn-remove').on('click', function() {
                 var redirectUrl = $(this).attr('href');

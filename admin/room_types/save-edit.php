@@ -7,6 +7,7 @@ $name = trim($_POST['name']);
 $status = trim($_POST['status']);
 $quantity = trim($_POST['quantity']);
 $price = trim($_POST['price']);
+$service = $_POST['service'];
 $feature_img = $_FILES['feature_img'];
 $short_descript = trim($_POST['short_descript']);
 
@@ -59,7 +60,19 @@ $updateRoomTypesQuery = "update room_types set
                           price = '$price',
                           short_descript = '$short_descript'
                         where id = '$id'";
-dd($updateRoomTypesQuery);
 queryExecute($updateRoomTypesQuery, false);
+
+$roomTypesId = "select id from room_types where name = '$name'";
+$idArr = queryExecute($roomTypesId, false);
+$id = $idArr[0];
+
+for ($i = 0; $i < count($service); $i++) {
+    $insertRoomSerXref = "insert into room_service_xref
+                (room_id, services_id)
+            values
+                ('$id','$service[$i]')";
+    queryExecute($insertRoomSerXref, false);
+};
+
 header("location: " . ADMIN_URL . "room_types");
 die;

@@ -97,7 +97,7 @@ $roomTypes = queryExecute($getRoomTypesQuery, true);
                                     <th>Số lượng phòng</th>
                                     <th>Trạng thái</th>
                                     <th>
-                                        <a href="<?php echo ADMIN_URL . 'services/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
+                                        <a href="<?php echo ADMIN_URL . 'room_types/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                     </th>
                                 </thead>
                                 <tbody>

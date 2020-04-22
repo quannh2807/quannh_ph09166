@@ -30,5 +30,5 @@ $insertServicesQuery = "insert into room_services
                     values
                           ('$name', '$filename', '$status')";
 queryExecute($insertServicesQuery, false);
-header("location: " . ADMIN_URL . "services");
+header("location: " . ADMIN_URL . "room_services");
 die;
