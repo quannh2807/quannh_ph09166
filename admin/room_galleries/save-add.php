@@ -2,29 +2,21 @@
 session_start();
 include_once "../../config/utils.php";
 checkAdminLoggedIn();
-$name = trim($_POST['name']);
-$introduce = trim($_POST['introduce']);
-$status = trim($_POST['status']);
-$feature_img = $_FILES['feature_img'];
-// validate bằng php
-$nameerr = "";
-// check name
-if (strlen($name) < 2 || strlen($name) > 191) {
-    $nameerr = "Yêu cầu nhập tên dịch vụ nằm trong khoảng 2-191 ký tự";
-}
+$room_id = trim($_POST['room_id']);
+$img_url = $_FILES['img_url'];
 
 // upload file ảnh
 $filename = "";
-if($feature_img['size'] > 0){
-    $filename = uniqid() . 'service-' . $feature_img['name'];
-    move_uploaded_file($feature_img['tmp_name'], "../../public/img/" . $filename);
+if($img_url['size'] > 0){
+    $filename = uniqid() . '-' . $img_url['name'];
+    move_uploaded_file($img_url['tmp_name'], "../../public/img/" . $filename);
     $filename = "public/img/" . $filename;
 }
-// insert services query
-$insertServicesQuery = "insert into services
-                          (name, feature_img, introduce, status)
+
+$insertRoomGalleriesQuery = "insert into room_galleries
+                          (room_id, img_url)
                     values
-                          ('$name', '$filename', '$introduce', '$status')";
-queryExecute($insertServicesQuery, false);
-header("location: " . ADMIN_URL . "services");
+                          ('$room_id', '$filename')";
+queryExecute($insertRoomGalleriesQuery, false);
+header("location: " . ADMIN_URL . "room_galleries");
 die;

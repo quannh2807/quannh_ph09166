@@ -4,19 +4,19 @@ include_once "../../config/utils.php";
 checkAdminLoggedIn();
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
 
-$getRemoveServicesQuery = "select * from services where id = $id";
-$removeServices = queryExecute($getRemoveServicesQuery, false);
-if(!$removeServices){
-    header("location: " . ADMIN_URL . "services?msg=Dịch vụ này không tồn tại");
+$getRemoveRoomGalleriesQuery = "select * from room_galleries where id = $id";
+$removeRoomgalleries = queryExecute($getRemoveRoomGalleriesQuery, false);
+if(!$removeRoomgalleries){
+    header("location: " . ADMIN_URL . "room_galleries?msg=Ảnh phòng này không tồn tại");
     die;
 }
 
 if($_SESSION[AUTH]['role_id'] < 2){
-    header("location: " . ADMIN_URL . "services?msg=Không đủ quyền hạn thực hiện hành động này");
+    header("location: " . ADMIN_URL . "room_galleries?msg=Không đủ quyền hạn thực hiện hành động này");
     die;
 }
 
-$removeServicesQuery = "delete from services where id = $id";
-queryExecute($removeServicesQuery, false);
-header("location: " . ADMIN_URL . "services?msg=Xóa dịch vụ thành công");
+$removeRoomgalleriesQuery = "delete from room_galleries where id = $id";
+queryExecute($removeRoomgalleriesQuery, false);
+header("location: " . ADMIN_URL . "room_galleries?msg=Xóa ảnh phòng thành công");
 die;

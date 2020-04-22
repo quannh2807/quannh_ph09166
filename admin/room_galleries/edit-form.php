@@ -6,23 +6,18 @@ checkAdminLoggedIn();
 
 // get id from url
 $id = isset($_GET['id']) ? $_GET['id'] : -1;
-// get services query
-$getServicesQuery = "select * from services where id = '$id'";
-$services = queryExecute($getServicesQuery, false);
-
-// kiểm tra xem quyền để thực hiện edit
-if ($_SESSION[AUTH]['role_id'] < 1) {
-    header("location: " . ADMIN_URL . 'news?msg=Bạn không có quyền sửa thông tin bài viết này');
-    die;
-}
+// get data from room galleries
+$getRoomGalleriesQuery = "select * from room_galleries where id = '$id'";
+$roomGalleries = queryExecute($getRoomGalleriesQuery, false);
+// get data from room types
+$getRoomTypesQuery = "select * from room_types";
+$roomTypes = queryExecute($getRoomTypesQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <?php include_once '../_share/style.php'; ?>
-    <!-- Script single-use only -->
-    <script src="https://cdn.tiny.cloud/1/09n2cu8687a01c6pb501sbldantk25a45y32kbe1uneb85j4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -42,7 +37,7 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Cập nhật thông tin dịch vụ</h1>
+                            <h1 class="m-0 text-dark">Sửa ảnh phòng</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -53,46 +48,32 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
-                    <form id="edit-service-form" action="<?= ADMIN_URL . 'services/save-edit.php' ?>" method="post" enctype="multipart/form-data">
+                    <form id="add-room-galleries-form" action="<?= ADMIN_URL . 'room_galleries/save-edit.php' ?>" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="<?= $roomGalleries['id'] ?>">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="id" value="<?= $services['id'] ?>" hidden>
                                 <div class="form-group">
-                                    <label for="">Tên dịch vụ<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="nameService" name="name" value="<?= $services['name'] ?>">
-                                    <?php if (isset($_GET['nameerr'])) : ?>
-                                        <label class="error"><?= $_GET['nameerr'] ?></label>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Giới thiệu<span class="text-danger">*</span></label>
-                                    <textarea name="introduce" class="form-control" id="" cols="30" rows="10"><?= $services['introduce'] ?></textarea>
-                                    <?php if (isset($_GET['introduceerr'])) : ?>
-                                        <label class=" error"><?= $_GET['introduceerr'] ?></label>
-                                    <?php endif; ?>
+                                    <label for="statusRG">Loại phòng<span class="text-danger">*</span></label>
+                                    <select id="statusRG" class="form-control" name="room_id">
+                                        <option value="">Chọn loại phòng</option>
+                                        <?php foreach ($roomTypes as $roomType) : ?>
+                                            <option value="<?= $roomType['id'] ?>" <?php if ($roomType['id'] == $roomGalleries['room_id']) : ?>selected<?php endif; ?>><?= $roomType['name'] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6 offset-md-3">
-                                        <img src="<?= BASE_URL . $services['feature_img'] ?>" id="preview-img" class="img-fluid" alt="Ảnh đại diện dịch vụ">
-                                    </div>
+                                <div class="col-md-5 offset-3">
+                                    <img src="<?= BASE_URL . $roomGalleries['img_url'] ?>" id="preview-img" class="img-fluid">
                                 </div>
                                 <div class="form-group mt-3 mb-4">
-                                    <label for="">Ảnh đại diện<span class="text-danger">*</span></label>
-                                    <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_img" onchange="encodeImageFileAsURL(this)">
+                                    <label for="">Ảnh loại phòng<span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control-file" id="inputGroupFile01" name="img_url" onchange="encodeImageFileAsURL(this)">
                                 </div>
-                                <div class="form-group">
-                                    <label for="statusService">Trạng thái<span class="text-danger">*</span></label>
-                                    <select id="statusService" class="form-control" name="status">
-                                        <option value="<?= ACTIVE ?>">Kích hoạt</option>
-                                        <option value="<?= INACTIVE ?>">Không kích hoạt</option>
-                                    </select>
-                                </div>
-                                <div class="col d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
-                                    <a href="<?= ADMIN_URL . 'services' ?>" id="btnCancel" class="btn btn-danger">Hủy</a>
-                                </div>
+                            </div>
+                            <div class="col d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                                <a href="<?= ADMIN_URL . 'room_galleries' ?>" id="btnCancel" class="btn btn-danger">Hủy</a>
                             </div>
                         </div>
                     </form>
@@ -109,43 +90,17 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
     <!-- ./wrapper -->
     <?php include_once '../_share/script.php'; ?>
     <script>
-        // Tinymce
-        tinymce.init({
-            selector: '#introduce',
-            height: 350,
-            menubar: false,
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount'
-            ],
-            toolbar: 'undo redo | formatselect | ' +
-                'bold italic backcolor | alignleft aligncenter ' +
-                'alignright alignjustify | bullist numlist outdent indent | ' +
-                'removeformat | help',
-            content_css: '//www.tiny.cloud/css/codepen.min.css'
-        });
-
-        var nameService = document.getElementById('nameService');
-        var statusService = document.getElementById('statusService');
+        var statusRG = document.getElementById('statusRG');
         var btnCancel = document.getElementById('btnCancel');
 
-        nameService.onchange = () => {
-            sessionStorage.setItem('nameService', nameService.value);
+        statusRG.onchange = () => {
+            sessionStorage.setItem('statusRG', statusRG.value);
         };
-        statusService.onchange = () => {
-            sessionStorage.setItem('statusService', statusService.value);
-        }
         btnCancel.onclick = () => {
             sessionStorage.clear();
-        }
+        };
 
-        nameService.value = sessionStorage.getItem('nameService');
-        if ("statusService" in sessionStorage) {
-            statusService.value = sessionStorage.getItem('statusService')
-        } else {
-            statusService.value = <?= $services['status']?>
-        }
+        statusRG.value = ("statusRG" in sessionStorage) ? sessionStorage.getItem('statusRG') : <?=$roomGalleries['room_id']?>;
 
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
@@ -160,38 +115,20 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
             reader.readAsDataURL(file);
         }
 
-        $('#edit-service-form').validate({
+        $('#add-room-galleries-form').validate({
             rules: {
-                name: {
-                    required: true,
-                    minlength: 2,
-                    maxlength: 191
-                },
-                introduce: {
-                    require: true
-                },
                 status: {
                     required: true
                 },
-                feature_img: {
-                    required: true,
+                img_url: {
                     extension: "png|jpg|jpeg|gif"
                 }
             },
             messages: {
-                name: {
-                    required: "Hãy nhập tên dịch vụ",
-                    minlength: "Số lượng ký tự tối thiểu bằng 2 ký tự",
-                    maxlength: "Số lượng ký tự tối đa bằng 191 ký tự"
-                },
-                introduce: {
-                    require: "Hãy nhập lời giới thiệu"
-                },
                 status: {
                     required: "Chọn trạng thái"
                 },
-                feature_img: {
-                    required: "Hãy nhập ảnh đại diện",
+                img_url: {
                     extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
                 }
             }

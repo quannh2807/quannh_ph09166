@@ -39,6 +39,10 @@ $roomServices = queryExecute($getRoomServicesQuery, true);
 # Lấy ra tất cả bản ghi trong bảng room types
 $getRoomTypesQuery = "select * from room_types";
 $roomTypes = queryExecute($getRoomTypesQuery, true);
+
+# Lấy ra tất cả bản ghi trong bảng room galleries
+$getRoomGalleriesQuery = "select * from room_galleries";
+$roomGalleries = queryExecute($getRoomGalleriesQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -187,6 +191,22 @@ $roomTypes = queryExecute($getRoomTypesQuery, true);
                                     <i class="fal fa-house"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'room_services' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row 3 -->
+                    <div class="row">
+                        <div class="col-lg-3 col-4">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3><?= count($roomGalleries); ?></h3>
+                                    <p>Room Galleries</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fad fa-images"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'room_galleries' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

@@ -3,25 +3,10 @@ session_start();
 define('TITLE', 'Room Galleries');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
-// get keywords
-$keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
-$statusSearch = isset($_GET['statusSearch']) == true ? $_GET['statusSearch'] : "";
-// danh sách services
-$getServicesQuery = "select * from services";
-// tìm kiếm
-if ($keyword !== "" || strlen($keyword) > 0) {
-    $getServicesQuery .= " where (name like '%$keyword%'
-                            or introduce like '%$keyword%')";
-    if (strlen($statusSearch) > 0) {
-        $getServicesQuery .= " and status = $statusSearch%";
-    }
-} else {
-    if (strlen($statusSearch) > 0) {
-        $getServicesQuery .= " where status = $statusSearch";
-    }
-}
-$services = queryExecute($getServicesQuery, true);
-
+// get room galleries
+$getRoomGalleriesQuery = "select rg.*, rt.name as name from room_galleries rg join room_types rt
+                                    on rg.room_id = rt.id";
+$roomGalleries = queryExecute($getRoomGalleriesQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,7 +32,7 @@ $services = queryExecute($getServicesQuery, true);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Quản trị services</h1>
+                            <h1 class="m-0 text-dark">Quản trị album ảnh</h1>
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6">
@@ -65,64 +50,30 @@ $services = queryExecute($getServicesQuery, true);
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <div class="col-md-10 col-offset-1">
-                            <!-- Filter  -->
-                            <form action="" method="get">
-                                <div class="form-row">
-                                    <div class="form-group col-6">
-                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên, nội dung dịch vụ...">
-                                    </div>
-                                    <div class="form-group col-4">
-                                        <select name="statusSearch" class="form-control">
-                                            <option selected value="">Tất cả</option>
-                                            <option value="<?= ACTIVE ?>">Kích hoạt</option>
-                                            <option value="<?= INACTIVE ?>">Không kích hoạt</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-2">
-                                        <button type="submit" class="btn btn-success">Tìm kiếm</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
                         <!-- Danh sách users  -->
                         <div class="table-responsive">
                             <table class="table table-stripped">
                                 <thead class="table-secondary">
                                     <th>ID</th>
-                                    <th>Tên</th>
-                                    <th>Giới thiệu</th>
-                                    <th>Ảnh</th>
-                                    <th>Trạng thái</th>
+                                    <th>Loại phòng</th>
+                                    <th>Ảnh loại phòng</th>
                                     <th>
-                                        <a href="<?php echo ADMIN_URL . 'services/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
+                                        <a href="<?php echo ADMIN_URL . 'room_galleries/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($services as $service) : ?>
+                                    <?php foreach ($roomGalleries as $roomGallerie) : ?>
                                         <tr>
-                                            <td><?php echo $service['id'] ?></td>
-                                            <td><?php echo $service['name'] ?></td>
-                                            <td><?php echo substr($service['introduce'], 0, 60) . '<span class="text-danger">...</span>' ?></td>
+                                            <td><?php echo $roomGallerie['id'] ?></td>
+                                            <td><?php echo $roomGallerie['name'] ?></td>
                                             <td>
-                                                <?php if ($service['feature_img']) { ?>
-                                                    <img class="img-fluid" src="<?= BASE_URL . $service['feature_img'] ?>" alt="">
-                                                <?php } else { ?>
-                                                    <img class="img-fluid" src="<?= PUBLIC_URL . 'img/default-image.jpg' ?>" alt="">
-                                                <?php } ?>
+                                                <img src="<?= BASE_URL . $roomGallerie['img_url'] ?>" width=150 alt="">
                                             </td>
                                             <td>
-                                                <?php if ($service['status'] == 1) { ?>
-                                                    <span class="">Kích hoạt</span>
-                                                <?php } else if ($service['status'] == 0) { ?>
-                                                    <span class="text-danger">Không kích hoạt</span>
-                                                <?php } ?>
-                                            </td>
-                                            <td>
-                                                <a href="<?php echo ADMIN_URL . 'services/edit-form.php?id=' . $service['id'] ?>" class="btn btn-sm btn-info">
+                                                <a href="<?php echo ADMIN_URL . 'room_galleries/edit-form.php?id=' . $roomGallerie['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
-                                                <a href="<?php echo ADMIN_URL . 'services/remove.php?id=' . $service['id'] ?>" class="btn-remove btn btn-sm btn-danger">
+                                                <a href="<?php echo ADMIN_URL . 'room_galleries/remove.php?id=' . $roomGallerie['id'] ?>" class="btn-remove btn btn-sm btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>
@@ -154,7 +105,7 @@ $services = queryExecute($getServicesQuery, true);
                 var redirectUrl = $(this).attr('href');
                 Swal.fire({
                     title: 'Thông báo!',
-                    text: "Bạn có chắc chắn muốn xóa dịch vụ này không?",
+                    text: "Bạn có chắc chắn muốn xóa ảnh này không?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
