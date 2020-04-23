@@ -73,9 +73,25 @@ $roomSerives = queryExecute($getRoomSerives, true);
                                         <label class="error"><?= $_GET['quantityerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
+                                <div class="row">
+                                    <div class="col-6 form-group">
+                                        <label for="">Số người lớn<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="adult" id="adult">
+                                        <?php if (isset($_GET['adulterr'])) : ?>
+                                            <label class="error"><?= $_GET['adulterr'] ?></label>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="col-6 form-group">
+                                        <label for="">Số người trẻ nhỏ<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="children" id="children">
+                                        <?php if (isset($_GET['childrenerr'])) : ?>
+                                            <label class="error"><?= $_GET['childrenerr'] ?></label>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="">Dịch vụ phòng</label>
-                                    <select name="service[]" class="form-control select2" multiple="multiple" data-placeholder="Chọn dịch vụ phòng" >
+                                    <select name="service[]" class="form-control select2" multiple="multiple" data-placeholder="Chọn dịch vụ phòng">
                                         <?php foreach ($roomSerives as $ser) : ?>
                                             <option value="<?= $ser['id'] ?>"><?= $ser['name'] ?></option>
                                         <?php endforeach ?>
@@ -187,6 +203,18 @@ $roomSerives = queryExecute($getRoomSerives, true);
                     number: true,
                     min: 0,
                 },
+                adult: {
+                    required: true,
+                    number: true,
+                    min: 0,
+                    max: 50
+                },
+                children: {
+                    required: true,
+                    number: true,
+                    min: 0,
+                    max: 50
+                },
                 feature_img: {
                     required: true,
                     extension: "png|jpg|jpeg|gif"
@@ -213,6 +241,18 @@ $roomSerives = queryExecute($getRoomSerives, true);
                     number: "Số lượng phòng phải nhập bằng số",
                     min: "Không thể nhập số phòng nhỏ hơn 1",
                     max: "Không thể nhập số phòng lớn hơn 50"
+                },
+                adult: {
+                    required: "Hãy nhập số người lớn",
+                    number: "Hãy nhập số người lớn bằng số",
+                    min: "Số lượng người tối thiểu là 0",
+                    max: "Số lượng người tối đa là 50"
+                },
+                children: {
+                    required: "Hãy nhập số trẻ nhỏ",
+                    number: "Hãy nhập số trẻ nhỏ bằng số",
+                    min: "Số lượng người tối thiểu là 0",
+                    max: "Số lượng người tối đa là 50"
                 },
                 price: {
                     required: "Nhập vào giá phòng",

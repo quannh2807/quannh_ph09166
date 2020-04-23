@@ -101,6 +101,22 @@ $allServices = queryExecute($getServices, true);
                                         <label class="error"><?= $_GET['quantityerr'] ?></label>
                                     <?php endif; ?>
                                 </div>
+                                <div class="row">
+                                    <div class="col-6 form-group">
+                                        <label for="">Số người lớn<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="adult" id="adult">
+                                        <?php if (isset($_GET['adulterr'])) : ?>
+                                            <label class="error"><?= $_GET['adulterr'] ?></label>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="col-6 form-group">
+                                        <label for="">Số người trẻ nhỏ<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="children" id="children">
+                                        <?php if (isset($_GET['childrenerr'])) : ?>
+                                            <label class="error"><?= $_GET['childrenerr'] ?></label>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="">Dịch vụ phòng</label>
                                     <select name="service[]" class="form-control select2" multiple="multiple" data-placeholder="Chọn dịch vụ phòng">
