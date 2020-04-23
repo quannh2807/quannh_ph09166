@@ -90,7 +90,7 @@ body#home_one .emergency_number::after {
 }
 
 .mainmenu .nav.navbar-nav li.dropdown>a {
-    background: url('http://localhost/booking-hotel/public/img/dropdown_bg.png') no-repeat scroll 100% 50%;
+    background: url('http://localhost/hotel-booking/public/img/dropdown_bg.png') no-repeat scroll 100% 50%;
 }
 
 .mainmenu .nav.navbar-nav a:hover {
@@ -310,7 +310,8 @@ form#form1 .form-group {
 }
 
 .icon_arrow:after {
-    content: '\0227B';
+    content: '\027A4';
+    opacity: 0.5;
     color: #aab8ca;
     font-size: 14px;
     line-height: 42px;
@@ -620,7 +621,7 @@ body#accomodation_page .select_room .room_rent>p>span {
 -----------------------------------------------------------*/
 
 .hotel_facilities_area {
-    background: url('http://localhost/booking-hotel/public/img/hotel-facilities-bg.jpg') no-repeat fixed 0 0;
+    background: url('http://localhost/hotel-booking/public/img/hotel-facilities-bg.jpg') no-repeat fixed 0 0;
     background-size: cover;
     background-position: fixed;
 }
@@ -812,7 +813,7 @@ body#home_two .hotel_thumb>img {
 }
 
 div#customer_says_slider .customer_comment {
-    background: rgba(0, 0, 0, 0) url("http://localhost/booking-hotel/public/img/customer-slider-bg.png") no-repeat scroll 0 0 / cover;
+    background: rgba(0, 0, 0, 0) url("http://localhost/hotel-booking/public/img/customer-slider-bg.png") no-repeat scroll 0 0 / cover;
     padding: 25px 34px 23px;
 }
 
@@ -946,7 +947,7 @@ body#error_page .error_area {
     background-attachment: scroll;
     background-clip: border-box;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url("http://localhost/booking-hotel/public/img/error_bg.jpg");
+    background-image: url("http://localhost/hotel-booking/public/img/error_bg.jpg");
     background-origin: padding-box;
     background-repeat: no-repeat;
     background-size: cover;
@@ -976,7 +977,7 @@ body#error_page .error h3 {
 }
 
 body#error_page .error .section_title.nice_title>h3::after {
-    background: rgba(0, 0, 0, 0) url("http://localhost/booking-hotel/public/img/nice-title-error.png") no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("http://localhost/hotel-booking/public/img/nice-title-error.png") no-repeat scroll 0 0;
     left: 15%;
 }
 
@@ -1057,7 +1058,7 @@ body#error_page .error .section_title.nice_title>h3::after {
 
 body#about_us_page .breadcrumb_main_area,
 body#staff_page .breadcrumb_main_area {
-    background: url('http://localhost/booking-hotel/public/img/about-us-breadcrumb.jpg') no-repeat center center / cover #000000;
+    background: url('http://localhost/hotel-booking/public/img/about-us-breadcrumb.jpg') no-repeat center center / cover #000000;
     position: relative;
 }
 
@@ -1160,7 +1161,7 @@ body#staff_page .single_staff .social_icons ul li a i {
 body#accomodation_page .breadcrumb_main_area,
 body#contact_us_page .breadcrumb_main_area,
 body#room_detail_page .breadcrumb_main_area {
-    background: url('http://localhost/booking-hotel/public/img/accomodation-breadcrumb-one.jpg') no-repeat center center / cover #000000;
+    background: url('http://localhost/hotel-booking/public/img/accomodation-breadcrumb-one.jpg') no-repeat center center / cover #000000;
     position: relative;
 }
 
@@ -1371,7 +1372,7 @@ body#room_detail_page .hotel_booking_area .room_book {
 }
 
 body#room_detail_page .customer_comment {
-    background: rgba(0, 0, 0, 0) url("http://localhost/booking-hotel/public/img/customer-slider-bg-one.png") no-repeat scroll 0 0 / cover;
+    background: rgba(0, 0, 0, 0) url("http://localhost/hotel-booking/public/img/customer-slider-bg-one.png") no-repeat scroll 0 0 / cover;
 }
 
 
@@ -1387,7 +1388,7 @@ body#room_detail_page .customer_comment {
 body#gallery_page .breadcrumb_main_area,
 body#booking_page .breadcrumb_main_area,
 body#blog_page .breadcrumb_main_area {
-    background: url('http://localhost/booking-hotel/public/img/gallery-breadcrumb.jpg') no-repeat center center / cover #000000;
+    background: url('http://localhost/hotel-booking/public/img/gallery-breadcrumb.jpg') no-repeat center center / cover #000000;
     position: relative;
 }
 
@@ -1638,7 +1639,7 @@ body#booking_page .payment_info_area .payment_system ul li {
 -----------------------------------------------------------*/
 
 .blog_img_box {
-    background: rgba(0, 0, 0, 0) url("http://localhost/booking-hotel/public/img/blog-pic-link-bg.png") no-repeat scroll 0 0 / cover;
+    background: rgba(0, 0, 0, 0) url("http://localhost/hotel-booking/public/img/blog-pic-link-bg.png") no-repeat scroll 0 0 / cover;
     height: 139px;
     margin-bottom: -21px;
     position: relative;
@@ -1775,7 +1776,7 @@ body#blog_page .b_link {
 -----------------------------------------------------------*/
 
 body#single_blog_page .breadcrumb_main_area {
-    background: url('http://localhost/booking-hotel/public/img/gallery-breadcrumb.jpg') no-repeat center center / cover #000000;
+    background: url('http://localhost/hotel-booking/public/img/gallery-breadcrumb.jpg') no-repeat center center / cover #000000;
     position: relative;
 }
 
