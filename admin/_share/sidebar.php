@@ -94,7 +94,7 @@
                         <li class="nav-item">
                             <a href="<?= ADMIN_URL . 'contacts/list-contacted.php' ?>" class="nav-link">
                                 <i class="fas fa-info nav-icon" aria-hidden="true"></i>
-                                <p>Đã phản hồi</p>
+                                <p>Đã trả lời</p>
                             </a>
                         </li>
                     </ul>
@@ -103,7 +103,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-comment-alt-dots"></i>
                         <p>
-                            Quản lý Feedbacks
+                            Quản lý phản hồi
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -149,7 +149,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-cogs"></i>
                         <p>
-                            Quản lý web-setting
+                            Quản lý cài đặt
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -237,13 +237,13 @@
                         </li>
                     </ul>
                 </li>
+                <!-- space -->
+                <li class="nav-header"></li>
                 <!-- Logout -->
                 <li class="nav-item has-treeview">
                     <a href="<?= BASE_URL . 'logout.php' ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p>
-                            Logout
-                        </p>
+                        <p>Đăng xuất</p>
                     </a>
                 </li>
             </ul>

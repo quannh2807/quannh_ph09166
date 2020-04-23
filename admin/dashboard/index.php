@@ -104,7 +104,7 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3><?= count($contacts); ?></h3>
-                                    <p>Contacts</p>
+                                    <p>Liên hệ</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fal fa-address-card"></i>
@@ -130,7 +130,7 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <h3><?= count($feedbacks); ?></h3>
-                                    <p>Feedbacks</p>
+                                    <p>Phản hồi</p>
                                 </div>
                                 <div class="icon">
                                     <i class="far fa-comment-alt-dots"></i>
@@ -159,7 +159,7 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3><?= count($webSetting); ?></h3>
-                                    <p>Web setting</p>
+                                    <p>Cài đặt</p>
                                 </div>
                                 <div class="icon">
                                     <i class="far fa-cogs"></i>
@@ -172,7 +172,7 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3><?= count($roomServices); ?></h3>
-                                    <p>Room services</p>
+                                    <p>Dịch vụ phòng</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fal fa-hotel"></i>
@@ -201,7 +201,7 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h3><?= count($roomGalleries); ?></h3>
-                                    <p>Room Galleries</p>
+                                    <p>Ảnh phòng</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fad fa-images"></i>

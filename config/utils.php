@@ -1,6 +1,7 @@
 <?php
 # define contants
-define('BASE_URL', 'http://localhost/hotel-booking/');
+define('BASE_URL', 'http://hotel-booking.helgrind/');
+# define('BASE_URL', 'http://localhost/hotel-booking/');
 define('ADMIN_URL', BASE_URL . 'admin/');
 define('LOGIN_URL', BASE_URL . 'login/');
 define('PUBLIC_URL', BASE_URL . 'public/');

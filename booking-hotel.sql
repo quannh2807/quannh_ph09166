@@ -111,7 +111,7 @@ CREATE TABLE `room_service_xref`(
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 19;
 -- -------------------------------------------------------------
 
 
@@ -120,11 +120,12 @@ CREATE TABLE `room_services`(
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
 	`name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`status` Int( 1 ) NOT NULL,
+	`icon` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 10;
 -- -------------------------------------------------------------
 
 
@@ -134,15 +135,14 @@ CREATE TABLE `room_types`(
 	`name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`status` Int( 1 ) NOT NULL,
 	`price` Int( 10 ) NOT NULL,
-	`about` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	`quantity` Int( 10 ) NOT NULL,
-	`feature_img` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-	`short_desc` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`feature_image` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+	`short_descript` Text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 7;
 -- -------------------------------------------------------------
 
 
@@ -223,7 +223,7 @@ AUTO_INCREMENT = 2;
 -- Dump data of "contacts" ---------------------------------
 INSERT INTO `contacts`(`id`,`name`,`phone_number`,`email`,`subject`,`messages`,`status`,`reply_by`,`reply_for`,`created_at`,`reply_messages`) VALUES 
 ( '1', 'customer1', '0868456456', 'customer1@gmail.com', 'Phản hồi vu vơ 1', 'Nội dung 1', '1', '1', '1', '2020-03-26 21:02:23', 'Nội dung phản hồi customer 1' ),
-( '2', 'customer2', '0123456789', 'customer2@gmail.com', 'Phản hồi vu vơ 2', 'Nội dung phản hồi vu vơ 2', '1', '1', '2', '2020-03-26 21:02:16', 'Nội dung phản hồi khách hàng 2' ),
+( '2', 'customer2', '0123456789', 'customer2@gmail.com', 'Phản hồi vu vơ 2', 'Nội dung phản hồi vu vơ 2', '1', '1', '2', '2020-04-23 10:20:49', 'Tôi là Nguyễn Hongò Quân' ),
 ( '3', 'customer 3', '0987654311', 'customer3@gmail.com', 'Phản ánh vu vơ', 'Nội dung phản ảnh vu vơ', '1', '1', '3', '2020-03-26 08:58:18', 'Phản hồi vu vơ' ),
 ( '4', 'customer 4', '0123456789', 'customer4@gmail.com', 'Phản hồi vu vơ 2', 'Nội dung demo', '1', '1', '4', '2020-03-29 19:44:02', 'ett' ),
 ( '5', 'customer 5', '0934934892', 'customer5@gmail.com', 'Phan Hoi Vu vo 5', 'Noi DUng Phan Hoi Vu vo 5', '1', '1', '5', '2020-03-29 19:44:59', 'phản hồi chất lượng dịch vụ customer5' );
@@ -283,14 +283,49 @@ INSERT INTO `roles`(`id`,`name`,`status`) VALUES
 
 
 -- Dump data of "room_service_xref" ------------------------
+INSERT INTO `room_service_xref`(`id`,`room_id`,`services_id`) VALUES 
+( '1', '1', '2' ),
+( '2', '1', '3' ),
+( '3', '1', '4' ),
+( '4', '1', '5' ),
+( '5', '1', '6' ),
+( '6', '1', '7' ),
+( '7', '1', '8' ),
+( '8', '1', '9' ),
+( '9', '1', '2' ),
+( '10', '1', '2' ),
+( '11', '1', '3' ),
+( '12', '1', '4' ),
+( '13', '1', '5' ),
+( '14', '1', '6' ),
+( '15', '1', '7' ),
+( '16', '1', '8' ),
+( '17', '1', '9' ),
+( '18', '6', '3' );
 -- ---------------------------------------------------------
 
 
 -- Dump data of "room_services" ----------------------------
+INSERT INTO `room_services`(`id`,`name`,`status`,`icon`) VALUES 
+( '2', 'Breakfast', '1', 'public/img/5ea0120d74136-home-facilities-icon-one.png' ),
+( '3', 'Air conditioning', '1', 'public/img/5ea0122a47582-home-facilities-icon-two.png' ),
+( '4', 'Free Parking', '1', 'public/img/5ea0125ce56c0-5e9d6fd46206f-home-facilities-icon-eight.png' ),
+( '5', 'Pet allowed', '1', 'public/img/5ea012840e97e-home-facilities-icon-three.png' ),
+( '6', 'Room service', '1', 'public/img/5ea012a0c289a-home-facilities-icon-four.png' ),
+( '7', 'GYM fecility', '1', 'public/img/5ea012c2d58e1-home-facilities-icon-ten.png' ),
+( '8', 'TV LCD', '1', 'public/img/5ea012e02567c-home-facilities-icon-five.png' ),
+( '9', 'Wi-fi service', '1', 'public/img/5ea012f45c4ae-home-facilities-icon-twelve.png' );
 -- ---------------------------------------------------------
 
 
 -- Dump data of "room_types" -------------------------------
+INSERT INTO `room_types`(`id`,`name`,`status`,`price`,`quantity`,`feature_image`,`short_descript`) VALUES 
+( '1', 'DELUXE ROOM DETAIL', '1', '130', '15', 'public/img/5ea016f18ab8a-5e9ee5954d7de-room-image-fourteen.jpg', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.
+
+Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.' ),
+( '6', 'DELUXE ROOM', '1', '180', '10', 'public/img/5ea01a65a875b-room-image-eleven.jpg', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.
+
+Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.' );
 -- ---------------------------------------------------------
 
 
@@ -315,7 +350,7 @@ INSERT INTO `showcases`(`id`,`name`,`status`,`img_path`) VALUES
 
 -- Dump data of "users" ------------------------------------
 INSERT INTO `users`(`id`,`name`,`password`,`email`,`role_id`,`phone_number`,`avatar`) VALUES 
-( '1', 'QuAn Nguyen', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'helgrindxxx@gmail.com', '3', '914946200', 'public/img/5e773a07d6076-avartar.png' ),
+( '1', 'QuAn Nguyen', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'helgrindxxx@gmail.com', '2', '914946200', 'public/img/5e773a07d6076-avartar.png' ),
 ( '2', 'Harry', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'harry@gmail.com', '2', '0987654321', 'public/img/5e773982aa40f-about-us-staff-six.jpg' ),
 ( '3', 'Maria', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'maria@gmail.com', '1', '0123456789', 'public/img/5e7ed0ca73014-about-us-staff-seven.jpg' ),
 ( '4', 'Khách Hàng 1', '$2y$10$bUauX78vPaPIXNCeosVy1.oKLg7gOiZe9bccEcvFv/v6Armygztr6', 'khachhang1@gmail.com', '1', '0868456456', 'public/img/5e8195c49fcb8-comment_photo_2.jpg' ),
