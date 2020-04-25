@@ -43,6 +43,10 @@ $roomTypes = queryExecute($getRoomTypesQuery, true);
 # Lấy ra tất cả bản ghi trong bảng room galleries
 $getRoomGalleriesQuery = "select * from room_galleries";
 $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
+
+# Lấy ra tất cả bản ghi trong bảng booking
+$getBookingQuery = "select * from booking";
+$booking = queryExecute($getBookingQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,12 +73,6 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1 class="m-0 text-dark">Dashboard</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
-                            </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -149,7 +147,7 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                                     <p>Dịch vụ</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fal fa-concierge-bell"></i>
+                                    <i class="fal fa-spa"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'services' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -201,12 +199,25 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h3><?= count($roomGalleries); ?></h3>
-                                    <p>Ảnh phòng</p>
+                                    <p>Bộ sưu tập ảnh phòng</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fad fa-images"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'room_galleries' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-4">
+                            <!-- small box -->
+                            <div class="small-box bg-primary">
+                                <div class="inner">
+                                    <h3><?= count($booking); ?></h3>
+                                    <p>Đặt phòng</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fal fa-bed-bunk"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'booking' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

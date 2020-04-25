@@ -30,10 +30,6 @@
 <link rel="stylesheet" href="<?= ADMIN_ASSET_URL ?>plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <!-- Bootstrap4 Duallistbox -->
 <link rel="stylesheet" href="<?= ADMIN_ASSET_URL ?>plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-<!-- tempusdominus bootstrap -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
-<!-- Bootstrap Date Picker-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap&subset=vietnamese" rel="stylesheet">
 <!-- My custom style -->

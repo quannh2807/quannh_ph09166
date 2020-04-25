@@ -16,7 +16,7 @@ function getdbConn()
 {
     try {
         $host = "127.0.0.1";
-        $dbname = "booking-hotel";
+        $dbname = "hotel-booking";
         $dbusername = "root";
         $dbpass = "";
 
