@@ -193,8 +193,9 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                     <div class="col-lg-12 col-md-12 col-sm-4">
                         <div class="hotel_booking_area clearfix">
                             <div class="hotel_booking">
-                                <form id="form1" role="form" action="<?= BASE_URL . 'booking.php' ?>" method="POST">
+                                <form id="form1" role="form" action="<?= BASE_URL . 'booking.php'?>" method="POST">
                                     <div class="col-lg-12 col-md-12">
+                                        <input type="hidden" name="roomId" value="<?=$roomTypes['id']?>">
                                         <div class="room_book">
                                             <p>Đặt phòng ngay</p>
                                         </div>
@@ -260,7 +261,7 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12">
-                                        <a class="btn btn-warning btn-md floatright">Book</a>
+                                        <button type="submit" class="btn btn-warning btn-md">Book</button>
                                     </div>
                                 </form>
                             </div>

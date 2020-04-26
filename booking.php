@@ -7,8 +7,25 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 // get data from web_settings
 $getWebSettingQuery = "select * from web_settings where id = 1";
 $webSetting = queryExecute($getWebSettingQuery, false);
-// get data from room detail
 
+// get data from room detail
+$roomId = trim($_POST['roomId']);
+$arrival = trim($_POST['arrival']);
+$departure = trim($_POST['departure']);
+$room = trim($_POST['room']);
+$bed = trim($_POST['bed']);
+$adult = trim($_POST['adult']);
+$children = trim($_POST['children']);
+
+// get data from room types
+$getRoomTypesQuery = "select *from room_types where id ='$roomId' and status = 1";
+$roomTypes = queryExecute($getRoomTypesQuery, false);
+$getServiceQuery = "select s.id, s.name, s.icon
+                        from room_service_xref sxr
+                        join room_services s
+                        on sxr.services_id = s.id
+                    where sxr.room_id = " . $roomTypes['id'];
+$services = queryExecute($getServiceQuery, true);
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +50,7 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                     <div class="special_offer_main">
                         <div class="container">
                             <div class="special_offer_sub">
-                                <img src="<?=$webSetting['offer']?>" alt="imf">
+                                <img src="<?= $webSetting['offer'] ?>" alt="imf">
                             </div>
                         </div>
                     </div>
@@ -57,9 +74,6 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                         <li role="presentation">
                             <a href="#personal_info" aria-controls="personal_info" role="tab" data-toggle="tab"><i>2</i><span>personal info</span></a>
                         </li>
-                        <li role="presentation">
-                            <a href="#booking_done" aria-controls="booking_done" role="tab" data-toggle="tab"><i>3</i><span>booking done</span></a>
-                        </li>
                     </ul>
 
                     <!-- Tab panes -->
@@ -69,71 +83,22 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                 <div class="facilities_name clearfix margin-bottom-150 margin-top-70">
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-5">
-                                            <img src="<?=PUBLIC_URL?>img/booking-step-one.jpg" alt="">
+                                            <img src="<?= PUBLIC_URL ?>img/booking-step-one.jpg" alt="">
                                         </div>
                                         <div class="col-lg-9 col-md-9 col-sm-7">
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12">
                                                     <div class="section_title clearfix margin-bottom-5">
-                                                        <h5 class="floatleft">Deluxe Room <span class="price floatright margin-left-15">($180 <sup class="day">/night</sup>)</span></h5>
+                                                        <h5 class="floatleft"><?= $roomTypes['name'] ?><span class="price floatright margin-left-15">($180 <sup class="day">/night</sup>)</span></h5>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="star margin-bottom-20">
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 no-padding-left">
-                                                    <ul class="single_facilities_name clearul">
-                                                        <li>
-                                                            <img src="img/home-facilities-icon-one.png" alt="">
-                                                            <p>Breakfast</p>
-                                                        </li>
-                                                        <li>
-                                                            <img src="img/home-facilities-icon-four.png" alt="">
-                                                            <p>Room service</p>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                                    <ul class="single_facilities_name clearul">
-                                                        <li>
-                                                            <img src="img/home-facilities-icon-two.png" alt="">
-                                                            <p>Air conditioning</p>
-                                                        </li>
-                                                        <li>
-                                                            <img src="img/home-facilities-icon-ten.png" alt="">
-                                                            <p>GYM fecility</p>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                                    <ul class="single_facilities_name clearul">
-                                                        <li>
-                                                            <img src="img/home-facilities-icon-eight.png" alt="">
-                                                            <p>Free Parking</p>
-                                                        </li>
-                                                        <li>
-                                                            <img src="img/home-facilities-icon-five.png" alt="">
-                                                            <p>TV LCD</p>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                                    <ul class="single_facilities_name clearul">
-                                                        <li>
-                                                            <img src="img/home-facilities-icon-three.png" alt="">
-                                                            <p>Pet allowed</p>
-                                                        </li>
-                                                        <li>
-                                                            <img src="img/home-facilities-icon-twelve.png" alt="">
-                                                            <p>Wi-fi service</p>
-                                                        </li>
-                                                    </ul>
+                                                <div class="list-services col-lg-12 col-md-12">
+                                                    <?php foreach ($services as $rSer) : ?>
+                                                        <div class="row">
+                                                            <img src="<?= BASE_URL . $rSer['icon'] ?>" class="col-3" alt="">
+                                                            <span class="col-6 font-weight-bold"><?= $rSer['name'] ?></span>
+                                                        </div>
+                                                    <?php endforeach ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,19 +111,18 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                                     <form role="form" action="#" class="">
                                                         <div class="col-lg-2 col-md-2 col-sm-2">
                                                             <div class="room_book border-right-dark-1">
-                                                                <h6>Choose</h6>
-                                                                <p>Option</p>
+                                                                <p>Đặt phòng</p>
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-lg-2 col-md-2 col-sm-2">
                                                             <div class="input-group border-bottom-dark-2">
-                                                                <input class="date-picker" id="datepicker" placeholder="Arrival" type="text" />
+                                                                <input class="date-picker" id="datepicker" placeholder="Arrival" type="text" value="<?= $arrival ?>" />
                                                                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-lg-2 col-md-2 col-sm-2">
                                                             <div class="input-group border-bottom-dark-2">
-                                                                <input class="date-picker" id="datepicker1" placeholder="Departure" type="text" />
+                                                                <input class="date-picker" id="datepicker1" placeholder="Departure" type="text" value="<?= $departure ?>" />
                                                                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                                             </div>
                                                         </div>
@@ -167,40 +131,44 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
                                                                     <div class="input-group border-bottom-dark-2">
                                                                         <select class="form-control" name="room" id="room">
-                                                                            <option selected="selected" disabled="disabled">1 Room</option>
-                                                                            <option value="Single">1 Room</option>
-                                                                            <option value="Double">2 Room</option>
-                                                                            <option value="Deluxe">3 Room</option>
+                                                                            <option selected="selected" disabled="disabled">Số phòng</option>
+                                                                            <option value="1">1 phòng</option>
+                                                                            <option value="2">2 phòng</option>
+                                                                            <option value="3">3 phòng</option>
+                                                                            <option value="4">4 phòng</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
                                                                     <div class="input-group border-bottom-dark-2">
-                                                                        <select class="form-control" name="room" id="adult">
-                                                                            <option selected="selected" disabled="disabled">1 Adult</option>
-                                                                            <option value="Single">1 Adult</option>
-                                                                            <option value="Double">2 Adult</option>
-                                                                            <option value="Deluxe">3 Adult</option>
+                                                                        <select class="form-control" name="bed" id="bed">
+                                                                            <option selected="selected" disabled="disabled">Số giường</option>
+                                                                            <option value="1">1 giường</option>
+                                                                            <option value="2">2 giường</option>
+                                                                            <option value="3">3 giường</option>
+                                                                            <option value="4">4 giường</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
                                                                     <div class="input-group border-bottom-dark-2">
-                                                                        <select class="form-control" name="room" id="child">
-                                                                            <option selected="selected" disabled="disabled">0 Child</option>
-                                                                            <option value="Single">0 Child</option>
-                                                                            <option value="Double">1 Child</option>
-                                                                            <option value="Deluxe">2 Child</option>
+                                                                        <select class="form-control" name="adult" id="adult">
+                                                                            <option value="" selected>Người lớn</option>
+                                                                            <option value="1">1 Người</option>
+                                                                            <option value="2">2 Người</option>
+                                                                            <option value="3">3 Người</option>
+                                                                            <option value="4">4 Người</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
                                                                     <div class="input-group border-bottom-dark-2">
-                                                                        <select class="form-control" name="room" id="child-2">
-                                                                            <option selected="selected" disabled="disabled">Beds</option>
-                                                                            <option value="Single">1 Beds</option>
-                                                                            <option value="Double">2 Beds</option>
-                                                                            <option value="Deluxe">3 Beds</option>
+                                                                        <select class="form-control" name="children" id="children">
+                                                                            <option value="" selected>Trẻ nhỏ</option>
+                                                                            <option value="1">1 Trẻ</option>
+                                                                            <option value="2">2 Trẻ</option>
+                                                                            <option value="3">3 Trẻ</option>
+                                                                            <option value="4">4 Trẻ</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -216,6 +184,7 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                         <div class="about_booking_room clearfix margin-top-30">
                                             <div class="col-lg-7 col-md-7 col-sm-6">
                                                 <div class="booking_room_details">
+                                                    <h5>Booking room detail</h5>
                                                     <p>
                                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil atque modi velit molestiae, repellendus iure sint possimus cumque, provident, dolorum unde laboriosam ut eius ex maiores quod repudiandae aut asperiores?
                                                     </p>
@@ -231,22 +200,22 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                                             <div class="table-responsive">
                                                                 <table class="table table-bordered">
                                                                     <tr class="room_table">
-                                                                        <td class=""><span class="imp_table_text">1 Room</span> <br>Two Adult & 1 child</td>
-                                                                        <td class=""><span class="imp_table_text">180$</span> <br> rate</td>
-                                                                        <td class="">5 <br>night</td>
-                                                                        <td class=""><span class="imp_table_text">400$</span></td>
+                                                                        <td class=""><span class="imp_table_text"><?=$room?> phòng</span> <br><?=$adult?> người lớn & <?=$children?> trẻ em</td>
+                                                                        <td class=""><span class="imp_table_text"><?=$roomTypes['price']?>$</span> <br> rate</td>
+                                                                        <td class=""><?php echo $night = (strtotime($departure) - strtotime($arrival)) / 86400;?><br>night</td>
+                                                                        <td class=""><span class="imp_table_text"><?php echo $firstBill = $night * $roomTypes['price'] ?>$</span></td>
                                                                     </tr>
                                                                     <tr class="tax_table">
-                                                                        <td class=""><span class="imp_table_text">tax</span> <br> 10% on booking value</td>
+                                                                        <td class=""><span class="imp_table_text">Thuế</span> <br> 10% trên giá trị hóa đơn</td>
                                                                         <!-- <td class=""></td>
                                                                         <td class=""></td> -->
-                                                                        <td class="" colspan="3"><span class="imp_table_text">40$</span></td>
+                                                                        <td class="" colspan="3"><span class="imp_table_text"><?php echo $tax = $firstBill * 10 / 100?>$</span></td>
                                                                     </tr>
                                                                     <tr class="total_table">
-                                                                        <td class=""><span class="imp_table_text">total</span></td>
+                                                                        <td class=""><span class="imp_table_text">Tổng giá trị</span></td>
                                                                         <!-- <td class=""></td>
                                                                         <td class=""></td> -->
-                                                                        <td class="" colspan="3"><span class="imp_table_text">440$</span></td>
+                                                                        <td class="" colspan="3"><span class="imp_table_text"><?php echo $totalBill = $firstBill + $tax?>$</span></td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
@@ -259,7 +228,7 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12">
                                             <div class="booking_next_btn padding-top-30 margin-top-20 clearfix border-top-whitesmoke">
-                                                <a href="#" class="btn btn-warning btn-sm floatright">Next</a>
+                                                <a href="#booking_done" aria-controls="booking_done" role="tab" data-toggle="tab" class="btn btn-warning btn-sm floatright">Next</a>
                                             </div>
                                         </div>
                                     </div>
@@ -270,65 +239,36 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                             <div class="personal_info_area">
                                 <div class="hotel_booking_area">
                                     <div class="hotel_booking margin-top-70 margin-bottom-125">
-                                        <form role="form" action="#" class="">
+                                        <form role="form" action="<?=BASE_URL . 'save-booking.php'?>" method="POST">
                                             <div class="row">
+                                                <input type="hidden" name="arrival" value="<?=$arrival?>">
+                                                <input type="hidden" name="departure" value="<?=$departure?>">
+                                                <input type="hidden" name="children" value="<?=$children?>">
+                                                <input type="hidden" name="adult" value="<?=$adult?>">
+                                                <input type="hidden" name="beds" value="<?=$bed?>">
+                                                <input type="hidden" name="rooms" value="<?=$room?>">
+                                                <input type="hidden" name="room_types" value="<?=$roomTypes['id']?>">
+                                                <input type="hidden" name="price" value="<?=$totalBill?>">
                                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 icon_arrow">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="First Name">
+                                                        <input type="text" class="form-control" name="customer_name" placeholder="Họ và tên">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 icon_arrow">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Last Name">
+                                                        <input type="text" class="form-control" name="email" placeholder="Email">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 icon_arrow">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Email">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Email">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
-                                                    <div class="input-group">
-                                                        <select class="form-control" name="room" id="smoking_room">
-                                                            <option selected="selected" disabled="disabled">Smoking Room</option>
-                                                            <option value="Single">Smoking Room</option>
-                                                            <option value="Double">Smoking Room</option>
-                                                            <option value="Deluxe">Smoking Room</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
-                                                    <div class="input-group">
-                                                        <select class="form-control" name="room" id="parking">
-                                                            <option selected="selected" disabled="disabled">Parking</option>
-                                                            <option value="Single">Parking</option>
-                                                            <option value="Double">Parking</option>
-                                                            <option value="Deluxe">Parking</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
-                                                    <div class="input-group">
-                                                        <select class="form-control" name="room" id="with_pet">
-                                                            <option selected="selected" disabled="disabled">with Pet</option>
-                                                            <option value="Single">with Pet</option>
-                                                            <option value="Double">with Pet</option>
-                                                            <option value="Deluxe">with Pet</option>
-                                                        </select>
+                                                        <input type="text" class="form-control" name="phone_number" placeholder="Số điện thoại">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="container">
                                                     <div class="form-group">
-                                                        <textarea class="form-control" rows="5" id="comment" placeholder="Any Specific request"></textarea>
+                                                        <textarea class="form-control" rows="5" name="messages" id="comment" placeholder="Lời nhắn"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -336,51 +276,11 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                                 <div class="col-lg-12 col-md-12">
                                                     <div class="booking_next_btn padding-top-30 margin-top-50 clearfix border-top-whitesmoke">
                                                         <a href="#" class="btn btn-warning btn-sm btn-info">back</a>
-                                                        <a href="#" class="btn btn-warning btn-sm floatright">Next</a>
+                                                        <button type="submit" class="btn btn-warning floatright">Xác Nhận Đặt Phòng</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="booking_done">
-                            <div class="booking_done_area margin-top-65 margin-bottom-70">
-                                <div class="row">
-                                    <div class="col-lg-7 col-md-7 col-sm-6">
-                                        <div class="booking_done_info">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio quas excepturi reprehenderit odit, accusantium, laborum natus est cumque molestias ex rem dolores harum, exercitationem quisquam tenetur qui non libero architecto.
-                                            </p>
-                                            <form role="form">
-                                                <div class="checkbox booking_done_confirmation">
-                                                    <a href="#"> <i class="fa fa-check-circle"></i> Your reservation was succefully submited!! </a>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5 col-md-5 col-sm-6">
-                                        <div class="room_cost">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <tr class="room_table">
-                                                        <td class=""><span class="imp_table_text">1 Room</span> <br>Two Adult & 1 child</td>
-                                                        <td class=""><span class="imp_table_text">180$</span> <br> rate</td>
-                                                        <td class="">5 <br>night</td>
-                                                        <td class=""><span class="imp_table_text">400$</span></td>
-                                                    </tr>
-                                                    <tr class="tax_table">
-                                                        <td class=""><span class="imp_table_text">tax</span> <br> 10% on booking value</td>
-                                                        <td class="" colspan="3"><span class="imp_table_text">40$</span></td>
-                                                    </tr>
-                                                    <tr class="total_table">
-                                                        <td class=""><span class="imp_table_text">total</span></td>
-                                                        <td class="" colspan="3"><span class="imp_table_text">440$</span> <br> <span class="total_pain_info">(paid)</span></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -394,43 +294,6 @@ $webSetting = queryExecute($getWebSettingQuery, false);
     </section>
     <!-- end other detect room section -->
 
-
-    <!-- start contact us area -->
-    <section class="contact_us_area content-left">
-        <div class="container">
-            <div class="contact_us clearfix">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="call clearfix">
-                        <h6>Call Us</h6>
-                        <p>123 456 7890</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="email_us clearfix">
-                        <h6>Email us</h6>
-                        <p>info@hotelbooking.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="news_letter clearfix">
-                        <input type="text" placeholder="Enter ID  for News Letter">
-                        <a href="#" class="btn btn-blue">go</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="social_icons clearfix">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end contact us area -->
     <!-- start footer -->
     <?php include_once './public/_share/footer.php'; ?>
     <!-- end footer -->
@@ -438,6 +301,15 @@ $webSetting = queryExecute($getWebSettingQuery, false);
     <?php include_once './public/_share/script.php'; ?>
     <!-- end script link -->
     <script>
+        var adult = document.getElementById('adult');
+        adult.value = <?= $adult ?>;
+        var children = document.getElementById('children');
+        children.value = <?= $children ?>;
+        var bed = document.getElementById('bed');
+        bed.value = <?=$bed?>;
+        var room = document.getElementById('room');
+        room.value = <?=$room?>;
+
         setTimeout(() => {
             sessionStorage.clear();
         }, 2500);

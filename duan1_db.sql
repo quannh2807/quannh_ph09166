@@ -27,22 +27,25 @@ AUTO_INCREMENT = 1;
 
 -- CREATE TABLE "booking" --------------------------------------
 CREATE TABLE `booking`( 
-	`id` Int( 0 ) NOT NULL,
+	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
 	`customer_name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`phone_number` VarChar( 10 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`arrival` DateTime NOT NULL,
 	`departure` DateTime NOT NULL,
-	`adults` Int( 0 ) NOT NULL,
-	`childrens` Int( 0 ) NOT NULL,
+	`children` Int( 0 ) NOT NULL,
 	`room_types` Int( 0 ) NOT NULL,
 	`messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`status` Int( 0 ) NOT NULL,
-	`created_date` Timestamp NOT NULL,
-	`checked_in` Int( 0 ) NOT NULL,
-	`checked_in_date` DateTime NOT NULL,
-	`reply_by` Int( 0 ) NOT NULL,
-	`reply_messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`created_date` Timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	`checked_in` Int( 0 ) NULL,
+	`checked_in_date` DateTime NULL,
+	`reply_by` Int( 0 ) NULL,
+	`reply_messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+	`adult` Int( 0 ) NOT NULL,
+	`rooms` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`beds` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`price` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
@@ -256,6 +259,8 @@ INSERT INTO `banner_slice`(`id`,`content1`,`img_path`,`content2`) VALUES
 
 
 -- Dump data of "booking" ----------------------------------
+INSERT INTO `booking`(`id`,`customer_name`,`phone_number`,`email`,`arrival`,`departure`,`adult`,`children`,`room_types`,`messages`,`status`,`created_date`,`checked_in`,`checked_in_date`,`reply_by`,`reply_messages`,`rooms`,`beds`,`price`) VALUES 
+( '1', 'nguyễn hồng quân', '0123456789', 'helgrindxxx@gmail.com', '2020-04-26 00:00:00', '2020-04-27 00:00:00', '1', '1', '6', 'không thích', '0', '2020-04-26 18:59:50', NULL, NULL, NULL, NULL, '1', '1', '198' );
 -- ---------------------------------------------------------
 
 

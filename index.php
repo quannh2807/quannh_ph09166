@@ -455,6 +455,15 @@ $roomTypes = queryExecute($getRoomTypesQuery, true);
     <?php include_once './public/_share/script.php'; ?>
     <!-- end script link -->
     <script>
+        <?php if (isset($_GET['msg'])) : ?>
+            Swal.fire({
+                position: 'bottom-end',
+                icon: 'success',
+                title: "<?= $_GET['msg']; ?>",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        <?php endif; ?>
         setTimeout(() => {
             sessionStorage.clear();
         }, 2500);
