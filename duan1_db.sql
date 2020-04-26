@@ -25,6 +25,31 @@ AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
 
 
+-- CREATE TABLE "booking" --------------------------------------
+CREATE TABLE `booking`( 
+	`id` Int( 0 ) NOT NULL,
+	`customer_name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`phone_number` VarChar( 10 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`arrival` DateTime NOT NULL,
+	`departure` DateTime NOT NULL,
+	`adults` Int( 0 ) NOT NULL,
+	`childrens` Int( 0 ) NOT NULL,
+	`room_types` Int( 0 ) NOT NULL,
+	`messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`status` Int( 0 ) NOT NULL,
+	`created_date` Timestamp NOT NULL,
+	`checked_in` Int( 0 ) NOT NULL,
+	`checked_in_date` DateTime NOT NULL,
+	`reply_by` Int( 0 ) NOT NULL,
+	`reply_messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	PRIMARY KEY ( `id` ) )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB;
+-- -------------------------------------------------------------
+
+
 -- CREATE TABLE "contacts" -------------------------------------
 CREATE TABLE `contacts`( 
 	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
@@ -223,35 +248,14 @@ AUTO_INCREMENT = 2;
 -- -------------------------------------------------------------
 
 
--- CREATE TABLE "booking" --------------------------------------
-CREATE TABLE `booking`( 
-	`id` Int( 0 ) NOT NULL,
-	`customer_name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	`phone_number` VarChar( 10 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	`arrival` DateTime NOT NULL,
-	`departure` DateTime NOT NULL,
-	`adults` Int( 0 ) NOT NULL,
-	`childrens` Int( 0 ) NOT NULL,
-	`room_types` Int( 0 ) NOT NULL,
-	`messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	`status` Int( 0 ) NOT NULL,
-	`created_date` Timestamp NOT NULL,
-	`checked_in` Int( 0 ) NOT NULL,
-	`checked_in_date` DateTime NOT NULL,
-	`reply_by` Int( 0 ) NOT NULL,
-	`reply_messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = utf8
-COLLATE = utf8_general_ci
-ENGINE = InnoDB;
--- -------------------------------------------------------------
-
-
 -- Dump data of "banner_slice" -----------------------------
 INSERT INTO `banner_slice`(`id`,`content1`,`img_path`,`content2`) VALUES 
 ( '1', 'A brand New Hotel', 'public/img/rev-slider/slider-one.jpg', 'Beyond Ordinary' ),
 ( '2', 'Book Your Summer Holidays', 'public/img/rev-slider/slider-one.jpg', 'With HOTEL BOOKING Template' );
+-- ---------------------------------------------------------
+
+
+-- Dump data of "booking" ----------------------------------
 -- ---------------------------------------------------------
 
 
@@ -314,26 +318,28 @@ INSERT INTO `roles`(`id`,`name`,`status`) VALUES
 
 
 -- Dump data of "room_galleries" ---------------------------
+INSERT INTO `room_galleries`(`id`,`room_id`,`img_url`) VALUES 
+( '1', '6', 'public/img/lightslider-img/cS-52.jpg' ),
+( '2', '6', 'public/img/lightslider-img/cS-51.jpg' ),
+( '3', '6', 'public/img/lightslider-img/cS-50.jpg' ),
+( '4', '6', 'public/img/lightslider-img/cS-49.jpg' ),
+( '5', '6', 'public/img/lightslider-img/cS-48.jpg' ),
+( '6', '6', 'public/img/lightslider-img/cS-47.jpg' ),
+( '7', '6', 'public/img/lightslider-img/cS-46.jpg' ),
+( '8', '6', 'public/img/lightslider-img/cS-45.jpg' );
 -- ---------------------------------------------------------
 
 
 -- Dump data of "room_service_xref" ------------------------
 INSERT INTO `room_service_xref`(`id`,`room_id`,`services_id`) VALUES 
-( '1', '1', '2' ),
 ( '2', '1', '3' ),
-( '3', '1', '4' ),
-( '4', '1', '5' ),
-( '5', '1', '6' ),
+( '4', '6', '5' ),
 ( '6', '1', '7' ),
 ( '7', '1', '8' ),
-( '8', '1', '9' ),
 ( '9', '1', '2' ),
-( '10', '1', '2' ),
-( '11', '1', '3' ),
+( '10', '6', '2' ),
 ( '12', '1', '4' ),
-( '13', '1', '5' ),
-( '14', '1', '6' ),
-( '15', '1', '7' ),
+( '14', '6', '6' ),
 ( '16', '1', '8' ),
 ( '17', '1', '9' ),
 ( '18', '6', '3' ),
@@ -358,14 +364,9 @@ INSERT INTO `room_services`(`id`,`name`,`status`,`icon`) VALUES
 
 -- Dump data of "room_types" -------------------------------
 INSERT INTO `room_types`(`id`,`name`,`status`,`price`,`quantity`,`feature_image`,`short_descript`,`adult`,`children`) VALUES 
-( '1', 'DELUXE ROOM DETAIL', '1', '130', '15', 'public/img/5ea016f18ab8a-5e9ee5954d7de-room-image-fourteen.jpg', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.
-
-Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.', '', '' ),
-( '6', 'DELUXE ROOM', '1', '180', '10', 'public/img/5ea01a65a875b-room-image-eleven.jpg', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.
-
-Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.', '', '' ),
-( '8', 'Double Room', '1', '150', '25', 'public/img/5ea519a38117a-room-image-sixteen.png', '<h4>Double Room</h4>
-Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
+( '1', 'Single Room', '1', '130', '15', 'public/img/5ea52778eece4-5e9efe754a563-room-image-fifteen.png', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.', '1', '0' ),
+( '6', 'DELUXE ROOM', '1', '180', '10', 'public/img/5ea01a65a875b-room-image-eleven.jpg', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.', '2', '1' ),
+( '8', 'Double Room', '1', '150', '25', 'public/img/5ea519a38117a-room-image-sixteen.png', 'Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
 
 Phasellus accumsan urna vitae molestie interdum.', '2', '2' );
 -- ---------------------------------------------------------
@@ -430,10 +431,6 @@ INSERT INTO `users`(`id`,`name`,`password`,`email`,`role_id`,`phone_number`,`ava
 -- Dump data of "web_settings" -----------------------------
 INSERT INTO `web_settings`(`id`,`name`,`status`,`logo`,`phone_number`,`address`,`email`,`map_url`,`youtube_url`,`facebook_url`,`explore_url`,`offer`,`introduce_welcome`,`instagram_url`) VALUES 
 ( '1', 'Web setting', '1', 'public/img/site-logo.png', '0914946200', 'Lê Đức Thọ, Nam Từ Liêm, Hà Nội', 'quannhph09166@fpt.edu.vn', 'https://goo.gl/maps/8He5A7zXqNrd4JaA9', 'https://www.youtube.com/', 'https://www.facebook.com/', 'accomodation.php', 'public/img/special-offer-main.png', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor.', 'https://chat.zalo.me/' );
--- ---------------------------------------------------------
-
-
--- Dump data of "booking" ----------------------------------
 -- ---------------------------------------------------------
 
 
