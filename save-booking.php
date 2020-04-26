@@ -21,5 +21,5 @@ $insertBookingQuery = "insert into booking (customer_name, phone_number, email, 
                 '$children', '$adult', '$room_types', '$messages', 0, '$rooms', '$beds', '$price')";
 dd($insertBookingQuery);
 queryExecute($insertBookingQuery, false);
-header("location: " . BASE_URL . "?msg=Chúc mừng bạn đã đặt phòng thành công");
+header("location: " . BASE_URL . "index.php?msg=Chúc mừng bạn đã đặt phòng thành công");
 die;

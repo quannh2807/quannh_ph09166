@@ -27,5 +27,5 @@
 <!--<![endif]-->
 <!-- my js -->
 <script src="<?=PUBLIC_URL?>js/main.js"></script>
-<!-- JavaScript alert -->
-<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<!-- Sweet alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
