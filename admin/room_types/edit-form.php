@@ -136,7 +136,7 @@ $allServices = queryExecute($getServices, true);
                                     </div>
                                     <div class="col-6 form-group mt-3 mb-4">
                                         <label for="">Ảnh loại phòng<span class="text-danger">*</span></label>
-                                        <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_img" onchange="encodeImageFileAsURL(this)">
+                                        <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_image" onchange="encodeImageFileAsURL(this)">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -192,8 +192,7 @@ $allServices = queryExecute($getServices, true);
                     number: true,
                     min: 0,
                 },
-                feature_img: {
-                    required: true,
+                feature_image: {
                     extension: "png|jpg|jpeg|gif"
                 },
                 short_descript: {
@@ -209,7 +208,7 @@ $allServices = queryExecute($getServices, true);
                 status: {
                     required: "Chọn trạng thái"
                 },
-                feature_img: {
+                feature_image: {
                     required: "Hãy nhập ảnh đại diện",
                     extension: "Hãy nhập đúng định dạng ảnh (jpg | jpeg | png | gif)"
                 },

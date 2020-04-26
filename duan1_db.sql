@@ -223,6 +223,31 @@ AUTO_INCREMENT = 2;
 -- -------------------------------------------------------------
 
 
+-- CREATE TABLE "booking" --------------------------------------
+CREATE TABLE `booking`( 
+	`id` Int( 0 ) NOT NULL,
+	`customer_name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`phone_number` VarChar( 10 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`arrival` DateTime NOT NULL,
+	`departure` DateTime NOT NULL,
+	`adults` Int( 0 ) NOT NULL,
+	`childrens` Int( 0 ) NOT NULL,
+	`room_types` Int( 0 ) NOT NULL,
+	`messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`status` Int( 0 ) NOT NULL,
+	`created_date` Timestamp NOT NULL,
+	`checked_in` Int( 0 ) NOT NULL,
+	`checked_in_date` DateTime NOT NULL,
+	`reply_by` Int( 0 ) NOT NULL,
+	`reply_messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	PRIMARY KEY ( `id` ) )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB;
+-- -------------------------------------------------------------
+
+
 -- Dump data of "banner_slice" -----------------------------
 INSERT INTO `banner_slice`(`id`,`content1`,`img_path`,`content2`) VALUES 
 ( '1', 'A brand New Hotel', 'public/img/rev-slider/slider-one.jpg', 'Beyond Ordinary' ),
@@ -405,6 +430,10 @@ INSERT INTO `users`(`id`,`name`,`password`,`email`,`role_id`,`phone_number`,`ava
 -- Dump data of "web_settings" -----------------------------
 INSERT INTO `web_settings`(`id`,`name`,`status`,`logo`,`phone_number`,`address`,`email`,`map_url`,`youtube_url`,`facebook_url`,`explore_url`,`offer`,`introduce_welcome`,`instagram_url`) VALUES 
 ( '1', 'Web setting', '1', 'public/img/site-logo.png', '0914946200', 'Lê Đức Thọ, Nam Từ Liêm, Hà Nội', 'quannhph09166@fpt.edu.vn', 'https://goo.gl/maps/8He5A7zXqNrd4JaA9', 'https://www.youtube.com/', 'https://www.facebook.com/', 'accomodation.php', 'public/img/special-offer-main.png', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor.', 'https://chat.zalo.me/' );
+-- ---------------------------------------------------------
+
+
+-- Dump data of "booking" ----------------------------------
 -- ---------------------------------------------------------
 
 

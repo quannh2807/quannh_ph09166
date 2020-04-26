@@ -89,10 +89,6 @@ body#home_one .emergency_number::after {
     padding: 14px 21px 14px 30px;
 }
 
-.mainmenu .nav.navbar-nav li.dropdown>a {
-    background: url('http://localhost/hotel-booking/public/img/dropdown_bg.png') no-repeat scroll 100% 50%;
-}
-
 .mainmenu .nav.navbar-nav a:hover {
     color: #16b4ef;
 }
@@ -234,6 +230,7 @@ body#home_two .hotel_booking_area {
     color: #fff;
     font-size: 15px;
     font-weight: 600;
+    padding-bottom: 5px;
 }
 
 .room_book p {
@@ -242,6 +239,11 @@ body#home_two .hotel_booking_area {
     font-weight: 700;
     line-height: 25px;
     margin: 0;
+}
+
+.search-rooms:hover {
+    background: #63c2ea;
+    color: #fff;
 }
 
 form#form1 .form-group {
@@ -621,7 +623,6 @@ body#accomodation_page .select_room .room_rent>p>span {
 -----------------------------------------------------------*/
 
 .hotel_facilities_area {
-    background: url('http://localhost/hotel-booking/public/img/hotel-facilities-bg.jpg') no-repeat fixed 0 0;
     background-size: cover;
     background-position: fixed;
 }
@@ -813,7 +814,6 @@ body#home_two .hotel_thumb>img {
 }
 
 div#customer_says_slider .customer_comment {
-    background: rgba(0, 0, 0, 0) url("http://localhost/hotel-booking/public/img/customer-slider-bg.png") no-repeat scroll 0 0 / cover;
     padding: 25px 34px 23px;
 }
 
@@ -947,7 +947,6 @@ body#error_page .error_area {
     background-attachment: scroll;
     background-clip: border-box;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url("http://localhost/hotel-booking/public/img/error_bg.jpg");
     background-origin: padding-box;
     background-repeat: no-repeat;
     background-size: cover;
@@ -977,7 +976,6 @@ body#error_page .error h3 {
 }
 
 body#error_page .error .section_title.nice_title>h3::after {
-    background: rgba(0, 0, 0, 0) url("http://localhost/hotel-booking/public/img/nice-title-error.png") no-repeat scroll 0 0;
     left: 15%;
 }
 
@@ -1058,7 +1056,7 @@ body#error_page .error .section_title.nice_title>h3::after {
 
 body#about_us_page .breadcrumb_main_area,
 body#staff_page .breadcrumb_main_area {
-    background: url('http://localhost/hotel-booking/public/img/about-us-breadcrumb.jpg') no-repeat center center / cover #000000;
+    background: url('http://localhost/quannh_ph09166/public/img/about-us-breadcrumb.jpg') no-repeat center center / cover #000000;
     position: relative;
 }
 
@@ -1161,7 +1159,7 @@ body#staff_page .single_staff .social_icons ul li a i {
 body#accomodation_page .breadcrumb_main_area,
 body#contact_us_page .breadcrumb_main_area,
 body#room_detail_page .breadcrumb_main_area {
-    background: url('http://localhost/hotel-booking/public/img/accomodation-breadcrumb-one.jpg') no-repeat center center / cover #000000;
+    background: url('http://localhost/quannh_ph09166/public/img/accomodation-breadcrumb-one.jpg') no-repeat center center / cover #000000;
     position: relative;
 }
 
@@ -1372,7 +1370,7 @@ body#room_detail_page .hotel_booking_area .room_book {
 }
 
 body#room_detail_page .customer_comment {
-    background: rgba(0, 0, 0, 0) url("http://localhost/hotel-booking/public/img/customer-slider-bg-one.png") no-repeat scroll 0 0 / cover;
+    background: rgba(0, 0, 0, 0) url("http://localhost/quannh_ph09166/public/img/customer-slider-bg-one.png") no-repeat scroll 0 0 / cover;
 }
 
 
@@ -1388,7 +1386,7 @@ body#room_detail_page .customer_comment {
 body#gallery_page .breadcrumb_main_area,
 body#booking_page .breadcrumb_main_area,
 body#blog_page .breadcrumb_main_area {
-    background: url('http://localhost/hotel-booking/public/img/gallery-breadcrumb.jpg') no-repeat center center / cover #000000;
+    background: url('http://localhost/quannh_ph09166/public/img/gallery-breadcrumb.jpg') no-repeat center center / cover #000000;
     position: relative;
 }
 
@@ -1639,7 +1637,7 @@ body#booking_page .payment_info_area .payment_system ul li {
 -----------------------------------------------------------*/
 
 .blog_img_box {
-    background: rgba(0, 0, 0, 0) url("http://localhost/hotel-booking/public/img/blog-pic-link-bg.png") no-repeat scroll 0 0 / cover;
+    background: rgba(0, 0, 0, 0) url("http://localhost/quannh_ph09166/public/img/blog-pic-link-bg.png") no-repeat scroll 0 0 / cover;
     height: 139px;
     margin-bottom: -21px;
     position: relative;
@@ -1776,7 +1774,7 @@ body#blog_page .b_link {
 -----------------------------------------------------------*/
 
 body#single_blog_page .breadcrumb_main_area {
-    background: url('http://localhost/hotel-booking/public/img/gallery-breadcrumb.jpg') no-repeat center center / cover #000000;
+    background: url('http://localhost/quannh_ph09166/public/img/gallery-breadcrumb.jpg') no-repeat center center / cover #000000;
     position: relative;
 }
 
@@ -2304,4 +2302,42 @@ body#single_blog_page .recent_post_details>p {
 
 /* --------------------------------------------------------
  					end login CSS
+-----------------------------------------------------------*/
+
+
+/* --------------------------------------------------------
+2. 					Start list room CSS
+-----------------------------------------------------------*/
+
+.list-room {
+    background: rgb(248, 248, 248);
+}
+
+.list-room-content {
+    padding: 20px 10px;
+}
+
+.list-room-detail>h5 {
+    padding: 5px 0;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.room_service h5 {
+    padding: 10px 0;
+}
+
+.room-service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.list-services {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+
+/* --------------------------------------------------------
+ 					end list room CSS
 -----------------------------------------------------------*/

@@ -16,7 +16,7 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <div class="site_logo fix">
-                                <a id="brand" class="clearfix navbar-brand border-right-whitesmoke" href="<?= BASE_URL?>"><img src="<?= PUBLIC_URL . 'img/site-logo.png'?>" alt="Trips"></a>
+                                <a id="brand" class="clearfix navbar-brand border-right-whitesmoke" href="<?= BASE_URL?>"><img src="<?= BASE_URL . $webSetting['logo'] ?>" alt="Trips"></a>
                             </div>
                         </div>
 

@@ -22,6 +22,9 @@ $feedbacks = queryExecute($getCustomerFeedbacksQuery, true);
 // get data from news
 $getNewsQuery = "select * from news LIMIT 3";
 $news = queryExecute($getNewsQuery, true);
+// get data from room_types
+$getRoomTypesQuery = "select * from room_types";
+$roomTypes = queryExecute($getRoomTypesQuery, true);
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -42,66 +45,59 @@ $news = queryExecute($getNewsQuery, true);
             <div class="hotel_booking_area">
                 <div class="container">
                     <div class="hotel_booking">
-                        <form id="form1" role="form" action="#" class="">
+
+                        <form id="book-form" role="form" action="<?= BASE_URL . 'rooms.php' ?>" method="GET">
                             <div class="col-lg-2 col-md-2 col-sm-2">
                                 <div class="room_book border-right-dark-1">
-                                    <h6>Book Your</h6>
-                                    <p>Rooms</p>
+                                    <h6>Tìm</h6>
+                                    <p>Phòng</p>
                                 </div>
                             </div>
                             <div class="form-group col-lg-2 col-md-2 col-sm-2">
                                 <div class="input-group border-bottom-dark-2">
-                                    <input class="date-picker" id="datepicker" placeholder="Arrival" type="text" />
+                                    <input class="date-picker" id="datepicker" placeholder="Arrival" name="arrival" type="text" />
                                     <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                 </div>
                             </div>
                             <div class="form-group col-lg-2 col-md-2 col-sm-2">
                                 <div class="input-group border-bottom-dark-2">
-                                    <input class="date-picker" id="datepicker1" placeholder="Departure" type="text" />
+                                    <input class="date-picker" id="datepicker1" placeholder="Departure" name="departure" type="text" />
                                     <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="row">
-                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 icon_arrow">
                                         <div class="input-group border-bottom-dark-2">
-                                            <select class="form-control" name="room" id="room">
-                                                <option selected="selected" disabled="disabled">1 Room</option>
-                                                <option value="Single">1 Room</option>
-                                                <option value="Double">2 Room</option>
-                                                <option value="Deluxe">3 Room</option>
+                                            <select class="form-control" name="adult" id="adult">
+                                                <option value="" selected>Người lớn</option>
+                                                <option value="1">1 Người</option>
+                                                <option value="2">2 Người</option>
+                                                <option value="3">3 Người</option>
+                                                <option value="4">4 Người</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-4 icon_arrow">
                                         <div class="input-group border-bottom-dark-2">
-                                            <select class="form-control" name="room" id="adult">
-                                                <option selected="selected" disabled="disabled">1 Adult</option>
-                                                <option value="Single">1 Adult</option>
-                                                <option value="Double">2 Adult</option>
-                                                <option value="Deluxe">3 Adult</option>
+                                            <select class="form-control" name="children" id="child">
+                                                <option value="" selected>Trẻ nhỏ</option>
+                                                <option value="1">1 Người</option>
+                                                <option value="2">2 Người</option>
+                                                <option value="3">3 Người</option>
+                                                <option value="4">4 Người</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group col-lg-3 col-md-3 col-sm-3 icon_arrow">
-                                        <div class="input-group border-bottom-dark-2">
-                                            <select class="form-control" name="room" id="child">
-                                                <option selected="selected" disabled="disabled">0 Child</option>
-                                                <option value="Single">0 Child</option>
-                                                <option value="Double">1 Child</option>
-                                                <option value="Deluxe">2 Child</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                        <a class="btn btn-primary floatright">Book</a>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <button type="submit" class="btn btn-primary floatright search-rooms">Tìm kiếm</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
                         <!-- special offer start -->
                         <div class="special_offer_main">
-                            <img src="<?= PUBLIC_URL . 'img/special-offer-main.png' ?>" alt="">
+                            <img src="<?= BASE_URL . $webSetting['offer'] ?>" alt="">
                         </div>
                         <!-- end offer start -->
                     </div>
@@ -121,7 +117,7 @@ $news = queryExecute($getNewsQuery, true);
                                     <?= $ba['content2'] ?>
                                 </div>
                                 <div class="tp-caption lfb carousel-caption-inner" data-x="105" data-y="313" data-speed="1300" data-start="1700" data-easing="easeInOutBack" style="background: #f7c411; padding: 10px; cursor: pointer;">
-                                    <a href="#" class="" style="background: #f7c411; border-radius: 0; color: #313a45; display: inline-block;  font-size: 18px; padding: 8px 34px; text-transform: uppercase; border: 1px solid #9e811a;">Explore IT</a>
+                                    <a href="<?= $webSetting['explore_url'] ?>" class="" style="background: #f7c411; border-radius: 0; color: #313a45; display: inline-block;  font-size: 18px; padding: 8px 34px; text-transform: uppercase; border: 1px solid #9e811a;">Explore IT</a>
                                 </div>
                             </li>
                         <?php endforeach; ?>
@@ -140,7 +136,7 @@ $news = queryExecute($getNewsQuery, true);
                     <h3>Welcome To Hotel</h3>
                 </div>
                 <div class="section_description">
-                    <p> Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. </p>
+                    <p><?= $webSetting['introduce_welcome'] ?></p>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-3">
@@ -371,15 +367,15 @@ $news = queryExecute($getNewsQuery, true);
                                         <div class="single_content clearfix border-bottom-whitesmoke">
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 padding-left-0">
                                                 <div class="post_media">
-                                                    <a href="#"><img src="<?= BASE_URL . $new['feature_image']?>" alt=""></a>
+                                                    <a href="#"><img src="<?= BASE_URL . $new['feature_image'] ?>" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 padding-left-0">
                                                 <div class="post_title clearfix">
-                                                    <h6><?=$new['title']?></h6>
+                                                    <h6><?= $new['title'] ?></h6>
                                                 </div>
                                                 <div class="post_content  margin-bottom-35">
-                                                    <p><?= $new['created_at']?></p>
+                                                    <p><?= $new['created_at'] ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -397,32 +393,11 @@ $news = queryExecute($getNewsQuery, true);
                         <div class="section_description">
                             <div class="clearfix demo">
                                 <ul id="vertical" class="gallery list-unstyled">
-                                    <?php foreach($showcases as $showcase) :?>
-                                    <li data-thumb="<?= PUBLIC_URL . $showcase['img_path']?>">
-                                        <img alt="slider" src="<?= PUBLIC_URL . $showcase['img_path']?>" />
-                                    </li>
-                                    <?php endforeach;?>
-                                    <!-- <li data-thumb="./public/img/lightslider-img/cS-21.jpg">
-                                        <img alt="slider" src="./public/img/lightslider-img/cS-21.jpg" />
-                                    </li>
-                                    <li data-thumb="./public/img/lightslider-img/cS-22.jpg">
-                                        <img alt="slider" src="./public/img/lightslider-img/cS-22.jpg" />
-                                    </li>
-                                    <li data-thumb="./public/img/lightslider-img/cS-23.jpg">
-                                        <img alt="slider" src="./public/img/lightslider-img/cS-23.jpg" />
-                                    </li>
-                                    <li data-thumb="./public/img/lightslider-img/cS-24.jpg">
-                                        <img alt="slider" src="./public/img/lightslider-img/cS-24.jpg" />
-                                    </li>
-                                    <li data-thumb="./public/img/lightslider-img/cS-25.jpg">
-                                        <img alt="slider" src="./public/img/lightslider-img/cS-25.jpg" />
-                                    </li>
-                                    <li data-thumb="./public/img/lightslider-img/cS-26.jpg">
-                                        <img alt="slider" src="./public/img/lightslider-img/cS-26.jpg" />
-                                    </li>
-                                    <li data-thumb="./public/img/lightslider-img/cS-27.jpg">
-                                        <img alt="slider" src="./public/img/lightslider-img/cS-27.jpg" />
-                                    </li> -->
+                                    <?php foreach ($showcases as $showcase) : ?>
+                                        <li data-thumb="<?= PUBLIC_URL . $showcase['img_path'] ?>">
+                                            <img alt="slider" src="<?= PUBLIC_URL . $showcase['img_path'] ?>" />
+                                        </li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
                         </div>

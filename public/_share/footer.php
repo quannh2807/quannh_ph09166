@@ -5,13 +5,13 @@
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="call clearfix">
                     <h6>Gọi Cho Chúng Tôi</h6>
-                    <p>0914 946 200</p>
+                    <p><?= $webSetting['phone_number'] ?></p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="email_us clearfix">
                     <h6>Email khách sạn</h6>
-                    <p>contact@hotelbooking.com</p>
+                    <p><?= $webSetting['email'] ?></p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -23,9 +23,9 @@
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="social_icons clearfix">
                     <ul>
-                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="<?= $webSetting['facebook_url'] ?>" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="<?= $webSetting['instagram_url'] ?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="<?= $webSetting['youtube_url'] ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -42,12 +42,12 @@
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="footer_widget">
                         <div class="footer_logo">
-                            <a href="#"><img src="./public/img/footer-logo-one.png" alt=""></a>
+                            <a href="#"><img src="<?=PUBLIC_URL?>img/footer-logo-one.png" alt=""></a>
                         </div>
                         <p>Lorem ipsum dolor sit amet, conser adipiscing elit. In consectetur tincidunt dolor.</p>
                         <ul>
                             <li>
-                                <P><i class="fa fa-map-marker"></i>St Amsterdam finland, <br> United Stats of AKY16 8PN</P>
+                                <P><i class="fa fa-map-marker"></i><?=$webSetting['address']?></P>
                             </li>
                         </ul>
                     </div>

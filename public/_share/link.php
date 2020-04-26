@@ -30,6 +30,22 @@
 <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
 <style>
     .mainmenu .nav.navbar-nav li.dropdown>a {
-        background: url(<?=PUBLIC_URL . 'img/dropdown_bg.png'?>) no-repeat scroll 100% 50%;
+        background: url(<?= PUBLIC_URL . 'img/dropdown_bg.png' ?>) no-repeat scroll 100% 50%;
+    }
+
+    .hotel_facilities_area {
+        background: url(<?= PUBLIC_URL . 'img/hotel-facilities-bg.jpg' ?>) no-repeat fixed 0 0;
+    }
+
+    div#customer_says_slider .customer_comment {
+        background: rgba(0, 0, 0, 0) url(<?= PUBLIC_URL . 'img/customer-slider-bg.png' ?>) no-repeat scroll 0 0 / cover;
+    }
+
+    body#error_page .error_area {
+        background-image: url(<?= PUBLIC_URL . 'img/error_bg.jpg' ?>);
+    }
+
+    body#error_page .error .section_title.nice_title>h3::after {
+        background: rgba(0, 0, 0, 0) url(<?=PUBLIC_URL . 'img/nice-title-error.png'?>) no-repeat scroll 0 0;
     }
 </style>

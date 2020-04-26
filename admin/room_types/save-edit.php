@@ -10,7 +10,7 @@ $adult= trim($_POST['adult']);
 $children = trim($_POST['children']);
 $price = trim($_POST['price']);
 $service = $_POST['service'];
-$feature_img = $_FILES['feature_img'];
+$feature_image = $_FILES['feature_image'];
 $short_descript = trim($_POST['short_descript']);
 
 // kiểm tra services có tồn tại hay không
@@ -57,10 +57,10 @@ if ($nameerr . $quantityerr . $priceerr . $childrenerr . $adulterr != "") {
 }
 
 // upload file ảnh
-$filename = $roomTypes['feature_img'];
-if($feature_img['size'] > 0){
-    $filename = uniqid() . '-' . $feature_img['name'];
-    move_uploaded_file($feature_img['tmp_name'], "../../public/img/" . $filename);
+$filename = $roomTypes['feature_image'];
+if($feature_image['size'] > 0){
+    $filename = uniqid() . '-' . $feature_image['name'];
+    move_uploaded_file($feature_image['tmp_name'], "../../public/img/" . $filename);
     $filename = "public/img/" . $filename;
 }
 // insert services query

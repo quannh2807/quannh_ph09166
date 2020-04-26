@@ -188,7 +188,7 @@ $booking = queryExecute($getBookingQuery, true);
                                 <div class="icon">
                                     <i class="fal fa-house"></i>
                                 </div>
-                                <a href="<?= ADMIN_URL . 'room_services' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="<?= ADMIN_URL . 'room_types' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
