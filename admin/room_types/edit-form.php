@@ -104,14 +104,14 @@ $allServices = queryExecute($getServices, true);
                                 <div class="row">
                                     <div class="col-6 form-group">
                                         <label for="">Số người lớn<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="adult" id="adult">
+                                        <input type="text" class="form-control" name="adult" id="adult" value="<?=$roomTypes['adult']?>">
                                         <?php if (isset($_GET['adulterr'])) : ?>
                                             <label class="error"><?= $_GET['adulterr'] ?></label>
                                         <?php endif; ?>
                                     </div>
                                     <div class="col-6 form-group">
-                                        <label for="">Số người trẻ nhỏ<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="children" id="children">
+                                        <label for="">Số trẻ nhỏ<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="children" id="children" value="<?=$roomTypes['children']?>">
                                         <?php if (isset($_GET['childrenerr'])) : ?>
                                             <label class="error"><?= $_GET['childrenerr'] ?></label>
                                         <?php endif; ?>

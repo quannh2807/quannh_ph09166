@@ -82,7 +82,7 @@ $roomSerives = queryExecute($getRoomSerives, true);
                                         <?php endif; ?>
                                     </div>
                                     <div class="col-6 form-group">
-                                        <label for="">Số người trẻ nhỏ<span class="text-danger">*</span></label>
+                                        <label for="">Số trẻ nhỏ<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="children" id="children">
                                         <?php if (isset($_GET['childrenerr'])) : ?>
                                             <label class="error"><?= $_GET['childrenerr'] ?></label>
