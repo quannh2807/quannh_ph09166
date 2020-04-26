@@ -3,6 +3,25 @@ session_start();
 define('TITLE', 'Home');
 require_once './config/utils.php';
 $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
+
+// get data from web_settings
+$getWebSettingQuery = "select * from web_settings where id = 1";
+$webSetting = queryExecute($getWebSettingQuery, false);
+// get data from showcases
+$getShowCaseQuery = "select * from showcases";
+$showcases = queryExecute($getShowCaseQuery, true);
+// get data from banner_slice
+$getBannerSliceQuery = "select * from banner_slice";
+$banner = queryExecute($getBannerSliceQuery, true);
+// get data from services
+$getServicesQuery = "select * from services";
+$services = queryExecute($getServicesQuery, true);
+// get data from customer_feedbacks
+$getCustomerFeedbacksQuery = "select * from customer_feedbacks where status = 1";
+$feedbacks = queryExecute($getCustomerFeedbacksQuery, true);
+// get data from news
+$getNewsQuery = "select * from news LIMIT 3";
+$news = queryExecute($getNewsQuery, true);
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -82,7 +101,7 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                         </form>
                         <!-- special offer start -->
                         <div class="special_offer_main">
-                            <img src="<?= PUBLIC_URL . 'img/special-offer-main.png'?>" alt="">
+                            <img src="<?= PUBLIC_URL . 'img/special-offer-main.png' ?>" alt="">
                         </div>
                         <!-- end offer start -->
                     </div>
@@ -92,32 +111,20 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
             <div class="fullwidthbanner-container">
                 <div class="fullwidth_home_banner">
                     <ul>
-
-                        <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
-                            <img src="<?= PUBLIC_URL . '/img/rev-slider/slider-one.jpg'?>" alt="slide">
-                            <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
-                                A brand New Hotel
-                            </div>
-                            <div class="tp-caption large_black sfr" data-x="105" data-y="255" data-speed="1500" data-start="1400" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
-                                Beyond Ordinary
-                            </div>
-                            <div class="tp-caption lfb carousel-caption-inner" data-x="105" data-y="313" data-speed="1300" data-start="1700" data-easing="easeInOutBack" style="background: #f7c411; padding: 10px; cursor: pointer;">
-                                <a href="#" class="" style="background: #f7c411; border-radius: 0; color: #313a45; display: inline-block;  font-size: 18px; padding: 8px 34px; text-transform: uppercase; border: 1px solid #9e811a;">Explore IT</a>
-                            </div>
-                        </li>
-
-                        <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
-                            <img src="<?= PUBLIC_URL . '/img/rev-slider/slider-two.jpg'?>" alt="slide">
-                            <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #fff; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
-                                Book Your Summer Holidays
-                            </div>
-                            <div class="tp-caption large_black sfr" data-x="105" data-y="255" data-speed="1500" data-start="1400" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #fff; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
-                                With HOTEL BOOKING Template
-                            </div>
-                            <div class="tp-caption lfb carousel-caption-inner" data-x="105" data-y="313" data-speed="1300" data-start="1700" data-easing="easeInOutBack" style="background: #f7c411; padding: 10px; cursor: pointer;">
-                                <a href="#" class="" style="background: #f7c411; border-radius: 0; color: #313a45; display: inline-block;  font-size: 18px; padding: 8px 34px; text-transform: uppercase; border: 1px solid #9e811a;">Explore IT</a>
-                            </div>
-                        </li>
+                        <?php foreach ($banner as $ba) : ?>
+                            <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
+                                <img src="<?= BASE_URL . $ba['img_path'] ?>" alt="slide">
+                                <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
+                                    <?= $ba['content1'] ?>
+                                </div>
+                                <div class="tp-caption large_black sfr" data-x="105" data-y="255" data-speed="1500" data-start="1400" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
+                                    <?= $ba['content2'] ?>
+                                </div>
+                                <div class="tp-caption lfb carousel-caption-inner" data-x="105" data-y="313" data-speed="1300" data-start="1700" data-easing="easeInOutBack" style="background: #f7c411; padding: 10px; cursor: pointer;">
+                                    <a href="#" class="" style="background: #f7c411; border-radius: 0; color: #313a45; display: inline-block;  font-size: 18px; padding: 8px 34px; text-transform: uppercase; border: 1px solid #9e811a;">Explore IT</a>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -303,10 +310,10 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#restaurant" aria-controls="restaurant" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-eleven.png" alt="restaurant"><span>restaurant</span></a>
+                                <a href="#sports-club" aria-controls="sports-club" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-seven.png" alt="sports-club"><span>sports-club</span></a>
                             </li>
                             <li role="presentation">
-                                <a href="#sports-club" aria-controls="sports-club" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-seven.png" alt="sports-club"><span>sports-club</span></a>
+                                <a href="#restaurant" aria-controls="restaurant" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-eleven.png" alt="restaurant"><span>restaurant</span></a>
                             </li>
                             <li role="presentation">
                                 <a href="#pick-up" aria-controls="pick-up" role="tab" data-toggle="tab"><img src="./public/img/home-facilities-icon-eight.png" alt="pick-up"><span>pick-up</span></a>
@@ -322,144 +329,25 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="restaurant">
-                                <div class="single-tab-content">
-                                    <div class="row">
-                                        <div class="co-lg-5 col-md-5 col-sm-6">
-                                            <div class="single-tab-image">
-                                                <a href="#"><img src="./public/img/hotel-facility-one.jpg" alt=""></a>
+                            <?php foreach ($services as $service) : ?>
+                                <div role="tabpanel" class="tab-pane <?php if ($service['active'] == 1) : ?>active<?php endif; ?>" id="<?= $service['idName'] ?>">
+                                    <div class="single-tab-content">
+                                        <div class="row">
+                                            <div class="co-lg-5 col-md-5 col-sm-6">
+                                                <div class="single-tab-image">
+                                                    <a href="#"><img src="<?= BASE_URL . $service['feature_img'] ?>" alt=""></a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="co-lg-7 col-md-7 col-sm-6">
-                                            <div class="single-tab-details">
-                                                <h6>The world class</h6>
-                                                <h3>Restaurant & Banquets</h3>
-                                                <p>
-                                                    Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor.
-                                                </p>
-                                                <p>
-                                                    Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.
-                                                </p>
-                                                <div class="our_services">
-                                                    <a href="#" class="margin-right-33">Service Hours; 19.00-22:00 </a>
-                                                    <a href="#">service charge : $15</a>
+                                            <div class="co-lg-7 col-md-7 col-sm-6">
+                                                <div class="single-tab-details">
+                                                    <?= $service['introduce'] ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="sports-club">
-                                <div class="single-tab-content">
-                                    <div class="row">
-                                        <div class="co-lg-5 col-md-5">
-                                            <div class="single-tab-image">
-                                                <a href="#"><img src="./public/img/hotel-facility-three.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <div class="co-lg-7 col-md-7">
-                                            <div class="single-tab-details">
-                                                <h6>The world class</h6>
-                                                <h3>Sports Club</h3>
-                                                <p>
-                                                    Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor.
-                                                </p>
-                                                <p>
-                                                    Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.
-                                                </p>
-                                                <div class="our_services">
-                                                    <a href="#" class="margin-right-33">Service Hours; 19.00-22:00 </a>
-                                                    <a href="#">service charge : $15</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="pick-up">
-                                <div class="single-tab-content">
-                                    <div class="row">
-                                        <div class="co-lg-5 col-md-5">
-                                            <div class="single-tab-image">
-                                                <a href="#"><img src="./public/img/hotel-facility-one.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <div class="co-lg-7 col-md-7">
-                                            <div class="single-tab-details">
-                                                <h6>The world class</h6>
-                                                <h3>Pick Up</h3>
-                                                <p>
-                                                    Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor.
-                                                </p>
-                                                <p>
-                                                    Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.
-                                                </p>
-                                                <div class="our_services">
-                                                    <a href="#" class="margin-right-33">Service Hours; 19.00-22:00 </a>
-                                                    <a href="#">service charge : $15</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="bar">
-                                <div class="single-tab-content">
-                                    <div class="row">
-                                        <div class="co-lg-5 col-md-5">
-                                            <div class="single-tab-image">
-                                                <a href="#"><img src="./public/img/hotel-facility-three.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <div class="co-lg-7 col-md-7">
-                                            <div class="single-tab-details">
-                                                <h6>The world class</h6>
-                                                <h3>Bar</h3>
-                                                <p>
-                                                    Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor.
-                                                </p>
-                                                <p>
-                                                    Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.
-                                                </p>
-                                                <div class="our_services">
-                                                    <a href="#" class="margin-right-33">Service Hours; 19.00-22:00 </a>
-                                                    <a href="#">service charge : $15</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="gym">
-                                <div class="single-tab-content">
-                                    <div class="row">
-                                        <div class="co-lg-5 col-md-5">
-                                            <div class="single-tab-image">
-                                                <a href="#"><img src="./public/img/hotel-facility-one.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <div class="co-lg-7 col-md-7">
-                                            <div class="single-tab-details">
-                                                <h6>The world class</h6>
-                                                <h3>Gym</h3>
-                                                <p>
-                                                    Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor.
-                                                </p>
-                                                <p>
-                                                    Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.
-                                                </p>
-                                                <div class="our_services">
-                                                    <a href="#" class="margin-right-33">Service Hours; 19.00-22:00 </a>
-                                                    <a href="#">service charge : $15</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <?php endforeach; ?>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -479,51 +367,23 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                         <div class="section_description">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="single_content clearfix border-bottom-whitesmoke">
-                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 padding-left-0">
-                                            <div class="post_media">
-                                                <a href="#"><img src="./public/img/news-one.jpg" alt=""></a>
+                                    <?php foreach ($news as $new) : ?>
+                                        <div class="single_content clearfix border-bottom-whitesmoke">
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 padding-left-0">
+                                                <div class="post_media">
+                                                    <a href="#"><img src="<?= BASE_URL . $new['feature_image']?>" alt=""></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 padding-left-0">
+                                                <div class="post_title clearfix">
+                                                    <h6><?=$new['title']?></h6>
+                                                </div>
+                                                <div class="post_content  margin-bottom-35">
+                                                    <p><?= $new['created_at']?></p>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 padding-left-0">
-                                            <div class="post_title clearfix">
-                                                <h6>Quisque at felis port titordga</h6>
-                                            </div>
-                                            <div class="post_content  margin-bottom-35">
-                                                <p>14 May 2014</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single_content clearfix margin-top-35 border-bottom-whitesmoke">
-                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 padding-left-0">
-                                            <div class="post_media">
-                                                <a href="#"><img src="./public/img/news-two.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 padding-left-0">
-                                            <div class="post_title clearfix">
-                                                <h6>Donec scelerisque vulputate</h6>
-                                            </div>
-                                            <div class="post_content margin-bottom-35">
-                                                <p>15 May 2014</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="single_content clearfix margin-bottom-35 margin-top-35">
-                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 padding-left-0">
-                                            <div class="post_media">
-                                                <a href="#"><img src="./public/img/news-three.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 padding-left-0">
-                                            <div class="post_title clearfix">
-                                                <h6>Curabitur varius quam lorem</h6>
-                                            </div>
-                                            <div class="post_content">
-                                                <p>17 May 2014</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
@@ -537,10 +397,12 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                         <div class="section_description">
                             <div class="clearfix demo">
                                 <ul id="vertical" class="gallery list-unstyled">
-                                    <li data-thumb="./public/img/lightslider-img/cS-18.jpg">
-                                        <img alt="slider" src="./public/img/lightslider-img/cS-18.jpg" />
+                                    <?php foreach($showcases as $showcase) :?>
+                                    <li data-thumb="<?= PUBLIC_URL . $showcase['img_path']?>">
+                                        <img alt="slider" src="<?= PUBLIC_URL . $showcase['img_path']?>" />
                                     </li>
-                                    <li data-thumb="./public/img/lightslider-img/cS-21.jpg">
+                                    <?php endforeach;?>
+                                    <!-- <li data-thumb="./public/img/lightslider-img/cS-21.jpg">
                                         <img alt="slider" src="./public/img/lightslider-img/cS-21.jpg" />
                                     </li>
                                     <li data-thumb="./public/img/lightslider-img/cS-22.jpg">
@@ -560,7 +422,7 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                                     </li>
                                     <li data-thumb="./public/img/lightslider-img/cS-27.jpg">
                                         <img alt="slider" src="./public/img/lightslider-img/cS-27.jpg" />
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -575,48 +437,24 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                             <div id="customer_says_slider" class="carousel slide" data-ride="carousel" data-pause="none">
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner" role="listbox">
-                                    <div class="item active">
-                                        <div class="single_says">
-                                            <div class="customer_comment">
-                                                <p>
-                                                    Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan urna vitae molestie interdum.
-                                                </p>
-                                                <p>
-                                                    Nam sed placerat libero, non eleifend dolor.
-                                                </p>
-                                            </div>
-                                            <div class="customer_detail clearfix">
-                                                <div class="customer_pic alignleft-20">
-                                                    <a href="#"><img src="./public/img/customer-says-one.png" alt=""></a>
+                                    <?php foreach ($feedbacks as $feedback) : ?>
+                                        <div class="item <?php if ($feedback['active'] == 1) : ?> active <?php endif; ?>">
+                                            <div class="single_says">
+                                                <div class="customer_comment">
+                                                    <?= $feedback['content'] ?>
                                                 </div>
-                                                <div class="customer_identity floatleft">
-                                                    <h6>John Doe</h6>
-                                                    <p>www.john.com</p>
+                                                <div class="customer_detail clearfix">
+                                                    <div class="customer_pic alignleft-20">
+                                                        <a href="#"><img src="<?= $feedback['avatar'] ?>" alt="" width="50"></a>
+                                                    </div>
+                                                    <div class="customer_identity floatleft">
+                                                        <h6><?= $feedback['name'] ?></h6>
+                                                        <p><?= $feedback['address'] ?></p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="single_says">
-                                            <div class="customer_comment">
-                                                <p>
-                                                    Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan urna vitae molestie interdum.
-                                                </p>
-                                                <p>
-                                                    Nam sed placerat libero, non eleifend dolor.
-                                                </p>
-                                            </div>
-                                            <div class="customer_detail clearfix">
-                                                <div class="customer_pic alignleft-20">
-                                                    <a href="#"><img src="./public/img/customer-says-one.png" alt=""></a>
-                                                </div>
-                                                <div class="customer_identity floatleft">
-                                                    <h6>John Doe</h6>
-                                                    <p>www.john.com</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                                 <!-- Controls -->
                                 <a class="slider_says left" href="#customer_says_slider" role="button" data-slide="prev">

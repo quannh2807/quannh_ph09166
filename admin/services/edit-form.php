@@ -140,7 +140,12 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
             sessionStorage.clear();
         }
 
-        nameService.value = sessionStorage.getItem('nameService');
+        if('nameService' in sessionStorage) {
+            nameService.value = sessionStorage.getItem('nameService');
+        }else {
+            statusService.value = <?= $services['name']?>;
+        }
+
         if ("statusService" in sessionStorage) {
             statusService.value = sessionStorage.getItem('statusService')
         } else {
