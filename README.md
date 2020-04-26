@@ -1,3 +1,4 @@
-# Project 1: Booking Hotel in FPT Polytechnic hotel.
-# Nguyen Hong Quan
-# PHP, JS, MySql, Valentina Studio, Chrome, Git, VS Code.
+# Du an 1: Hotel Booking
+# Giao vien: Tran Huu Thien
+# Sinh Vien: Nguyen Hong Quan
+# Ma sv: ph09166
