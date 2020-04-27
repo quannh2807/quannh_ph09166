@@ -1,23 +1,21 @@
 <?php
 session_start();
+define('TITLE', 'Accomadation');
 require_once './config/utils.php';
 $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
+
+// get data from web_settings
+$getWebSettingQuery = "select * from web_settings where id = 1";
+$webSetting = queryExecute($getWebSettingQuery, false);
 ?>
 <!DOCTYPE html>
 <html lang="vi">
-<!-- Mirrored from premiumlayers.net/demo/html/hotelbooking/accomodation.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Mar 2020 11:52:12 GMT -->
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hotel Booking - Accomodation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php include_once './public/_share/link.php'; ?>
 </head>
 
 <body id="accomodation_page">
-
-
     <!-- start header -->
     <?php include_once './public/_share/header.php'; ?>
     <!-- end header -->
@@ -32,7 +30,7 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
                     <div class="special_offer_main">
                         <div class="container">
                             <div class="special_offer_sub">
-                                <img src="<?php echo PUBLIC_URL . 'img/special-offer-yellow-main.png'?>" alt="imf">
+                                <img src="<?= BASE_URL . $webSetting['offer']?>" alt="imf">
                             </div>
                         </div>
                     </div>
@@ -532,7 +530,5 @@ $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
     <script src="js/main.js"></script>
 
 </body>
-
-<!-- Mirrored from premiumlayers.net/demo/html/hotelbooking/accomodation.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Mar 2020 11:52:14 GMT -->
 
 </html>

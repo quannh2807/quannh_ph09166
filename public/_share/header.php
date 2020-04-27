@@ -37,7 +37,6 @@
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL . 'booking.php'?>">Booking</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL . 'room-details.php'?>">Room Details</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=BASE_URL . 'staff.php'?>">Our Staff</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL . '404.php'?>">404 Page</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="<?= BASE_URL . 'blog.php'?>">News</a></li>
@@ -49,12 +48,12 @@
                                             Hi, <?= $loggedInUser['name']; ?>
                                         </a>
                                         <ul id="menu2" class="dropdown-menu" role="menu">
-                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= LOGIN_URL . 'infomation.php'?>">Thông tin cá nhân</a></li>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= LOGIN_URL . 'change-info.php'?>">Đổi thông tin</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Thông tin cá nhân</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Đổi thông tin</a></li>
                                             <?php if ($loggedInUser !== null && $loggedInUser['role_id'] > 1):?>
                                                 <li role="presentation"><a role="menuitem" tabindex="-1" class="login-color" href="<?=ADMIN_URL. 'dashboard'?>">Quản trị</a></li>
                                             <?php endif;?>
-                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=LOGIN_URL.'logout.php'?>">Logout</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=LOGIN_URL.'logout.php'?>">Đăng xuất</a></li>
                                         </ul>
                                     </li>
                                 <?php else : ?>

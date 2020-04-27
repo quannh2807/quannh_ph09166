@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('TITLE', 'Contact us');
 require_once './config/utils.php';
 $loggedInUser = isset($_SESSION[AUTH]) ? $_SESSION[AUTH] : null;
 checkAdminLoggedIn();
@@ -9,20 +10,18 @@ $roles = queryExecute($getRoleQuery, true);
 # get contacts table
 $getContactsQuery = "select * from contacts";
 $contacts = queryExecute($getContactsQuery, true);
+// get data from web_settings
+$getWebSettingQuery = "select * from web_settings where id = 1";
+$webSetting = queryExecute($getWebSettingQuery, false);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hotel Booking - Contacts</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php include_once './public/_share/link.php'; ?>
 </head>
 
 <body id="contact_us_page">
-
 
     <!-- start header -->
     <?php include_once './public/_share/header.php'; ?>
@@ -129,10 +128,9 @@ $contacts = queryExecute($getContactsQuery, true);
                             </ul>
                             <div class="social_icons clearfix">
                                 <ul class="clearul">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -152,7 +150,6 @@ $contacts = queryExecute($getContactsQuery, true);
     <!-- Google maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBg0VrLjLvDLSQdS7hw6OfZJmvHhtEV_sE"></script>
     <script>
-
         var myCenter = new google.maps.LatLng(20.147269, 106.222167);
 
         function initialize() {
