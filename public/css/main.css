@@ -2310,11 +2310,17 @@ body#single_blog_page .recent_post_details>p {
 -----------------------------------------------------------*/
 
 .list-room {
-    background: rgb(248, 248, 248);
+    background: #fff;
 }
 
 .list-room-content {
     padding: 20px 10px;
+}
+
+.list-room-detail {
+    padding-top: 20px;
+    padding-left: 40px;
+    align-items: center;
 }
 
 .list-room-detail>h5 {
@@ -2335,6 +2341,19 @@ body#single_blog_page .recent_post_details>p {
 .list-services {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.title {
+    border-bottom: 1px solid;
+}
+
+.list-room-img {
+    padding-top: 30px;
+}
+
+.btn-submit:hover {
+    color: whitesmoke;
+    background: #63c2ea;
 }
 
 

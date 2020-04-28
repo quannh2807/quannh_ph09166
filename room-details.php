@@ -14,6 +14,14 @@ $children = isset($_GET['children']) ? $_GET['children'] : "";
 // get data from room types
 $getRoomTypesQuery = "select *from room_types where id ='$roomId' and status = 1";
 $roomTypes = queryExecute($getRoomTypesQuery, false);
+
+$_SESSION[BOOK] = $roomTypes;
+// save data to session
+$_SESSION[BOOK]['arrival'] = $arrival;
+$_SESSION[BOOK]['departure'] = $departure;
+$_SESSION[BOOK]['adult'] = $adult;
+$_SESSION[BOOK]['children'] = $children;
+
 $getServiceQuery = "select s.id, s.name, s.icon
                         from room_service_xref sxr
                         join room_services s
@@ -94,7 +102,7 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                                                     <h5>Dịch vụ phòng</h5>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 margin-bottom-35">
                                                 <div class="list-services">
                                                     <?php foreach ($room['room_sv'] as $rSer) : ?>
                                                         <div class="row">
@@ -108,6 +116,9 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12">
+                                            <div class="section_title padding-bottom-25">
+                                                <h5>Mô tả</h5>
+                                            </div>
                                             <div class="room_facilities_des padding-top-50 padding-bottom-50 border-bottom-whitesmoke border-top-whitesmoke">
                                                 <?= $roomTypes['short_descript'] ?>
                                             </div>
@@ -193,9 +204,10 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                     <div class="col-lg-12 col-md-12 col-sm-4">
                         <div class="hotel_booking_area clearfix">
                             <div class="hotel_booking">
-                                <form id="form1" role="form" action="<?= BASE_URL . 'booking.php'?>" method="POST">
+
+                                <form id="form1" role="form" action="<?= BASE_URL . 'booking.php' ?>" method="POST">
                                     <div class="col-lg-12 col-md-12">
-                                        <input type="hidden" name="roomId" value="<?=$roomTypes['id']?>">
+                                        <input type="hidden" name="roomId" value="<?= $roomTypes['id'] ?>">
                                         <div class="room_book">
                                             <p>Đặt phòng ngay</p>
                                         </div>
@@ -348,9 +360,9 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
     <!-- end script link -->
     <script>
         var adult = document.getElementById('adult');
-        adult.value = <?=$adult?>;
+        adult.value = <?= $adult ?>;
         var children = document.getElementById('children');
-        children.value = <?=$children?>;
+        children.value = <?= $children ?>;
 
         setTimeout(() => {
             sessionStorage.clear();

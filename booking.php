@@ -9,17 +9,26 @@ $getWebSettingQuery = "select * from web_settings where id = 1";
 $webSetting = queryExecute($getWebSettingQuery, false);
 
 // get data from room detail
-$roomId = trim($_POST['roomId']);
-$arrival = trim($_POST['arrival']);
-$departure = trim($_POST['departure']);
 $room = trim($_POST['room']);
 $bed = trim($_POST['bed']);
-$adult = trim($_POST['adult']);
-$children = trim($_POST['children']);
+
+$_SESSION[BOOK]['room'] = $room;
+$_SESSION[BOOK]['bed'] = $bed;
+$roomId = isset($_SESSION[BOOK]['id']) ? $_SESSION[BOOK]['id'] : "";
+$adult = isset($_SESSION[BOOK]['adult']) ? $_SESSION[BOOK]['adult'] : "";
+$children = isset($_SESSION[BOOK]['children']) ? $_SESSION[BOOK]['children'] : "";
+$arrival = isset($_SESSION[BOOK]['arrival']) ? $_SESSION[BOOK]['arrival'] : "";
+$departure = isset($_SESSION[BOOK]['departure']) ? $_SESSION[BOOK]['departure'] : "";
 
 // get data from room types
 $getRoomTypesQuery = "select *from room_types where id ='$roomId' and status = 1";
 $roomTypes = queryExecute($getRoomTypesQuery, false);
+
+if ($roomTypes == "") {
+    header('location: ' . BASE_URL . 'rooms.php?msg=Bạn cần chọn phòng trước khi đặt, HÃY CHỌN PHÒNG!');
+    die;
+}
+
 $getServiceQuery = "select s.id, s.name, s.icon
                         from room_service_xref sxr
                         join room_services s
