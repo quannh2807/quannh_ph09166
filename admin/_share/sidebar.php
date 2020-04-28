@@ -254,6 +254,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fad fa-photo-video"></i>
+                        <p>
+                            Banner Slice
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= ADMIN_URL . 'banner_slice' ?>" class="nav-link">
+                                <i class="fa fa-list-ol nav-icon"></i>
+                                <p>Danh sách banner</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <!-- space -->
                 <li class="nav-header"></li>
                 <!-- Logout -->

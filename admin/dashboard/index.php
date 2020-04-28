@@ -47,6 +47,10 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
 # Lấy ra tất cả bản ghi trong bảng booking
 $getBookingQuery = "select * from booking";
 $booking = queryExecute($getBookingQuery, true);
+
+# Lấy ra tất cả bản ghi trong bảng banner_slice
+$getBannerQuery = "select * from banner_slice";
+$banner = queryExecute($getBannerQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -218,6 +222,19 @@ $booking = queryExecute($getBookingQuery, true);
                                     <i class="fal fa-bed-bunk"></i>
                                 </div>
                                 <a href="<?= ADMIN_URL . 'booking' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-4">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3><?= count($banner); ?></h3>
+                                    <p>Banner</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fad fa-photo-video"></i>
+                                </div>
+                                <a href="<?= ADMIN_URL . 'banner_slice' ?>" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

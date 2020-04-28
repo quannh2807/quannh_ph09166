@@ -11,7 +11,7 @@ $webSetting = queryExecute($getWebSettingQuery, false);
 $getShowCaseQuery = "select * from showcases";
 $showcases = queryExecute($getShowCaseQuery, true);
 // get data from banner_slice
-$getBannerSliceQuery = "select * from banner_slice";
+$getBannerSliceQuery = "select * from banner_slice where status = 1";
 $banner = queryExecute($getBannerSliceQuery, true);
 // get data from services
 $getServicesQuery = "select * from services";
@@ -110,11 +110,11 @@ $roomTypes = queryExecute($getRoomTypesQuery, true);
                         <?php foreach ($banner as $ba) : ?>
                             <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
                                 <img src="<?= BASE_URL . $ba['img_path'] ?>" alt="slide">
-                                <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
-                                    <?= $ba['content1'] ?>
+                                <div class="tp-caption large_black sfr" data-x="105" data-y="197" data-speed="1200" data-start="1100" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #fefefe; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
+                                    <?= $ba['firstContent'] ?>
                                 </div>
-                                <div class="tp-caption large_black sfr" data-x="105" data-y="255" data-speed="1500" data-start="1400" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #131e2a; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
-                                    <?= $ba['content2'] ?>
+                                <div class="tp-caption large_black sfr" data-x="105" data-y="255" data-speed="1500" data-start="1400" data-easing="easeInOutBack" style="font-family: 'Playfair Display', serif; font-size: 48px;color: #fefefe; margin-bottom: 23px; text-transform: uppercase; line-height: 40px;">
+                                    <?= $ba['secondContent'] ?>
                                 </div>
                                 <div class="tp-caption lfb carousel-caption-inner" data-x="105" data-y="313" data-speed="1300" data-start="1700" data-easing="easeInOutBack" style="background: #f7c411; padding: 10px; cursor: pointer;">
                                     <a href="<?= $webSetting['explore_url'] ?>" class="" style="background: #f7c411; border-radius: 0; color: #313a45; display: inline-block;  font-size: 18px; padding: 8px 34px; text-transform: uppercase; border: 1px solid #9e811a;">Explore IT</a>
