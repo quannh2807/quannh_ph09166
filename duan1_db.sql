@@ -14,14 +14,15 @@
 -- CREATE TABLE "banner_slice" ---------------------------------
 CREATE TABLE `banner_slice`( 
 	`id` Int( 0 ) AUTO_INCREMENT NOT NULL,
-	`content1` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`firstContent` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`img_path` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-	`content2` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`secondContent` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`status` Int( 0 ) NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 3;
 -- -------------------------------------------------------------
 
 
@@ -33,6 +34,7 @@ CREATE TABLE `booking`(
 	`email` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`arrival` DateTime NOT NULL,
 	`departure` DateTime NOT NULL,
+	`adult` Int( 0 ) NOT NULL,
 	`children` Int( 0 ) NOT NULL,
 	`room_types` Int( 0 ) NOT NULL,
 	`messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -42,14 +44,14 @@ CREATE TABLE `booking`(
 	`checked_in_date` DateTime NULL,
 	`reply_by` Int( 0 ) NULL,
 	`reply_messages` Text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-	`adult` Int( 0 ) NOT NULL,
 	`rooms` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`beds` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`price` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 2;
 -- -------------------------------------------------------------
 
 
@@ -116,7 +118,7 @@ CREATE TABLE `roles`(
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 4;
+AUTO_INCREMENT = 3;
 -- -------------------------------------------------------------
 
 
@@ -129,7 +131,7 @@ CREATE TABLE `room_galleries`(
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 1;
+AUTO_INCREMENT = 9;
 -- -------------------------------------------------------------
 
 
@@ -142,7 +144,7 @@ CREATE TABLE `room_service_xref`(
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 19;
+AUTO_INCREMENT = 21;
 -- -------------------------------------------------------------
 
 
@@ -175,7 +177,7 @@ CREATE TABLE `room_types`(
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 7;
+AUTO_INCREMENT = 9;
 -- -------------------------------------------------------------
 
 
@@ -192,7 +194,7 @@ CREATE TABLE `services`(
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 4;
+AUTO_INCREMENT = 8;
 -- -------------------------------------------------------------
 
 
@@ -252,9 +254,10 @@ AUTO_INCREMENT = 2;
 
 
 -- Dump data of "banner_slice" -----------------------------
-INSERT INTO `banner_slice`(`id`,`content1`,`img_path`,`content2`) VALUES 
-( '1', 'A brand New Hotel', 'public/img/rev-slider/slider-one.jpg', 'Beyond Ordinary' ),
-( '2', 'Book Your Summer Holidays', 'public/img/rev-slider/slider-one.jpg', 'With HOTEL BOOKING Template' );
+INSERT INTO `banner_slice`(`id`,`firstContent`,`img_path`,`secondContent`,`status`) VALUES 
+( '1', 'A brand New Hotel', 'public/img/rev-slider/slider-one.jpg', 'Beyond Ordinary', '0' ),
+( '2', 'Book Your Summer Holidays', 'public/img/rev-slider/slider-one.jpg', 'With HOTEL BOOKING Template', '1' ),
+( '3', 'Welcome to Our Hotel', 'public/img/banner_resort-2.jpg', 'Khám phá ngay', '1' );
 -- ---------------------------------------------------------
 
 
