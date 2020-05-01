@@ -84,7 +84,7 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                                 <div class="section_description">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12">
-                                            <div class="clearfix" style="">
+                                            <div class="clearfix">
                                                 <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
                                                     <?php foreach ($roomGalleries as $roomGallerie) : ?>
                                                         <li data-thumb="<?= BASE_URL . $roomGallerie['img_url'] ?>">

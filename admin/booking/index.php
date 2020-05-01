@@ -7,7 +7,6 @@ checkAdminLoggedIn();
 $keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
 $statusSearch = isset($_GET['statusSearch']) == true ? $_GET['statusSearch'] : "";
 
-
 // danh sách booking
 $getBookingQuery = "select b.*, rt.name as roomTypeName from booking b
                             join room_types rt
@@ -120,7 +119,7 @@ $booking = queryExecute($getBookingQuery, true);
                                     <?php foreach ($booking as $book) : ?>
                                         <tr>
                                             <td><?php echo $book['customer_name'] ?></td>
-                                            <td><?php echo $book['checkin_date'] ?></td>
+                                            <td><?php echo $book['arrival'] ?></td>
                                             <td><?= $book['adult'] ?></td>
                                             <td><?= $book['children'] ?></td>
                                             <td><?= $book['roomTypeName'] ?></td>
@@ -131,7 +130,7 @@ $booking = queryExecute($getBookingQuery, true);
                                                     <span class="text-danger">Chưa trả lời</span>
                                                 <?php } ?>
                                             </td>
-                                            <td><?= $book['created_at'] ?></td>
+                                            <td><?= $book['created_date'] ?></td>
                                             <td>
                                                 <a href="<?php echo ADMIN_URL . 'booking/check-form.php?id=' . $book['id'] ?>" class="btn btn-sm btn-success">
                                                     <i class="fas fa-check"></i>
