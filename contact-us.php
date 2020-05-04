@@ -47,15 +47,6 @@ $webSetting = queryExecute($getWebSettingQuery, false);
         </div>
     </section>
     <!-- end breadcrunb -->
-    <!-- start other detect room section -->
-    <div class="contact_google_map_area margin-bottom-75">
-        <div class="container">
-            <div class="contact_google_map">
-                <div id="contactgoogleMap" style="width:100%;height:374px;"></div>
-            </div>
-        </div>
-    </div>
-    <!-- end other detect room section -->
 
     <!-- start contact mail area -->
     <section class="contact_mail_area margin-bottom-90">
@@ -140,6 +131,17 @@ $webSetting = queryExecute($getWebSettingQuery, false);
         </div>
     </section>
     <!-- end contact mail area -->
+
+    <!-- start other detect room section -->
+    <div class="contact_google_map_area margin-bottom-75">
+        <div class="container">
+            <div class="contact_google_map">
+                <div id="contactgoogleMap" style="width:100%;height:374px;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- end other detect room section -->
+
     <!-- start footer -->
     <?php include_once './public/_share/footer.php'; ?>
     <!-- end footer -->
@@ -148,7 +150,7 @@ $webSetting = queryExecute($getWebSettingQuery, false);
     <!-- end script link -->
 
     <!-- Google maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBg0VrLjLvDLSQdS7hw6OfZJmvHhtEV_sE"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAsZMj7uhrnSVWojcYHapHV9c05Bdb5dE"></script>
     <script>
         var myCenter = new google.maps.LatLng(20.147269, 106.222167);
 

@@ -28,15 +28,7 @@
                                 </li>
                                 <li><a href="<?= BASE_URL . 'accomodation.php'?>">Accomodation</a></li>
                                 <li><a href="<?= BASE_URL . 'gallery.php'?>">Gallery</a></li>
-                                <li role="presentation" class="dropdown">
-                                    <a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                                        Features
-                                    </a>
-                                    <ul id="menu2" class="dropdown-menu" role="menu">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL .'about-us.php'?>">About US</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=BASE_URL . 'staff.php'?>">Our Staff</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="<?= BASE_URL .'about-us.php'?>">About US</a></li>
                                 <li><a href="<?= BASE_URL . 'blog.php'?>">News</a></li>
                                 <li><a href="<?= BASE_URL . 'contact-us.php'?>">Contacts</a></li>
 

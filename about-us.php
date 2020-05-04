@@ -106,7 +106,7 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-1 col-xs-12">
                                 <div class="single_facilities_name clearfix">
-                                    <a href="#" class="btn btn-warning btn-md">Book Room</a>
+                                    <a href="<?=BASE_URL . 'accomodation.php'?>" class="btn btn-warning btn-md">Book Room</a>
                                 </div>
                             </div>
                         </div>
@@ -129,10 +129,10 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                 </div>
                             </div>
                             <div class="section_content">
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <div class="single_staff">
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="single_staff margin-bottom-30">
                                         <figure class="uk-overlay uk-overlay-hover">
-                                            <!-- <a href="#"></a> --><img src="<?= PUBLIC_URL ?>img/about-us-staff-one.jpg" alt="img">
+                                            <img src="<?= PUBLIC_URL ?>img/about-us-staff-one.jpg" alt="img">
                                             <div class="uk-overlay-panel uk-overlay-background single_staff_details">
                                                 <h6>Dohn Doe</h6>
                                                 <span>Hotel Manager</span>
@@ -150,10 +150,10 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                         </figure>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <div class="single_staff">
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="single_staff margin-bottom-30">
                                         <figure class="uk-overlay uk-overlay-hover">
-                                            <!-- <a href="#"></a> --><img src="<?= PUBLIC_URL ?>img/about-us-staff-two.jpg" alt="img">
+                                            <img src="<?= PUBLIC_URL ?>img/about-us-staff-two.jpg" alt="img">
                                             <div class="uk-overlay-panel uk-overlay-background single_staff_details">
                                                 <h6>Dohn Doe</h6>
                                                 <span>Hotel Manager</span>
@@ -171,10 +171,10 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                         </figure>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <div class="single_staff">
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="single_staff margin-bottom-30">
                                         <figure class="uk-overlay uk-overlay-hover">
-                                            <!-- <a href="#"></a> --><img src="<?= PUBLIC_URL ?>img/about-us-staff-three.jpg" alt="img">
+                                            <img src="<?= PUBLIC_URL ?>img/about-us-staff-three.jpg" alt="img">
                                             <div class="uk-overlay-panel uk-overlay-background single_staff_details">
                                                 <h6>Dohn Doe</h6>
                                                 <span>Hotel Manager</span>
@@ -192,10 +192,94 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                         </figure>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="single_staff margin-bottom-30">
+                                        <figure class="uk-overlay uk-overlay-hover">
+                                            <img src="<?= PUBLIC_URL ?>img/about-us-staff-four.jpg" alt="img">
+                                            <div class="uk-overlay-panel uk-overlay-background single_staff_details">
+                                                <h6>Dohn Doe</h6>
+                                                <span>Hotel Manager</span>
+                                                <p>
+                                                    Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan rna.
+                                                </p>
+                                                <div class="social_icons clearfix">
+                                                    <ul>
+                                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3">
                                     <div class="single_staff">
                                         <figure class="uk-overlay uk-overlay-hover">
-                                            <!-- <a href="#"></a> --><img src="<?= PUBLIC_URL ?>img/about-us-staff-four.jpg" alt="img">
+                                            <img src="<?= PUBLIC_URL ?>img/about-us-staff-five.jpg" alt="img">
+                                            <div class="uk-overlay-panel uk-overlay-background single_staff_details">
+                                                <h6>Dohn Doe</h6>
+                                                <span>Hotel Manager</span>
+                                                <p>
+                                                    Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan rna.
+                                                </p>
+                                                <div class="social_icons clearfix">
+                                                    <ul>
+                                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="single_staff">
+                                        <figure class="uk-overlay uk-overlay-hover">
+                                            <img src="<?= PUBLIC_URL ?>img/about-us-staff-six.jpg" alt="img">
+                                            <div class="uk-overlay-panel uk-overlay-background single_staff_details">
+                                                <h6>Dohn Doe</h6>
+                                                <span>Hotel Manager</span>
+                                                <p>
+                                                    Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan rna.
+                                                </p>
+                                                <div class="social_icons clearfix">
+                                                    <ul>
+                                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="single_staff">
+                                        <figure class="uk-overlay uk-overlay-hover">
+                                            <img src="<?= PUBLIC_URL ?>img/about-us-staff-seven.jpg" alt="img">
+                                            <div class="uk-overlay-panel uk-overlay-background single_staff_details">
+                                                <h6>Dohn Doe</h6>
+                                                <span>Hotel Manager</span>
+                                                <p>
+                                                    Semper ac dolor vitae msan. Cras interdum hendreritnia Phasellus accumsan rna.
+                                                </p>
+                                                <div class="social_icons clearfix">
+                                                    <ul>
+                                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <div class="single_staff">
+                                        <figure class="uk-overlay uk-overlay-hover">
+                                            <img src="<?= PUBLIC_URL ?>img/about-us-staff-eight.jpg" alt="img">
                                             <div class="uk-overlay-panel uk-overlay-background single_staff_details">
                                                 <h6>Dohn Doe</h6>
                                                 <span>Hotel Manager</span>
