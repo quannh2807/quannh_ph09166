@@ -22,7 +22,7 @@ CREATE TABLE `banner_slice`(
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 3;
+AUTO_INCREMENT = 4;
 -- -------------------------------------------------------------
 
 
@@ -144,7 +144,7 @@ CREATE TABLE `room_service_xref`(
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 21;
+AUTO_INCREMENT = 26;
 -- -------------------------------------------------------------
 
 
@@ -177,7 +177,7 @@ CREATE TABLE `room_types`(
 CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 9;
+AUTO_INCREMENT = 10;
 -- -------------------------------------------------------------
 
 
@@ -255,9 +255,9 @@ AUTO_INCREMENT = 2;
 
 -- Dump data of "banner_slice" -----------------------------
 INSERT INTO `banner_slice`(`id`,`firstContent`,`img_path`,`secondContent`,`status`) VALUES 
-( '1', 'A brand New Hotel', 'public/img/rev-slider/slider-one.jpg', 'Beyond Ordinary', '0' ),
-( '2', 'Book Your Summer Holidays', 'public/img/rev-slider/slider-one.jpg', 'With HOTEL BOOKING Template', '1' ),
-( '3', 'Welcome to Our Hotel', 'public/img/banner_resort-2.jpg', 'Khám phá ngay', '1' );
+( '1', 'A brand New Hotel', 'public/img/rev-slider/slider-one-one.jpg', 'Beyond Ordinary', '0' ),
+( '2', 'Book Your Summer Holidays', 'public/img/rev-slider/slider-one-one.jpg', 'With HOTEL BOOKING Template', '1' ),
+( '3', 'Welcome to Our Hotel', 'public/img/rev-slider/banner_resort.jpg', 'Khám phá ngay', '1' );
 -- ---------------------------------------------------------
 
 
@@ -353,7 +353,33 @@ INSERT INTO `room_service_xref`(`id`,`room_id`,`services_id`) VALUES
 ( '18', '6', '3' ),
 ( '19', '8', '3' ),
 ( '20', '8', '4' ),
-( '21', '8', '8' );
+( '21', '8', '8' ),
+( '22', '9', '3' ),
+( '23', '9', '5' ),
+( '24', '9', '8' ),
+( '25', '9', '9' ),
+( '26', '10', '2' ),
+( '27', '10', '3' ),
+( '28', '10', '6' ),
+( '29', '10', '9' ),
+( '30', '11', '2' ),
+( '31', '11', '3' ),
+( '32', '11', '6' ),
+( '33', '11', '9' ),
+( '34', '12', '2' ),
+( '35', '12', '3' ),
+( '36', '12', '6' ),
+( '37', '12', '9' ),
+( '38', '6', '2' ),
+( '39', '6', '3' ),
+( '40', '6', '4' ),
+( '41', '6', '6' ),
+( '42', '6', '9' ),
+( '43', '6', '2' ),
+( '44', '6', '3' ),
+( '45', '6', '4' ),
+( '46', '6', '6' ),
+( '47', '6', '9' );
 -- ---------------------------------------------------------
 
 
@@ -372,11 +398,24 @@ INSERT INTO `room_services`(`id`,`name`,`status`,`icon`) VALUES
 
 -- Dump data of "room_types" -------------------------------
 INSERT INTO `room_types`(`id`,`name`,`status`,`price`,`quantity`,`feature_image`,`short_descript`,`adult`,`children`) VALUES 
-( '1', 'Single Room', '1', '130', '15', 'public/img/5ea52778eece4-5e9efe754a563-room-image-fifteen.png', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.', '1', '0' ),
-( '6', 'DELUXE ROOM', '1', '180', '10', 'public/img/5ea01a65a875b-room-image-eleven.jpg', 'Semper ac dolor vitae accumsan. Cras interdum hendrerit lacinia. Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend dolor. Cras ac justo et augue suscipit euismod vel eget lectus. Proin vehicula nunc arcu, pulvinar accumsan nulla porta vel. Vivamus malesuada vitae sem ac pellentesque.', '2', '1' ),
-( '8', 'Double Room', '1', '150', '25', 'public/img/5ea519a38117a-room-image-sixteen.png', 'Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
-
-Phasellus accumsan urna vitae molestie interdum.', '2', '2' );
+( '1', 'Single Room', '1', '130', '15', 'public/img/5ea52778eece4-5e9efe754a563-room-image-fifteen.png', '<p>Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<p>Phasellus accumsan urna vitae molestie interdum.</p>', '1', '0' ),
+( '6', 'DELUXE ROOM', '1', '180', '10', 'public/img/5ea01a65a875b-room-image-eleven.jpg', '<p>Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<p>Phasellus accumsan urna vitae molestie interdum.</p>', '2', '1' ),
+( '8', 'Double Room', '1', '150', '25', 'public/img/5ea519a38117a-room-image-sixteen.png', '<p>Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<p>Phasellus accumsan urna vitae molestie interdum.</p>', '2', '2' ),
+( '9', 'Kids room', '1', '140', '20', 'public/img/room-image-eighteen.png', '<p>Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<p>Phasellus accumsan urna vitae molestie interdum.</p>', '0', '2' ),
+( '10', 'Couple Room', '1', '160', '30', 'public/img/5eafd8df1ba94-room-image-fifteen.png', '<p>Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<p>Phasellus accumsan urna vitae molestie interdum.</p>', '2', '0' ),
+( '11', 'Elegant Room', '1', '250', '30', 'public/img/room-thumb-one.jpg', '<p>Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<p>Phasellus accumsan urna vitae molestie interdum.</p>', '2', '0' ),
+( '12', 'Persional Room', '1', '170', '35', 'public/img/5eafd9731d289-room-image-seventeen.png', '<p>Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<p>Phasellus accumsan urna vitae molestie interdum.</p>', '1', '0' ),
+( '13', 'Deluxe Room', '1', '190', '20', 'public/img/5eafd9e137251-room-image-eighteen.png', '<p>Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<p>Phasellus accumsan urna vitae molestie interdum.</p>', '2', '0' ),
+( '14', 'Deluxe Room', '1', '130', '20', 'public/img/5eafd9fac6587-room-image-eighteen.png', '<p>Semper ac dolor vitae accumsan. interdum hendrerit lacinia.</p>
+<p>Phasellus accumsan urna vitae molestie interdum.</p>', '2', '0' );
 -- ---------------------------------------------------------
 
 
@@ -429,10 +468,8 @@ INSERT INTO `users`(`id`,`name`,`password`,`email`,`role_id`,`phone_number`,`ava
 ( '1', 'QuAn Nguyen', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'helgrindxxx@gmail.com', '2', '914946200', 'public/img/5e773a07d6076-avartar.png' ),
 ( '2', 'Harry', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'harry@gmail.com', '2', '0987654321', 'public/img/5e773982aa40f-about-us-staff-six.jpg' ),
 ( '3', 'Maria', '$2y$10$kCP.861/vA5.Nzuc8Mhft.8hp9ymkDnB8JhJFNlUg68wL56bs6Lo6', 'maria@gmail.com', '1', '0123456789', 'public/img/5e7ed0ca73014-about-us-staff-seven.jpg' ),
-( '4', 'Khách Hàng 1', '$2y$10$bUauX78vPaPIXNCeosVy1.oKLg7gOiZe9bccEcvFv/v6Armygztr6', 'khachhang1@gmail.com', '1', '0868456456', 'public/img/5e8195c49fcb8-comment_photo_2.jpg' ),
 ( '5', 'Khách Hàng 2', '$2y$10$A.G.dDw8JLSwfiKd7r4WGeyORA22wGJ4Y5jM7pWjNPCyq3SWaz88a', 'khachhang2@gmail.com', '1', '', 'public/img/default-image.jpg' ),
-( '7', 'Khách Hàng 3', '$2y$10$SKyi7QiAeGaUeMVpb.l0kOckTAF8SGNVBZ/lqSlfbyWCRfBXWd56.', 'khachhang3@gmail.com', '1', '', 'public/img/default-image.jpg' ),
-( '8', 'NGuyen tu Bien', '$2y$10$/HYvfMuOIpD2MIvFyZ/Fnul8cvPWonxdrj2RwU9bAZL1sufuqo3Dy', 'bien@gmail.com', '1', '', 'public/img/default-image.jpg' );
+( '7', 'Khách Hàng 3', '$2y$10$SKyi7QiAeGaUeMVpb.l0kOckTAF8SGNVBZ/lqSlfbyWCRfBXWd56.', 'khachhang3@gmail.com', '1', '', 'public/img/default-image.jpg' );
 -- ---------------------------------------------------------
 
 
