@@ -3,10 +3,31 @@ session_start();
 define('TITLE', 'Room Galleries');
 require_once '../../config/utils.php';
 checkAdminLoggedIn();
+
+$keyword = isset($_GET['keyword']) == true ? $_GET['keyword'] : "";
+$typeId = isset($_GET['type']) == true ? $_GET['type'] : false;
+
 // get room galleries
-$getRoomGalleriesQuery = "select rg.*, rt.name as name from room_galleries rg join room_types rt
+$getRoomGalleriesQuery = "select rg.*, rt.name as name
+                                    from room_galleries rg join room_types rt
                                     on rg.room_id = rt.id";
+// tìm kiếm
+if ($keyword !== "") {
+    $getRoomGalleriesQuery .= " where (name like '%$keyword%')
+                      ";
+    if ($typeId !== false && $typeId !== "") {
+        $getRoomGalleriesQuery .= " and rg.room_id = $typeId";
+    }
+} else {
+    if ($typeId !== false && $typeId !== "") {
+        $getRoomGalleriesQuery .= " where rg.room_id = $typeId";
+    }
+}
 $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
+
+// get room types
+$getRoomTypesQuery = "select * from room_types";
+$roomTypes = queryExecute($getRoomTypesQuery, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,7 +71,30 @@ $roomGalleries = queryExecute($getRoomGalleriesQuery, true);
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <!-- Danh sách users  -->
+                        <div class="col-md-10 col-offset-1">
+                            <!-- Filter  -->
+                            <form action="" method="get">
+                                <div class="form-row">
+                                    <div class="form-group col-6">
+                                        <input type="text" value="<?php echo $keyword ?>" class="form-control" name="keyword" placeholder="Nhập tên loại phòng,...">
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <select name="type" class="form-control">
+                                            <option selected value="">Tất cả</option>
+                                            <?php foreach ($roomTypes as $room) : ?>
+                                                <option <?php if ($typeId === $room['id']) {
+                                                            echo "selected";
+                                                        } ?> value="<?php echo $room['id'] ?>"><?php echo $room['name'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-2">
+                                        <button type="submit" class="btn btn-success">Tìm kiếm</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Danh sách galleries  -->
                         <div class="table-responsive">
                             <table class="table table-stripped">
                                 <thead class="table-secondary">
