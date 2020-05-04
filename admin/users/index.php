@@ -100,48 +100,52 @@ $users = queryExecute($getUsersQuery, true);
                                 </div>
                             </form>
                         </div>
-                        <!-- Danh sách users  -->
-                        <table class="table table-stripped">
-                            <thead class="table-secondary">
-                                <th>ID</th>
-                                <th>Tên</th>
-                                <th>Email</th>
-                                <th>Loại tài khoản</th>
-                                <th width="100">Ảnh</th>
-                                <th>Số ĐT</th>
-                                <th>
-                                    <a href="<?= ADMIN_URL . 'users/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
-                                </th>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($users as $us) : ?>
-                                    <tr>
-                                        <td><?php echo $us['id'] ?></td>
-                                        <td><?php echo $us['name'] ?></td>
-                                        <td><?php echo $us['email'] ?></td>
-                                        <td>
-                                            <?php echo $us['role_name'] ?>
-                                        </td>
-                                        <td>
-                                            <img class="img-fluid" src="<?= BASE_URL . $us['avatar'] ?>" alt="">
-                                        </td>
-                                        <td><?php echo $us['phone_number'] ?></td>
-                                        <td>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
-                                                <a href="<?= ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
-                                                    <i class="fa fa-pencil-alt"></i>
-                                                </a>
-                                            <?php endif; ?>
-                                            <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
-                                                <a href="<?= ADMIN_URL . 'users/remove.php?id=' . $us['id'] ?>" class="btn-remove btn btn-sm btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            <?php endif; ?>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <th>ID</th>
+                                        <th>Tên</th>
+                                        <th>Email</th>
+                                        <th>Loại tài khoản</th>
+                                        <th width="100">Ảnh</th>
+                                        <th>Số ĐT</th>
+                                        <th>
+                                            <a href="<?= ADMIN_URL . 'users/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($users as $us) : ?>
+                                            <tr>
+                                                <td><?php echo $us['id'] ?></td>
+                                                <td><?php echo $us['name'] ?></td>
+                                                <td><?php echo $us['email'] ?></td>
+                                                <td>
+                                                    <?php echo $us['role_name'] ?>
+                                                </td>
+                                                <td>
+                                                    <img class="img-fluid" src="<?= BASE_URL . $us['avatar'] ?>" alt="">
+                                                </td>
+                                                <td><?php echo $us['phone_number'] ?></td>
+                                                <td>
+                                                    <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
+                                                        <a href="<?= ADMIN_URL . 'users/edit-form.php?id=' . $us['id'] ?>" class="btn btn-sm btn-info">
+                                                            <i class="fa fa-pencil-alt"></i>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <?php if ($us['role_id'] < $_SESSION[AUTH]['role_id']) : ?>
+                                                        <a href="<?= ADMIN_URL . 'users/remove.php?id=' . $us['id'] ?>" class="btn-remove btn btn-sm btn-danger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.row -->
 
