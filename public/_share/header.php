@@ -34,8 +34,6 @@
                                     </a>
                                     <ul id="menu2" class="dropdown-menu" role="menu">
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL .'about-us.php'?>">About US</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL . 'booking.php'?>">Booking</a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="<?= BASE_URL . 'room-details.php'?>">Room Details</a></li>
                                         <li role="presentation"><a role="menuitem" tabindex="-1" href="<?=BASE_URL . 'staff.php'?>">Our Staff</a></li>
                                     </ul>
                                 </li>

@@ -16,8 +16,6 @@ $webSetting = queryExecute($getWebSettingQuery, false);
 </head>
 
 <body id="gallery_page">
-
-
     <!-- start header -->
     <?php include_once './public/_share/header.php'; ?>
     <!-- end header -->
@@ -55,7 +53,6 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                         <div class="container">
                             <div class="section_title">
                                 <ul class="nav nav-tabs margin-bottom-60" role="tablist">
-                                    <li role="presentation" class="active"><a href="#all" aria-controls="all" role="tab" data-toggle="tab">all</a></li>
                                     <li role="presentation"><a href="#deluxe_room" aria-controls="deluxe_room" role="tab" data-toggle="tab">deluxe room</a></li>
                                     <li role="presentation"><a href="#single_bedroom" aria-controls="single_bedroom" role="tab" data-toggle="tab">single bedroom</a></li>
                                     <li role="presentation"><a href="#double_bedroom" aria-controls="double_bedroom" role="tab" data-toggle="tab">double bedroom</a></li>
@@ -68,221 +65,7 @@ $webSetting = queryExecute($getWebSettingQuery, false);
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <!-- <div class="section_content"> -->
-                            <div role="tabpanel" class="tab-pane active" id="all">
-                                <!-- start single room details -->
-                                <div class="accomodation_single_room">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-12 col-md-12">
-                                                <div class="row">
-                                                    <div class="col-lg-8 col-md-8 col-sm-12 margin-bottom-30">
-                                                        <div class="clearfix demo">
-                                                            <div class="slider">
-                                                                <div id="gallery_main_slider" class="carousel slide" data-ride="carousel">
-
-                                                                    <!-- Wrapper for slides -->
-                                                                    <div class="carousel-inner" role="listbox">
-                                                                        <div class="item active">
-                                                                            <div class="single_item">
-                                                                                <img src="<?php echo PUBLIC_URL . 'img/lightslider-img/cS-16.jpg' ?>" alt="">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item">
-                                                                            <div class="single_item">
-                                                                                <img src="<?= PUBLIC_URL . 'img/lightslider-img/cS-53.jpg' ?>" alt="">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- Controls -->
-                                                                    <a class="slider_ctrl left" href="#gallery_main_slider" role="button" data-slide="prev">
-                                                                        <i class="fa fa-angle-left"></i>
-                                                                        <span class="sr-only">Previous</span>
-                                                                    </a>
-                                                                    <a class="slider_ctrl right" href="#gallery_main_slider" role="button" data-slide="next">
-                                                                        <i class="fa fa-angle-right"></i>
-                                                                        <span class="sr-only">Next</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-4 col-sm-12 margin-bottom-30">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-md-12 col-sm-6 margin-bottom-30">
-                                                                <div class="single_room_wrapper clearfix">
-                                                                    <div class="room_wrapper">
-                                                                        <div class="dif_room_media">
-                                                                            <a href="img/gallery-four.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/gallery-four.jpg' ?>">
-                                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                                </figure>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12 col-md-12 col-sm-6">
-                                                                <div class="single_room_wrapper clearfix">
-                                                                    <div class="room_wrapper">
-                                                                        <div class="dif_room_media">
-                                                                            <a href="img/gallery-four.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/gallery-five.jpg' ?>">
-                                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                                </figure>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                                <div class="single_room_wrapper clearfix">
-                                                    <div class="room_wrapper">
-                                                        <div class="room_media">
-                                                            <a href="img/room-image-ten.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-ten.jpg' ?>">
-                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                                <div class="single_room_wrapper clearfix">
-                                                    <div class="room_wrapper">
-                                                        <div class="room_media">
-                                                            <a href="img/room-image-twelve.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-twelve.jpg' ?>">
-                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                                <div class="single_room_wrapper clearfix">
-                                                    <div class="room_wrapper">
-                                                        <div class="room_media">
-                                                            <a href="img/showcase-slider-five.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/showcase-slider-five.jpg' ?>">
-                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                                <div class="single_room_wrapper clearfix">
-                                                    <div class="room_wrapper">
-                                                        <div class="room_media">
-                                                            <a href="img/room-image-fourteen.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fourteen.jpg' ?>">
-                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                                <div class="single_room_wrapper clearfix">
-                                                    <div class="room_wrapper">
-                                                        <div class="room_media">
-                                                            <a href="img/room-image-fifteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fifteen.png' ?>">
-                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                                <div class="single_room_wrapper clearfix">
-                                                    <div class="room_wrapper">
-                                                        <div class="room_media">
-                                                            <a href="img/room-image-sixteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-sixteen.png' ?>">
-                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                                <div class="single_room_wrapper clearfix">
-                                                    <div class="room_wrapper">
-                                                        <div class="room_media">
-                                                            <a href="img/room-image-seventeen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-seventeen.png' ?>">
-                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                                <div class="single_room_wrapper clearfix">
-                                                    <div class="room_wrapper">
-                                                        <div class="room_media">
-                                                            <a href="img/room-image-eighteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                                <figure class="uk-overlay uk-overlay-hover">
-                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-eighteen.png' ?>">
-                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- start pagination -->
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <nav class="text-center margin-top-65 margin-bottom-75">
-                                                    <ul class="pagination">
-                                                        <li>
-                                                            <a href="#" aria-label="Previous">
-                                                                <i class="fa fa-angle-left"></i>prev
-                                                            </a>
-                                                        </li>
-                                                        <li class="active"><a href="#">1</a></li>
-                                                        <li><a href="#">2</a></li>
-                                                        <li><a href="#">3</a></li>
-                                                        <li><a href="#">4</a></li>
-                                                        <li><a href="#">5</a></li>
-                                                        <li>
-                                                            <a href="#" aria-label="Next">next
-                                                                <i class="fa fa-angle-right"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                            <!-- end pagination -->
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- end single room details -->
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="deluxe_room">
+                            <div role="tabpanel" class="tab-pane active" id="deluxe_room">
                                 <!-- start single room details -->
                                 <div class="accomodation_single_room">
                                     <div class="container">
@@ -430,521 +213,383 @@ $webSetting = queryExecute($getWebSettingQuery, false);
                                                         <div class="room_media">
                                                             <a href="img/room-image-seven.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
                                                                 <figure class="uk-overlay uk-overlay-hover">
-                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-seven.png' ?>>
-                                                                    <div class=" uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                        </figure>
-                                                        </a>
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-seven.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-twelve.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-twelve.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-ten.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-ten.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-twelve.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-twelve.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-ten.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-ten.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- start pagination -->
-                                        <div class="col-lg-12 col-md-12">
-                                            <nav class="text-center margin-top-65 margin-bottom-75">
-                                                <ul class="pagination">
-                                                    <li>
-                                                        <a href="#" aria-label="Previous">
-                                                            <i class="fa fa-angle-left"></i>prev
-                                                        </a>
-                                                    </li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li>
-                                                        <a href="#" aria-label="Next">next
-                                                            <i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <!-- end pagination -->
                                     </div>
                                 </div>
                             </div>
-                            <!-- end single room details -->
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="single_bedroom">
-                            <!-- start single room details -->
-                            <div class="accomodation_single_room">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-eight.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-eight.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
+                            <div role="tabpanel" class="tab-pane" id="single_bedroom">
+                                <!-- start single room details -->
+                                <div class="accomodation_single_room">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-eight.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-eight.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-nine.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-nine.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-ten.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-ten.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-eleven.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-eleven.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-nine.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-nine.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-ten.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-ten.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-eleven.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-eleven.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- start pagination -->
-                                        <div class="col-lg-12 col-md-12">
-                                            <nav class="text-center margin-top-65 margin-bottom-75">
-                                                <ul class="pagination">
-                                                    <li>
-                                                        <a href="#" aria-label="Previous">
-                                                            <i class="fa fa-angle-left"></i>prev
-                                                        </a>
-                                                    </li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li>
-                                                        <a href="#" aria-label="Next">next
-                                                            <i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <!-- end pagination -->
-                                    </div>
 
-                                </div>
-                            </div>
-                            <!-- end single room details -->
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="double_bedroom">
-                            <!-- start single room details -->
-                            <div class="accomodation_single_room">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-twelve.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-twelve.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-thirteen.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-thirteen.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-fourteen.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fourteen.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-fifteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fifteen.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- start pagination -->
-                                        <div class="col-lg-12 col-md-12">
-                                            <nav class="text-center margin-top-65 margin-bottom-75">
-                                                <ul class="pagination">
-                                                    <li>
-                                                        <a href="#" aria-label="Previous">
-                                                            <i class="fa fa-angle-left"></i>prev
-                                                        </a>
-                                                    </li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li>
-                                                        <a href="#" aria-label="Next">next
-                                                            <i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <!-- end pagination -->
                                     </div>
                                 </div>
+                                <!-- end single room details -->
                             </div>
-                            <!-- end single room details -->
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="classic_room">
-                            <!-- start single room details -->
-                            <div class="accomodation_single_room">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-sixteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-sixteen.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
+                            <div role="tabpanel" class="tab-pane" id="double_bedroom">
+                                <!-- start single room details -->
+                                <div class="accomodation_single_room">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-twelve.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-twelve.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-thirteen.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-thirteen.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-fourteen.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fourteen.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-fifteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fifteen.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-seventeen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-seventeen.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-eighteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-eighteen.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-nine.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-nine.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- start pagination -->
-                                        <div class="col-lg-12 col-md-12">
-                                            <nav class="text-center margin-top-65 margin-bottom-75">
-                                                <ul class="pagination">
-                                                    <li>
-                                                        <a href="#" aria-label="Previous">
-                                                            <i class="fa fa-angle-left"></i>prev
-                                                        </a>
-                                                    </li>
-                                                    <li class="active"><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li>
-                                                        <a href="#" aria-label="Next">next
-                                                            <i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <!-- end pagination -->
                                     </div>
                                 </div>
+                                <!-- end single room details -->
                             </div>
-                            <!-- end single room details -->
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="exe_room">
-                            <!-- start single room details -->
-                            <div class="accomodation_single_room">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-ten.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-ten.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
+                            <div role="tabpanel" class="tab-pane" id="classic_room">
+                                <!-- start single room details -->
+                                <div class="accomodation_single_room">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-sixteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-sixteen.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-seventeen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-seventeen.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-eighteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-eighteen.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-nine.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-nine.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-eleven.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-eleven.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-twelve.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-twelve.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-thirteen.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-thirteen.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- start pagination -->
-                                        <div class="col-lg-12 col-md-12">
-                                            <nav class="text-center margin-top-65 margin-bottom-75">
-                                                <ul class="pagination">
-                                                    <li>
-                                                        <a href="#" aria-label="Previous">
-                                                            <i class="fa fa-angle-left"></i>prev
-                                                        </a>
-                                                    </li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li>
-                                                        <a href="#" aria-label="Next">next
-                                                            <i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <!-- end pagination -->
                                     </div>
                                 </div>
+                                <!-- end single room details -->
                             </div>
-                            <!-- end single room details -->
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="royal_room">
-                            <!-- start single room details -->
-                            <div class="accomodation_single_room">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-fourteen.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fourteen.jpg' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
+                            <div role="tabpanel" class="tab-pane" id="exe_room">
+                                <!-- start single room details -->
+                                <div class="accomodation_single_room">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-ten.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-ten.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-fifteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fifteen.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-eleven.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-eleven.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-sixteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-sixteen.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-twelve.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-twelve.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <div class="single_room_wrapper clearfix">
-                                                <div class="room_wrapper">
-                                                    <div class="room_media">
-                                                        <a href="img/room-image-seventeen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
-                                                            <figure class="uk-overlay uk-overlay-hover">
-                                                                <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-seventeen.png' ?>">
-                                                                <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
-                                                            </figure>
-                                                        </a>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-thirteen.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-thirteen.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
-                                        <!-- start pagination -->
-                                        <div class="col-lg-12 col-md-12">
-                                            <nav class="text-center margin-top-65 margin-bottom-75">
-                                                <ul class="pagination">
-                                                    <li>
-                                                        <a href="#" aria-label="Previous">
-                                                            <i class="fa fa-angle-left"></i>prev
-                                                        </a>
-                                                    </li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li>
-                                                        <a href="#" aria-label="Next">next
-                                                            <i class="fa fa-angle-right"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <!-- end pagination -->
                                     </div>
                                 </div>
+                                <!-- end single room details -->
                             </div>
-                            <!-- end single room details -->
+                            <div role="tabpanel" class="tab-pane" id="royal_room">
+                                <!-- start single room details -->
+                                <div class="accomodation_single_room">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-fourteen.jpg" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fourteen.jpg' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-fifteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-fifteen.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-sixteen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-sixteen.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="single_room_wrapper clearfix">
+                                                    <div class="room_wrapper">
+                                                        <div class="room_media">
+                                                            <a href="img/room-image-seventeen.png" data-uk-lightbox="{group:'group1'}" title="Gallery">
+                                                                <figure class="uk-overlay uk-overlay-hover">
+                                                                    <img alt="img" src="<?= PUBLIC_URL . 'img/room-image-seventeen.png' ?>">
+                                                                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end single room details -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <!-- end other detect room section -->
 

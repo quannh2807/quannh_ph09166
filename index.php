@@ -23,7 +23,7 @@ $feedbacks = queryExecute($getCustomerFeedbacksQuery, true);
 $getNewsQuery = "select * from news LIMIT 3";
 $news = queryExecute($getNewsQuery, true);
 // get data from room_types
-$getRoomTypesQuery = "select * from room_types";
+$getRoomTypesQuery = "select * from room_types order by id ASC limit 4";
 $roomTypes = queryExecute($getRoomTypesQuery, true);
 ?>
 <!DOCTYPE html>
@@ -139,154 +139,42 @@ $roomTypes = queryExecute($getRoomTypesQuery, true);
                     <p><?= $webSetting['introduce_welcome'] ?></p>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <div class="single_room_wrapper clearfix">
-                            <figure class="uk-overlay uk-overlay-hover">
-                                <div class="room_media">
-                                    <a href="#"><img src="./public/img/room-image-five.png" alt=""></a>
-                                </div>
-                                <div class="room_title border-bottom-whitesmoke clearfix">
-                                    <div class="left_room_title floatleft">
-                                        <h6>Deluxe Room</h6>
-                                        <p>$200/ <span>night</span></p>
+                    <?php foreach ($roomTypes as $room) : ?>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="single_room_wrapper clearfix">
+                                <figure class="uk-overlay uk-overlay-hover">
+                                    <div class="room_media">
+                                        <a href="#"><img src="<?=$room['feature_image']?>" alt=""></a>
                                     </div>
-                                    <div class="left_room_title floatright">
-                                        <a href="#" class="btn">Book</a>
+                                    <div class="room_title border-bottom-whitesmoke clearfix">
+                                        <div class="left_room_title floatleft">
+                                            <h6><?=$room['name']?></h6>
+                                            <p>$<?=$room['price']?>/ <span>night</span></p>
+                                        </div>
+                                        <div class="left_room_title floatright">
+                                            <a href="<?=BASE_URL . 'room-details.php?id=' . $room['id']?>" class="btn">Book</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="uk-overlay-panel uk-overlay-background single_wrapper_details clearfix animated bounceInDown">
-                                    <div class="border-dark-1 padding-22 clearfix single_wrapper_details_pad">
-                                        <h5>Deluxe Room</h5>
-                                        <p>
-                                            Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
-                                        </p>
-                                        <p>
-                                            Phasellus accumsan urna vitae molestie interdum.
-                                        </p>
-                                        <div class="single_room_cost clearfix">
-                                            <div class="floatleft">
-                                                <p>$200/ <span>night</span></p>
-                                            </div>
-                                            <div class="floatright">
-                                                <a href="#" class="btn">Book</a>
+                                    <div class="uk-overlay-panel uk-overlay-background single_wrapper_details clearfix animated bounceInDown">
+                                        <div class="border-dark-1 padding-22 clearfix single_wrapper_details_pad">
+                                            <h5><?=$room['name']?></h5>
+                                            <p>
+                                                <?=$room['short_descript']?>
+                                            </p>
+                                            <div class="single_room_cost clearfix">
+                                                <div class="floatleft">
+                                                    <p>$<?=$room['price']?>/ <span>night</span></p>
+                                                </div>
+                                                <div class="floatright">
+                                                    <a href="<?=BASE_URL . 'room-details.php?id=' . $room['id']?>" class="btn">Book</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </figure>
+                                </figure>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <div class="single_room_wrapper clearfix">
-                            <figure class="uk-overlay uk-overlay-hover">
-                                <div class="room_media">
-                                    <a href="#"><img src="./public/img/room-image-nine.png" alt=""></a>
-                                </div>
-                                <div class="room_title border-bottom-whitesmoke clearfix">
-                                    <div class="left_room_title floatleft">
-                                        <h6>Double Room</h6>
-                                        <p>$150/ <span>night</span></p>
-                                    </div>
-                                    <div class="left_room_title floatright">
-                                        <a href="#" class="btn">Book</a>
-                                    </div>
-                                </div>
-                                <div class="uk-overlay-panel uk-overlay-background single_wrapper_details clearfix animated bounceInUp">
-                                    <div class="border-dark-1 padding-22 clearfix single_wrapper_details_pad">
-                                        <h5>Double Room</h5>
-                                        <p>
-                                            Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
-                                        </p>
-                                        <p>
-                                            Phasellus accumsan urna vitae molestie interdum.
-                                        </p>
-                                        <div class="single_room_cost clearfix">
-                                            <div class="floatleft">
-                                                <p>$150/ <span>night</span></p>
-                                            </div>
-                                            <div class="floatright">
-                                                <a href="#" class="btn">Book</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <div class="single_room_wrapper clearfix">
-                            <figure class="uk-overlay uk-overlay-hover">
-                                <div class="room_media">
-                                    <a href="#"><img src="./public/img/room-image-thirteen.jpg" alt=""></a>
-                                </div>
-                                <div class="room_title border-bottom-whitesmoke clearfix">
-                                    <div class="left_room_title floatleft">
-                                        <h6>Single Room</h6>
-                                        <p>$180/ <span>night</span></p>
-                                    </div>
-                                    <div class="left_room_title floatright">
-                                        <a href="#" class="btn">Book</a>
-                                    </div>
-                                </div>
-                                <div class="uk-overlay-panel uk-overlay-background single_wrapper_details clearfix animated bounceInDown">
-                                    <div class="border-dark-1 padding-22 clearfix single_wrapper_details_pad">
-                                        <h5>Single Room</h5>
-                                        <p>
-                                            Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
-                                        </p>
-                                        <p>
-                                            Phasellus accumsan urna vitae molestie interdum.
-                                        </p>
-                                        <div class="single_room_cost clearfix">
-                                            <div class="floatleft">
-                                                <p>$180/ <span>night</span></p>
-                                            </div>
-                                            <div class="floatright">
-                                                <a href="#" class="btn">Book</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <div class="single_room_wrapper clearfix">
-                            <figure class="uk-overlay uk-overlay-hover">
-                                <div class="room_media">
-                                    <a href="#"><img src="./public/img/room-image-eight.png" alt=""></a>
-                                </div>
-                                <div class="room_title border-bottom-whitesmoke clearfix">
-                                    <div class="left_room_title floatleft">
-                                        <h6>Kids Room</h6>
-                                        <p>$140/ <span>night</span></p>
-                                    </div>
-                                    <div class="left_room_title floatright">
-                                        <a href="#" class="btn">Book</a>
-                                    </div>
-                                </div>
-                                <div class="uk-overlay-panel uk-overlay-background single_wrapper_details clearfix animated bounceInUp">
-                                    <div class="border-dark-1 padding-22 clearfix single_wrapper_details_pad">
-                                        <h5>Kids Room</h5>
-                                        <p>
-                                            Semper ac dolor vitae accumsan. interdum hendrerit lacinia.
-                                        </p>
-                                        <p>
-                                            Phasellus accumsan urna vitae molestie interdum.
-                                        </p>
-                                        <div class="single_room_cost clearfix">
-                                            <div class="floatleft">
-                                                <p>$140/ <span>night</span></p>
-                                            </div>
-                                            <div class="floatright">
-                                                <a href="#" class="btn">Book</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
