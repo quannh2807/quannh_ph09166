@@ -12,13 +12,19 @@ $webSetting = queryExecute($getWebSettingQuery, false);
 $room = trim($_POST['room']);
 $bed = trim($_POST['bed']);
 
-$_SESSION[BOOK]['room'] = $room;
-$_SESSION[BOOK]['bed'] = $bed;
-$roomId = isset($_SESSION[BOOK]['id']) ? $_SESSION[BOOK]['id'] : "";
-$adult = isset($_SESSION[BOOK]['adult']) ? $_SESSION[BOOK]['adult'] : "";
-$children = isset($_SESSION[BOOK]['children']) ? $_SESSION[BOOK]['children'] : "";
-$arrival = isset($_SESSION[BOOK]['arrival']) ? $_SESSION[BOOK]['arrival'] : "";
-$departure = isset($_SESSION[BOOK]['departure']) ? $_SESSION[BOOK]['departure'] : "";
+if(isset($_SESSION[BOOK])) {
+    $_SESSION[BOOK]['room'] = $room;
+    $_SESSION[BOOK]['bed'] = $bed;
+
+    $roomId = isset($_SESSION[BOOK]['id']) ? $_SESSION[BOOK]['id'] : "";
+    $adult = isset($_SESSION[BOOK]['adult']) ? $_SESSION[BOOK]['adult'] : "";
+    $children = isset($_SESSION[BOOK]['children']) ? $_SESSION[BOOK]['children'] : "";
+    $arrival = isset($_SESSION[BOOK]['arrival']) ? $_SESSION[BOOK]['arrival'] : "";
+    $departure = isset($_SESSION[BOOK]['departure']) ? $_SESSION[BOOK]['departure'] : "";
+}else {
+    header("Location: " . BASE_URL) . "?msg=Chọn phòng loại phòng trước khi thanh toán";
+    die;
+}
 
 // get data from room types
 $getRoomTypesQuery = "select *from room_types where id ='$roomId' and status = 1";

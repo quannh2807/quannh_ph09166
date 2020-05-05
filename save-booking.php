@@ -19,7 +19,10 @@ $insertBookingQuery = "insert into booking (customer_name, phone_number, email, 
                         children, adult, room_types, messages, status, rooms, beds, price)
                     value ('$customer_name', '$phone_number', '$email', '$arrival', '$departure',
                 '$children', '$adult', '$room_types', '$messages', 0, '$rooms', '$beds', '$price')";
-dd($insertBookingQuery);
 queryExecute($insertBookingQuery, false);
+
+// unset session
+unset($_SESSION[BOOK]);
+
 header("location: " . BASE_URL . "index.php?msg=Chúc mừng bạn đã đặt phòng thành công");
 die;

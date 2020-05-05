@@ -359,7 +359,4 @@ $roomTypes = queryExecute($getRoomTypesQuery, true);
         });
     </script>
 </body>
-
-<!-- Mirrored from premiumlayers.net/demo/html/hotelbooking/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Mar 2020 11:51:41 GMT -->
-
 </html>
