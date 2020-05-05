@@ -29,7 +29,7 @@
                                 <li><a href="<?= BASE_URL . 'accomodation.php'?>">Accomodation</a></li>
                                 <li><a href="<?= BASE_URL . 'gallery.php'?>">Gallery</a></li>
                                 <li><a href="<?= BASE_URL .'about-us.php'?>">About US</a></li>
-                                <li><a href="<?= BASE_URL . 'blog.php'?>">News</a></li>
+                                <li><a href="<?= BASE_URL . 'blog.php'?>">Blog</a></li>
                                 <li><a href="<?= BASE_URL . 'contact-us.php'?>">Contacts</a></li>
 
                                 <?php if ($loggedInUser) : ?>

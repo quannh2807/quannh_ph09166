@@ -63,6 +63,7 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                     <!-- Small boxes (Stat box) -->
                     <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-edit.php' ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $news['id'] ?>">
+                        <input type="hidden" name="author_id" value="<?=$news['author_id']?>">
                         <div class="row p-4">
                             <div class="form-group col-md-6 col-12">
                                 <div class="col-md-6 offset-md-3">

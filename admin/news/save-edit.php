@@ -6,14 +6,15 @@ checkAdminLoggedIn();
 $id = trim($_POST['id']);
 $author_id = trim($_POST['author_id']);
 $feature_image = $_FILES['feature_image'];
-$content = $news['news_content'];
-if(strlen($_POST['news_content']) > 0) {
-    $content = trim($_POST['news_content']);
-}
 
 // kiểm tra tin tức có tồn tại hay không
 $getNewsQuery = "select * from news where id = $id";
 $news = queryExecute($getNewsQuery, false);
+
+$content = $news['news_content'];
+if(trim($_POST['news_content']) !== "") {
+    $content = trim($_POST['news_content']);
+}
 
 if(!$news){
     header("location: " . ADMIN_URL . 'news?msg=News không tồn tại');die;
