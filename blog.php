@@ -29,6 +29,9 @@ if ($current_page > $total_page) {
 
 $getNewsQuery .= " LIMIT $start, $limit";
 $allNews = queryExecute($getNewsQuery, true);
+// get recent post
+$getRecentPost = "select * from news order by created_at DESC LIMIT 0, 3";
+$recentPost = queryExecute($getRecentPost, true);
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -87,13 +90,6 @@ $allNews = queryExecute($getNewsQuery, true);
                     <!-- Pagination -->
                     <div class="col-md-12 text-center">
                         <ul class="pagination">
-                            <!-- <li class="disabled"><a href="#">&#x2190;</a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&#x2192;</a></li> -->
                             <?php
                             // PHẦN HIỂN THỊ PHÂN TRANG
                             // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
@@ -131,30 +127,17 @@ $allNews = queryExecute($getNewsQuery, true);
                     </aside>
                     <aside class="widget widget_latest_posts">
                         <h4>RECENT POSTS</h4>
-                        <div class="media">
-                            <div class="media-left media-middle pull-left">
-                                <a href="#"><img src="assets/images/widget-post-1.jpg" alt="Widget Image" class="media-object"></a>
+                        <?php foreach ($recentPost as $recent) : ?>
+                            <div class="row">
+                                <div class="col-4">
+                                    <a href="<?= BASE_URL . 'single.php?id=' . $recent['id'] ?>"><img src="<?= BASE_URL . $recent['feature_image'] ?>" alt="Widget Image" class="image-recent-post"></a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="<?= BASE_URL . 'single.php?id=' . $recent['id'] ?>"><span class="text-capitalize"><?= $recent['title'] ?></span></a>
+                                    <p><?=$recent['created_at']?></p>
+                                </div>
                             </div>
-                            <div class="media-body"><a href="#"><span>TITLE JUST GOES HERE</span></a>
-                                <p>October 22, 2015</p>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-left media-middle pull-left">
-                                <a href="#"><img src="assets/images/widget-post-2.jpg" alt="Widget Image" class="media-object"></a>
-                            </div>
-                            <div class="media-body"><a href="#"><span>ANOTHER POST IS AWESOME</span></a>
-                                <p>October 17, 2015</p>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-left media-middle pull-left">
-                                <a href="#"><img src="assets/images/widget-post-3.jpg" alt="Widget Image" class="media-object"></a>
-                            </div>
-                            <div class="media-body"><a href="#"><span>WE DO LOVE WHAT WE DO</span></a>
-                                <p>October 9, 2015</p>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </aside>
                     <aside class="widget widget_categories">
                         <h4>CATEGORIES</h4>

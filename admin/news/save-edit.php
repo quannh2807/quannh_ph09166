@@ -4,16 +4,17 @@ include_once "../../config/utils.php";
 checkAdminLoggedIn();
 
 $id = trim($_POST['id']);
+$title = trim($_POST['title']);
 $author_id = trim($_POST['author_id']);
+$content = trim($_POST['news_content'], );
 $feature_image = $_FILES['feature_image'];
 
 // kiểm tra tin tức có tồn tại hay không
 $getNewsQuery = "select * from news where id = $id";
 $news = queryExecute($getNewsQuery, false);
 
-$content = $news['news_content'];
-if(trim($_POST['news_content']) !== "") {
-    $content = trim($_POST['news_content']);
+if(trim($_POST['news_content']) == "") {
+    $content = $news['news_content'];
 }
 
 if(!$news){
@@ -31,7 +32,8 @@ if($feature_image['size'] > 0){
 $updateNewsQuery = "update news set
                         author_id = '$author_id',
                         feature_image = '$filename',
-                        news_content = '$content'
+                        news_content = '$content',
+                        title = '$title'
                     where id = '$id'";
 queryExecute($updateNewsQuery, false);
 header("location: " . ADMIN_URL . "news");

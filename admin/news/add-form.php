@@ -46,16 +46,25 @@ $news = queryExecute($getNewsQuery, true);
                 <div class="container">
                     <!-- Small boxes (Stat box) -->
                     <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-add.php' ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="author_id" value="<?= $_SESSION[AUTH]['id']?>">
+                        <input type="hidden" name="author_id" value="<?= $_SESSION[AUTH]['id'] ?>">
                         <div class="row p-4">
                             <div class="form-group col-md-6 col-12">
                                 <div class="col-md-6 offset-md-3">
                                     <img src="<?= DEFAULT_IMAGE ?>" id="preview-img" class="img-fluid">
                                 </div>
                             </div>
-                            <div class="custom-file col-md-6 col-12">
-                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="feature_image" onchange="encodeImageFileAsURL(this)">
-                                <label class="custom-file-label" for="inputGroupFile02"><span class="text-danger">*</span>Ảnh đại diện bài viết</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Ảnh bài viết<span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_image" onchange="encodeImageFileAsURL(this)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tiêu đề bài viết<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="title" id="title">
+                                    <?php if (isset($_GET['titleerr'])) : ?>
+                                        <label class="error"><?= $_GET['titleerr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                         <textarea class="news_content" id="" cols="30" rows="10" name="news_content"></textarea>

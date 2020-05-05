@@ -63,19 +63,28 @@ if ($_SESSION[AUTH]['role_id'] < 1) {
                     <!-- Small boxes (Stat box) -->
                     <form id="add-user-form" action="<?= ADMIN_URL . 'news/save-edit.php' ?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $news['id'] ?>">
-                        <input type="hidden" name="author_id" value="<?=$news['author_id']?>">
+                        <input type="hidden" name="author_id" value="<?= $news['author_id'] ?>">
                         <div class="row p-4">
                             <div class="form-group col-md-6 col-12">
                                 <div class="col-md-6 offset-md-3">
                                     <img src="<?= BASE_URL . $news['feature_image'] ?>" id="preview-img" class="img-fluid">
                                 </div>
                             </div>
-                            <div class="custom-file col-md-6 col-12">
-                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="feature_image" onchange="encodeImageFileAsURL(this)">
-                                <label class="custom-file-label" for="inputGroupFile02"><span class="text-danger">*</span>Ảnh đại diện bài viết</label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Ảnh bài viết<span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control-file" id="inputGroupFile01" name="feature_image" onchange="encodeImageFileAsURL(this)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tiêu đề bài viết<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="title" id="title" value="<?=$news['title']?>">
+                                    <?php if (isset($_GET['titleerr'])) : ?>
+                                        <label class="error"><?= $_GET['titleerr'] ?></label>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                        <textarea class="news_content" id="" cols="30" rows="10" name="news_content"></textarea>
+                        <textarea class="news_content" id="" cols="30" rows="10" name="news_content"><?=$news['news_content']?></textarea>
                         <div class="col d-flex justify-content-end mt-3">
                             <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
                             <a href="<?= ADMIN_URL . 'news' ?>" class="btn btn-danger">Hủy</a>

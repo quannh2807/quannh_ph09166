@@ -3522,3 +3522,7 @@ footer .widget_newsletter form button {
 .widget_weather .alfie-wp-weather-object .description span small {
     opacity: .7;
 }
+
+.image-recent-post {
+    max-width: 50%;
+}

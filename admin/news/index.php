@@ -93,7 +93,7 @@ $news = queryExecute($getNewsQuery, true);
                             <table class="table table-stripped">
                                 <thead class="table-secondary">
                                     <th>ID</th>
-                                    <th>Ảnh tiêu đề</th>
+                                    <th>Tiêu đề</th>
                                     <th>Tác giả</th>
                                     <th>Link bài viết</th>
                                     <th>
@@ -104,12 +104,10 @@ $news = queryExecute($getNewsQuery, true);
                                     <?php foreach ($news as $new) : ?>
                                         <tr>
                                             <td><?php echo $new['id'] ?></td>
-                                            <td>
-                                                <img width="150" class="img-fluid" src="<?= BASE_URL . $new['feature_image'] ?>" alt="">
-                                            </td>
+                                            <td><?=$new['title']?></td>
                                             <td><?php echo $new['authorName'] ?></td>
                                             <th>
-                                                <a href="#" class="btn btn-primary">Link bài</a>
+                                                <a href="<?= BASE_URL . 'single-blog.php?id=' . $new['id']?>" class="btn btn-primary">Link bài</a>
                                             </th>
                                             <td>
                                                 <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $new['id'] ?>" class="btn btn-sm btn-info">
