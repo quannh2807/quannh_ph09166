@@ -1,12 +1,13 @@
 <?php
 # define contants
-define('BASE_URL', 'http://hotel-booking.helgrind/');
+define('BASE_URL', 'http://localhost/quannh_ph09166/');
 define('ADMIN_URL', BASE_URL . 'admin/');
 define('LOGIN_URL', BASE_URL . 'login/');
 define('PUBLIC_URL', BASE_URL . 'public/');
 define('ADMIN_ASSET_URL', PUBLIC_URL . 'admin/');
 define('DEFAULT_IMAGE', PUBLIC_URL . 'img/default-image.jpg');
 define('AUTH', 'AUTH_SESSION');
+define('BOOK', 'BOOK_SESSION');
 define("ACTIVE", 1);
 define("INACTIVE", 0);
 $title = defined('TITLE') ? TITLE . ' | Hotel Booking' : 'Hotel Booking';
