@@ -255,12 +255,12 @@ $roomTypes = queryExecute($getRoomTypesQuery, true);
                                         <div class="single_content clearfix border-top-whitesmoke padding-top-10">
                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-4 padding-left-0">
                                                 <div class="post_media">
-                                                    <a href="<?= BASE_URL . 'single.php?id=' . $new['id'] ?>"><img src="<?= BASE_URL . $new['feature_image'] ?>" alt=""></a>
+                                                    <a href="<?= BASE_URL . 'single-blog.php?id=' . $new['id'] ?>"><img src="<?= BASE_URL . $new['feature_image'] ?>" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-8 padding-left-10">
                                                 <div class="post_title clearfix">
-                                                    <h6><a href="<?= BASE_URL . 'single.php?id=' . $new['id'] ?>"><?= $new['title'] ?></a></h6>
+                                                    <h6><a href="<?= BASE_URL . 'single-blog.php?id=' . $new['id'] ?>"><?= $new['title'] ?></a></h6>
                                                 </div>
                                                 <div class="post_content  margin-bottom-35">
                                                     <p><?= $new['created_at'] ?></p>

@@ -95,7 +95,7 @@ $news = queryExecute($getNewsQuery, true);
                                     <th>ID</th>
                                     <th>Tiêu đề</th>
                                     <th>Tác giả</th>
-                                    <th>Link bài viết</th>
+                                    <th>Bài viết</th>
                                     <th>
                                         <a href="<?php echo ADMIN_URL . 'news/add-form.php' ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Thêm</a>
                                     </th>
@@ -106,9 +106,7 @@ $news = queryExecute($getNewsQuery, true);
                                             <td><?php echo $new['id'] ?></td>
                                             <td><?=$new['title']?></td>
                                             <td><?php echo $new['authorName'] ?></td>
-                                            <th>
-                                                <a href="<?= BASE_URL . 'single-blog.php?id=' . $new['id']?>" class="btn btn-primary">Link bài</a>
-                                            </th>
+                                            <td><a href="<?= BASE_URL . 'single-blog.php?id=' . $new['id'] ?>" class="stretched-link text-primary">Chi tiết bài viết</a></td>
                                             <td>
                                                 <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $new['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>
