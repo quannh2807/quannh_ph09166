@@ -106,7 +106,7 @@ $news = queryExecute($getNewsQuery, true);
                                             <td><?php echo $new['id'] ?></td>
                                             <td><?=$new['title']?></td>
                                             <td><?php echo $new['authorName'] ?></td>
-                                            <td><a href="<?= BASE_URL . 'single-blog.php?id=' . $new['id'] ?>" class="stretched-link text-primary">Chi tiết bài viết</a></td>
+                                            <td><a href="<?= BASE_URL . 'single-blog.php?id=' . $new['id'] ?>" class="text-primary" >Chi tiết bài viết</a></td>
                                             <td>
                                                 <a href="<?php echo ADMIN_URL . 'news/edit-form.php?id=' . $new['id'] ?>" class="btn btn-sm btn-info">
                                                     <i class="fa fa-pencil-alt"></i>

@@ -58,7 +58,7 @@ $news = queryExecute($getNewsQuery, false);
                         </div>
                         <div class="sing_blog_content">
                             <div class="sing_blog_heading">
-                                <h2>Restaurant Services open </h2>
+                                <h2 class="text-capitalize"><?=$news['title']?></h2>
                                 <ul>
                                     <li>By Admin</li>
                                     <li>3 Jan 2015</li>
@@ -66,15 +66,7 @@ $news = queryExecute($getNewsQuery, false);
                                 </ul>
                             </div>
                             <div class="sing_blog_post_cont">
-                                <p>Phasellus accumsan urna vitae molestie interdum. Nam sed placerat libero, non eleifend Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam maximus a est vel fringilla. Etiam vestibulum iaculis tortor nec fringilla. Proin convallis dui a elementum mollis. Cras pulvinar tellus eget est ultrices, et porttitor ante aliquam. Proin congue ut nisl vel laoreet. Morbi aliquet ullamcorper turpis ac lobortis. </p>
-                                <p>Nam sed placerat libero, non eleifend Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam maximus a est vel fringilla. Etiam vestibulum iaculis tortor nec fringilla. Proin convallis dui a elementum mollis. Cras pulvinar tellus eget est ultrices, et porttitor ante aliquam. Proin congue ut nisl vel laoreet. </p>
-                                <p>Mauris ac augue quis lacus mollis tempor. Aenean tristique vulputate sapien non ultrices. Integer augue purus, vestibulum at vestibulum nec, cursus sed risus. Duis dapibusosuere nisi, et malesuada arcu luctus id.</p>
-                                <blockquote>Mauris ac augue quis lacus mollis tempor. Aenean tristique vulputate sapien non ultrices. Integer augue purus, vestibulum at vestibulum nec, cursus sed risus. </blockquote>
-                                <p>
-                                    <img src="<?=PUBLIC_URL?>img/sing_blog_photo_2.jpg" class="floatleft" alt="">
-                                    <span class="side-img">Nam sed placerat libero, non eleifend Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam maximus a est vel fringilla. Etiam vestibulum iaculis tortor Eporttitor ante Etiam vestibulum iaculis tortor Eporttitor ante aliquam.</span> </p>
-                                <p>Nam sed placerat libero, non eleifend Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam maximus a est vel fringilla. Etiam vestibulum iaculis tortor nec fringilla. Proin convallis dui a elementum mollis. Cras pulvinar tellus eget est ultrices, et porttitor ante aliquam. Proin congue ut nisl vel laoreet. </p>
-                                <p>Tag: <span class="tag"> lorem,ipsum,food,receipe</span></p>
+                                <p><?=$news['news_content']?></p>
                             </div>
                             <div class="related_post">
                                 <h2>Related Post</h2>

@@ -94,14 +94,6 @@ if ($_SESSION[AUTH]['role_id'] < 2) {
                                     <?php endif; ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Trạng thái<span class="text-danger">*</span></label>
-                                    <select name="status" id="statusSetting" class="form-control">
-                                        <option value="">Chọn trạng thái</option>
-                                        <option value="<?= ACTIVE ?>">Hoạt động</option>
-                                        <option value="<?= INACTIVE ?>">Không hoạt động</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <label for="name">Email web setting<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="email" id="email" value="<?= $webSettings['email'] ?>">
                                     <?php if (isset($_GET['emailerr'])) : ?>
@@ -194,7 +186,7 @@ if ($_SESSION[AUTH]['role_id'] < 2) {
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary">Tạo</button>&nbsp;
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;
                             <a href="<?= ADMIN_URL . 'web_settings' ?>" class="btn btn-danger">Hủy</a>
                         </div>
                     </form>

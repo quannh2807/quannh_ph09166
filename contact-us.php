@@ -178,6 +178,16 @@ $webSetting = queryExecute($getWebSettingQuery, false);
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
+
+        <?php if (isset($_GET['msg'])) : ?>
+            Swal.fire({
+                position: 'bottom-end',
+                icon: 'success',
+                title: "<?= $_GET['msg']; ?>",
+                showConfirmButton: false,
+                timer: 2000
+            });
+        <?php endif; ?>
     </script>
 
 </body>

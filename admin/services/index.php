@@ -91,7 +91,6 @@ $services = queryExecute($getServicesQuery, true);
                                 <thead class="table-secondary">
                                     <th>ID</th>
                                     <th>Tên</th>
-                                    <th>Giới thiệu</th>
                                     <th>Ảnh</th>
                                     <th>Trạng thái</th>
                                     <th>
@@ -103,12 +102,11 @@ $services = queryExecute($getServicesQuery, true);
                                         <tr>
                                             <td><?php echo $service['id'] ?></td>
                                             <td><?php echo $service['name'] ?></td>
-                                            <td><?php echo substr($service['introduce'], 0, 60) . '<span class="text-danger">...</span>' ?></td>
                                             <td>
                                                 <?php if ($service['feature_img']) { ?>
-                                                    <img class="img-fluid" src="<?= BASE_URL . $service['feature_img'] ?>" alt="">
+                                                    <img class="img-fluid" src="<?= BASE_URL . $service['feature_img'] ?>" width="150px">
                                                 <?php } else { ?>
-                                                    <img class="img-fluid" src="<?= PUBLIC_URL . 'img/default-image.jpg' ?>" alt="">
+                                                    <img class="img-fluid" src="<?= PUBLIC_URL . 'img/default-image.jpg' ?>" width="150px">
                                                 <?php } ?>
                                             </td>
                                             <td>

@@ -97,9 +97,7 @@ $contacts = queryExecute($getContactsQuery, true);
                                 <th>Chủ đề</th>
                                 <th width=25%>Nội dung lời nhắn</th>
                                 <th>Trạng thái</th>
-                                <th width=10%>
-                                    Thao tác
-                                </th>
+                                <th width=10%>Thao tác</th>
                             </thead>
                             <tbody>
                                 <?php foreach ($contacts as $contact) : ?>
@@ -118,16 +116,12 @@ $contacts = queryExecute($getContactsQuery, true);
                                             <td class="text-secondary">Đã trả lời</td>
                                         <?php } ?>
                                         <td>
-                                            <?php if ($_SESSION[AUTH]['role_id'] > 1) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'contacts/content-email.php?id=' . $contact['id'] ?>" class="btn btn-sm btn-success">
-                                                    <i class="far fa-comment-dots"></i>
-                                                </a>
-                                            <?php endif; ?>
-                                            <?php if ($_SESSION[AUTH]['role_id'] > 1) : ?>
-                                                <a href="<?php echo ADMIN_URL . 'contacts/remove.php?id=' . $contact['id'] ?>" class="btn-remove btn btn-sm btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            <?php endif; ?>
+                                            <a href="<?php echo ADMIN_URL . 'contacts/content-email.php?id=' . $contact['id'] ?>" class="btn btn-sm btn-success">
+                                                <i class="far fa-comment-dots"></i>
+                                            </a>
+                                            <a href="<?php echo ADMIN_URL . 'contacts/remove.php?id=' . $contact['id'] ?>" class="btn-remove btn btn-sm btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
